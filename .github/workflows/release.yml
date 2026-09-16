@@ -81,7 +81,11 @@ jobs:
             D_27SOC_openFDA事件级.md \
             04_sensitivity_ps_only.csv \
             04_sensitivity_year_pain.csv \
+            04_sensitivity_year_hyperaesthesia.csv \
+            04_sensitivity_estimable_years.json \
             04_sensitivity_summary.md \
+            _gen_table4.py \
+            _check_asterisks.py \
             cv/cv_soc_27.csv \
             cv/cv_pt_summary.csv \
             cv/cv_drug_totals.csv \

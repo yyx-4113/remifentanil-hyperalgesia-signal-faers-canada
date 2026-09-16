@@ -155,16 +155,16 @@ def main() -> int:
     chk("CoverLetter 含 30 篇文献计数",
         "all 30 cited references verified by identifier" in cl_text)
 
-    # 4. tables present: 5 in the manuscript (Tables 1,2,3,4A,4B); 4 in the SI
-    #    (Table S1 panel A, Table S1 panel B, Table S3, Table S4); 2 in the checklist
-    chk("Manuscript 表数 == 5", docx_table_count(ms), 5)
-    chk("Supporting 表数 == 4", docx_table_count(si), 4)
+    # 4. tables present: 6 in the manuscript (Tables 1,2,3,4A,4B,4C); 5 in the SI
+    #    (Table S1 panel A, Table S1 panel B, Table S3, Table S4, Table S5); 2 in the checklist
+    chk("Manuscript 表数 == 6", docx_table_count(ms), 6)
+    chk("Supporting 表数 == 5", docx_table_count(si), 5)
     chk("Checklist 表数 == 2", docx_table_count(ck), 2)
 
     # 4b. the two Table S1 panels must arrive whole: 28 rows x 8 columns each;
-    #     Table S3 is 14 x 5 and Table S4 is 19 x 7 (header + 18 terms)
+    #     Table S3 is 14 x 5, Table S4 is 19 x 7, Table S5 is 19 x 6 (header + 18 terms)
     shapes = docx_table_shapes(si)
-    chk("Supporting 表尺寸集合", shapes, [(28, 8), (28, 8), (14, 5), (19, 7)])
+    chk("Supporting 表尺寸集合", shapes, [(28, 8), (28, 8), (14, 5), (19, 7), (19, 6)])
 
     # 5. no placeholders in the submitted files
     for label, t in [("Manuscript", ms_text), ("Supporting", si_text),

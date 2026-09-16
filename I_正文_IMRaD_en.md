@@ -10,7 +10,7 @@
 
 **Keywords:** remifentanil; opioid-induced hyperalgesia; pharmacovigilance; disproportionality analysis; spontaneous reporting
 
-**Word count:** Summary 299 words; main text 3 983 words (Introduction to Conclusion, section headings included). Verified with `_wordcount.py`. **Tables:** 4 (Table 4 in two panels) plus 4 supplementary. **Figures:** 2.
+**Word count:** Summary 297 words; main text 3 998 words (Introduction to Conclusion, section headings included). Verified with `_wordcount.py`. **Tables:** 4 (Table 4 in three panels) plus 5 supplementary. **Figures:** 2.
 
 > **Formatting note (not for submission).** This file is written to the *Anaesthesia* Guidance for Authors: UK spelling, structured Summary of 250–300 words without abbreviations or references, main text 3000–4000 words, Vancouver references with DOIs, ≤20-word title that states no conclusion, running head ≤60 characters, 3–5 keywords. Tables and figure legends are placed after the References in this same file; the figures themselves are supplied as separate files (`I_fig1_rorr_forest.tif/.pdf/.png`, `I_fig2_year_trend.tif/.pdf/.png`). Number-to-source traceability is in §9.
 
@@ -18,11 +18,11 @@
 
 ## Summary
 
-**Introduction.** Hyperalgesia after remifentanil infusion is widely discussed and has generated a substantial prevention literature, yet the clinical evidence remains contested and real-world reporting is unassessed.
+**Introduction.** Hyperalgesia after remifentanil infusion has generated a substantial prevention literature, yet the clinical evidence remains contested and real-world reporting is unassessed.
 
-**Methods.** Cross-sectional disproportionality analysis in two national databases: the United States Food and Drug Administration Adverse Event Reporting System (20 692 687 reports) as the primary analysis, and the Health Canada Canada Vigilance line-listing (1 154 017 reports, to 30 November 2024) for confirmation; cohorts were remifentanil, fentanyl, sufentanil and morphine. Reporting odds ratios, proportional reporting ratios, information components and empirical Bayes geometric means were computed for hyperalgesia, pain and control terms defined a priori. Because a term returns a count only if it is a preferred term in the coding dictionary, every term was verified as retrievable in both databases before any zero was read. Signals required at least three reports with a lower confidence bound above one; remifentanil was compared with each comparator by the ratio of reporting odds ratios.
+**Methods.** Disproportionality analysis in two national databases: the United States Food and Drug Administration Adverse Event Reporting System (20 692 687 reports) as the primary analysis and the Health Canada Canada Vigilance line-listing (1 154 017 reports, to 30 November 2024) for confirmation; cohorts were remifentanil, fentanyl, sufentanil and morphine. Reporting odds ratios, proportional reporting ratios, information components and empirical Bayes geometric means were computed for the terms defined a priori. Because a term returns a count only if it is a preferred term, every term was verified as retrievable in both databases before any zero was read; the proxies were added after the zeros and dated in the plan. Signals required at least three reports with a lower confidence bound above one; remifentanil was compared with each comparator by the ratio of reporting odds ratios.
 
-**Results.** The word used in clinical practice for the syndrome is not a preferred term in either dictionary and returned no report, whereas the preferred term carrying the concept was present in both databases (8 161; 521) and met the signal criterion for all four opioids, remifentanil included (4.73, 95% confidence interval 2.54–8.80); remifentanil's was the smallest and did not reproduce. For pain, remifentanil reported least of the four and every computable head-to-head ratio was below one (0.066, 95% confidence interval 0.04–0.10, versus fentanyl; 0.046 versus morphine; 0.235 and 0.146 in Canada). The same direction held for every negative control, on serious-report restriction, and in every year from 2015 to 2024.
+**Results.** The word used in clinical practice for the syndrome is not a preferred term in either dictionary and returned no report, whereas the preferred term carrying it was present in both (8 161; 523) and met the signal criterion for all four opioids, remifentanil included (4.73, 95% confidence interval 2.54–8.80); remifentanil's was the smallest and did not reproduce. For pain, remifentanil reported least of the four and every computable head-to-head ratio was below one (0.066, 95% confidence interval 0.04–0.10, versus fentanyl; 0.046 versus morphine; 0.235 and 0.146 in Canada). The same direction held for every negative control, on serious-report restriction, and in each of the eight estimable years.
 
 **Discussion.** The answer depended on the term chosen, so such an analysis is hypothesis-generating at best, and a zero from the clinical name alone is not evidence of safety.
 
@@ -30,15 +30,15 @@
 
 ## 1. Introduction
 
-Remifentanil is a potent µ-opioid receptor agonist whose ester linkage exposes it to non-specific plasma esterases, giving it a context-insensitive half-time of three to four minutes and making it a default choice when rapid, titratable intraoperative analgesia is wanted. Its abrupt offset has long been suspected of producing an unpleasant postoperative state: increased pain, increased opioid requirement, or both.
+Remifentanil is a potent µ-opioid receptor agonist whose ester linkage exposes it to non-specific plasma esterases, giving a context-insensitive half-time of three to four minutes. Its abrupt offset has long been suspected of causing an unpleasant postoperative state: more pain, more opioid requirement, or both.
 
-The proposed mechanism is opioid-induced hyperalgesia, a paradoxical sensitisation to noxious stimuli after opioid exposure [1, 2, 3]; for remifentanil the syndrome is called remifentanil-induced hyperalgesia. Accounts invoke N-methyl-D-aspartate receptor hyperactivation, descending facilitation from the rostral ventromedial medulla and increased dynorphin release [1, 2], and because these targets are tractable, prevention has been studied extensively [1, 4].
+The proposed mechanism is opioid-induced hyperalgesia, a paradoxical sensitisation to noxious stimuli after opioid exposure [1, 2, 3]; for remifentanil the syndrome is called remifentanil-induced hyperalgesia. Accounts invoke N-methyl-D-aspartate receptor hyperactivation, descending facilitation and increased dynorphin release [1, 2], and because these targets are tractable, prevention has been studied extensively [1, 4].
 
-The clinical evidence is less settled than the volume of that literature implies. The phenomenon was first demonstrated prospectively, remifentanil increasing postoperative pain and morphine requirement [5] and small-dose ketamine attenuating the effect [6]. A systematic review of 35 articles found 16 studies supporting remifentanil-induced hyperalgesia and 6 refuting it, concluding that the effect is real but too small to require prevention [7]; a second found insufficient evidence to support or refute it in humans at all [8]; and a meta-analysis reported small, heterogeneous effects [9]. The phenomenon is nonetheless reproducible experimentally [10] and increasingly invoked clinically [11].
+The clinical evidence is less settled than that literature implies. The phenomenon was demonstrated prospectively, remifentanil increasing postoperative pain and morphine requirement [5] and small-dose ketamine attenuating it [6]. A systematic review of 35 articles found 16 studies supporting remifentanil-induced hyperalgesia and 6 refuting it, concluding the effect is real but too small to require prevention [7]; a second found insufficient evidence to support or refute it [8]; a meta-analysis reported small, heterogeneous effects [9]. The phenomenon is nonetheless reproducible experimentally [10] and increasingly invoked clinically [11].
 
-The debate has been conducted almost entirely within prospective studies, quantitative sensory testing and experimental pain models; whether remifentanil generates a disproportionate volume of hyperalgesia-related reports in the spontaneous reporting systems that drive post-marketing signal detection has not been examined. The question runs both ways: a clinically salient, recognisable syndrome should surface in reporting as other perioperative syndromes do, and if it does not, that both constrains the plausible real-world burden and exposes a limitation of the data source. Whether it surfaces depends on which preferred term is queried, and the name the literature uses is not necessarily the name the dictionary uses.
+The debate has been conducted almost entirely within prospective studies and experimental pain models; whether remifentanil generates disproportionate hyperalgesia reporting in the spontaneous reporting systems that drive signal detection has not been examined. The question runs both ways: a clinically salient syndrome should surface in reporting, and if it does not, that constrains the plausible real-world burden and exposes a limitation of the source. Whether it surfaces depends on which preferred term is queried, and the name the literature uses is not necessarily the name the dictionary uses.
 
-We therefore performed a head-to-head disproportionality analysis of remifentanil against fentanyl, sufentanil and morphine in two independent national pharmacovigilance databases, offered as a methodological caution about terminology: we make the term-level check that a null result in this field usually omits. The primary question was whether remifentanil shows disproportionate reporting of hyperalgesia-related terms; secondary questions were whether the comparators do, and what the system organ class panorama contains. We defined negative controls and a specificity probe a priori, because an opioid that under-reports one thing may under-report everything, and a null is interpretable only if the instrument works.
+We therefore performed a head-to-head disproportionality analysis of remifentanil against fentanyl, sufentanil and morphine in two national pharmacovigilance databases, offered as a methodological caution about terminology: we make the term-level check a null result in this field usually omits. The primary question was whether remifentanil shows disproportionate reporting of hyperalgesia-related terms; secondary questions were whether the comparators do, and what the system organ class panorama contains. Negative controls and a specificity probe were defined a priori, because an opioid that under-reports one thing may under-report everything, and a null is interpretable only if the instrument works.
 
 ---
 
@@ -52,19 +52,19 @@ We performed a cross-sectional disproportionality analysis of spontaneous advers
 
 **Canada Vigilance (confirmation).** Reports were obtained from the Health Canada Canada Vigilance Adverse Reaction Online Database line-listing extract (`extract_extrait.zip`, retrieved 16 September 2026), covering reports received up to 30 November 2024 and containing 1 154 017 reports [16]. The extract carries native MedDRA preferred term and system organ class fields, so report-level system organ class analysis needs no external mapping.
 
-FAERS was taken as the primary analysis and Canada Vigilance as the confirmation set, a pragmatic trade-off of methodological purity for statistical power; had the question been one of magnitude, Canada Vigilance would have been primary. FAERS contributes 20 692 687 reports and 5 375 remifentanil reports, enough to estimate head-to-head ratios with stable intervals and to stratify by year and seriousness. Canada Vigilance is methodologically cleaner — suspect-role restriction, native MedDRA coding, source de-duplication — but its 111 remifentanil reports leave most preferred-term head-to-head ratios uncomputable, so it confirms direction only and carries all quantitative system organ class conclusions [16].
+FAERS was taken as the primary analysis and Canada Vigilance as the confirmation set, a pragmatic trade-off of methodological purity for statistical power. FAERS contributes 20 692 687 reports and 5 375 remifentanil reports, enough to estimate head-to-head ratios with stable intervals and to stratify by year and seriousness. Canada Vigilance is methodologically cleaner — suspect-role restriction, native MedDRA coding, source de-duplication — but its 111 remifentanil reports leave most preferred-term head-to-head ratios uncomputable, so it confirms direction only and carries all quantitative system organ class conclusions [16].
 
 ### 2.2 Drug cohorts
 
-**FAERS.** A report was assigned to a drug cohort if any drug entry carried the target substance name in `patient.drug.activesubstance.activesubstancename.exact`. Cohorts were `("REMIFENTANIL" "REMIFENTANIL HYDROCHLORIDE")`, `("FENTANYL")`, `("SUFENTANIL" "SUFENTANIL CITRATE")` and `("MORPHINE")`. Assignment was role-agnostic, so the drug need not have been flagged as suspect; for a signal-detection question this maximises sensitivity, at the cost of admitting reports in which the drug was co-suspected or concomitant. A role-restricted analysis was not possible, the case-level file needed to attribute role reliably being inaccessible (§4.5).
+**FAERS.** A report was assigned to a drug cohort if any drug entry carried the target substance name in `patient.drug.activesubstance.activesubstancename.exact`. Cohorts were `("REMIFENTANIL" "REMIFENTANIL HYDROCHLORIDE")`, `("FENTANYL")`, `("SUFENTANIL" "SUFENTANIL CITRATE")` and `("MORPHINE")`. Assignment was role-agnostic, so the drug need not have been flagged as suspect; for signal detection this maximises sensitivity, at the cost of admitting reports in which the drug was co-suspected or concomitant. A role-restricted analysis was not possible, the case-level file needed to attribute role being inaccessible (§4.5).
 
-**Canada Vigilance.** Cohort assignment required an exact active-ingredient match on the drug product record (`name == target OR name.startswith(target + " ")`) and a role of `Suspect`. Substring matching was rejected because it admits chemically distinct substances sharing a stem: `morphine` captures apomorphine and diacetylmorphine (heroin), and `fentanyl` captures norfentanyl and fluorinated analogues. Restriction to `Suspect` gave report-level cohorts comparable with the report-level denominators of the extract.
+**Canada Vigilance.** Cohort assignment required an exact active-ingredient match on the drug product record (`name == target OR name.startswith(target + " ")`) and a role of `Suspect`. Substring matching was rejected because it admits chemically distinct substances sharing a stem: `morphine` captures apomorphine and diacetylmorphine (heroin), and `fentanyl` captures norfentanyl and fluorinated analogues. Restriction to `Suspect` gave report-level cohorts comparable with the extract denominators.
 
 ### 2.3 Outcome definitions
 
-Three groups of terms were defined a priori in a dated analytical plan archived with the repository (ANALYSIS_PLAN.md): a narrow group (HYPERALGESIA, ALLODYNIA), the terms the literature uses for the syndrome and its canonical correlate; a broad group (PAIN INCREASED, POSTOPERATIVE PAIN, CHRONIC PAIN, OPIOID WITHDRAWAL SYNDROME, DRUG TOLERANCE), not specific for hyperalgesia but the terms a clinician would plausibly reach for when attributing the picture to the opioid; and PAIN, analysed separately as a pragmatic and necessarily imperfect proxy, the highest-frequency term such a narrative passes through [17]. PAIN's low reporting reflects reporting setting and must not be read backwards as evidence that hyperalgesia is absent.
+Three groups of terms were defined a priori in a dated analytical plan archived with the repository (ANALYSIS_PLAN.md): a narrow group (HYPERALGESIA, ALLODYNIA); a broad group (PAIN INCREASED, POSTOPERATIVE PAIN, CHRONIC PAIN, OPIOID WITHDRAWAL SYNDROME, DRUG TOLERANCE), not specific for hyperalgesia but the terms a clinician would reach for when attributing the picture to the opioid; and PAIN, analysed separately as a pragmatic and necessarily imperfect proxy, the highest-frequency term such a narrative passes through [17]. PAIN's low reporting reflects reporting setting and must not be read backwards as evidence that hyperalgesia is absent.
 
-**Term-level verification.** Both corpora store preferred terms in the reaction field, so a string returns a count only if it is a preferred term in the dictionary that coded that database: a zero can mean either that an event was never reported or that the string is not a preferred term. Every outcome term was verified against both corpora before any zero was interpreted (Table S4), and five of the seven hyperalgesia-related terms failed that test. HYPERALGESIA, the clinical word, is a lowest level term mapping to the preferred term HYPERAESTHESIA [18], so a query on it returns zero by construction; OPIOID WITHDRAWAL SYNDROME is carried by DRUG WITHDRAWAL SYNDROME; and PAIN INCREASED, POSTOPERATIVE PAIN and CHRONIC PAIN could not be confirmed as preferred terms in either corpus. No conclusion rests on these strings, so five dictionary proxies — the preferred terms carrying the same concepts (HYPERAESTHESIA, HYPERPATHIA, PROCEDURAL PAIN, CHRONIC PAIN SYNDROME, DRUG WITHDRAWAL SYNDROME) — were added and analysed on the same footing (Tables 2, 3 and S4).
+**Term-level verification.** Both corpora store preferred terms in the reaction field, so a string returns a count only if it is a preferred term in the dictionary that coded that database: a zero can mean the event was never reported or the string is not a preferred term. Every term was verified against both corpora before any zero was interpreted (Table S4), and five of the seven hyperalgesia-related terms failed. HYPERALGESIA, the clinical word, is a lowest level term mapping to the preferred term HYPERAESTHESIA [18], so a query on it returns zero by construction; OPIOID WITHDRAWAL SYNDROME is carried by DRUG WITHDRAWAL SYNDROME; and PAIN INCREASED, POSTOPERATIVE PAIN and CHRONIC PAIN could not be confirmed as preferred terms in either corpus. No conclusion rests on these strings, so five dictionary proxies — the preferred terms carrying the same concepts (HYPERAESTHESIA, HYPERPATHIA, PROCEDURAL PAIN, CHRONIC PAIN SYNDROME, DRUG WITHDRAWAL SYNDROME) — were added after the zeros had been observed and analysed on the same footing (Tables 2, 3 and S4); they are reported as additions rather than a priori outcomes, and the amendment is dated in the plan.
 
 **MedDRA releases.** The Canadian extract states the release used for every reaction row (v27.1) [18]; openFDA exposes none, and the FAERS corpus spans quarterly releases from 2004, so no single release applies to it. The release does not affect the results but governs the interpretation of a zero.
 
@@ -72,19 +72,19 @@ NAUSEA, VOMITING, PRURITUS and CONSTIPATION served as negative controls, defined
 
 ### 2.4 Disproportionality and head-to-head comparison
 
-For each drug–event pair, counts were arranged in the conventional 2×2 table (a: drug and event; b: drug without event; c: event without drug; d: all remaining). Four measures were computed: the reporting odds ratio, (a/c)/(b/d); the proportional reporting ratio, [a/(a+b)]/[c/(c+d)] [19]; the information component with BCPNN shrinkage [20, 21]; and the empirical Bayes geometric mean under MGPS [22]. A signal was declared when a ≥ 3 and the lower bound of the 95% confidence interval of the reporting odds ratio exceeded 1, or when the proportional reporting ratio was ≥ 2 with χ² > 4; the comparative behaviour of these measures has been characterised previously [23].
+For each drug–event pair, counts were arranged in the conventional 2×2 table (a: drug and event; b: drug without event; c: event without drug; d: all remaining). Four measures were computed: the reporting odds ratio, (a/c)/(b/d); the proportional reporting ratio, [a/(a+b)]/[c/(c+d)] [19]; the information component with BCPNN shrinkage [20, 21]; and the empirical Bayes geometric mean under MGPS [22]. A signal was declared when a ≥ 3 and the lower bound of the 95% confidence interval of the reporting odds ratio exceeded 1, or when the proportional reporting ratio was ≥ 2 with χ² > 4, or when the lower bound of the information component exceeded zero; the comparative behaviour of these measures has been characterised previously [23].
 
-Head-to-head comparison used the ratio of reporting odds ratios (RORR), remifentanil divided by the comparator. Both ratios share the same background reference, so comparator-specific terms cancel, and a value below 1 means remifentanil reports the event less. Confidence intervals used the log scale with the sum of the reciprocal cell counts (Woolf approximation), treating the two ratios as independent although they share the background reference d. All computations used Python 3.13.14 and matplotlib 3.11.1.
+Head-to-head comparison used the ratio of reporting odds ratios (RORR), remifentanil divided by the comparator. Both ratios share the same background reference, so comparator-specific terms cancel, and a value below 1 means remifentanil reports the event less. Confidence intervals used the log scale with the sum of the reciprocal cell counts (Woolf approximation), treating the two ratios as independent although they share the background reference d; with 20 692 687 background reports the ignored covariance is under 0.001% of the variance, so it is conservative. All computations used Python 3.13.14 and matplotlib 3.11.1.
 
 ### 2.5 System organ class analyses
 
-**Canada Vigilance (primary).** Report-level counts were taken directly from the native `SOC_NAME_ENG` field, giving all 27 MedDRA classes without an intermediate mapping step; ratios were computed as in §2.4.
+**Canada Vigilance (primary).** Report-level counts were taken directly from the native `SOC_NAME_ENG` field, giving all 27 MedDRA classes without a mapping step; ratios were computed as in §2.4.
 
-**FAERS (exploratory).** Because the openFDA count interface returns at most the top 500 terms per drug without an API key, we mapped those terms to the 27 classes with heuristic keyword rules. Counting is event-level and the rules are not authoritative, so this arm serves only as a check of direction; every quantitative class claim rests on the Canadian analysis.
+**FAERS (exploratory).** The openFDA count interface returns at most the top 500 terms per drug without an API key, so those terms were mapped to the 27 classes with heuristic keyword rules; counting is event-level and the rules are not authoritative, so this arm checks direction only and every quantitative class claim rests on the Canadian analysis.
 
 ### 2.6 Subgroup and sensitivity analyses
 
-In Canada Vigilance we tabulated cohort composition by age band, sex, reporter type and seriousness. In FAERS we restricted the analysis to serious reports (flag `serious:1`), with the reference set restricted correspondingly, and stratified the PAIN analysis by calendar year.
+In Canada Vigilance we tabulated cohort composition by age band, sex, reporter type and seriousness. In FAERS we restricted the analysis to serious reports (flag `serious:1`), with the reference set restricted correspondingly, and stratified the PAIN and HYPERAESTHESIA analyses by calendar year.
 
 ### 2.7 Ethics
 
@@ -96,17 +96,17 @@ Both datasets are publicly available, de-identified and released for research us
 
 ### 3.1 Cohorts
 
-Cohort sizes are in Table 1. FAERS contained 5 375 remifentanil, 121 819 fentanyl, 6 513 sufentanil and 56 501 morphine reports among 20 692 687 in total; the corresponding Canada Vigilance cohorts (over 1 154 017 reports) were much smaller for remifentanil (111) and sufentanil (63) but substantial for fentanyl (4 881) and morphine (7 675).
+Cohort sizes are in Table 1. FAERS contained 5 375 remifentanil, 121 819 fentanyl, 6 513 sufentanil and 56 501 morphine reports among 20 692 687; the Canada Vigilance cohorts (1 154 017 reports) were much smaller for remifentanil (111) and sufentanil (63) but substantial for fentanyl (4 881) and morphine (7 675).
 
 ### 3.2 The clinical term is not a preferred term
 
-No report in either corpus carried HYPERALGESIA as a reaction preferred term: the string returned zero among 20 692 687 FAERS reports and among 1 154 017 Canadian reports, and an adjacent-token search returned zero. The other four hyperalgesia-related strings behaved identically, whereas mechanically identical queries on common terms returned large counts (PAIN alone 607 176), so the query path was intact (Table S4).
+No report in either corpus carried HYPERALGESIA as a reaction preferred term: the string returned zero among 20 692 687 FAERS reports and among 1 154 017 Canadian reports, and so did an adjacent-token search. The other four strings returned no exact match either, with one exception: an adjacent-token search on CHRONIC PAIN returned a single hit, not an exact preferred-term match, which does not alter the conclusion. Mechanically identical queries on common terms returned large counts (PAIN alone 607 176), so the query path was intact (Table S4).
 
-The zero for HYPERALGESIA is a property of the dictionary, not of the data. In MedDRA the string is a lowest level term mapping to the preferred term HYPERAESTHESIA, which is well represented in both corpora (8 161 FAERS reports, 521 Canadian reaction rows), and every other candidate term was likewise retrievable (Table S4), so the clinical word alone manufactures the appearance of a structural gap the dictionaries do not contain.
+The zero is a property of the dictionary, not of the data. In MedDRA the string is a lowest level term mapping to the preferred term HYPERAESTHESIA, well represented in both corpora (8 161 FAERS reports, 523 Canadian reaction rows), and every other candidate term was likewise retrievable (Table S4), so the clinical word alone manufactures a gap the dictionaries do not contain.
 
 ### 3.3 The preferred terms that carry the concept
 
-In the primary analysis HYPERAESTHESIA met the signal criterion for all four opioids (Table 2): remifentanil 10 reports (reporting odds ratio 4.73, 95% confidence interval 2.54–8.80), fentanyl 315 (6.80, 6.07–7.61), sufentanil 22 (8.61, 5.66–13.09) and morphine 262 (12.17, 10.75–13.76). Remifentanil's was the weakest (0.696, 0.37–1.31, versus fentanyl; 0.389, 0.21–0.73, versus morphine). In Canada Vigilance remifentanil had no HYPERAESTHESIA report, against 18 for fentanyl and 30 for morphine; 111 reports have no power for a term this rare, so Canada neither confirms nor refutes the FAERS signal. Remifentanil had 14 PROCEDURAL PAIN reports in FAERS (1.98; the ratio against fentanyl is 1.96, the only one above 1 in that comparison set) and 7 DRUG WITHDRAWAL SYNDROME reports (0.31), with none of either in Canada; HYPERPATHIA and CHRONIC PAIN SYNDROME were too rare to estimate in either database.
+In the primary analysis HYPERAESTHESIA met the signal criterion for all four opioids (Table 2): remifentanil 10 reports (reporting odds ratio 4.73, 95% confidence interval 2.54–8.80), fentanyl 315 (6.80, 6.07–7.61), sufentanil 22 (8.61, 5.66–13.09) and morphine 262 (12.17, 10.75–13.76). Remifentanil's was the weakest (0.696, 0.37–1.31, versus fentanyl; 0.389, 0.21–0.73, versus morphine), and eight of its ten reports fall in 2024 (§3.8). In Canada Vigilance remifentanil had no HYPERAESTHESIA report, against 18 for fentanyl and 30 for morphine; 111 reports have no power for a term this rare, so Canada neither confirms nor refutes the FAERS signal. Remifentanil had 14 PROCEDURAL PAIN reports in FAERS (1.98; the ratio against fentanyl is 1.96, the only ratio above 1 among those printed here) and 7 DRUG WITHDRAWAL SYNDROME reports (0.31), with none of either in Canada. DRUG TOLERANCE, the one retrievable broad-group term, drew no remifentanil report, against 278 for fentanyl (9.94) and 79 for morphine (5.86). HYPERPATHIA and CHRONIC PAIN SYNDROME were too rare to estimate in the remifentanil cohort.
 
 ALLODYNIA was present in FAERS but is not estimable for remifentanil, which contributed a single report (a = 1); the only defensible fact is the absence of a signal, not its direction. Fentanyl (a = 48) and morphine (a = 30) both showed strong signals, and in Canada Vigilance remifentanil had no ALLODYNIA report (fentanyl 3; sufentanil 0; morphine 0).
 
@@ -114,29 +114,31 @@ ALLODYNIA was present in FAERS but is not estimable for remifentanil, which cont
 
 Remifentanil was the lowest reporter of PAIN of all four opioids (Table 2): 23 FAERS reports (0.14, 0.09–0.21) against 7 349 for fentanyl, 98 for sufentanil and 4 794 for morphine. Every computable head-to-head ratio was below 1 — 0.066 versus fentanyl, 0.281 versus sufentanil and 0.046 versus morphine.
 
-The same pattern held for every negative control (Table 2): all eight ratios were below 1 (0.062 for constipation versus morphine to 0.833 for pruritus versus fentanyl), so within the control set remifentanil under-reported across the board rather than selectively; the exception among the terms reported here is PROCEDURAL PAIN (§3.3).
+The same pattern held for every negative control across all three comparators (Tables 2 and S5): eleven of the twelve computable ratios were below 1, the exception being pruritus versus sufentanil (1.310, 0.84–2.04), whose interval includes one; the exception among the terms reported here is PROCEDURAL PAIN (§3.3).
 
-The specificity probe behaved differently. DRUG INEFFECTIVE was also under-reported by remifentanil in FAERS (a = 208), but in Canada Vigilance the direction reversed: remifentanil over-reported it relative to fentanyl (1.277) and morphine (1.703), and the reversal strengthened in a physician-only analysis (5.921 and 10.604). A global reporting artefact would have pushed this term in the same direction as everything else; it did not.
+The specificity probe behaved differently. DRUG INEFFECTIVE was also under-reported by remifentanil in FAERS (a = 208), but in Canada Vigilance the direction reversed: remifentanil over-reported it relative to fentanyl (1.277) and morphine (1.703), and the reversal strengthened in a physician-only analysis (5.921 and 10.604). A global artefact would have pushed this term in the same direction as everything else; it did not.
 
 ### 3.5 Cross-database confirmation
 
-Three findings were reproduced in the independent Canadian database (Table 3): the five non-retrievable strings returned zero in both corpora; the PAIN under-reporting direction was identical (0.066 and 0.046 in FAERS against 0.235 and 0.146 in Canada); and remifentanil again reported least of the four opioids for pain. The one conspicuous exception runs the other way: the only positive hyperalgesia-related finding, the FAERS HYPERAESTHESIA signal, did not reproduce, because in Canada remifentanil contributed no report of that term while both comparators did. Most Canadian comparisons are uncomputable, a 2×2 cell being empty, so Canada settles direction only where it has the numbers.
+Three findings were reproduced in the independent Canadian database (Table 3): the five non-retrievable strings returned zero in both corpora; the PAIN under-reporting direction was identical (0.066 and 0.046 in FAERS against 0.235 and 0.146 in Canada); and remifentanil again reported least of the four opioids for pain. The one conspicuous exception runs the other way: the FAERS HYPERAESTHESIA signal did not reproduce, because in Canada remifentanil contributed no report of that term while both comparators did. Most Canadian comparisons are uncomputable, a 2×2 cell being empty, so Canada settles direction only where it has the numbers.
 
 ### 3.6 The under-reporting reflects who reports, not the drug
 
-Cohort composition explains the pattern without invoking pharmacology. Remifentanil's Canadian cohort was overwhelmingly serious (102/111, 91.9% against 79.8% for fentanyl and 69.0% for morphine; sufentanil 58/63, 92.1%) and came predominantly from non-physician health professionals (72/111, 64.9%; 17.1% physicians; 5.4% consumers), whereas morphine's included 23.6% consumer and 7.0% physician reports (Table S3): the signature of a drug reported from monitored perioperative care, where events are acute and clinician-captured.
+Cohort composition explains the pattern without invoking pharmacology. Remifentanil's Canadian cohort was overwhelmingly serious (102/111, 91.9% against 79.8% for fentanyl and 69.0% for morphine; sufentanil 58/63, 92.1%) and came predominantly from non-physician health professionals (72/111, 64.9%; 17.1% physicians; 5.4% consumers), whereas morphine's included 23.6% consumer and 7.0% physician reports (Table S3): the signature of a drug reported from monitored perioperative care.
 
 ### 3.7 System organ class panorama
 
-This comparison is exploratory and hypothesis-generating: no multiplicity correction was applied, and it describes the remifentanil reporting profile rather than claiming class-specific signals. In the Canadian report-level analysis remifentanil showed elevated ratios in pregnancy, respiratory, immune (2.363; 1.792 versus fentanyl), cardiac and vascular classes, and reduced reporting in gastrointestinal (0.101), skin (0.143) and general disorders (0.361); no class compatible with hyperalgesia or abnormal pain perception showed excess reporting. The exploratory FAERS analysis agreed in direction, with general disorders markedly under-reported (0.188) and immune disorders highest (10.951). Full class-by-class values are in Table S1.
+This comparison is exploratory: no multiplicity correction was applied, and it describes the remifentanil reporting profile rather than claiming class-specific signals. In the Canadian report-level analysis remifentanil showed elevated ratios in pregnancy, respiratory, immune (2.363; 1.792 versus fentanyl), cardiac and vascular classes, and reduced reporting in gastrointestinal (0.101), skin (0.143) and general disorders (0.361); no class compatible with hyperalgesia or abnormal pain perception showed excess. The exploratory FAERS analysis agreed in direction (general disorders 0.188; immune disorders 10.951). Full class-by-class values are in Table S1.
 
 ### 3.8 Sensitivity analyses
 
-Restricting FAERS to serious reports (11 882 968) left conclusions unchanged (Table 4A): remifentanil contributed 5 270 of 5 375 reports (98.0%), all hyperalgesia terms remained zero, the PAIN ratio was 0.072 versus fentanyl (0.05–0.11) and 0.044 versus morphine, and all negative controls stayed below 1. Year stratification (Table 4B) showed no reversal from 2015 to 2024: the ratio versus fentanyl ranged 0.014–0.168 and versus morphine 0.019–0.097 across non-empty cells, though remifentanil had no PAIN reports in 2018 or 2019, so no estimate was possible.
+Restricting FAERS to serious reports (11 882 968) left the pain findings unchanged (Table 4A): remifentanil contributed 5 270 of 5 375 reports (98.0%), the PAIN ratio was 0.072 versus fentanyl (0.05–0.11) and 0.044 versus morphine, and all negative controls stayed below 1. The corrected hyperalgesia finding survived the same restriction: all ten remifentanil HYPERAESTHESIA reports are serious, giving 4.309 against the serious-report background. Year stratification of PAIN (Table 4B) showed no reversal in the eight years in which an estimate was possible (0.014–0.168 versus fentanyl; 0.019–0.097 versus morphine).
+
+The corrected signal is not stable in the same way (Table 4C): remifentanil contributed no HYPERAESTHESIA report in eight of the ten years, eight of its ten reports fall in 2024, and in that year both ratios exceed one with intervals that exclude it (2.495, 1.06–5.90; 3.495, 1.52–8.05). Its position as the weakest of the four is a corpus-wide average, not a yearly property.
 
 ### 3.9 Post hoc demonstration that the pipeline detects signals when present
 
-A disproportionality analysis returning only negatives invites the objection that it is insensitive; the FAERS class analysis provided a post hoc check. Remifentanil showed a strong immune-class signal (10.951; 8.613 versus fentanyl), driven by ANAPHYLACTIC SHOCK (532 events) and ANAPHYLACTIC REACTION (367), and the same excess appeared independently in Canada (2.363). The pipeline therefore detects signals when present, supporting — but not proving — that its failure to detect a hyperalgesia signal reflects the data, not the method.
+An analysis returning only negatives invites the objection that it is insensitive; the class analysis provided a post hoc check. Remifentanil showed a strong immune-class signal (10.951; 8.613 versus fentanyl), driven by ANAPHYLACTIC SHOCK (532 events) and ANAPHYLACTIC REACTION (367), and the same excess appeared in Canada (2.363). The pipeline therefore detects signals when present, supporting — but not proving — that its failure to detect a hyperalgesia signal reflects the data, not the method.
 
 ---
 
@@ -144,51 +146,51 @@ A disproportionality analysis returning only negatives invites the objection tha
 
 ### 4.1 Principal findings
 
-Three findings stand out; the first qualifies the others. The term the clinical literature uses for the syndrome, HYPERALGESIA, is not a preferred term in the dictionary that codes either database, so a search on it returns nothing — a zero ordinarily read as the absence of a signal. The preferred term carrying the concept, HYPERAESTHESIA, is present in both corpora and, in the primary analysis, meets the signal criterion for all four opioids including remifentanil (4.73, 2.54–8.80). Second, remifentanil's signal is the smallest of the four and the cleaner Canadian database contributed no report of the term at all, so the corrected picture is a weak, database-dependent signal rather than a demonstrated excess. Third, independently of the term problem, remifentanil under-reports PAIN and, in the larger database, all four negative controls against both comparators, stably across serious-report restriction and ten calendar years; a specificity probe behaved inconsistently between them, arguing against a uniform global artefact.
+Three findings stand out; the first qualifies the others. HYPERALGESIA, the term the clinical literature uses, is not a preferred term in either dictionary, so a search on it returns nothing — a zero ordinarily read as no signal. The preferred term carrying the concept, HYPERAESTHESIA, is present in both corpora and meets the signal criterion for all four opioids including remifentanil (4.73, 2.54–8.80), though eight of the ten remifentanil reports fall in 2024 (§3.8). Remifentanil's signal is the smallest of the four and the cleaner Canadian database contributed no report of the term, so the corrected picture is a weak, database-dependent signal rather than a demonstrated excess. Independently of the term problem, remifentanil under-reports PAIN and, in the larger database, all four negative controls against both comparators, stably across serious-report restriction and the eight calendar years in which an estimate was possible; a specificity probe behaved inconsistently, arguing against a uniform global artefact.
 
 ### 4.2 Relation to the existing evidence base
 
 The prospective literature is contested rather than supportive, and the clinical magnitude and importance remain uncertain [1, 7, 8, 9, 3].
 
-The clinical literature and this analysis address different things. Quantitative sensory testing can detect a change in pain threshold but cannot say how often that change reaches the threshold of clinical recognition and reporting [24]; reporting data show that a concept was recognised and coded, not how often it occurs. Once the correct preferred term is used the reporting data do contain the concept and code it disproportionately for every opioid examined, remifentanil included; what they do not show is an excess specific to remifentanil, and the stronger database contributed no remifentanil report of it. The two sources are therefore compatible: a real but modest phenomenon, coded rarely.
+The two literatures address different things. Quantitative sensory testing detects a change in pain threshold but not how often that change reaches clinical recognition and reporting [24]; reporting data show that a concept was recognised and coded, not how often it occurs. Under the correct preferred term the reporting data do contain the concept and code it disproportionately for every opioid examined; what they do not show is an excess specific to remifentanil, and the stronger database contributed no remifentanil report of it. The two sources are compatible: a real but modest phenomenon, coded rarely.
 
 ### 4.3 Why remifentanil under-reports, and why that is not protection
 
-Remifentanil under-reported the four negative controls, PAIN, HYPERAESTHESIA and DRUG WITHDRAWAL SYNDROME, so analgesic superiority cannot be inferred: that reading would also require superiority on pruritus and constipation, for which no pharmacological account exists. PROCEDURAL PAIN, the one term it reported comparatively more than fentanyl, is a procedural rather than a pharmacological signal and did not reproduce in Canada.
+Remifentanil under-reported the four negative controls, PAIN, HYPERAESTHESIA and DRUG WITHDRAWAL SYNDROME, so analgesic superiority cannot be inferred: that reading would also require superiority on pruritus and constipation, for which no pharmacological account exists. PROCEDURAL PAIN, the one term it reported more than fentanyl, is a procedural rather than a pharmacological signal and did not reproduce in Canada.
 
-Cohort composition explains the pattern more parsimoniously: remifentanil's reports are generated almost entirely in monitored perioperative care (91.9% serious in Canada; 98.0% of FAERS reports serious in the sensitivity subset), predominantly from health professionals, and among opioids in the FDA database the reporter's professional identity strongly determines which reactions are recorded [25]. Fentanyl's FAERS cohort is dominated by transdermal and outpatient use and morphine's by chronic pain and consumer reporting, so the comparators' PAIN proportions rise for reasons of setting and indication rather than pharmacology: the head-to-head comparison establishes only that remifentanil is reported differently, not that the molecule behaves differently.
+Cohort composition explains the pattern more parsimoniously: remifentanil's reports come almost entirely from monitored perioperative care (91.9% serious in Canada; 98.0% serious in the sensitivity subset), predominantly from health professionals, and among opioids the reporter's professional identity strongly determines which reactions are recorded [25]. Fentanyl's cohort is dominated by transdermal and outpatient use and morphine's by chronic pain and consumer reporting, so the comparators' PAIN proportions rise for reasons of setting and indication rather than pharmacology: the comparison establishes only that remifentanil is reported differently, not that the molecule behaves differently.
 
 The specificity probe makes the argument concrete: DRUG INEFFECTIVE reversed direction between databases, so remifentanil's low reporting is term-specific, not a database-wide property of its records.
 
 ### 4.4 Term selection, not the data, decides the answer
 
-The most useful contribution here is terminological. The most obvious query — the clinical word HYPERALGESIA — returns nothing in either database. That zero is not a fact about remifentanil, or about reporting, or about the syndrome; it is a fact about the dictionary, because the concept is carried by a preferred term no clinician would type: HYPERAESTHESIA. A reader who stops at the first query reports a structural absence; one who checks the dictionary finds a signal. In a field with an active prevention literature that difference is not academic, because a stream of null results is otherwise read as accumulating evidence of safety [26, 27]; any analysis of a syndrome whose clinical name is not its coded name needs the verification in §2.3 and Table S4. Opioid-induced hyperalgesia is also defined by a quantitative change in pain sensitivity, whereas spontaneous reporting captures discrete events: even under the correct preferred term the instrument records recognition, not incidence.
+The most useful contribution here is terminological. The most obvious query — the clinical word HYPERALGESIA — returns nothing in either database. That zero is not a fact about remifentanil, or about reporting, or about the syndrome; it is a fact about the dictionary, because the concept is carried by a preferred term no clinician would type: HYPERAESTHESIA. A reader who stops at the first query reports a structural absence; one who checks the dictionary finds a signal, though not necessarily the one he set out to find, because HYPERAESTHESIA denotes increased sensitivity to stimulation generally rather than to pain, and the ranking it produces (morphine 12.17, sufentanil 8.61, fentanyl 6.80, remifentanil 4.73) is the reverse of what the clinical literature predicts, so it carries reporting context as well as the syndrome. In a field with an active prevention literature that difference is not academic, because a stream of null results is otherwise read as accumulating evidence of safety [26, 27]; any analysis of a syndrome whose clinical name is not its coded name needs the verification in §2.3 and Table S4. Opioid-induced hyperalgesia is defined by a change in pain sensitivity, whereas spontaneous reporting captures discrete events: even under the correct preferred term the instrument records recognition, not incidence.
 
 ### 4.5 Limitations
 
-**Spontaneous reporting measures reporting, not risk.** Disproportionality estimates reporting patterns, not incidence, cannot exclude a real pharmacological effect and cannot quantify one. The corrected hyperalgesia finding rests on ten remifentanil reports, and the 111-report Canadian cohort has no power for a term this rare; prospective studies with quantitative sensory testing remain the appropriate instrument [24].
+**Spontaneous reporting measures reporting, not risk.** Disproportionality estimates reporting patterns, not incidence, and can neither exclude nor quantify a real pharmacological effect. The corrected hyperalgesia finding rests on ten remifentanil reports, and the 111-report Canadian cohort has no power for a term this rare; prospective studies with quantitative sensory testing remain the appropriate instrument [24].
 
-**openFDA case-level data were inaccessible.** The FDA case-level and drug-record-level files, which would permit restriction to primary suspect drugs and true time-to-onset analysis, could not be retrieved, so §3.8 substitutes for time-to-onset and route cannot be attributed to a specific drug record: `patient.drug` is an array and the search is report-level, so remifentanil, which has no oral or transdermal formulation, received oral-route assignment in 21.1% of its reports. Route was therefore not a primary covariate; restricting the PAIN comparison to the intravenous stratum left the head-to-head ratio unchanged (0.077 versus fentanyl, 0.038 versus morphine), so the defect dilutes both arms symmetrically.
+**openFDA case-level data were inaccessible.** The FDA case-level files could not be retrieved, so time-to-onset could not be analysed and route cannot be attributed to a drug record: `patient.drug` is an array and the search is report-level, so remifentanil, which has no oral or transdermal formulation, received oral-route assignment in 21.1% of its reports. Restricting the PAIN comparison to the intravenous stratum left the ratio unchanged (0.077 versus fentanyl, 0.038 versus morphine), so the defect dilutes both arms symmetrically.
 
-**De-duplication and role attribution.** openFDA does not apply the FDA's case-level de-duplication, so reports the FDA would merge may be counted more than once; this inflates counts across all cohorts and would not generate the observed direction [28, 29]. FAERS cohorts were also role-agnostic, broadening the denominator; the Canadian analysis, restricted to suspect drugs, reproduced the direction of the PAIN under-reporting, but its negative-control cohorts were too small for most ratios to be computed, so the transferability of that part of the pattern is untested rather than confirmed.
+**De-duplication and role attribution.** openFDA does not apply the FDA's case-level de-duplication, so counts are inflated across every cohort, which would not generate the observed direction [28, 29]. FAERS cohorts were also role-agnostic; the Canadian analysis, restricted to suspect drugs, reproduced the direction of the PAIN under-reporting, but its negative-control cohorts were too small for most ratios to be computed, so that part of the pattern is untested rather than confirmed.
 
-**Heuristic mapping and MedDRA releases.** The exploratory FAERS class analysis used keyword rules rather than the authoritative MedDRA hierarchy, and event-level rather than report-level counting; all quantitative class conclusions rest on the Canadian native-class analysis. The databases are also coded to different releases — the Canadian extract states the release for every reaction row (v27.1), whereas the openFDA interface exposes none and the FAERS corpus spans quarterly releases from 2004 — so a term could be promoted or demoted between releases, which is why the verification in §2.3 rests on what the corpora contain rather than on a dictionary lookup.
+**Heuristic mapping and MedDRA releases.** The exploratory FAERS class analysis used keyword rules rather than the MedDRA hierarchy, and event-level counting; all quantitative class conclusions rest on the Canadian analysis. The two databases are coded to different releases — the Canadian extract states v27.1 for every reaction row, whereas FAERS spans quarterly releases from 2004 — so a term could be promoted or demoted between releases, which is why the verification in §2.3 reads what the corpora contain rather than a dictionary.
 
-**Setting and residual confounding.** Because the comparators are used in different care settings, the observed differences reflect reporting setting as much as pharmacology, and a drug-specific effect cannot be isolated. Indication and setting cannot be adjusted for, so the composition argument in §4.3 is an interpretation consistent with the subgroup data, not a mediation analysis.
+**Setting and residual confounding.** The comparators are used in different care settings, so the differences reflect reporting setting as much as pharmacology and a drug-specific effect cannot be isolated; indication cannot be adjusted for, so §4.3 is an interpretation consistent with the subgroup data, not a mediation analysis.
 
-**Limited geographic independence.** FAERS and Canada Vigilance are both North American systems sharing MedDRA coding and much of the same marketed drug population, so their agreement is weaker evidence than agreement across regulatory regions; comparisons of the same drug across FAERS and EudraVigilance show how much database-specific coding matters [30]. Neither JADER nor a European database could be retrieved, so cross-regional confirmation remains a planned extension and this is a two-database, single-continent analysis.
+**Limited geographic independence.** FAERS and Canada Vigilance are both North American systems sharing MedDRA coding and much the same drug market, so agreement here is weaker evidence than across regulatory regions, where about 85% of signals overlap at the preferred-term level [30]. Neither a European nor a Japanese database was used here: EudraVigilance releases no bulk line-listing, and retrieval and validation of the Japanese database was not completed. Cross-regional confirmation remains a planned extension, and this is a two-database, single-continent analysis.
 
 ### 4.6 Implications
 
-For clinicians, these data support neither a large, routinely recognised remifentanil-specific hyperalgesia reporting burden nor its absence, so decisions about prevention should rest on the prospective literature, in which clinical significance remains unproven [7, 8].
+For clinicians, these data support neither a large remifentanil-specific hyperalgesia reporting burden nor its absence, so decisions about prevention should rest on the prospective literature [7, 8].
 
-For pharmacovigilance the implication is terminological: the first step should be to establish empirically which preferred term carries the concept, and to report a zero from the clinical name as unretrievable rather than reassuring. The READUS-PV checklist is provided as Supporting Information (Table S2) [13, 14].
+For pharmacovigilance the implication is terminological: find which preferred term carries the concept, and report a zero from the clinical name as unretrievable, not reassuring. The READUS-PV checklist is provided as Supporting Information (Table S2) [13, 14].
 
 ---
 
 ## 5. Conclusion
 
-Across two independent national pharmacovigilance databases, the answer depended on the term chosen. The clinical word hyperalgesia is not a preferred term in either dictionary and returns no report at all, whereas the preferred term carrying the concept returns reports in both and shows disproportionate coding for fentanyl, sufentanil, morphine and, in the larger database, remifentanil. Remifentanil's signal for that term is the weakest of the four, rests on ten reports, and was not reproduced in the smaller Canadian database, which had no power to test it. Remifentanil's low reporting of pain and of four non-paradoxical opioid side effects, by contrast, is large, stable across serious-report restriction and ten calendar years, and reproduced in both databases. These findings do not establish whether hyperalgesia after remifentanil occurs; they establish that such an analysis reports whatever the chosen preferred term contains, and that a zero obtained from the clinical name alone is an artefact of terminology rather than evidence of safety.
+Across two national pharmacovigilance databases, the answer depended on the term chosen. The clinical word hyperalgesia is not a preferred term in either dictionary and returns no report, whereas the preferred term carrying the concept returns reports in both and shows disproportionate coding for fentanyl, sufentanil, morphine and, in the larger database, remifentanil. Remifentanil's signal is the weakest of the four, rests on ten reports, eight of them in a single year, and was not reproduced in the smaller Canadian database, which had no power to test it. Its low reporting of pain and of four non-paradoxical opioid side effects, by contrast, is large, stable across serious-report restriction and the eight calendar years in which an estimate was possible, and reproduced in both databases. These findings do not establish whether hyperalgesia after remifentanil occurs; they establish that such an analysis reports whatever the chosen preferred term contains, and that a zero obtained from the clinical name alone is an artefact of terminology, not evidence of safety.
 
 ---
 
@@ -243,7 +245,7 @@ References are numbered in order of first citation. Journal names are abbreviate
 27. Alatawi YM, Hansen RA. Empirical estimation of under-reporting in the US Food and Drug Administration Adverse Event Reporting System (FAERS). *Expert Opin Drug Saf* 2017; **16**: 761–7. https://doi.org/10.1080/14740338.2017.1323867
 28. Han W, Morris R, Bu K, Zhu T, Cheng F. Analysis of literature-derived duplicate records in the FDA Adverse Event Reporting System (FAERS) database. *Can J Physiol Pharmacol* 2024; **103**: 56–69. https://doi.org/10.1139/cjpp-2024-0078
 29. Janiczak S, Tanveer S, Tom K, Zhang R, Ma Y, Wolf L, Muñoz MA. An evaluation of duplicate adverse event reports characteristics in the Food and Drug Administration Adverse Event Reporting System. *Drug Saf* 2025; **48**: 1119–26. https://doi.org/10.1007/s40264-025-01560-7
-30. Vermeer NS, Straus SMJM, Mantel-Teeuwisse AK, et al. Traceability of biopharmaceuticals in spontaneous reporting systems: a cross-sectional study in the FDA Adverse Event Reporting System (FAERS) and EudraVigilance databases. *Drug Saf* 2013; **36**: 617–25. https://doi.org/10.1007/s40264-013-0073-3
+30. Vogel U, van Stekelenborg J, Dreyfus B, Garg A, Habib M, Hosain R, Wisniewski A. Investigating overlap in signals from EVDAS, FAERS and VigiBase. *Drug Saf* 2020; **43**: 351–62. https://doi.org/10.1007/s40264-019-00899-y
 
 ---
 
@@ -269,11 +271,11 @@ FAERS = United States Food and Drug Administration Adverse Event Reporting Syste
 | CHRONIC PAIN | broad | 0 | — | — | — | — | — | — |
 | OPIOID WITHDRAWAL SYNDROME | broad | 0 | — | — | — | — | — | — |
 | DRUG TOLERANCE | broad | 0 | — | 9.94* (8.80–11.21) | — | 5.86* (4.69–7.31) | — | — |
-| HYPERAESTHESIA | dictionary proxy | 10 | 4.73* (2.54–8.80) | 6.80* (6.07–7.61) | 8.61* (5.66–13.09) | 12.17* (10.75–13.76) | 0.696 (0.37–1.31) | 0.389 (0.21–0.73) |
-| HYPERPATHIA | dictionary proxy | 0 | — | 8.24* (1.99–34.06) | 75.63* (10.41–549.63) | — | — | — |
-| PROCEDURAL PAIN | dictionary proxy | 14 | 1.98* (1.17–3.34) | 1.01 (0.86–1.18) | 0.93 (0.47–1.86) | 2.25* (1.93–2.62) | 1.962 (1.14–3.39) | 0.878 (0.51–1.52) |
-| CHRONIC PAIN SYNDROME | dictionary proxy | 0 | — | — | — | — | — | — |
-| DRUG WITHDRAWAL SYNDROME | dictionary proxy | 7 | 0.31 (0.15–0.64) | 6.71* (6.48–6.96) | 1.53 (1.13–2.07) | 3.69* (3.45–3.94) | 0.046 (0.02–0.10) | 0.083 (0.04–0.18) |
+| HYPERAESTHESIA | dictionary proxy (added) | 10 | 4.73* (2.54–8.80) | 6.80* (6.07–7.61) | 8.61* (5.66–13.09) | 12.17* (10.75–13.76) | 0.696 (0.37–1.31) | 0.389 (0.21–0.73) |
+| HYPERPATHIA | dictionary proxy (added) | 0 | — | 8.24* (1.99–34.06) | 75.63* (10.41–549.63) | — | — | — |
+| PROCEDURAL PAIN | dictionary proxy (added) | 14 | 1.98* (1.17–3.34) | 1.01 (0.86–1.18) | 0.93 (0.47–1.86) | 2.25* (1.93–2.62) | 1.962 (1.14–3.39) | 0.878 (0.51–1.52) |
+| CHRONIC PAIN SYNDROME | dictionary proxy (added) | 0 | — | — | — | — | — | — |
+| DRUG WITHDRAWAL SYNDROME | dictionary proxy (added) | 7 | 0.31 (0.15–0.64) | 6.71* (6.48–6.96) | 1.53* (1.13–2.07) | 3.69* (3.45–3.94) | 0.046 (0.02–0.10) | 0.083 (0.04–0.18) |
 | PAIN | surrogate | 23 | 0.14 (0.09–0.21) | 2.14* (2.09–2.19) | 0.51 (0.41–0.62) | 3.08* (2.99–3.18) | 0.066 (0.04–0.10) | 0.046 (0.03–0.07) |
 | DRUG INEFFECTIVE | probe | 208 | 0.60 (0.52–0.69) | 1.06* (1.03–1.08) | 0.77 (0.68–0.86) | 1.28* (1.24–1.32) | 0.568 (0.49–0.65) | 0.470 (0.41–0.54) |
 | NAUSEA | negative control | 51 | 0.245 (0.19–0.32) | 1.079* (1.05–1.11) | 0.435 (0.36–0.53) | 2.235* (2.17–2.30) | 0.227 (0.17–0.30) | 0.110 (0.08–0.14) |
@@ -281,7 +283,7 @@ FAERS = United States Food and Drug Administration Adverse Event Reporting Syste
 | PRURITUS | negative control | 41 | 0.419 (0.31–0.57) | 0.503 (0.47–0.53) | 0.320 (0.23–0.44) | 1.275* (1.21–1.35) | 0.833 (0.61–1.14) | 0.328 (0.24–0.45) |
 | CONSTIPATION | negative control | 11 | 0.197 (0.11–0.36) | 1.616* (1.55–1.69) | 0.937 (0.73–1.20) | 3.148* (3.00–3.30) | 0.122 (0.07–0.22) | 0.062 (0.03–0.11) |
 
-OR = reporting odds ratio; RORR = ratio of reporting odds ratios (remifentanil versus comparator); CI = confidence interval. *Meets the signal criterion: a ≥ 3 and the lower bound of the 95% CI of the OR > 1. Rows marked "dictionary proxy" are the preferred terms that carry the same clinical concepts as the unretrievable strings above them; they were analysed because a term returns a count only if it is a preferred term in the coding dictionary (Table S4). The five terms defined a priori with zero counts (HYPERALGESIA, PAIN INCREASED, POSTOPERATIVE PAIN, CHRONIC PAIN, OPIOID WITHDRAWAL SYNDROME) returned zero reports in the whole corpus for all four drugs and were confirmed by independent queries; they are not evidence of absence, because no report in either corpus carries those strings. Remifentanil counts of fewer than 3 reports give unstable estimates. †ALLODYNIA head-to-head ratios are not estimable (n = 1): they rest on a single remifentanil ALLODYNIA report and are shown only to document that report. Every computable head-to-head ratio in this table is below 1 except PROCEDURAL PAIN versus fentanyl (1.962, 1.14–3.39).
+OR = reporting odds ratio; RORR = ratio of reporting odds ratios (remifentanil versus comparator); CI = confidence interval. *Meets the signal criterion: a ≥ 3 and the lower bound of the 95% CI of the OR > 1. Rows marked "dictionary proxy" are the preferred terms that carry the same clinical concepts as the unretrievable strings above them; they were added after those zeros had been observed and analysed because a term returns a count only if it is a preferred term in the coding dictionary (Table S4). The five terms defined a priori with zero counts (HYPERALGESIA, PAIN INCREASED, POSTOPERATIVE PAIN, CHRONIC PAIN, OPIOID WITHDRAWAL SYNDROME) returned zero reports in the whole corpus for all four drugs and were confirmed by independent queries; they are not evidence of absence, because no report in either corpus carries those strings. Remifentanil counts of fewer than 3 reports give unstable estimates. †ALLODYNIA head-to-head ratios are not estimable (n = 1): they rest on a single remifentanil ALLODYNIA report and are shown only to document that report. Every computable head-to-head ratio in this table is below 1 except PROCEDURAL PAIN versus fentanyl (1.962, 1.14–3.39). The numerators behind every odds ratio in this table, including those of the three comparators, together with the ratios against sufentanil, are in Table S5. No multiplicity correction was applied to this table; with a Bonferroni correction across all 72 drug–term comparisons the lower bound of the remifentanil HYPERAESTHESIA interval remains above one (1.61).
 
 ### Table 3. Cross-database confirmation of the key terms
 
@@ -304,25 +306,30 @@ OR = reporting odds ratio; RORR = ratio of reporting odds ratios (remifentanil v
 
 RORR = ratio of reporting odds ratios. The Canadian remifentanil cohort (111 reports) is small, so most preferred-term comparisons cannot be computed; Canada confirms direction, while magnitude comes from FAERS (5 375 remifentanil reports). The zero for the five unretrievable strings in both corpora reflects the absence of the string from the coding dictionary, not the absence of the event (Table S4). The reversal for DRUG INEFFECTIVE, a term unrelated to hyperalgesia, argues against a uniform global reporting artefact.
 
-### Table 4A. Sensitivity analysis: FAERS restricted to serious reports
+### Table 4A. Sensitivity analysis: FAERS restricted to serious reports, all 18 terms
 
-| Preferred term | Remifentanil a | Remifentanil OR | Signal | RORR vs fentanyl (95% CI) | RORR vs morphine (95% CI) |
-|---|---:|---|---|---|---|
-| HYPERALGESIA | 0 | — | no | — | — |
-| ALLODYNIA | 1 | 3.105 | no | 0.382 (0.05–2.78) | 0.334 (0.05–2.46) |
-| PAIN | 22 | 0.126 | no | 0.072 (0.05–0.11) | 0.044 (0.03–0.07) |
-| PAIN INCREASED | 0 | — | no | — | — |
-| POSTOPERATIVE PAIN | 0 | — | no | — | — |
-| CHRONIC PAIN | 0 | — | no | — | — |
-| OPIOID WITHDRAWAL SYNDROME | 0 | — | no | — | — |
-| DRUG TOLERANCE | 0 | — | no | — | — |
-| DRUG INEFFECTIVE | 193 | 0.950 | no | 0.977 (0.84–1.13) | 0.463 (0.40–0.54) |
-| NAUSEA | 50 | 0.274 | no | 0.249 (0.19–0.33) | 0.114 (0.09–0.15) |
-| VOMITING | 62 | 0.446 | no | 0.403 (0.31–0.52) | 0.181 (0.14–0.23) |
-| PRURITUS | 38 | 0.562 | no | 1.087 (0.78–1.51) | 0.324 (0.23–0.45) |
-| CONSTIPATION | 10 | 0.189 | no | 0.112 (0.06–0.21) | 0.058 (0.03–0.11) |
+| Preferred term | Group | Remifentanil a | Remifentanil OR | Signal | RORR vs fentanyl (95% CI) | RORR vs morphine (95% CI) |
+|---|---|---:|---|---|---|---|
+| HYPERALGESIA | OIH-narrow | 0 | — | no | — (—) | — (—) |
+| ALLODYNIA | OIH-narrow | 1 | 3.105 | no | 0.382 (0.05–2.78) | 0.334 (0.05–2.46) |
+| PAIN | OIH-wide | 22 | 0.126 | no | 0.072 (0.05–0.11) | 0.044 (0.03–0.07) |
+| PAIN INCREASED | OIH-wide | 0 | — | no | — (—) | — (—) |
+| DRUG INEFFECTIVE | OIH-wide | 193 | 0.950 | no | 0.977 (0.84–1.13) | 0.463 (0.40–0.54) |
+| OPIOID WITHDRAWAL SYNDROME | OIH-wide | 0 | — | no | — (—) | — (—) |
+| DRUG TOLERANCE | OIH-wide | 0 | — | no | — (—) | — (—) |
+| POSTOPERATIVE PAIN | OIH-wide | 0 | — | no | — (—) | — (—) |
+| CHRONIC PAIN | OIH-wide | 0 | — | no | — (—) | — (—) |
+| NAUSEA | negative-control | 50 | 0.274 | no | 0.249 (0.19–0.33) | 0.114 (0.09–0.15) |
+| VOMITING | negative-control | 62 | 0.446 | no | 0.403 (0.31–0.52) | 0.181 (0.14–0.23) |
+| PRURITUS | negative-control | 38 | 0.562 | no | 1.087 (0.78–1.51) | 0.324 (0.23–0.45) |
+| CONSTIPATION | negative-control | 10 | 0.189 | no | 0.112 (0.06–0.21) | 0.058 (0.03–0.11) |
+| HYPERAESTHESIA | dictionary-proxy | 10 | 4.309 | yes | 0.606 (0.32–1.14) | 0.358 (0.19–0.68) |
+| HYPERPATHIA | dictionary-proxy | 0 | — | no | — (—) | — (—) |
+| PROCEDURAL PAIN | dictionary-proxy | 13 | 1.857 | yes | 1.547 (0.88–2.73) | 0.766 (0.43–1.35) |
+| CHRONIC PAIN SYNDROME | dictionary-proxy | 0 | — | no | — (—) | — (—) |
+| DRUG WITHDRAWAL SYNDROME | dictionary-proxy | 7 | 0.226 | no | 0.044 (0.02–0.09) | 0.080 (0.04–0.17) |
 
-Serious-report subset contained 11 882 968 reports. Remifentanil contributed 5 270 of its 5 375 reports (98.0%) to this subset.
+OR = reporting odds ratio; RORR = ratio of reporting odds ratios; CI = confidence interval. Serious-report subset contained 11 882 968 reports. Remifentanil contributed 5 270 of its 5 375 reports (98.0%) to this subset. The signal criterion is the one used in the primary analysis (three or more reports with the lower confidence bound above one, or a proportional reporting ratio of two or more with a chi-squared above four, or an information component lower bound above zero). All ten remifentanil HYPERAESTHESIA reports are in this subset, so the corrected signal survives serious-report restriction.
 
 ### Table 4B. Sensitivity analysis: PAIN by calendar year (FAERS, 2015–2024)
 
@@ -331,15 +338,32 @@ Serious-report subset contained 11 882 968 reports. Remifentanil contributed 5 2
 | 2015 | 2 | 0.230 | 2.478 | 2.363 | 0.093 (0.02–0.37) | 0.097 (0.02–0.39) |
 | 2016 | 1 | 0.106 | 2.703 | 2.761 | 0.039 (0.01–0.28) | 0.038 (0.01–0.27) |
 | 2017 | 1 | 0.106 | 2.094 | 3.301 | 0.051 (0.01–0.36) | 0.032 (0.00–0.23) |
-| 2018 | 0 | — | 0.716 | 2.868 | — | — |
-| 2019 | 0 | — | 2.143 | 2.859 | — | — |
+| 2018 | 0 | — | 0.716 | 2.868 | — (—) | — (—) |
+| 2019 | 0 | — | 2.143 | 2.859 | — (—) | — (—) |
 | 2020 | 2 | 0.123 | 2.786 | 3.337 | 0.044 (0.01–0.18) | 0.037 (0.01–0.15) |
 | 2021 | 1 | 0.063 | 4.447 | 3.244 | 0.014 (0.00–0.10) | 0.019 (0.00–0.14) |
 | 2022 | 1 | 0.043 | 2.756 | 1.967 | 0.016 (0.00–0.11) | 0.022 (0.00–0.16) |
 | 2023 | 2 | 0.165 | 1.479 | 3.162 | 0.112 (0.03–0.45) | 0.052 (0.01–0.21) |
 | 2024 | 3 | 0.286 | 1.704 | 4.325 | 0.168 (0.05–0.53) | 0.066 (0.02–0.21) |
 
-OR = reporting odds ratio; RORR = ratio of reporting odds ratios. Pooled whole-corpus values were 0.066 versus fentanyl and 0.046 versus morphine. In 2018 and 2019 remifentanil had no PAIN reports, so no estimate was possible.
+OR = reporting odds ratio; RORR = ratio of reporting odds ratios; CI = confidence interval. Pooled whole-corpus values were 0.066 versus fentanyl and 0.046 versus morphine. An estimate was possible in 8 of the ten years: in 2018 and 2019 remifentanil had no PAIN report, so no estimate was possible.
+
+### Table 4C. Sensitivity analysis: HYPERAESTHESIA by calendar year (FAERS, 2015–2024)
+
+| Year | Remifentanil a | Remifentanil OR | Fentanyl a | Morphine a | RORR vs fentanyl (95% CI) | RORR vs morphine (95% CI) |
+|---|---:|---|---:|---:|---|---|
+| 2015 | 0 | — | 20 | 12 | — (—) | — (—) |
+| 2016 | 0 | — | 30 | 23 | — (—) | — (—) |
+| 2017 | 0 | — | 28 | 23 | — (—) | — (—) |
+| 2018 | 0 | — | 32 | 18 | — (—) | — (—) |
+| 2019 | 0 | — | 16 | 15 | — (—) | — (—) |
+| 2020 | 0 | — | 32 | 28 | — (—) | — (—) |
+| 2021 | 1 | 8.374 | 42 | 24 | 0.511 (0.07–3.74) | 0.571 (0.08–4.25) |
+| 2022 | 0 | — | 26 | 32 | — (—) | — (—) |
+| 2023 | 0 | — | 23 | 20 | — (—) | — (—) |
+| 2024 | 8 | 72.856 | 17 | 21 | 2.495 (1.06–5.90) | 3.495 (1.52–8.05) |
+
+OR = reporting odds ratio; RORR = ratio of reporting odds ratios; CI = confidence interval. Pooled whole-corpus values were 4.729 for remifentanil, 0.696 versus fentanyl and 0.389 versus morphine. An estimate was possible in only 2 of the ten years, because remifentanil contributed no report of the term in eight of them; eight of its ten reports fall in 2024, where both head-to-head ratios exceed one with intervals that exclude it. The pooled finding that remifentanil's signal is the weakest of the four is therefore an average over a corpus in which the term is almost entirely reported in a single recent year, and it is not stable across years.
 
 ### Table S1 (supplementary). System organ class panorama
 
@@ -435,11 +459,9 @@ Values are the number of reports in that category, with the percentage of that d
 | Male | 40 (36.0) | 1 785 (36.6) | 23 (36.5) | 2 909 (37.9) |
 | Sex not stated | 32 (28.8) | 990 (20.3) | 2 (3.2) | 354 (4.6) |
 
----
-
 ### Table S4 (supplementary). Term-level verification of every outcome term in both corpora
 
-Each outcome term was queried as an exact string in the FAERS reaction field and matched against the Canadian reactions table before any zero was interpreted. A count of zero for a string that is not a MedDRA preferred term is uninformative, because both corpora store preferred terms in the reaction field. Counts are whole-corpus (all drugs, all reports), not cohort counts; they establish that a term is retrievable, which is a prerequisite for interpreting the cohort-level ratios in Tables 2 and 3. The adjacent-token phrase query is a second, independent route to the same string, and would return a non-zero result even if the string were stored as part of a longer preferred term.
+Each outcome term was queried as an exact string in the FAERS reaction field and matched against the Canadian reactions table before any zero was interpreted. The five rows marked *added* are dictionary proxies introduced by Amendment 1 of the archived analytical plan, dated 16 September 2026, after the zero counts had been observed; the remaining rows are the terms defined a priori. A count of zero for a string that is not a MedDRA preferred term is uninformative, because both corpora store preferred terms in the reaction field. Counts are whole-corpus (all drugs, all reports), not cohort counts; they establish that a term is retrievable, which is a prerequisite for interpreting the cohort-level ratios in Tables 2 and 3. The adjacent-token phrase query is a second, independent route to the same string, and would return a non-zero result even if the string were stored as part of a longer preferred term.
 
 | Term | Group | FAERS reports (whole corpus) | FAERS adjacent-token phrase | Canada reaction rows | Retrievable as a preferred term | MedDRA level note |
 |---|---|---:|---:|---:|---|---|
@@ -466,9 +488,38 @@ The Canadian extract records the MedDRA release applied to every reaction row: o
 
 ---
 
+### Table S5 (supplementary). Complete head-to-head matrix, all three comparators
+
+Every head-to-head ratio computed for this study, including the comparisons against sufentanil that Tables 2, 3 and Figure 1 do not print. Values are ratios of reporting odds ratios for remifentanil against the named comparator, with 95% confidence intervals; a dash means the ratio is not estimable because a cell is empty. Computed from the same 2×2 tables as Table 2. The last column gives the numerator for each comparator, so that every ratio printed here and in Table 2 can be recomputed from the counts alone.
+
+| Preferred term | Remifentanil a | RORR vs fentanyl (95% CI) | RORR vs sufentanil (95% CI) | RORR vs morphine (95% CI) | Comparator a: fentanyl / sufentanil / morphine |
+|---|---:|---|---|---|---|
+| HYPERALGESIA | 0 | — (—) | — (—) | — (—) | 0 / 0 / 0 |
+| ALLODYNIA | 1 | 0.455 (0.06–3.30) | — (—) | 0.342 (0.05–2.51) | 48 / 0 / 30 |
+| PAIN | 23 | 0.066 (0.04–0.10) | 0.281 (0.18–0.44) | 0.046 (0.03–0.07) | 7349 / 98 / 4794 |
+| PAIN INCREASED | 0 | — (—) | — (—) | — (—) | 0 / 0 / 0 |
+| DRUG INEFFECTIVE | 208 | 0.568 (0.49–0.65) | 0.784 (0.66–0.94) | 0.470 (0.41–0.54) | 8062 / 318 / 4450 |
+| OPIOID WITHDRAWAL SYNDROME | 0 | — (—) | — (—) | — (—) | 0 / 0 / 0 |
+| DRUG TOLERANCE | 0 | — (—) | — (—) | — (—) | 278 / 0 / 79 |
+| POSTOPERATIVE PAIN | 0 | — (—) | — (—) | — (—) | 0 / 0 / 0 |
+| CHRONIC PAIN | 0 | — (—) | — (—) | — (—) | 0 / 0 / 0 |
+| NAUSEA | 51 | 0.227 (0.17–0.30) | 0.563 (0.40–0.79) | 0.110 (0.08–0.14) | 4928 / 109 / 4527 |
+| VOMITING | 64 | 0.409 (0.32–0.52) | 0.969 (0.70–1.35) | 0.185 (0.14–0.24) | 3483 / 80 / 3432 |
+| PRURITUS | 41 | 0.833 (0.61–1.14) | 1.310 (0.84–2.04) | 0.328 (0.24–0.45) | 1117 / 38 / 1291 |
+| CONSTIPATION | 11 | 0.122 (0.07–0.22) | 0.210 (0.11–0.40) | 0.062 (0.03–0.11) | 2011 / 63 / 1786 |
+| HYPERAESTHESIA | 10 | 0.696 (0.37–1.31) | 0.549 (0.26–1.16) | 0.389 (0.21–0.73) | 315 / 22 / 262 |
+| HYPERPATHIA | 0 | — (—) | — (—) | — (—) | 2 / 1 / 0 |
+| PROCEDURAL PAIN | 14 | 1.962 (1.14–3.39) | 2.124 (0.89–5.07) | 0.878 (0.51–1.52) | 162 / 8 / 167 |
+| CHRONIC PAIN SYNDROME | 0 | — (—) | — (—) | — (—) | 0 / 0 / 0 |
+| DRUG WITHDRAWAL SYNDROME | 7 | 0.046 (0.02–0.10) | 0.201 (0.09–0.45) | 0.083 (0.04–0.18) | 3274 / 42 / 865 |
+
+RORR = ratio of reporting odds ratios; CI = confidence interval; a = number of reports for the drug carrying the term. Across the four negative controls, eleven of the twelve computable ratios are below one; the exception is PRURITUS versus sufentanil (1.310, 0.84–2.04), whose interval includes one.
+
+---
+
 ## Figure legends
 
-**Figure 1.** Head-to-head disproportionality for remifentanil versus fentanyl (filled circles) and versus morphine (open squares) in the United States Food and Drug Administration Adverse Event Reporting System. Points are ratios of reporting odds ratios for each preferred term analysed, with 95% confidence intervals; the x axis is logarithmic. The dashed vertical line marks a ratio of 1 (no difference between drugs). Values below 1 indicate that remifentanil reports the term less than the comparator. Terms are grouped from the top: the preferred term carrying the hyperalgesia concept (HYPERAESTHESIA) and the two nearest retrievable siblings (PROCEDURAL PAIN, DRUG WITHDRAWAL SYNDROME); the pragmatic proxy PAIN; the four negative controls (NAUSEA, VOMITING, PRURITUS, CONSTIPATION); and the specificity probe DRUG INEFFECTIVE. The five strings that no report in either corpus carries (HYPERALGESIA, PAIN INCREASED, POSTOPERATIVE PAIN, CHRONIC PAIN, OPIOID WITHDRAWAL SYNDROME) and the two proxy terms too rare to estimate in the remifentanil cohort (HYPERPATHIA, CHRONIC PAIN SYNDROME, DRUG TOLERANCE) are not estimable and are therefore not shown. ALLODYNIA is also not shown: the remifentanil ratio rests on a single report, so no direction can be read from it (§3.3).
+**Figure 1.** Head-to-head disproportionality for remifentanil versus fentanyl (filled circles), versus morphine (open squares) and versus sufentanil (open triangles) in the United States Food and Drug Administration Adverse Event Reporting System. Points are ratios of reporting odds ratios for each preferred term analysed, with 95% confidence intervals; the x axis is logarithmic. The dashed vertical line marks a ratio of 1 (no difference between drugs). Values below 1 indicate that remifentanil reports the term less than the comparator. Terms are grouped from the top: the preferred term carrying the hyperalgesia concept (HYPERAESTHESIA) and the two nearest retrievable siblings (PROCEDURAL PAIN, DRUG WITHDRAWAL SYNDROME); the pragmatic proxy PAIN; the four negative controls (NAUSEA, VOMITING, PRURITUS, CONSTIPATION); and the specificity probe DRUG INEFFECTIVE. The five strings that no report in either corpus carries (HYPERALGESIA, PAIN INCREASED, POSTOPERATIVE PAIN, CHRONIC PAIN, OPIOID WITHDRAWAL SYNDROME) are not estimable and are not shown, and neither are three terms for which remifentanil has no estimable ratio: HYPERPATHIA and CHRONIC PAIN SYNDROME, too rare in the remifentanil cohort, and DRUG TOLERANCE, for which remifentanil has no report although the term itself is well represented in the corpus. ALLODYNIA is also not shown: the remifentanil ratio rests on a single report, so no direction can be read from it (§3.3). Values for all three comparators are given term by term in Table S5.
 
 **Figure 2.** Temporal stability of remifentanil's low reporting of PAIN. Points are ratios of reporting odds ratios for PAIN in each calendar year from 2015 to 2024 (remifentanil versus fentanyl, filled circles; versus morphine, open squares), with 95% confidence intervals; the y axis is logarithmic. Horizontal dotted lines show the pooled whole-corpus values (0.066 versus fentanyl, upper; 0.046 versus morphine, lower). The dashed line marks a ratio of 1. Remifentanil had no PAIN reports in 2018 or 2019, so no estimate is shown for those years.
 
@@ -508,5 +559,5 @@ The Canadian extract records the MedDRA release applied to every reaction row: o
 
 1. **X (Twitter) handle.** The author has no X account, so this field is left blank. This is explicitly permitted: Wiley's forauthors page states X handles are provided "where available" and "It is not a requirement to set up a X/X account if you do not already have one". Nothing is outstanding.
 2. **Reviewer suggestions.** None are proposed: inventing names, affiliations or e-mail addresses would be worse than leaving the field empty.
-3. **Author Guidelines compliance audit (2026-09-16).** Matched the journal's forauthors requirements: manuscript in .docx; all Tables 1–4B with captions, both figure legends and the Supporting Information captions (S1–S3) placed in the main text file; figures supplied as separate .tif/.pdf (542 KB / 459 KB, well under 10 MB) and not embedded in the document (verified: Manuscript.docx contains zero embedded media); Times New Roman 12 pt, double spaced, continuous line and page numbers. PASS.
+3. **Author Guidelines compliance audit (2026-09-17, updated after round 2).** Matched the journal's forauthors requirements: manuscript in .docx; all Tables 1–4C with captions, both figure legends and the Supporting Information captions (S1–S5) placed in the main text file; figures supplied as separate .tif/.pdf (789 KB / 459 KB, well under 10 MB) and not embedded in the document (verified: Manuscript.docx contains zero embedded media); Times New Roman 12 pt, double spaced, continuous line and page numbers. PASS.
 4. **Confirm the Data availability URL resolves.** Verified via API that the repository is public, MIT-licensed and carries the v1.0.0 release asset (results-bundle.zip); the polished manuscript is pushed to main (a49b7eb). The github.com page itself cannot be opened from this environment (egress block), so a final browser click by the author immediately before submitting remains the last manual check.

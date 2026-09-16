@@ -86,52 +86,88 @@ def save_all(fig, stem):
 # 不可估计者（HYPERALGESIA 等五个无报告字符串、HYPERPATHIA、
 # CHRONIC PAIN SYNDROME 在瑞芬队列 a=0、ALLODYNIA 瑞芬 a=1）不入图，
 # 在图注中说明。
-# (PT, RORR_REMIvsFEN [est,lo,hi], RORR_REMIvsMOR [est,lo,hi])
-data = [
-    ("HYPERAESTHESIA",         (0.696, 0.37, 1.31), (0.389, 0.21, 0.73)),
-    ("PROCEDURAL PAIN",        (1.962, 1.14, 3.39), (0.878, 0.51, 1.52)),
-    ("DRUG WITHDRAWAL SYND.",  (0.046, 0.02, 0.10), (0.083, 0.04, 0.18)),
-    ("PAIN",                   (0.066, 0.04, 0.10), (0.046, 0.03, 0.07)),
-    ("NAUSEA",                 (0.227, 0.17, 0.30), (0.110, 0.08, 0.14)),
-    ("VOMITING",               (0.409, 0.32, 0.52), (0.185, 0.14, 0.24)),
-    ("PRURITUS",               (0.833, 0.61, 1.14), (0.328, 0.24, 0.45)),
-    ("CONSTIPATION",           (0.122, 0.07, 0.22), (0.062, 0.03, 0.11)),
-    ("DRUG INEFFECTIVE",       (0.568, 0.49, 0.65), (0.470, 0.41, 0.54)),
-]
+# 逐格从 01_faers_results.csv 读取（第二轮评审 P1-4：舒芬太尼头对头此前被计算却不展示）
+import csv as _csv
 
-fig, ax = plt.subplots(figsize=(W_DOUBLE_IN, 5.5))
-fig.subplots_adjust(left=0.275, right=0.975, top=0.978, bottom=0.125)
+# 入图的顺序与分组；左为 CSV 中的 PT，右为图上标签
+SHOWN = [
+    ("HYPERAESTHESIA", "HYPERAESTHESIA"),
+    ("PROCEDURAL PAIN", "PROCEDURAL PAIN"),
+    ("DRUG WITHDRAWAL SYNDROME", "DRUG WITHDRAWAL SYND."),
+    ("PAIN", "PAIN"),
+    ("NAUSEA", "NAUSEA"),
+    ("VOMITING", "VOMITING"),
+    ("PRURITUS", "PRURITUS"),
+    ("CONSTIPATION", "CONSTIPATION"),
+    ("DRUG INEFFECTIVE", "DRUG INEFFECTIVE"),
+]
+C_SUF = "#1a7f5a"   # 深绿（舒芬太尼，第三组）
+
+def _ci(s):
+    s = (s or "").strip()
+    if not s:
+        return None
+    lo, hi = s.replace("\u2013", "-").split("-")
+    return float(lo), float(hi)
+
+_src = {r["PT"]: r for r in _csv.DictReader(
+    open(os.path.join(HERE, "01_faers_results.csv"), encoding="utf-8-sig"))}
+
+def _triplet(pt, comp):
+    r = _src[pt]
+    est = r[f"RORR_REMI_vs_{comp}"]
+    if est in ("", None):
+        return None
+    lo, hi = _ci(r[f"RORR_CI_{comp}"])
+    return (float(est), lo, hi)
+
+data = [(label, _triplet(pt, "FENTANYL"), _triplet(pt, "SUFENTANIL"),
+         _triplet(pt, "MORPHINE")) for pt, label in SHOWN]
+for lbl, f, s, m in data:
+    if None in (f, s, m):
+        raise SystemExit(f"figure 1: {lbl} has a missing comparator value; check the source file")
+
+SERIES = [  # (数据下标, 颜色, 标记, 是否空心, 纵向偏移, 图例名)
+    (1, C_FEN, "o", False, +0.30, "Remifentanil vs fentanyl"),
+    (2, C_SUF, "^", True,  0.00, "Remifentanil vs sufentanil"),
+    (3, C_MOR, "s", True, -0.30, "Remifentanil vs morphine"),
+]
+ROW = 3  # 每个术语占 3 个单位行距
+
+fig, ax = plt.subplots(figsize=(W_DOUBLE_IN, 6.6))
+fig.subplots_adjust(left=0.275, right=0.975, top=0.978, bottom=0.105)
 
 ax.axvline(1.0, color=C_REF, lw=0.9, ls="--", zorder=1)
 
-for i, (pt, fen, mor) in enumerate(data):
-    yi = 2 * i
-    ax.errorbar(fen[0], yi + 0.19,
-                xerr=[[fen[0] - fen[1]], [fen[2] - fen[0]]],
-                fmt="o", color=C_FEN, ecolor=C_FEN, elinewidth=0.9,
-                capsize=2.5, capthick=0.9, ms=4.2, zorder=3)
-    ax.errorbar(mor[0], yi - 0.19,
-                xerr=[[mor[0] - mor[1]], [mor[2] - mor[0]]],
-                fmt="s", mfc="none", mec=C_MOR, color=C_MOR, ecolor=C_MOR,
-                elinewidth=0.9, capsize=2.5, capthick=0.9, ms=4.2,
-                mew=0.9, zorder=3)
+for i, (pt, _f, _s, _m) in enumerate(data):
+    yi = ROW * i
+    for idx, col, mk, hollow, off, _lab in SERIES:
+        est, lo, hi = data[i][idx]
+        ax.errorbar(est, yi + off,
+                    xerr=[[est - lo], [hi - est]],
+                    fmt=mk, mfc="none" if hollow else col,
+                    mec=col, color=col, ecolor=col, elinewidth=0.9,
+                    capsize=2.2, capthick=0.9, ms=4.0,
+                    mew=0.9 if hollow else 0.0, zorder=3)
     ax.text(-0.012, yi, pt, ha="right", va="center", fontsize=8,
             transform=ax.get_yaxis_transform())
 
 ax.set_yticks([])
 ax.set_xscale("log")
-ax.set_xlim(0.012, 4.5)
-ax.set_ylim(-0.85, 2 * len(data) - 0.15)
-ax.set_xticks([0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 4])
-ax.set_xticklabels(["0.02", "0.05", "0.1", "0.2", "0.5", "1", "2", "4"])
+ax.set_xlim(0.012, 7.0)
+ax.set_ylim(-1.0, ROW * len(data) - 0.4)
+ax.set_xticks([0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5])
+ax.set_xticklabels(["0.02", "0.05", "0.1", "0.2", "0.5", "1", "2", "5"])
 ax.set_xlabel("Head-to-head RORR (95% CI), log scale")
 clean_axes(ax, keep=("bottom",))
 
 # 图例（无边框）
-h1 = ax.errorbar([], [], fmt="o", color=C_FEN, ms=4.2, label="Remifentanil vs fentanyl")
-h2 = ax.errorbar([], [], fmt="s", mfc="none", mec=C_MOR, color=C_MOR, ms=4.2,
-                 mew=0.9, label="Remifentanil vs morphine")
-ax.legend(handles=[h1, h2], loc="upper left", frameon=False,
+handles = []
+for idx, col, mk, hollow, _off, lab in SERIES:
+    handles.append(ax.errorbar([], [], fmt=mk, mfc="none" if hollow else col,
+                               mec=col, color=col, ms=4.0, mew=0.9 if hollow else 0.0,
+                               label=lab))
+ax.legend(handles=handles, loc="upper left", frameon=False,
           handletextpad=0.5, borderaxespad=0.4)
 save_all(fig, "I_fig1_rorr_forest")
 plt.close(fig)

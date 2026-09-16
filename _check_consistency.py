@@ -496,7 +496,7 @@ if os.path.exists(P(MS)):
     def s4_disp(v):
         return "\u2014" if int(v) == 0 else f"{int(v):,}".replace(",", " ")
 
-    seg = txt[txt.index("### Table S4"):txt.index("## Figure legends")]
+    seg = txt[txt.index("### Table S4"):txt.index("### Table S5")]
     s4_bad, s4_seen = [], 0
     for line in seg.splitlines():
         if not line.startswith("|") or re.fullmatch(r"\|[\s:|-]+\|", line.strip()):
@@ -580,12 +580,19 @@ if os.path.exists(P(MS)):
         ("DRUG WITHDRAWAL SYNDROME", "MORPHINE_reports", 195.0),
     ]:
         chk(f"cv_pt_summary {pt}.{col}", num(cpy.get(pt, {}).get(col)), exp, 0.001)
-    for s in ["4.73", "0.696", "0.389", "1.962", "8 161", "521",
-              "2.54\u20138.80", "1.14\u20133.39", "DRUG WITHDRAWAL SYNDROME"]:
+    # 注意：这里的 "521" 已于 2026-09-17 更正为 "523"（第二轮评审 P0-1）。
+    # 教训：不要写「正文必须包含某数字」，而要从源文件读出后比对；并给已知错误值加禁止性断言。
+    for s in ["4.73", "0.696", "0.389", "1.962", "8 161", "523",
+              "2.54\u20138.80", "1.14\u20133.39", "DRUG WITHDRAWAL SYNDROME",
+              "4.309", "2.495", "3.495", "1.310", "1.61", "72 drug\u2013term"]:
         must_contain("A2 修正后关键串", s)
+    for bad in ["521 Canadian", "521)", "ten calendar years",
+                "in every year from 2015", "could not be retrieved, so cross-regional"]:
+        chk(f"[正文] 已清除错误表述「{bad}」", bad in txt, False)
     must_contain("Table S4 存在", "### Table S4")
     must_contain("Table S4 被正文引用", "Table S4")
-    must_contain("Supplied tables 计数为 4", "plus 4 supplementary")
+    must_contain("Table S5 存在", "### Table S5")
+    must_contain("Supplied tables 计数为 4", "plus 5 supplementary")
     must_contain("MedDRA 行数口径", "4 474 923")
     must_contain("MedDRA 版本行数口径", "4 474 767")
 
@@ -628,16 +635,98 @@ if os.path.exists(P(MS)):
         ("I_投稿信_cover_letter.md",
          ["all 30 cited references verified by identifier", "30 references",
           f"is {main_words:,}".replace(",", " "), f"Summary of {summ_words} words",
-          "four supplementary tables"]),
+          "five supplementary tables"]),
         ("SUBMISSION_MANIFEST.md",
          ["30, Vancouver style with DOIs", f"{main_words:,}".replace(",", " "),
-          "with controls defined a priori", "4 (S1–S4)"]),
+          "with controls defined a priori", "5 (S1–S5)"]),
         ("README.md", ["10_term_dictionary.csv", "ANALYSIS_PLAN.md"]),
     ]:
         if os.path.exists(P(rel)):
             txt_rel = open(P(rel), encoding="utf-8").read()
             for n in needles:
                 chk(f"[{rel}] 含「{n}」", n in txt_rel, True)
+    # =====================================================================
+    # (12) 第二轮评审加固（2026-09-17）
+    #   G-2 星号 ⇔ 源 CSV 的 signal 布尔（目视核对既漏真错、也造假错）
+    #   G-3 可估计年份数取自脚本产物，不许人写
+    #   G-4 表 4A 行集 == 表 2 术语集（新主结局必须进敏感性分析）
+    #   G-5 图注数量词与所列术语个数一致
+    #   G-6 §3.2 断言与相邻 token 计数一致
+    #   G-7 表 S5 逐格与 01_faers_results.csv 一致
+    # =====================================================================
+    def _md_rows(head, nxt):
+        i = txt.index(head)
+        j = txt.index(nxt, i)
+        out = []
+        for line in txt[i:j].splitlines():
+            if not line.startswith("| "):
+                continue
+            c = [x.strip() for x in line.strip().strip("|").split("|")]
+            if c[0].lower() in ("preferred term", "term") or set(c[0]) <= set("- "):
+                continue
+            out.append(c)
+        return out
+
+    # G-2 -------------------------------------------------------------
+    _src = {r["PT"]: r for r in csv.DictReader(open(P("01_faers_results.csv"), encoding="utf-8-sig"))}
+    _bad = []
+    for _c in _md_rows("### Table 2.", "### Table 3."):
+        for _drug, _idx in (("REMIFENTANIL", 3), ("FENTANYL", 4),
+                            ("SUFENTANIL", 5), ("MORPHINE", 6)):
+            _cell = _c[_idx]
+            if _cell in ("\u2014", ""):
+                if "*" in _cell:
+                    _bad.append(f"{_c[0]}/{_drug}: 不可估计却有星号")
+                continue
+            _want = str(_src[_c[0]][f"{_drug}_signal"]).strip().lower() == "true"
+            if ("*" in _cell) != _want:
+                _bad.append(f"{_c[0]}/{_drug}: 星号={('*' in _cell)} 源={_want}")
+    chk("[G-2] 表 2 星号 ⇔ 源文件 signal 布尔", _bad[:5], [])
+
+    # G-3 -------------------------------------------------------------
+    _ej = json.loads(open(P("04_sensitivity_estimable_years.json"), encoding="utf-8").read())
+    chk("[G-3] 可估计年份：PAIN 8 / HYPERAESTHESIA 2",
+        (_ej["PAIN"], _ej["HYPERAESTHESIA"]), (8, 2))
+    chk("[G-3] 正文只写八个可估计年份", "eight estimable years" in txt, True)
+
+    # G-4 -------------------------------------------------------------
+    _t2 = sorted(c[0] for c in _md_rows("### Table 2.", "### Table 3."))
+    _t4a = sorted(c[0] for c in _md_rows("### Table 4A.", "### Table 4B."))
+    chk("[G-4] 表 4A 行集 == 表 2 术语集", _t4a, _t2)
+    chk("[G-4] 表 4A 含 18 行", len(_t4a), 18)
+
+    # G-5 -------------------------------------------------------------
+    _lg = txt[txt.index("**Figure 1.**"):txt.index("**Figure 2.**")]
+    for _w, _n in (("two", 2), ("three", 3), ("four", 4), ("five", 5)):
+        for _m in re.finditer(rf"\bthe {_w} ([a-z\- ]*(?:terms?|strings?)) \(([^)]*)\)", _lg):
+            _listed = len([x for x in _m.group(2).split(",") if x.strip()])
+            chk(f"[G-5] 图注 \"the {_w} {_m.group(1)}\" 与列举个数一致", _listed, _n)
+
+    # G-6 -------------------------------------------------------------
+    _td = {r["Term"]: r for r in csv.DictReader(open(P("10_term_dictionary.csv"), encoding="utf-8-sig"))}
+    chk("[G-6] CHRONIC PAIN 相邻 token 为 1",
+        num(_td["CHRONIC PAIN"]["FAERS_reports_adjacent_token_phrase"]), 1.0, 0.001)
+    chk("[G-6] 正文已承认该例外", "CHRONIC PAIN returned a single hit" in txt, True)
+
+    # G-7 -------------------------------------------------------------
+    _bad5 = []
+    for _c in _md_rows("### Table S5", "## Figure legends"):
+        _r = _src.get(_c[0])
+        if _r is None or len(_c) != 6:
+            _bad5.append(f"{_c[0]}: 行不匹配")
+            continue
+        for _j, _comp in enumerate(("FENTANYL", "SUFENTANIL", "MORPHINE")):
+            _est = _r[f"RORR_REMI_vs_{_comp}"]
+            _exp = "\u2014" if _est in ("", None) else f"{float(_est):.3f}"
+            if _c[2 + _j].split(" ")[0] != _exp:
+                _bad5.append(f"{_c[0]}/{_comp}: {_c[2 + _j]} != {_exp}")
+        # P2-2：对照药分子必须与源 CSV 一致，读者才能核验每个 OR
+        _exp_a = " / ".join(str(_r[f"{_d}_a"]) for _d in ("FENTANYL", "SUFENTANIL", "MORPHINE"))
+        if _c[5] != _exp_a:
+            _bad5.append(f"{_c[0]}: 对照 a {_c[5]!r} != {_exp_a!r}")
+    chk("[G-7] 表 S5 逐格与 01_faers_results.csv 一致", _bad5[:5], [])
+    chk("[G-7] 表 S5 行数 == 18", len(_md_rows("### Table S5", "## Figure legends")), 18)
+
     # 标题三处必须一致
     title = txt.splitlines()[0].lstrip("# ").strip()
     for rel in ["README.md", "SUBMISSION_MANIFEST.md", "I_TableS2_READUS-PV_checklist.md"]:

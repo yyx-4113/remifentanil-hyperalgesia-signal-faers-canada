@@ -22,7 +22,7 @@ line-listing as an independent confirmation set.
    terms were therefore verified as retrievable in both databases before any zero was
    interpreted (`10_term_dictionary.csv`, Table S4). Five terms failed that test.
 2. **The corrected signal.** The preferred term that carries the concept, HYPERAESTHESIA,
-   is present in both corpora (8 161 FAERS reports; 521 Canadian reaction rows) and meets
+   is present in both corpora (8 161 FAERS reports; 523 Canadian reaction rows) and meets
    the signal criterion for all four opioids, remifentanil included (reporting odds ratio
    4.73, 95% CI 2.54–8.80). Remifentanil's is the weakest of the four and did not
    reproduce in the smaller Canadian database.
@@ -67,16 +67,18 @@ manuscript's number-to-source table.
 | `01_核心FAERS失衡分析.py` | Core analysis: ROR, PRR, IC (BCPNN), EBGM (MGPS) and head-to-head RORR for the OIH terms, their five dictionary proxies, the surrogate term PAIN, the negative controls and the specificity probe. Writes `01_faers_results.csv`. |
 | `02_途径分层分析.py` | Exploratory route-of-administration stratification (used to demonstrate the openFDA report-level/nested-query defect). Writes `02_route_stratified.csv`. |
 | `03_soc_aggregate_openfda.py` | openFDA system organ class panorama via top-500 preferred terms per drug, mapped with heuristic keyword rules. Writes `03_soc_27.csv`. |
-| `04_sensitivity.py` | Sensitivity analyses: restriction to serious reports (`serious:1`) and year stratification of PAIN, 2015–2024. Writes `04_sensitivity_ps_only.csv`, `04_sensitivity_year_pain.csv`. |
+| `04_sensitivity.py` | Sensitivity analyses: restriction to serious reports (`serious:1`), and year stratification run over **all 18 outcome terms** including the new primary outcome. Writes `04_sensitivity_ps_only.csv`, `04_sensitivity_year_pain.csv`, `04_sensitivity_year_hyperaesthesia.csv` and `04_sensitivity_estimable_years.json` (the number of calendar years in which an estimate was possible, 8 for PAIN and 2 for HYPERAESTHESIA). Signal criteria are identical to those in `01_核心FAERS失衡分析.py`. |
+| `_gen_table4.py` | Generates Tables 4A, 4B and 4C and the supplementary Table S5 (the complete head-to-head matrix, 18 terms x 3 comparators) from the sensitivity and core result files, and rewrites those blocks in place. Idempotent: it deletes any existing Table S5 block before inserting, and inserts before `## Figure legends` so the table order stays S1-S5. |
+| `_check_asterisks.py` | Cell-by-cell check that every asterisk in Table 2 matches the `*_signal` boolean in `01_faers_results.csv`. Kept as a stand-alone audit; the same check now also runs inside `_check_consistency.py`. |
 | `05_figures.py` | Manuscript figures (matplotlib, Agg backend). Writes `I_fig1_rorr_forest.*`, `I_fig2_year_trend.*`. |
 | `cv/cv_process.py` | Canada Vigilance line-listing pipeline: exact active-ingredient cohort matching, native PT/SOC aggregation, ROR/RORR, subgroups. Writes `cv/cv_soc_27.csv`, `cv/cv_pt_summary.csv`, `cv/cv_subgroups.csv`, `cv/cv_drug_totals.csv`. |
 | `soc_rules.py` | Heuristic PT→SOC keyword mapping used **only** by the exploratory openFDA SOC analysis. Not an authoritative MedDRA implementation. |
 | `_fda_auth.py` | Reads an optional openFDA API key from the `OPENFDA_API_KEY` environment variable or a local `openfda_key.txt`. The key is **not required** for any analysis in this repository. |
-| `_check_consistency.py` | Quality gate: 385 programmatic assertions that every number quoted in the manuscript equals the value in its source file, plus submission-compliance checks (declared word counts, title/running-head/keyword limits, software versions, abstract coverage of the READUS-PV abstract items, AI-disclosure key strings, placeholder scan and figure-file presence). The whole of Table S1 — both panels, 54 rows × 8 columns — and all of Table S4 — 18 terms × 3 count columns — are re-derived cell by cell from the result files. Two global invariants are asserted: which head-to-head ratios exceed 1, and how many of the Canadian negative-control ratios are computable at all. Exits non-zero on any mismatch. |
+| `_check_consistency.py` | Quality gate: 406 programmatic assertions that every number quoted in the manuscript equals the value in its source file, plus submission-compliance checks (declared word counts, title/running-head/keyword limits, software versions, abstract coverage of the READUS-PV abstract items, AI-disclosure key strings, placeholder scan and figure-file presence). The whole of Table S1 — both panels, 54 rows × 8 columns — and all of Table S4 — 18 terms × 3 count columns — are re-derived cell by cell from the result files. Two global invariants are asserted: which head-to-head ratios exceed 1, and how many of the Canadian negative-control ratios are computable at all. Exits non-zero on any mismatch. |
 | `_gen_table_s1.py` | Generates Table S1 (the two system-organ-class panels, 54 rows × 8 columns) from `cv/cv_soc_27.csv` and `03_soc_27.csv` and rewrites that block of the manuscript in place, so the table is never typed by hand. Recomputes the proportions from the counts and refuses to write if they disagree with the values already in the source files. Idempotent; run it before `_check_consistency.py` after any change to either result file. |
 | `_wordcount.py` | Word count for the manuscript using the target journal's convention: main text = `## 1. Introduction` → `## Acknowledgements`, section headings included; Summary counted separately. Exits non-zero if either figure is outside the journal's range. |
 | `_build_submission.py` | Builds the submission pack into `_upload/`: `Manuscript.docx`, `Supporting_Information.docx`, `READUS-PV_checklist.docx`, `Cover_Letter.docx` and the figure files, with the journal's formatting applied (Times New Roman 12 pt, double spaced, line and page numbers, tables after the References). Requires `python-docx`. |
-| `_verify_docx.py` | Proves the markdown → docx conversion is loss-free: numeric tokens compared as set differences, no Chinese text, mandatory strings (AI disclosure, repository URL, software versions) present, expected table counts (5 in the manuscript, 4 in the Supporting Information, 2 in the checklist), no placeholders, figures still 600 ppi. |
+| `_verify_docx.py` | Proves the markdown → docx conversion is loss-free: numeric tokens compared as set differences, no Chinese text, mandatory strings (AI disclosure, repository URL, software versions) present, expected table counts (6 in the manuscript, 5 in the Supporting Information, 2 in the checklist), no placeholders, figures still 600 ppi. |
 
 ### Result files (manuscript traceability)
 
@@ -90,7 +92,10 @@ manuscript's number-to-source table.
 | `ANALYSIS_PLAN.md` | The dated analytical plan (finalised 16 September 2026): cohorts, term groups, negative controls, specificity probe, measures and thresholds, frozen before the results were examined. `Prospective registration: none`. |
 | `02_route_stratified.csv`, `02_route_summary.md` | Exploratory route stratification and the nested-query defect demonstration. |
 | `03_soc_27.csv`, `D_27SOC_openFDA事件级.md` | Exploratory FAERS event-level SOC panorama and the preferred-term-level decomposition of the immune-class signal. |
-| `04_sensitivity_ps_only.csv`, `04_sensitivity_year_pain.csv`, `04_sensitivity_summary.md` | Sensitivity analyses. |
+| `04_sensitivity_ps_only.csv`, `04_sensitivity_summary.md` | Sensitivity analysis restricted to serious reports, all 18 terms. |
+| `04_sensitivity_year_pain.csv` | PAIN by calendar year, 2015-2024 (8 of 10 years estimable). |
+| `04_sensitivity_year_hyperaesthesia.csv` | HYPERAESTHESIA by calendar year, 2015-2024 (2 of 10 years estimable). |
+| `04_sensitivity_estimable_years.json` | Machine-readable count of estimable years per term; read by `_check_consistency.py` so the manuscript cannot claim a year range it does not have. |
 | `cv/cv_soc_27.csv` | **Authoritative** Canada Vigilance report-level 27 SOC table (native MedDRA SOC codes). |
 | `cv/cv_pt_summary.csv`, `cv/cv_drug_totals.csv`, `cv/cv_subgroups.csv`, `cv/cv_summary.md` | Canada Vigilance PT-level results, cohort sizes, and age/sex/reporter/seriousness subgroups. |
 | `G_跨库验证_FAERSvsCanada.md` | Side-by-side cross-database confirmation. |

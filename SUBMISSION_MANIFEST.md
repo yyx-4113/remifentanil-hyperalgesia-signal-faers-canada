@@ -10,11 +10,11 @@
 
 | # | File in `_upload/` | ScholarOne file type | Notes |
 |---|---|---|---|
-| 1 | `Manuscript.docx` | **Main Document** | Title page → Summary → body → Acknowledgements → References → Tables 1–4B → figure legends, in one file, as the journal requires |
+| 1 | `Manuscript.docx` | **Main Document** | Title page → Summary → body → Acknowledgements → References → Tables 1–4C → figure legends, in one file, as the journal requires |
 | 2 | `Cover_Letter.docx` | **Cover Letter** | Confirms the AI disclosure and the data-availability statement |
 | 3 | `I_fig1_rorr_forest.tif` | **Figure** | Line art, 600 ppi, 180 mm wide, 652 KB |
 | 4 | `I_fig2_year_trend.tif` | **Figure** | Line art, 600 ppi, 180 mm wide, 459 KB |
-| 5 | `Supporting_Information.docx` | **Supporting Information** | Tables S1 (panel A and panel B, each 27 system organ classes × 8 columns), S3 and S4 (term-level verification, 18 terms) |
+| 5 | `Supporting_Information.docx` | **Supporting Information** | Tables S1 (panel A and panel B, each 27 system organ classes × 8 columns), S3, S4 (term-level verification, 18 terms) and S5 (complete head-to-head matrix, 18 terms × 6 columns) |
 | 6 | `READUS-PV_checklist.docx` | **Supporting Information** | The completed READUS-PV checklist, promised in §4.6 and Table S2 |
 | — | `I_fig1_rorr_forest.pdf`, `I_fig2_year_trend.pdf` | (keep in reserve) | Vector versions; upload only if the journal asks for PDF line art |
 
@@ -32,12 +32,12 @@ which are deliberately excluded from the `.docx`.
 | Article type | Original Article |
 | Title | Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: a head-to-head disproportionality study with controls defined a priori |
 | Running head | Remifentanil hyperalgesia reporting: two-database study |
-| Main text | 3 983 words (Introduction to Conclusion, headings included) |
-| Summary | 299 words, structured (Introduction / Methods / Results / Discussion), no abbreviations, no references |
+| Main text | 3 998 words (Introduction to Conclusion, headings included) |
+| Summary | 297 words, structured (Introduction / Methods / Results / Discussion), no abbreviations, no references |
 | References | 30, Vancouver style with DOIs |
-| Tables | 4 (Table 4 in two panels: 4A, 4B) |
+| Tables | 4 (Table 4 in three panels: 4A, 4B, 4C) |
 | Figures | 2 |
-| Supplementary tables | 4 (S1–S4); Table S1 is presented as two panels, each 27 system organ classes × 8 columns |
+| Supplementary tables | 5 (S1–S5); Table S1 is presented as two panels, each 27 system organ classes × 8 columns; Table S5 is the complete head-to-head matrix for all three comparators |
 | Keywords | remifentanil; opioid-induced hyperalgesia; pharmacovigilance; disproportionality analysis; spontaneous reporting |
 | Corresponding author | Dr Yongxin Yang, 960856791@qq.com |
 | ORCID | 0009-0004-9698-6552 |
@@ -91,8 +91,8 @@ they can be removed in Word with no effect on the content.
 
 | Check | Command | Result |
 |---|---|---|
-| Manuscript numbers traceable to source files (including all 432 Table S1 cells and all 54 Table S4 count cells), plus submission constraints and two global invariants | `python _check_consistency.py` | **PASS 385 / FAIL 0** |
-| Word counts inside the journal's limits | `python _wordcount.py` | main **3 983**; Summary **299** |
+| Manuscript numbers traceable to source files (including all 432 Table S1 cells and all 54 Table S4 count cells), plus submission constraints and two global invariants | `python _check_consistency.py` | **PASS 406 / FAIL 0** |
+| Word counts inside the journal's limits | `python _wordcount.py` | main **3 998**; Summary **297** |
 | Table S1 in step with the result files | `python _gen_table_s1.py` | idempotent; refuses to write if a proportion does not reproduce from the counts |
 | Nothing lost or invented in the markdown → docx conversion; no Chinese text; table shapes intact (5 / 4 / 2 tables); figures still 600 ppi | `python _verify_docx.py` | **PASS 59 / FAIL 0** |
 
