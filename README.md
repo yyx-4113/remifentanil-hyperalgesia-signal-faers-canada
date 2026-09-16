@@ -1,7 +1,8 @@
 # Remifentanil and hyperalgesia reporting: FAERS + Canada Vigilance two-database disproportionality study
 
 **Repository:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada>
-**Archived release:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.0.0>
+**Archived release:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.1.0>
+(previously <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.0.0>)
 
 Reproduction package for the study:
 

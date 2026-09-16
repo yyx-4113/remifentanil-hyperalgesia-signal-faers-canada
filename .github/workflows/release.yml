@@ -72,6 +72,9 @@ jobs:
           zip -r results-bundle.zip \
             01_faers_results.csv \
             01_faers_summary.md \
+            10_term_dictionary.csv \
+            10_term_dictionary.py \
+            ANALYSIS_PLAN.md \
             02_route_stratified.csv \
             02_route_summary.md \
             03_soc_27.csv \
