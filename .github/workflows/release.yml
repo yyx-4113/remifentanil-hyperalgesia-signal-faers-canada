@@ -37,6 +37,11 @@ jobs:
       - name: Regenerate figures from the shipped result files
         run: python 05_figures.py
 
+      - name: Build and verify the submission pack
+        run: |
+          python _build_submission.py
+          python _verify_docx.py
+
       - name: Upload regenerated figures
         uses: actions/upload-artifact@v4
         with:

@@ -24,7 +24,11 @@ cv/*.zip
 .workbuddy/
 _probe/
 
-# 5) 编辑器 / 系统 / 临时备份
+# 5) 投稿包（由 _build_submission.py 从 markdown 源重建，属构建产物，不入库）
+#    重建：python _build_submission.py && python _verify_docx.py
+_upload/
+
+# 6) 编辑器 / 系统 / 临时备份
 .DS_Store
 Thumbs.db
 .vscode/

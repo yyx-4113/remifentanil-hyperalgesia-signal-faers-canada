@@ -4,7 +4,7 @@
 
 **Guideline:** REporting of A Disproportionality analysis for drUg Safety signal detection using individual case safety reports in PharmacoVigilance (READUS-PV) [1, 2].
 
-**How this checklist was completed.** Item wording is reproduced from the READUS-PV checklist (manuscript body, Table 1, and abstract, Table 2, of the development and statement [1]). The right-hand column gives the location in this manuscript where each item is addressed. Where an item was not applicable, this is stated explicitly rather than left blank. Section numbers refer to the manuscript file `I_正文_IMRaD_en.md`; supplementary tables are `Table S1`–`Table S3`.
+**How this checklist was completed.** Item wording is reproduced from the READUS-PV checklist (manuscript body, Table 1, and abstract, Table 2, of the development and statement [1]). The right-hand column gives the location in this manuscript where each item is addressed. Where an item was not applicable, this is stated explicitly rather than left blank. Section numbers refer to the sections of the submitted manuscript; supplementary tables are `Table S1`–`Table S3`.
 
 ---
 

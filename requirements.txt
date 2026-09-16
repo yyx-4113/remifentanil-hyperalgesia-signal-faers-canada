@@ -1,5 +1,15 @@
 # Python 3.13 (developed and run on 3.13.14)
-# The core analyses (01, 02, 03, 04, cv/cv_process.py, _check_consistency.py) use the
-# standard library only. matplotlib is required only for figure generation (05_figures.py).
+#
+# The core analyses (01, 02, 03, 04, cv/cv_process.py, _check_consistency.py,
+# _wordcount.py) use the standard library only.
+#
+# matplotlib    - figure generation (05_figures.py)
+# python-docx   - builds the submission pack (_build_submission.py) and reads it
+#                 back for verification (_verify_docx.py)
+# Pillow        - optional; _verify_docx.py uses it to re-check the 600 ppi figure
+#                 resolution and skips that check cleanly if it is absent
 
 matplotlib==3.11.1
+python-docx==1.2.0
+Pillow>=11
+PyYAML>=6

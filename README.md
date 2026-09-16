@@ -61,6 +61,8 @@ manuscript's number-to-source table.
 | `_fda_auth.py` | Reads an optional openFDA API key from the `OPENFDA_API_KEY` environment variable or a local `openfda_key.txt`. The key is **not required** for any analysis in this repository. |
 | `_check_consistency.py` | Quality gate: 209 programmatic assertions that every number quoted in the manuscript equals the value in its source file, plus submission-compliance checks (declared word counts, title/running-head/keyword limits, software versions, abstract coverage of the READUS-PV abstract items, AI-disclosure key strings, placeholder scan and figure-file presence). Exits non-zero on any mismatch. |
 | `_wordcount.py` | Word count for the manuscript using the target journal's convention: main text = `## 1. Introduction` → `## Acknowledgements`, section headings included; Summary counted separately. Exits non-zero if either figure is outside the journal's range. |
+| `_build_submission.py` | Builds the submission pack into `_upload/`: `Manuscript.docx`, `Supporting_Information.docx`, `READUS-PV_checklist.docx`, `Cover_Letter.docx` and the figure files, with the journal's formatting applied (Times New Roman 12 pt, double spaced, line and page numbers, tables after the References). Requires `python-docx`. |
+| `_verify_docx.py` | Proves the markdown → docx conversion is loss-free: numeric tokens compared as set differences, no Chinese text, mandatory strings (AI disclosure, repository URL, software versions) present, expected table counts, no placeholders, figures still 600 ppi. |
 
 ### Result files (manuscript traceability)
 
@@ -77,6 +79,8 @@ manuscript's number-to-source table.
 | `G_跨库验证_FAERSvsCanada.md` | Side-by-side cross-database confirmation. |
 | `I_稿件三线表.md` | Manuscript tables 1–4 and figure legends. |
 | `I_TableS2_READUS-PV_checklist.md` | **Supporting Information**: the completed READUS-PV checklist (32 items for the manuscript body, 12 for the abstract), each mapped to the manuscript section where it is addressed, with the non-applicable items stated explicitly. |
+| `I_投稿信_cover_letter.md` | Cover letter source, built into `_upload/Cover_Letter.docx`. |
+| `SUBMISSION_MANIFEST.md` | What to upload as which ScholarOne file type, the metadata the submission form asks for, the formatting already applied, and the open items. |
 | `I_正文_IMRaD_en.md` | Manuscript (English IMRaD) and its number-to-source traceability table. |
 | `I_fig1_rorr_forest.{tif,pdf,png}`, `I_fig2_year_trend.{tif,pdf,png}` | Figures 1 and 2 (line art, 600 ppi, 180 mm double-column width). |
 | `01_任务状态.md`, `00_项目总览与执行路线图.md`, `方案二_*.md` | Project ledger and design documents. |
@@ -89,8 +93,12 @@ manuscript's number-to-source table.
 ### 3.1 Requirements
 
 - Python **3.13** (developed and run on 3.13.14). Python 3.10+ is expected to work.
-- `matplotlib` **3.11.1** (only needed for `05_figures.py`). All other scripts use the
-  standard library only.
+- `matplotlib` **3.11.1**, only for `05_figures.py`.
+- `python-docx` **1.2.0**, only for the submission pack (`_build_submission.py`, `_verify_docx.py`).
+- `Pillow` **12.3.0**, optional, only for the 600 ppi re-check in `_verify_docx.py`.
+- `PyYAML` **6.0.3**, optional, only to validate `CITATION.cff` and the CI workflow.
+- Every core analysis script (`01`–`04`, `cv/cv_process.py`, `_check_consistency.py`, `_wordcount.py`)
+  uses the **standard library only**.
 
 ```
 python -m pip install -r requirements.txt
@@ -154,6 +162,17 @@ constraints (word counts, title and keyword limits, software versions, abstract 
 the READUS-PV abstract items, the AI-disclosure strings, absence of placeholders, and the
 presence of the figure files). Re-run both after changing any data or manuscript text.
 
+### 3.6 Submission pack
+
+```
+python _build_submission.py        # -> _upload/*.docx + figure files
+python _verify_docx.py             # must print PASS 39 / FAIL 0 and exit 0
+```
+
+The `.docx` files are build artefacts and are not tracked in this repository; the pack is
+rebuilt from the markdown sources on demand. See `SUBMISSION_MANIFEST.md` for what to upload
+as which file type, the metadata the submission form asks for, and the checks that were run.
+
 ---
 
 ## 4. Caveats and known limitations
@@ -195,6 +214,7 @@ presence of the figure files). Re-run both after changing any data or manuscript
 |---|---|
 | Python | 3.13.14 |
 | matplotlib | 3.11.1 |
+| python-docx | 1.2.0 (submission pack only) |
 | Operating system | Windows (Git Bash / MSYS shells used for the run commands) |
 | openFDA API | `drug/event` endpoint as served on 16 September 2026 |
 | Canada Vigilance extract | `extract_extrait.zip`, reports to 30 November 2024 |

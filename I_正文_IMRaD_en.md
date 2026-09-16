@@ -10,7 +10,7 @@
 
 **Keywords:** remifentanil; opioid-induced hyperalgesia; pharmacovigilance; disproportionality analysis; spontaneous reporting
 
-**Word count:** Summary 293 words; main text 3 983 words (Introduction to Conclusion, section headings included). Verified with `_wordcount.py`. **Tables:** 4 (Table 4 in two panels) plus 3 supplementary. **Figures:** 2.
+**Word count:** Summary 293 words; main text 3 985 words (Introduction to Conclusion, section headings included). Verified with `_wordcount.py`. **Tables:** 4 (Table 4 in two panels) plus 3 supplementary. **Figures:** 2.
 
 > **Formatting note (not for submission).** This file is written to the *Anaesthesia* Guidance for Authors: UK spelling, structured Summary of 250–300 words without abbreviations or references, main text 3000–4000 words, Vancouver references with DOIs, ≤20-word title that states no conclusion, running head ≤60 characters, 3–5 keywords. Tables and figure legends are placed after the References in this same file; the figures themselves are supplied as separate files (`I_fig1_rorr_forest.tif/.pdf/.png`, `I_fig2_year_trend.tif/.pdf/.png`). Number-to-source traceability is in §9.
 
@@ -124,7 +124,7 @@ Three key findings were reproduced in the independent Canadian database (Table 3
 
 ### 3.6 The under-reporting reflects who reports, not the drug
 
-Cohort composition explains the pattern without invoking pharmacology. Remifentanil's Canadian cohort was overwhelmingly serious (102 of 111, 91.9%), against 79.8% for fentanyl and 69.0% for morphine; the sufentanil cohort, the other short-acting intraoperative opioid, was similarly serious (58 of 63, 92.1%). Remifentanil reports came predominantly from health professionals other than physicians (72 of 111, 64.9%), with 17.1% from physicians and 5.4% from consumers, whereas morphine's cohort included 23.6% consumer reports and only 7.0% physician reports.
+Cohort composition explains the pattern without invoking pharmacology. Remifentanil's Canadian cohort was overwhelmingly serious (102 of 111, 91.9%), against 79.8% for fentanyl and 69.0% for morphine; the sufentanil cohort, the other short-acting intraoperative opioid, was similarly serious (58 of 63, 92.1%). Remifentanil reports came predominantly from health professionals other than physicians (72 of 111, 64.9%), with 17.1% from physicians and 5.4% from consumers, whereas morphine's cohort included 23.6% consumer reports and only 7.0% physician reports (Table S3).
 
 This is the signature of a drug whose reports come from monitored perioperative care, where events are acute, severe and clinician-captured, not from outpatient or long-term analgesic use. A report of anaphylaxis after intraoperative remifentanil creates no opportunity for the word "PAIN" to be entered as a reaction term; a report of long-term morphine for chronic pain frequently does. The denominator composition differs, so the proportions differ.
 
