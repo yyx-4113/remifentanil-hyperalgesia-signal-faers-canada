@@ -140,3 +140,41 @@ gh release view v1.0.0
 - ❌ 使用 `git rm -r`、`git reset --hard`、`git push --force` 等破坏性命令而不先备份。
 - ❌ 在 Data availability 中写 "available on request"。
 - ❌ 在稿件或仓库中引用早年课程作业账号 `yongxinyang`。
+
+---
+
+## 8. 执行记录（2026-09-16，已全部完成）
+
+仓库 <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada> 已建立为**公开**仓库，`main` 已推送，tag `v1.0.0` 已推送，Release 已由 CI 自动生成并附带 `results-bundle.zip`（771 KB）。CI 两个 job（`Reproducibility gate`、`Publish release bundle`）均成功（run `completed/success`）。
+
+### 8.1 关键教训：本机环境 **`github.com:443` 被出口阻断，但 SSH 可用**
+
+| 通道 | 实测结果 |
+|---|---|
+| `https://api.github.com` | ✅ 200（REST API 可用，curl 可建仓） |
+| `https://github.com`（网页与 git-over-HTTPS） | ❌ HTTP 000 / `fatal: Empty reply from server` |
+| `github.com:22`（SSH） | ✅ 可连接；本机 `~/.ssh/id_ed25519` **已在该账号注册**，`ssh -T git@github.com` 返回 `Hi yyx-4113!` |
+| `ssh.github.com:443` | ✅ 可连接（备用） |
+
+**因此：本环境推送代码一律走 SSH，不要走 HTTPS。** 正确做法：
+
+```bash
+git remote set-url origin git@github.com:yyx-4113/<repo>.git
+export GIT_SSH_COMMAND="ssh -o BatchMode=yes -o StrictHostKeyChecking=accept-new"
+git push -u origin main && git push origin v1.0.0
+```
+
+`BatchMode=yes` 很关键：避免在无交互终端里卡在 host-key 或密码提示上。
+**建仓**这一步走 REST API（`gh repo create`，token 从凭据管理器现取、只经环境变量传入、不落盘不打印），因为 `api.github.com` 是通的。
+
+### 8.2 许可文件的一个坑
+
+`LICENSE` 若在 MIT 正文之后追加任何说明段落，**GitHub 会把仓库许可识别为 `NOASSERTION`（Unknown）**，而不是 MIT。
+正确做法：`LICENSE` 只放**未经改动的 MIT 原文**；源数据许可说明放到 `README` 的 License 一节（本案两类源数据：openFDA 属美国政府公有领域、Canada Vigilance 属 Open Government Licence – Canada）。
+
+### 8.3 推送后必须做的三项核验
+
+1. **Actions 运行结论**：`GET /repos/{o}/{r}/actions/runs`，应为 `completed/success`；两个 job 都成功才可能生成 Release 资产。
+2. **Release 资产**：`GET /repos/{o}/{r}/releases`，确认 `results-bundle.zip` 已挂载（由 CI 现场打包，非本地上传）。
+3. **稿件 Data availability 里的 URL 必须真的可打开**——这是投稿诚信的一部分，不能只写"将来会有"。
+
