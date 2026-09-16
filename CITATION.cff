@@ -5,9 +5,12 @@ abstract: >-
   Reproduction package for a head-to-head disproportionality analysis of remifentanil
   against fentanyl, sufentanil and morphine in the US FDA Adverse Event Reporting System
   (via the openFDA drug/event API) and the Health Canada Canada Vigilance line-listing.
-  Five of seven prespecified opioid-induced-hyperalgesia preferred terms return zero
-  reports in both databases, and no disproportionate reporting of hyperalgesia is
-  observed for remifentanil relative to any comparator.
+  The clinical term HYPERALGESIA is a MedDRA lowest level term, not a preferred term,
+  so a search on it returns zero by construction. The preferred term carrying the
+  concept, HYPERAESTHESIA, is reported for all four opioids, remifentanil included
+  (reporting odds ratio 4.73, 95% CI 2.54-8.80), remifentanil's being the weakest of the
+  four. Remifentanil reports PAIN and all four negative controls less than every
+  comparator, stably and in both databases.
 type: software
 authors:
   - family-names: Yang
@@ -34,11 +37,11 @@ keywords:
   - disproportionality analysis
   - reporting odds ratio
   - MedDRA
-version: "1.0.0"
-date-released: "2026-09-16"
+version: "1.2.0"
+date-released: "2026-09-17"
 references:
   - type: article
-    title: "No disproportionate real-world reporting of hyperalgesia with remifentanil versus other intraoperative opioids: a two-database pharmacovigilance signal study"
+    title: "Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: a head-to-head disproportionality study with negative controls defined a priori"
     authors:
       - family-names: Yang
         given-names: Yongxin

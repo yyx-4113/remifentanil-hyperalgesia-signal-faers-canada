@@ -132,7 +132,7 @@ def main() -> int:
         "Table S1",
         "Table S3",
         "Table S4",
-        "with controls defined a priori",
+        "with negative controls defined a priori",
     ]:
         chk(f"Manuscript 含「{needle[:46]}」", needle in ms_text)
     chk("Manuscript 不含 prespecified",

@@ -364,6 +364,12 @@ if os.path.exists(P(MS)):
     # 题录：标题 ≤20 词且不陈述结论；running head ≤60 字符；关键词 3-5 个
     title = txt.splitlines()[0].lstrip("# ").strip()
     chk("标题词数 <= 20", len(title.split()) <= 20, True)
+    # P1-5-4：标题的 a priori 宣称必须限定于阴性对照，否则读者会把
+    # 事后添加的代理术语（真正的主结局来源）也读成先验。
+    chk("标题限定 a priori 于阴性对照",
+        "negative controls defined a priori" in title, True)
+    chk("标题不含歧义的 controls defined a priori",
+        re.search(r"(?<!negative )controls defined a priori", title), None)
     rh = re.search(r"\*\*Running head:\*\*\s*(.+)", txt).group(1).strip()
     chk("running head <= 60 字符", len(rh) <= 60, True)
     kw = re.search(r"\*\*Keywords:\*\*\s*(.+)", txt).group(1)
@@ -638,7 +644,7 @@ if os.path.exists(P(MS)):
           "five supplementary tables"]),
         ("SUBMISSION_MANIFEST.md",
          ["30, Vancouver style with DOIs", f"{main_words:,}".replace(",", " "),
-          "with controls defined a priori", "5 (S1–S5)"]),
+          "with negative controls defined a priori", "5 (S1–S5)"]),
         ("README.md", ["10_term_dictionary.csv", "ANALYSIS_PLAN.md"]),
     ]:
         if os.path.exists(P(rel)):
@@ -727,10 +733,33 @@ if os.path.exists(P(MS)):
     chk("[G-7] 表 S5 逐格与 01_faers_results.csv 一致", _bad5[:5], [])
     chk("[G-7] 表 S5 行数 == 18", len(_md_rows("### Table S5", "## Figure legends")), 18)
 
+    # G-8 -------------------------------------------------------------
+    # P1-5-3：五个代理术语是零值之后才加入的（Amendment 1），Table S4 的 Group
+    # 列必须显式标注事后属性与日期，否则-reader 会当成先验结局。
+    _proxies = {"HYPERAESTHESIA", "HYPERPATHIA", "PROCEDURAL PAIN",
+                "CHRONIC PAIN SYNDROME", "DRUG WITHDRAWAL SYNDROME"}
+    _bad8 = []
+    for _c in _md_rows("### Table S4", "### Table S5"):
+        if _c[0] in _proxies and "added a posteriori, 16 Sep 2026" not in _c[1]:
+            _bad8.append(f"{_c[0]}: Group 列缺少事后标记 -> {_c[1]!r}")
+        if _c[0] not in _proxies and "a posteriori" in _c[1]:
+            _bad8.append(f"{_c[0]}: 非代理术语却被标为事后 -> {_c[1]!r}")
+    chk("[G-8] 表 S4 五个代理术语标注事后添加", _bad8[:5], [])
+
     # 标题三处必须一致
     title = txt.splitlines()[0].lstrip("# ").strip()
     for rel in ["README.md", "SUBMISSION_MANIFEST.md", "I_TableS2_READUS-PV_checklist.md"]:
         chk(f"[{rel}] 标题与正文一致", title in open(P(rel), encoding="utf-8").read(), True)
+
+    # 结论反转（Amendment 1）后仍宣称阴性的遗留文件必须清零：这些文件对外可见，
+    # 一个已被推翻的题名会与稿件正文直接冲突。
+    _overturned = "No disproportionate real-world reporting of hyperalgesia with remifentanil"
+    for rel in ["CITATION.cff", "author_verification_statement.md"]:
+        _s = open(P(rel), encoding="utf-8").read()
+        chk(f"[{rel}] 未残留被推翻的阴性题名",
+            _overturned in _s, False)
+        chk(f"[{rel}] 含当前题名", title in _s, True)
+
     # D1/D2 过度概括与结构性措辞已清除
     for bad in ["structurally incapable", "reversed direction, which argues"]:
         chk(f"[正文] 未出现「{bad}」", bad in txt, False)

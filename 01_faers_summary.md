@@ -87,11 +87,13 @@
 
 初稿采用表 7 第 3 行路径的**强化版**（证伪 / 阴性结果）：
 
-> *No disproportionate real-world reporting of hyperalgesia with remifentanil versus other intraoperative opioids: a FAERS signal study challenging remifentanil-induced hyperalgesia*
+> *（已废弃）* No disproportionate real-world reporting of hyperalgesia with remifentanil versus other intraoperative opioids: a FAERS signal study challenging remifentanil-induced hyperalgesia
+>
+> **当前题名：** *Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: a head-to-head disproportionality study with negative controls defined a priori*
 
 **Amendment 1 后定稿走向**：论证重心从"阴性（无信号）"改为**"术语学警示"**——阳性信号确实存在，但在临床用词上根本查不到；而瑞芬太尼的信号最弱、且未跨库复现。
 
-> *Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: a head-to-head disproportionality study with controls defined a priori*
+> *Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: a head-to-head disproportionality study with negative controls defined a priori*
 
 - 头对头 + 阴性对照 + 术语层级核验，足以支撑 **Anaesthesia / BJA / J Clin Anesth / Regional Anesthesia & Pain Medicine / Therapeutic Advances in Drug Safety** 等级投稿。
 - 与方案 5-2 机制研究"呼应"价值仍在：真实世界报告层不支持"瑞芬太尼特异性的强信号"，机制层面可继续独立探讨。

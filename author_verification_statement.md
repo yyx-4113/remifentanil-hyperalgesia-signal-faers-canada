@@ -1,7 +1,6 @@
 # Author Verification Statement
 
-**Manuscript title:** No disproportionate real-world reporting of hyperalgesia with
-remifentanil versus other intraoperative opioids: a two-database pharmacovigilance signal study
+**Manuscript title:** Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: a head-to-head disproportionality study with negative controls defined a priori
 
 **Reproduction repository:** `https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada`
 
@@ -71,6 +70,6 @@ Name: Yongxin Yang
 
 Signature: ______________________________
 
-Date: 16 September 2026
+Date: 17 September 2026
 
 Place: Fuzhou, Fujian, China

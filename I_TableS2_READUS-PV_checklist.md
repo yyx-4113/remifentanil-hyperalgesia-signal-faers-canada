@@ -1,6 +1,6 @@
 # Table S2 (supplementary). READUS-PV checklist for this analysis
 
-**Manuscript:** *Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: a head-to-head disproportionality study with controls defined a priori*
+**Manuscript:** *Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: a head-to-head disproportionality study with negative controls defined a priori*
 
 **Guideline:** REporting of A Disproportionality analysis for drUg Safety signal detection using individual case safety reports in PharmacoVigilance (READUS-PV) [1, 2].
 

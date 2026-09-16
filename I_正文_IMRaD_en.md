@@ -1,4 +1,4 @@
-# Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: a head-to-head disproportionality study with controls defined a priori
+# Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: a head-to-head disproportionality study with negative controls defined a priori
 
 **Running head:** Remifentanil hyperalgesia reporting: two-database study
 
@@ -10,7 +10,7 @@
 
 **Keywords:** remifentanil; opioid-induced hyperalgesia; pharmacovigilance; disproportionality analysis; spontaneous reporting
 
-**Word count:** Summary 297 words; main text 3 998 words (Introduction to Conclusion, section headings included). Verified with `_wordcount.py`. **Tables:** 4 (Table 4 in three panels) plus 5 supplementary. **Figures:** 2.
+**Word count:** Summary 297 words; main text 3 999 words (Introduction to Conclusion, section headings included). Verified with `_wordcount.py`. **Tables:** 4 (Table 4 in three panels) plus 5 supplementary. **Figures:** 2.
 
 > **Formatting note (not for submission).** This file is written to the *Anaesthesia* Guidance for Authors: UK spelling, structured Summary of 250–300 words without abbreviations or references, main text 3000–4000 words, Vancouver references with DOIs, ≤20-word title that states no conclusion, running head ≤60 characters, 3–5 keywords. Tables and figure legends are placed after the References in this same file; the figures themselves are supplied as separate files (`I_fig1_rorr_forest.tif/.pdf/.png`, `I_fig2_year_trend.tif/.pdf/.png`). Number-to-source traceability is in §9.
 
@@ -64,7 +64,7 @@ FAERS was taken as the primary analysis and Canada Vigilance as the confirmation
 
 Three groups of terms were defined a priori in a dated analytical plan archived with the repository (ANALYSIS_PLAN.md): a narrow group (HYPERALGESIA, ALLODYNIA); a broad group (PAIN INCREASED, POSTOPERATIVE PAIN, CHRONIC PAIN, OPIOID WITHDRAWAL SYNDROME, DRUG TOLERANCE), not specific for hyperalgesia but the terms a clinician would reach for when attributing the picture to the opioid; and PAIN, analysed separately as a pragmatic and necessarily imperfect proxy, the highest-frequency term such a narrative passes through [17]. PAIN's low reporting reflects reporting setting and must not be read backwards as evidence that hyperalgesia is absent.
 
-**Term-level verification.** Both corpora store preferred terms in the reaction field, so a string returns a count only if it is a preferred term in the dictionary that coded that database: a zero can mean the event was never reported or the string is not a preferred term. Every term was verified against both corpora before any zero was interpreted (Table S4), and five of the seven hyperalgesia-related terms failed. HYPERALGESIA, the clinical word, is a lowest level term mapping to the preferred term HYPERAESTHESIA [18], so a query on it returns zero by construction; OPIOID WITHDRAWAL SYNDROME is carried by DRUG WITHDRAWAL SYNDROME; and PAIN INCREASED, POSTOPERATIVE PAIN and CHRONIC PAIN could not be confirmed as preferred terms in either corpus. No conclusion rests on these strings, so five dictionary proxies — the preferred terms carrying the same concepts (HYPERAESTHESIA, HYPERPATHIA, PROCEDURAL PAIN, CHRONIC PAIN SYNDROME, DRUG WITHDRAWAL SYNDROME) — were added after the zeros had been observed and analysed on the same footing (Tables 2, 3 and S4); they are reported as additions rather than a priori outcomes, and the amendment is dated in the plan.
+**Term-level verification.** Both corpora store preferred terms in the reaction field, so a string returns a count only if it is a preferred term in the dictionary that coded that database: a zero can mean the event was never reported or the string is not a preferred term. Every term was verified against both corpora before any zero was interpreted (Table S4), and five of the seven hyperalgesia-related terms failed. HYPERALGESIA, the clinical word, is a lowest level term mapping to the preferred term HYPERAESTHESIA [18], so a query on it returns zero by construction; OPIOID WITHDRAWAL SYNDROME is carried by DRUG WITHDRAWAL SYNDROME; and PAIN INCREASED, POSTOPERATIVE PAIN and CHRONIC PAIN could not be confirmed as preferred terms in either corpus. No conclusion rests on these strings, so five dictionary proxies — the preferred terms carrying the same concepts (HYPERAESTHESIA, HYPERPATHIA, PROCEDURAL PAIN, CHRONIC PAIN SYNDROME, DRUG WITHDRAWAL SYNDROME) — were added on 16 September 2026, after those zeros, and analysed on the same footing (Tables 2, 3 and S4); they are reported as additions rather than a priori outcomes, and the amendment is dated in the plan.
 
 **MedDRA releases.** The Canadian extract states the release used for every reaction row (v27.1) [18]; openFDA exposes none, and the FAERS corpus spans quarterly releases from 2004, so no single release applies to it. The release does not affect the results but governs the interpretation of a zero.
 
@@ -178,7 +178,7 @@ The most useful contribution here is terminological. The most obvious query — 
 
 **Setting and residual confounding.** The comparators are used in different care settings, so the differences reflect reporting setting as much as pharmacology and a drug-specific effect cannot be isolated; indication cannot be adjusted for, so §4.3 is an interpretation consistent with the subgroup data, not a mediation analysis.
 
-**Limited geographic independence.** FAERS and Canada Vigilance are both North American systems sharing MedDRA coding and much the same drug market, so agreement here is weaker evidence than across regulatory regions, where about 85% of signals overlap at the preferred-term level [30]. Neither a European nor a Japanese database was used here: EudraVigilance releases no bulk line-listing, and retrieval and validation of the Japanese database was not completed. Cross-regional confirmation remains a planned extension, and this is a two-database, single-continent analysis.
+**Limited geographic independence.** FAERS and Canada Vigilance are both North American systems sharing MedDRA coding and much the same drug market, so agreement here is weaker evidence than across regulatory regions, where about 85% of signals overlap at the preferred-term level [30]. Neither a European nor a Japanese database was used here: EudraVigilance releases no bulk line-listing, and retrieval and validation of the Japanese database were not completed. Cross-regional confirmation remains a planned extension, and this is a two-database, single-continent analysis.
 
 ### 4.6 Implications
 
@@ -478,11 +478,11 @@ Each outcome term was queried as an exact string in the FAERS reaction field and
 | VOMITING | negative control | 462 663 | 467 932 | 39 131 | yes | retrievable preferred term in both corpora |
 | PRURITUS | negative control | 372 941 | 526 363 | 46 769 | yes | retrievable preferred term in both corpora |
 | CONSTIPATION | negative control | 213 536 | 213 678 | 13 579 | yes | retrievable preferred term in both corpora |
-| HYPERAESTHESIA | dictionary proxy | 8 161 | 9 773 | 523 | yes | preferred term carrying the hyperalgesia concept (MedDRA 10020568) |
-| HYPERPATHIA | dictionary proxy | 43 | 43 | — | yes | retrievable preferred term; painful-syndrome sibling of hyperalgesia |
-| PROCEDURAL PAIN | dictionary proxy | 27 300 | 27 488 | 1 527 | yes | retrievable preferred term nearest to POSTOPERATIVE PAIN |
-| CHRONIC PAIN SYNDROME | dictionary proxy | 1 | 1 | — | yes | retrievable preferred term nearest to CHRONIC PAIN |
-| DRUG WITHDRAWAL SYNDROME | dictionary proxy | 87 541 | 102 179 | 1 667 | yes | retrievable preferred term nearest to OPIOID WITHDRAWAL SYNDROME |
+| HYPERAESTHESIA | dictionary proxy (added a posteriori, 16 Sep 2026) | 8 161 | 9 773 | 523 | yes | preferred term carrying the hyperalgesia concept (MedDRA 10020568) |
+| HYPERPATHIA | dictionary proxy (added a posteriori, 16 Sep 2026) | 43 | 43 | — | yes | retrievable preferred term; painful-syndrome sibling of hyperalgesia |
+| PROCEDURAL PAIN | dictionary proxy (added a posteriori, 16 Sep 2026) | 27 300 | 27 488 | 1 527 | yes | retrievable preferred term nearest to POSTOPERATIVE PAIN |
+| CHRONIC PAIN SYNDROME | dictionary proxy (added a posteriori, 16 Sep 2026) | 1 | 1 | — | yes | retrievable preferred term nearest to CHRONIC PAIN |
+| DRUG WITHDRAWAL SYNDROME | dictionary proxy (added a posteriori, 16 Sep 2026) | 87 541 | 102 179 | 1 667 | yes | retrievable preferred term nearest to OPIOID WITHDRAWAL SYNDROME |
 
 The Canadian extract records the MedDRA release applied to every reaction row: of its 4 474 923 reaction rows, 4 474 767 state a release, every one of them v.27.1, and 156 leave the field blank. The openFDA interface exposes no per-record release, and the FAERS corpus spans quarterly releases from 2004 onwards, so no single release applies to it. Retrievability was therefore established empirically in both corpora rather than assumed from a dictionary lookup.
 
