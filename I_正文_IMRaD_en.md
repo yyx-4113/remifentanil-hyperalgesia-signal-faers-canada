@@ -10,7 +10,7 @@
 
 **Keywords:** remifentanil; opioid-induced hyperalgesia; pharmacovigilance; disproportionality analysis; spontaneous reporting
 
-**Word count:** Summary 293 words; main text 3 985 words (Introduction to Conclusion, section headings included). Verified with `_wordcount.py`. **Tables:** 4 (Table 4 in two panels) plus 3 supplementary. **Figures:** 2.
+**Word count:** Summary 293 words; main text 3 989 words (Introduction to Conclusion, section headings included). Verified with `_wordcount.py`. **Tables:** 4 (Table 4 in two panels) plus 3 supplementary. **Figures:** 2.
 
 > **Formatting note (not for submission).** This file is written to the *Anaesthesia* Guidance for Authors: UK spelling, structured Summary of 250–300 words without abbreviations or references, main text 3000–4000 words, Vancouver references with DOIs, ≤20-word title that states no conclusion, running head ≤60 characters, 3–5 keywords. Tables and figure legends are placed after the References in this same file; the figures themselves are supplied as separate files (`I_fig1_rorr_forest.tif/.pdf/.png`, `I_fig2_year_trend.tif/.pdf/.png`). Number-to-source traceability is in §9.
 
@@ -176,7 +176,7 @@ This creates a category mismatch. Opioid-induced hyperalgesia is a syndrome defi
 
 ### 4.5 Strengths
 
-The head-to-head design with prespecified negative controls is the principal strength: comparing remifentanil against three opioids used in the same clinical space, with one outcome dictionary and one pipeline, removes much of the between-study variability that makes the existing literature hard to synthesise, and the controls make an uninterpretable null diagnostic.
+The head-to-head design with prespecified negative controls is the principal strength. Comparing remifentanil against three opioids used in the same clinical space, with one outcome dictionary and one pipeline, removes much of the between-study variability that makes the existing literature hard to synthesise. The controls turn an otherwise uninterpretable null into something diagnostic.
 
 ### 4.6 Limitations
 
@@ -202,7 +202,7 @@ For pharmacovigilance, the implication is methodological. Syndrome-level phenome
 
 ## 5. Conclusion
 
-Across two independent national pharmacovigilance databases, remifentanil showed no disproportionate reporting of hyperalgesia relative to fentanyl, sufentanil or morphine. Five of seven prespecified hyperalgesia terms were absent from both corpora entirely, and the only analysable hyperalgesia-adjacent term favoured the comparators. Remifentanil's apparently low reporting of pain reflects the composition of its reports, which are overwhelmingly serious, perioperative and clinician-generated, rather than any protective effect, as shown by parallel under-reporting of four non-paradoxical opioid side effects and by a specificity probe that reversed direction. These findings do not establish that hyperalgesia after remifentanil does not occur; they establish that spontaneous reporting is structurally unable to detect it, and that the reporting data do not corroborate the impression of a large, routinely recognised burden.
+Across two independent national pharmacovigilance databases, remifentanil showed no disproportionate reporting of hyperalgesia relative to fentanyl, sufentanil or morphine. Five of seven prespecified hyperalgesia terms were absent from both corpora entirely, and the only analysable hyperalgesia-adjacent term favoured the comparators. Remifentanil's apparently low reporting of pain reflects the composition of its reports, which are overwhelmingly serious, perioperative and clinician-generated, rather than any protective effect. This is shown by the parallel under-reporting of four non-paradoxical opioid side effects, and by a specificity probe that reversed direction. These findings do not establish that hyperalgesia after remifentanil does not occur; they establish that spontaneous reporting is structurally unable to detect it, and that the reporting data do not corroborate the impression of a large, routinely recognised burden.
 
 ---
 
@@ -462,7 +462,7 @@ Values are the number of reports in that category, with the percentage of that d
 
 **Closed.**
 
-1. **Repository live.** Created and pushed public: <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada>, with tag `v1.0.0` and the result bundle attached to the release. The Data availability statement in `## Acknowledgements` points at it, and the repository contains only derived results, scripts and provenance — no raw source data and no credentials.
+1. **Repository live.** Created and pushed public: <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada>, with tag `v1.0.0` and the result bundle attached to the release. The Data availability statement in `## Acknowledgements` points at it, and the repository contains only derived results, scripts and provenance; no raw source data and no credentials.
 2. **Table S1 is now tabulated.** Panel A (Canada Vigilance, report-level, authoritative) and panel B (FAERS, event-level, exploratory) are generated from `cv/cv_soc_27.csv` and `03_soc_27.csv` by `_gen_table_s1.py`, and re-derived cell by cell by `_check_consistency.py`.
 3. **READUS-PV checklist.** `I_TableS2_READUS-PV_checklist.md`, complete, supplied as a separate file with the submission.
 4. **Cover letter** addressed to Professor Matt Wiles, Editor-in-Chief, whose name and affiliation are taken from the journal's published editorial board; it confirms the AI disclosure, the data availability statement and the originality statements.
