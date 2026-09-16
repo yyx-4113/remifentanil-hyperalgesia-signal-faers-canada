@@ -19,18 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
--------------------------------------------------------------------------------
-
-NOTE ON SOURCE DATA
-
-The MIT License above applies to the analysis code and the derived data files
-authored for this project. It does not apply to the underlying source data:
-
-  * FAERS / openFDA data are produced by the US Food and Drug Administration and,
-    as US Government works, are in the public domain. See
-    https://open.fda.gov/license/ and https://www.fda.gov/about-fda/about-website/website-policies
-
-  * The Canada Vigilance Adverse Reaction Online Database line-listing extract is
-    published by Health Canada under the Open Government Licence - Canada. See
-    https://open.canada.ca/en/open-government-licence-canada

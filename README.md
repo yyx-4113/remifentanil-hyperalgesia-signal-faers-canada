@@ -230,10 +230,15 @@ See `CITATION.cff`. If you use this code or these derived data, please cite the 
 
 ## 7. License
 
-Code and derived data in this repository are released under the MIT License (`LICENSE`).
-The source data remain subject to their own licences: openFDA / FAERS data are US Government
-works in the public domain; the Canada Vigilance extract is published by Health Canada under
-the Open Government Licence – Canada.
+Code and derived data in this repository are released under the MIT License (`LICENSE`, kept
+as the unmodified MIT text so that GitHub recognises it). **That licence does not extend to the
+underlying source data:**
+
+- FAERS / openFDA data are produced by the US Food and Drug Administration and, as US
+  Government works, are in the public domain — <https://open.fda.gov/license/>.
+- The Canada Vigilance Adverse Reaction Online Database line-listing extract is published by
+  Health Canada under the Open Government Licence – Canada —
+  <https://open.canada.ca/en/open-government-licence-canada>.
 
 ## 8. Author
 
