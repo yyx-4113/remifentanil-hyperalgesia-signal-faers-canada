@@ -469,7 +469,7 @@ Values are the number of reports in that category, with the percentage of that d
 
 **Still on the author.**
 
-1. **X (Twitter) handle.** The author has no X account, so this field is left blank on the submission form. Nothing is outstanding.
+1. **X (Twitter) handle.** The author has no X account, so this field is left blank. This is explicitly permitted: Wiley's forauthors page states X handles are provided "where available" and "It is not a requirement to set up a X/X account if you do not already have one". Nothing is outstanding.
 2. **Reviewer suggestions.** None are proposed: inventing names, affiliations or e-mail addresses would be worse than leaving the field empty.
-3. **Author Guidelines check.** Line numbers and double spacing are applied because reviewers expect them. If the current Guidance for Authors says otherwise, they can be removed in Word without changing the content.
-4. **Confirm the Data availability URL resolves** immediately before submitting.
+3. **Author Guidelines compliance audit (2026-09-16).** Matched the journal's forauthors requirements: manuscript in .docx; all Tables 1–4B with captions, both figure legends and the Supporting Information captions (S1–S3) placed in the main text file; figures supplied as separate .tif/.pdf (542 KB / 459 KB, well under 10 MB) and not embedded in the document (verified: Manuscript.docx contains zero embedded media); Times New Roman 12 pt, double spaced, continuous line and page numbers. PASS.
+4. **Confirm the Data availability URL resolves.** Verified via API that the repository is public, MIT-licensed and carries the v1.0.0 release asset (results-bundle.zip); the polished manuscript is pushed to main (a49b7eb). The github.com page itself cannot be opened from this environment (egress block), so a final browser click by the author immediately before submitting remains the last manual check.
