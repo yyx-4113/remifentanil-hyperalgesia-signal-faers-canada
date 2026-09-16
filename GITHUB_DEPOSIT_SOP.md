@@ -128,7 +128,7 @@ gh release view v1.0.0
 |---|---|
 | 修改脚本或结果 | 重新提交 → 打新 tag（`v1.0.1`…）→ 自动出新版 Release |
 | 数据源更新（如 Canada Vigilance 新版提取包） | 必须重跑 `cv/cv_process.py`，更新 README §1 覆盖期，**同步修正稿件中的覆盖期数字**，再重跑门禁 |
-| 稿件被接收 | 在 `CITATION.cff` 的 `references` 段填入 DOI/卷期页；随后打 tag `v1.1.0`（论文版） |
+| 稿件被接收 | 在 `CITATION.cff` 的 `references` 段填入 DOI/卷期页；随后打 tag `v1.2.0`（论文版，第二轮审稿修订） |
 | 需要长期归档 | 在 Release 页面用 **Zenodo 集成**获取 DOI，并把 DOI 写入稿件 Data availability |
 
 ---
