@@ -10,7 +10,7 @@
 
 **Keywords:** remifentanil; opioid-induced hyperalgesia; pharmacovigilance; disproportionality analysis; spontaneous reporting
 
-**Word count:** Summary 293 words; main text 3 984 words (Introduction to Conclusion, section headings included). Verified with `_wordcount.py`. **Tables:** 4 (plus 3 supplementary). **Figures:** 2.
+**Word count:** Summary 293 words; main text 3 983 words (Introduction to Conclusion, section headings included). Verified with `_wordcount.py`. **Tables:** 4 (Table 4 in two panels) plus 3 supplementary. **Figures:** 2.
 
 > **Formatting note (not for submission).** This file is written to the *Anaesthesia* Guidance for Authors: UK spelling, structured Summary of 250–300 words without abbreviations or references, main text 3000–4000 words, Vancouver references with DOIs, ≤20-word title that states no conclusion, running head ≤60 characters, 3–5 keywords. Tables and figure legends are placed after the References in this same file; the figures themselves are supplied as separate files (`I_fig1_rorr_forest.tif/.pdf/.png`, `I_fig2_year_trend.tif/.pdf/.png`). Number-to-source traceability is in §9.
 
@@ -152,7 +152,7 @@ The pipeline therefore detects signals when a signal is present, so its failure 
 
 ### 4.1 Principal findings
 
-In two independent national pharmacovigilance databases, remifentanil showed no disproportionate reporting of hyperalgesia relative to other intraoperative opioids. Five of seven prespecified hyperalgesia terms were absent from both corpora. The single analysable hyperalgesia-adjacent term, ALLODYNIA, pointed the other way: fentanyl and morphine, not remifentanil, showed strong signals. Every computable head-to-head comparison for PAIN and for all four negative controls fell below 1, so remifentanil under-reports broadly rather than selectively, and the direction was stable across serious-report restriction and ten calendar years. A prespecified specificity probe reversed direction in the confirmation database, ruling out a uniform global artefact.
+In two independent national pharmacovigilance databases, remifentanil showed no disproportionate reporting of hyperalgesia relative to other intraoperative opioids. Five of seven prespecified hyperalgesia terms were absent from both corpora. The single analysable hyperalgesia-adjacent term, ALLODYNIA, pointed the other way: fentanyl and morphine, not remifentanil, showed strong signals. Every computable head-to-head comparison for PAIN and for all four negative controls fell below 1, so remifentanil under-reports broadly rather than selectively, and the direction was stable across serious-report restriction and ten calendar years. A prespecified specificity probe reversed direction in the confirmation database, arguing against a uniform global artefact.
 
 ### 4.2 Relation to the existing evidence base
 
@@ -162,7 +162,7 @@ Our findings do not contradict the experimental literature; they address a diffe
 
 ### 4.3 Why remifentanil under-reports, and why that is not protection
 
-The most important caution is that remifentanil under-reported not only pain and hyperalgesia terms but also the four negative controls. An interpretation of analgesic superiority is therefore unavailable: if PAIN under-reporting meant better analgesia, the simultaneous under-reporting of pruritus and constipation would require remifentanil to be superior on side effects as well, for which no pharmacological account exists.
+The most important caution is that remifentanil under-reported the four negative controls as well as pain and hyperalgesia terms. An interpretation of analgesic superiority is therefore unavailable: if PAIN under-reporting meant better analgesia, the simultaneous under-reporting of pruritus and constipation would require remifentanil to be superior on side effects as well, for which no pharmacological account exists.
 
 Cohort composition explains the pattern more parsimoniously. Remifentanil's reports are generated almost entirely in monitored perioperative care: 91.9% serious in Canada and 98.0% of FAERS reports serious in the sensitivity subset, predominantly from health professionals and rarely from consumers. For opioids in the FDA database, the reporter's professional identity is itself a strong determinant of which reactions are recorded [20]. Fentanyl's FAERS cohort is dominated by transdermal and outpatient use, morphine's by chronic pain and consumer reporting. These settings do not sample the same clinical events, and the comparator opioids are prescribed where pain reporting is enriched by indication, so their PAIN proportions rise for reasons unrelated to pharmacology. This is indication confounding of the classical kind, creating an apparent advantage for remifentanil.
 
@@ -395,9 +395,9 @@ Values are the number of reports in that category, with the percentage of that d
 
 ## 10. Outstanding items before submission
 
-*(Internal working section — not part of the submitted manuscript.)*
+*(Internal working section, not part of the submitted manuscript.)*
 
 1. **Repository URL** must be confirmed live after the GitHub deposit (see `GITHUB_DEPOSIT_SOP.md`); the URL above is the fixed target. The local repository is committed and clean (70 tracked files, no source data and no credentials); only the remote push requires the author's GitHub authentication.
-2. **Tables S2 (READUS-PV checklist) — done.** The completed checklist is `I_TableS2_READUS-PV_checklist.md`, to be uploaded as Supporting Information.
+2. **Tables S2 (READUS-PV checklist), done.** The completed checklist is `I_TableS2_READUS-PV_checklist.md`, to be uploaded as Supporting Information.
 3. **X (Twitter) handle** for the author, if available (the Journal requests one but does not require an account to exist).
 4. **Cover letter** to confirm the AI disclosure and the data availability statement, and to state that the work is not under consideration elsewhere.
