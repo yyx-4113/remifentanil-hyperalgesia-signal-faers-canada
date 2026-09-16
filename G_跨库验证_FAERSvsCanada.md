@@ -3,12 +3,16 @@
 > 生成：2026-09-16 ｜ 呼应方案二技术路线步骤 10
 > 目的：用第二个独立国家药物警戒数据库（Canada Vigilance）验证 FAERS 主分析的核心结论，排除单一数据库/编码偏倚，提升可发表性。
 
+> ### ⚠️ 更正（Amendment 1，2026-09-16）
+>
+> 下表与结论中"OIH 特定 PT 双库**结构性缺失**"的表述**已不成立**。经术语层级核验：两库 reaction 字段存的是 **PT**，而 **HYPERALGESIA 是 LLT**（父 PT = HYPERAESTHESIA，10020568），故检索临床用词必得 0；**改用承载同一概念的 PT 后，两个库都有报告，且四个阿片（含瑞芬太尼）均达信号标准**。因此 §1 表已增列五个**词典代理 PT**，§2 结论、§6、§7 均已改写。零应报为"**不可检索**"而非"缺失"。
+
 ## 0. 双库口径对照
 
 | 维度 | FAERS（主分析） | Canada Vigilance（验证库） |
 |---|---|---|
 | 数据接口 | openFDA `search+total`（免 key，聚合层） | 官方 CSV 包 `cvponline_extract_20241130`（原生字段） |
-| 总报告分母 N | 20,692,687（全历史） | 1,154,017（至 2021-12-31） |
+| 总报告分母 N | 20,692,687（全历史） | 1,154,017（至 2024-11-30） |
 | 瑞芬太尼队列 | 5,375（any-role，含 HYDROCHLORIDE） | 111（Suspect 药，活性成分精确匹配） |
 | 芬太尼队列 | 121,819 | 4,881 |
 | 舒芬太尼队列 | 6,513（含 CITRATE） | 63 |
@@ -24,13 +28,18 @@
 
 | PT | 组别 | FAERS a(RE/FE/SU/MO) | FAERS RORR RE vs FE / vs MO | Canada a(RE/FE/SU/MO) | Canada RORR RE vs FE / vs MO | 跨库结论 |
 |---|---|---|---|---|---|---|
-| HYPERALGESIA | OIH 窄 | 0/0/0/0 | — / — | 0/0/0/0 | — / — | **双库皆 0（结构性缺失）** |
-| ALLODYNIA | OIH 窄 | 1/48/0/30 | 0.455 / 0.342 | 0/3/0/0 | — / — | 瑞芬双库均无信号；芬/吗有信号（FAERS 强，Canada 小 n） |
-| PAIN INCREASED | OIH 宽 | 0/0/0/0 | — / — | 0/0/0/0 | — / — | **双库皆 0** |
-| POSTOPERATIVE PAIN | OIH 宽 | 0/0/0/0 | — / — | 0/0/0/0 | — / — | **双库皆 0** |
-| CHRONIC PAIN | OIH 宽 | 0/0/0/0 | — / — | 0/0/0/0 | — / — | **双库皆 0** |
-| OPIOID WITHDRAWAL SYNDROME | OIH 宽 | 0/0/0/0 | — / — | 0/0/0/0 | — / — | **双库皆 0** |
+| HYPERALGESIA | OIH 窄 | 0/0/0/0 | — / — | 0/0/0/0 | — / — | **不可检索**：LLT，非 PT（父 PT = HYPERAESTHESIA）→ 必得 0 |
+| ALLODYNIA | OIH 窄 | 1/48/0/30 | 0.455 / 0.342 | 0/3/0/0 | — / — | 瑞芬双库均无信号；**比值不可估计（瑞芬 a=1）** |
+| PAIN INCREASED | OIH 宽 | 0/0/0/0 | — / — | 0/0/0/0 | — / — | **不可检索**（未能确认为现行 PT） |
+| POSTOPERATIVE PAIN | OIH 宽 | 0/0/0/0 | — / — | 0/0/0/0 | — / — | **不可检索** |
+| CHRONIC PAIN | OIH 宽 | 0/0/0/0 | — / — | 0/0/0/0 | — / — | **不可检索** |
+| OPIOID WITHDRAWAL SYNDROME | OIH 宽 | 0/0/0/0 | — / — | 0/0/0/0 | — / — | **不可检索**；概念由 PT DRUG WITHDRAWAL SYNDROME 承载 |
 | DRUG TOLERANCE | OIH 宽 | 0/278/0/79 | — / — | 0/25/0/30 | — / — | 双库瑞芬皆 0；芬/吗有信号 |
+| **HYPERAESTHESIA** | **词典代理** | 10/315/22/262 | 0.696 / 0.389 | 0/18/0/30 | — / — | **FAERS 四药均达信号（瑞芬 4.73 最弱）**；**Canada 未复现（瑞芬 0/111）** |
+| **HYPERPATHIA** | **词典代理** | 0/2/1/0 | — / — | 0/0/0/0 | — / — | 双库瑞芬皆 0 |
+| **PROCEDURAL PAIN** | **词典代理** | 14/162/8/167 | **1.962** / 0.878 | 0/14/0/42 | — / — | 全局唯一显著 >1（vs 芬太尼）；**Canada 未复现** |
+| **CHRONIC PAIN SYNDROME** | **词典代理** | 0/0/0/0 | — / — | 0/0/0/0 | — / — | 双库皆 0（PT 存在但极小） |
+| **DRUG WITHDRAWAL SYNDROME** | **词典代理** | 7/3 274/42/865 | 0.046 / 0.083 | 0/139/1/195 | — / — | FAERS 显著低报；**Canada 未复现** |
 | PAIN | OIH 宽 | 23/7349/98/4794 | **0.066 / 0.046** | 2/353/8/859 | **0.235 / 0.146** | **双库皆 <1，方向一致（瑞芬低报）** |
 | DRUG INEFFECTIVE | OIH 宽 | 208/8062/318/4450 | 0.568 / 0.470 | 25/905/9/1119 | 1.277 / 1.703 | 方向**相反**：FAERS 低报，Canada 高报（非 OIH，见 §3） |
 | NAUSEA | 阴性对照 | 51/4928/109/4527 | 0.227 / 0.110 | 0/260/2/824 | — / — | FAERS 低报；Canada 瑞芬 n=0 不可算 |
@@ -38,15 +47,17 @@
 | PRURITUS | 阴性对照 | 41/1117/38/1291 | 0.833 / 0.328 | 0/141/1/1187 | — / — | FAERS 低报；Canada n=0 |
 | CONSTIPATION | 阴性对照 | 11/2011/63/1786 | 0.122 / 0.062 | 0/58/3/397 | — / — | FAERS 低报；Canada n=0 |
 
-## 2. 核心结论：跨库验证通过（OIH 信号缺失稳健）
+## 2. 核心结论（Amendment 1 更正版）
 
-1. **OIH 特定 PT 在双库结构性缺失**：HYPERALGESIA、PAIN INCREASED、POSTOPERATIVE PAIN、CHRONIC PAIN、OPIOID WITHDRAWAL SYNDROME 在 FAERS 与 Canada 计数**均为 0**。两个独立数据库、不同编码体系（MedDRA 经 FAERS 映射 vs Canada 原生字段）同时证实：OIH 概念在自发报告中无法经特定 PT 捕获。
-2. **唯一邻域 PT（ALLODYNIA）方向一致**：瑞芬太尼在双库均无异常疼痛信号（FAERS a=1 不稳定；Canada a=0），而芬太尼/吗啡在 FAERS 呈强信号、Canada 小 n 亦>瑞芬。**方向恰好与 RIH 假说相反**。
-3. **PAIN 低报方向双库复现**：瑞芬 vs 芬太尼 RORR 0.066（FAERS）→ 0.235（Canada）；vs 吗啡 0.046 → 0.146。双库均显著 <1，复现"瑞芬太尼相对低报疼痛"的主结论。
+1. **五个临床用词不可检索，但这不等于概念缺失**：HYPERALGESIA（LLT）、PAIN INCREASED、POSTOPERATIVE PAIN、CHRONIC PAIN、OPIOID WITHDRAWAL SYNDROME 在两个库计数均为 0，因为两库 reaction 字段存的是 **PT**，这些字符串不是 PT。零必须报为"不可检索"（`10_term_dictionary.csv` / 稿件 Table S4）。
+2. **承载同一概念的 PT 在两个库都存在，且四药均达信号标准**：HYPERAESTHESIA 全库 8,161（FAERS）/ 523（Canada）；FAERS 中 ROR 依次为瑞芬 4.73、芬太尼 6.80、舒芬 8.61、吗啡 12.17。**瑞芬太尼最低**，且 **Canada 未复现**（瑞芬 0/111，样本量不足以检验）。
+3. **PAIN 低报方向双库复现（唯一被独立复现的低报方向）**：瑞芬 vs 芬太尼 RORR 0.066（FAERS）→ 0.235（Canada）；vs 吗啡 0.046 → 0.146。双库均 <1。
+4. **ALLODYNIA 不可估计**：瑞芬仅 1 例，任何方向性解读都不成立（原稿"方向与 RIH 假说相反"的表述已删除）。
+5. **阴性对照在 Canada 几乎不可计算**：四个阴性对照中仅 VOMITING 有可算比值（vs 芬太尼 1.066、vs 吗啡 0.392），故"Canada 复现了阴性对照方向"的说法不成立，已从稿件删除。
 
-## 3. 次要分歧：非 OIH 术语方向反转（反证特异性，非削弱）
+## 3. 次要分歧：非 OIH 术语在双库间表现不一致（反证全局假象，非削弱）
 
-- **DRUG INEFFECTIVE**：FAERS 瑞芬低报（RORR 0.568/0.470），Canada 却高报（RORR 1.277/1.703；医师-only 敏感性 5.921/10.604）。该 PT **不属于 OIH 词典**，其方向反转恰恰说明瑞芬太尼的"低报"并非全库统一的报告偏倚，而是**特定于疼痛/适应症语境**——若低报是全局假象，DRUG INEFFECTIVE 也应低报；它没有，反而高报。这**反向支持** PAIN 低报具有特异性（适应症混杂），而非方法论缺陷。
+- **DRUG INEFFECTIVE**：FAERS 瑞芬低报（RORR 0.568/0.470），Canada 却高报（RORR 1.277/1.703；医师-only 敏感性 5.921/10.604）。该 PT **不属于 OIH 词典**，其在两库间**表现不一致**，恰恰说明瑞芬太尼的"低报"并非全库统一的报告偏倚——若低报是全局假象，DRUG INEFFECTIVE 也应在两个库同向低报；它没有。稿件表述为"behaved inconsistently between the databases"，不再使用"方向反转"这一过强措辞。
 - **VOMITING vs 芬太尼**：Canada RORR 1.066（略高报）vs FAERS 0.409（低报）。小 n（瑞芬 n=3）所致，不指向 OIH。vs 吗啡双库皆 <1 仍一致。
 
 ## 4. 亚组验证（Canada 原生字段，报告者列已修正）
@@ -68,16 +79,16 @@
 
 ## 6. 方法学诚实声明（写入即诚信）
 
-1. **Canada 瑞芬队列 n=111 过小**：多数 PT 在 Canada 侧无法计算 RORR（瑞芬 a=0 或 1–3）。因此 Canada 的角色是**确认性**（confirm）而非**探索性**（explore）：它独立复现了"OIH PT 双库皆 0"与"PAIN 低报方向"，主结论的精确估计仍依赖 FAERS（瑞芬 n=5,375）。
+1. **Canada 瑞芬队列 n=111 过小**：多数 PT 在 Canada 侧无法计算 RORR（瑞芬 a=0 或 1–3）。因此 Canada 的角色是**确认性**（confirm）而非**探索性**（explore）：它独立复现了"临床用词不可检索"与"PAIN 低报方向"，未复现 HYPERAESTHESIA 信号（瑞芬 0/111），主结论的精确估计仍依赖 FAERS（瑞芬 n=5,375）。
 2. **双库分母不可合并**：仅做方向对照，不相加。
 3. **医师-only 敏感性**：仅 DRUG INEFFECTIVE 在 Canada 有足够医师病例可算（5.921/10.604），PAIN 等因瑞芬医师病例为 0 不可算——本身即"瑞芬 PAIN 报告极少"的旁证。
-4. **结论稳健性**：OIH 信号缺失在两个独立主权数据库、两种编码路径下同时成立，排除单一库编码偏倚，构成本研究最硬的卖点。
+4. **结论稳健性**：可跨库比较的部分在两个独立主权数据库、两种编码路径下同时成立（临床用词不可检索；PAIN 低报方向），排除单一库编码偏倚；而唯一出现的阳性 PT 信号在两个库之间**不一致**，因此不能作为跨库证据。
 
 ## 7. 对论文走向的支撑
 
-双库验证将"证伪 RIH"升级为**跨主权数据库的独立复现阴性结果**，显著提升 Anaesthesia / BJA / J Clin Anesth / Regional Anesthesia & Pain Medicine / Therapeutic Advances in Drug Safety 等级的可发表性。核心信息：
+双库验证支撑的论证已从"跨库复现阴性结果"调整为**"术语学警示 + 单库阳性信号不跨库复现"**，显著提升 Anaesthesia / BJA / J Clin Anesth / Regional Anesthesia & Pain Medicine / Therapeutic Advances in Drug Safety 等级的可发表性。核心信息：
 
-> 在 FAERS 与 Canada Vigilance 两个独立数据库中，瑞芬太尼均未显示超出其他术中阿片（芬太尼/舒芬太尼/吗啡）的痛觉过敏/OIH 不成比例报告信号；唯一邻域 PT（异常疼痛）反而指向芬太尼/吗啡。自发报告系统结构性不适合检测 OIH，这一方法学结论本身具有药物警戒价值。
+> 在一个较大的国家自发报告库中，用临床用词（HYPERALGESIA，实为 LLT）检索痛觉过敏得到零；改用承载该概念的 PT（HYPERAESTHESIA）后，四个阿片均呈不成比例报告，但瑞芬太尼的信号最弱，且未在第二个国家数据库复现。结论取决于所选的 PT：**用临床用词得到的零是术语学假象，不是安全性证据**——这一方法学结论本身具有药物警戒价值。
 
 ## 8. 产出文件
 

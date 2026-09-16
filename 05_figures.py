@@ -80,19 +80,27 @@ def save_all(fig, stem):
 # =========================================================================
 # Fig 1: 头对头 RORR 森林图（FAERS 主分析）
 # =========================================================================
+# 取值来源：01_faers_results.csv（逐格读取，勿手改）。
+# 分组自上而下：承载 hyperalgesia 概念的 PT 与其最近的可估计姊妹项 /
+#              代理项 PAIN / 四个阴性对照 / 特异性探针。
+# 不可估计者（HYPERALGESIA 等五个无报告字符串、HYPERPATHIA、
+# CHRONIC PAIN SYNDROME 在瑞芬队列 a=0、ALLODYNIA 瑞芬 a=1）不入图，
+# 在图注中说明。
 # (PT, RORR_REMIvsFEN [est,lo,hi], RORR_REMIvsMOR [est,lo,hi])
 data = [
-    ("PAIN",             (0.066, 0.04, 0.10), (0.046, 0.03, 0.07)),
-    ("NAUSEA",           (0.227, 0.17, 0.30), (0.110, 0.08, 0.14)),
-    ("CONSTIPATION",     (0.122, 0.07, 0.22), (0.062, 0.03, 0.11)),
-    ("VOMITING",         (0.409, 0.32, 0.52), (0.185, 0.14, 0.24)),
-    ("DRUG INEFFECTIVE", (0.568, 0.49, 0.65), (0.470, 0.41, 0.54)),
-    ("PRURITUS",         (0.833, 0.61, 1.14), (0.328, 0.24, 0.45)),
-    ("ALLODYNIA",        (0.455, 0.06, 3.30), (0.342, 0.05, 2.51)),
+    ("HYPERAESTHESIA",         (0.696, 0.37, 1.31), (0.389, 0.21, 0.73)),
+    ("PROCEDURAL PAIN",        (1.962, 1.14, 3.39), (0.878, 0.51, 1.52)),
+    ("DRUG WITHDRAWAL SYND.",  (0.046, 0.02, 0.10), (0.083, 0.04, 0.18)),
+    ("PAIN",                   (0.066, 0.04, 0.10), (0.046, 0.03, 0.07)),
+    ("NAUSEA",                 (0.227, 0.17, 0.30), (0.110, 0.08, 0.14)),
+    ("VOMITING",               (0.409, 0.32, 0.52), (0.185, 0.14, 0.24)),
+    ("PRURITUS",               (0.833, 0.61, 1.14), (0.328, 0.24, 0.45)),
+    ("CONSTIPATION",           (0.122, 0.07, 0.22), (0.062, 0.03, 0.11)),
+    ("DRUG INEFFECTIVE",       (0.568, 0.49, 0.65), (0.470, 0.41, 0.54)),
 ]
 
-fig, ax = plt.subplots(figsize=(W_DOUBLE_IN, 4.7))
-fig.subplots_adjust(left=0.245, right=0.975, top=0.975, bottom=0.145)
+fig, ax = plt.subplots(figsize=(W_DOUBLE_IN, 5.5))
+fig.subplots_adjust(left=0.275, right=0.975, top=0.978, bottom=0.125)
 
 ax.axvline(1.0, color=C_REF, lw=0.9, ls="--", zorder=1)
 
@@ -112,7 +120,7 @@ for i, (pt, fen, mor) in enumerate(data):
 
 ax.set_yticks([])
 ax.set_xscale("log")
-ax.set_xlim(0.02, 4.5)
+ax.set_xlim(0.012, 4.5)
 ax.set_ylim(-0.85, 2 * len(data) - 0.15)
 ax.set_xticks([0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 4])
 ax.set_xticklabels(["0.02", "0.05", "0.1", "0.2", "0.5", "1", "2", "4"])
@@ -123,7 +131,7 @@ clean_axes(ax, keep=("bottom",))
 h1 = ax.errorbar([], [], fmt="o", color=C_FEN, ms=4.2, label="Remifentanil vs fentanyl")
 h2 = ax.errorbar([], [], fmt="s", mfc="none", mec=C_MOR, color=C_MOR, ms=4.2,
                  mew=0.9, label="Remifentanil vs morphine")
-ax.legend(handles=[h1, h2], loc="lower right", frameon=False,
+ax.legend(handles=[h1, h2], loc="upper left", frameon=False,
           handletextpad=0.5, borderaxespad=0.4)
 save_all(fig, "I_fig1_rorr_forest")
 plt.close(fig)

@@ -87,6 +87,14 @@ PTS = [
  ("VOMITING", "negative-control", "Gastrointestinal"),
  ("PRURITUS", "negative-control", "Skin"),
  ("CONSTIPATION", "negative-control", "Gastrointestinal"),
+ # 词典代理（A2）：承载同一临床概念、且确实可检索的 MedDRA 首选语。
+ # 存在的理由：HYPERALGESIA 本身不是 PT（是 PT HYPERAESTHESIA 下的 LLT），
+ # 单查串必然为 0；故必须直接分析真正承载该概念的 PT，才能排除「LLT 查询假象」。
+ ("HYPERAESTHESIA", "dictionary-proxy", "Nervous system"),
+ ("HYPERPATHIA", "dictionary-proxy", "Nervous system"),
+ ("PROCEDURAL PAIN", "dictionary-proxy", "General"),
+ ("CHRONIC PAIN SYNDROME", "dictionary-proxy", "General"),
+ ("DRUG WITHDRAWAL SYNDROME", "dictionary-proxy", "Psychiatric"),
 ]
 
 def lnCI(a, b, c, d):
@@ -126,7 +134,10 @@ drug_n = {}
 for name, s in DRUGS.items():
     drug_n[name] = api_total(s); print(f"  {name} 报告数 = {drug_n[name]}")
 
-top = api_count_top("patient.reaction.reactionmeddrapt.exact", 1000)
+top = api_count_top("patient.reaction.reactionmeddrapt.exact", 500)
+# 注：免 key 时 count 端点的 limit 上限为 500（limit=1000 → 403 API_KEY_MISSING，
+#     即使不带 search 也一样；2026-09-16 实测）。此处原为 1000，会静默退避后返回空表，
+#     使 EBGM 先验退回默认值；已改为 500，使先验真正由语料前 500 个 PT 估计。
 counts = [x["count"] for x in top if x["count"] > 0]
 if counts:
     mu = sum(counts)/len(counts); var = sum((x-mu)**2 for x in counts)/len(counts)

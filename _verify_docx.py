@@ -131,27 +131,40 @@ def main() -> int:
         "matplotlib 3.11.1",
         "Table S1",
         "Table S3",
+        "Table S4",
+        "with controls defined a priori",
     ]:
         chk(f"Manuscript 含「{needle[:46]}」", needle in ms_text)
+    chk("Manuscript 不含 prespecified",
+        re.findall(r"\bpre-?specified\b", ms_text), [])
     chk("Supporting 指向 Table S2 文件名", "I_TableS2_READUS-PV_checklist.md" in si_text)
     chk("Checklist 含条目 14d", "14d" in ck_text)
     chk("Checklist 含条目 2d", "2d" in ck_text)
     for needle in ["System organ class", "RORR vs fentanyl", "RORR vs morphine",
                    "Panel A. Canada Vigilance", "Panel B. FAERS"]:
         chk(f"Supporting 含表 S1 结构「{needle}」", needle in si_text)
+    for needle in ["HYPERALGESIA", "HYPERAESTHESIA", "HYPERPATHIA", "PROCEDURAL PAIN",
+                   "CHRONIC PAIN SYNDROME", "DRUG WITHDRAWAL SYNDROME",
+                   "Retrievable as a preferred term", "lowest level term"]:
+        chk(f"Supporting 含表 S4 结构「{needle}」", needle in si_text)
     chk("CoverLetter 含仓库 URL",
         "https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada" in cl_text)
     chk("CoverLetter 含 ORCID", "0009-0004-9698-6552" in cl_text)
+    chk("CoverLetter 抬头为主编", "Professor Matt Wiles" in cl_text)
+    chk("CoverLetter 无 prespecified", re.findall(r"\bpre-?specified\b", cl_text), [])
+    chk("CoverLetter 含 30 篇文献计数",
+        "all 30 cited references verified by identifier" in cl_text)
 
-    # 4. tables present: 5 in the manuscript (Tables 1,2,3,4A,4B); 3 in the SI
-    #    (Table S1 panel A, Table S1 panel B, Table S3); 2 in the checklist
+    # 4. tables present: 5 in the manuscript (Tables 1,2,3,4A,4B); 4 in the SI
+    #    (Table S1 panel A, Table S1 panel B, Table S3, Table S4); 2 in the checklist
     chk("Manuscript 表数 == 5", docx_table_count(ms), 5)
-    chk("Supporting 表数 == 3", docx_table_count(si), 3)
+    chk("Supporting 表数 == 4", docx_table_count(si), 4)
     chk("Checklist 表数 == 2", docx_table_count(ck), 2)
 
-    # 4b. the two Table S1 panels must arrive whole: 28 rows x 8 columns each
+    # 4b. the two Table S1 panels must arrive whole: 28 rows x 8 columns each;
+    #     Table S3 is 14 x 5 and Table S4 is 19 x 7 (header + 18 terms)
     shapes = docx_table_shapes(si)
-    chk("Supporting 表尺寸集合", shapes, [(28, 8), (28, 8), (14, 5)])
+    chk("Supporting 表尺寸集合", shapes, [(28, 8), (28, 8), (14, 5), (19, 7)])
 
     # 5. no placeholders in the submitted files
     for label, t in [("Manuscript", ms_text), ("Supporting", si_text),

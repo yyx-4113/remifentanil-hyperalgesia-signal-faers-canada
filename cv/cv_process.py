@@ -50,6 +50,10 @@ PTS = {
  "POSTOPERATIVE PAIN":"OIH_broad", "CHRONIC PAIN":"OIH_broad",
  # 阴性对照
  "NAUSEA":"negctrl", "VOMITING":"negctrl", "PRURITUS":"negctrl", "CONSTIPATION":"negctrl",
+ # 词典代理：承载同一临床概念、且确实可检索的 MedDRA 首选语（见 10_term_dictionary.py）
+ "HYPERAESTHESIA":"dictionary_proxy", "HYPERPATHIA":"dictionary_proxy",
+ "PROCEDURAL PAIN":"dictionary_proxy", "CHRONIC PAIN SYNDROME":"dictionary_proxy",
+ "DRUG WITHDRAWAL SYNDROME":"dictionary_proxy",
 }
 PT_KEYS = list(PTS.keys())
 

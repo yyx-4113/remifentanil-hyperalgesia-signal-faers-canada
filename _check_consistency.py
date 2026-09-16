@@ -438,6 +438,213 @@ if os.path.exists(P(MS)):
             fp = P(f"{stem}.{ext}")
             chk(f"图件存在 {stem}.{ext}", os.path.exists(fp), True)
         chk(f"图件无遗留 svg {stem}", os.path.exists(P(f"{stem}.svg")), False)
+
+    # =====================================================================
+    # (8) 术语层级核验（A2）：Table S4 ↔ 10_term_dictionary.csv 逐格一致
+    # 方法学核心：两个库的 reaction 字段存的是 preferred term，
+    # 因此「字符串计数为 0」只有在确认该串可作 PT 检索之后才有意义。
+    # =====================================================================
+    TD_EXP = {
+        # Term: (FAERS 全库, FAERS 邻接短语, Canada 反应行, 可作 PT 检索)
+        "HYPERALGESIA":               (0, 0, 0, "no"),
+        "ALLODYNIA":                  (1110, 1110, 29, "yes"),
+        "PAIN":                       (607176, 2213093, 49260, "yes"),
+        "PAIN INCREASED":             (0, 0, 0, "no"),
+        "POSTOPERATIVE PAIN":         (0, 0, 0, "no"),
+        "CHRONIC PAIN":               (0, 1, 0, "no"),
+        "OPIOID WITHDRAWAL SYNDROME": (0, 0, 0, "no"),
+        "DRUG TOLERANCE":             (5013, 8416, 387, "yes"),
+        "DRUG INEFFECTIVE":           (1299278, 1350940, 208365, "yes"),
+        "NAUSEA":                     (778546, 779387, 64611, "yes"),
+        "VOMITING":                   (462663, 467932, 39131, "yes"),
+        "PRURITUS":                   (372941, 526363, 46769, "yes"),
+        "CONSTIPATION":               (213536, 213678, 13579, "yes"),
+        "HYPERAESTHESIA":             (8161, 9773, 523, "yes"),
+        "HYPERPATHIA":                (43, 43, 0, "yes"),
+        "PROCEDURAL PAIN":            (27300, 27488, 1527, "yes"),
+        "CHRONIC PAIN SYNDROME":      (1, 1, 0, "yes"),
+        "DRUG WITHDRAWAL SYNDROME":   (87541, 102179, 1667, "yes"),
+    }
+    tdf = rows("10_term_dictionary.csv")
+    td = {r["Term"].strip().upper(): r for r in tdf}
+    chk("[S4] 词典核验行数 == 18", len(tdf), 18)
+    chk("[S4] 词典行名与预期一致", sorted(td), sorted(TD_EXP))
+    chk("[S4] 全部术语均在分析内", sorted({r["In_analysis"].strip().lower() for r in tdf}), ["yes"])
+    for term, (fa, adj, ca, ok) in TD_EXP.items():
+        r = td.get(term)
+        if r is None:
+            chk(f"[S4] 缺行 {term}", False, True)
+            continue
+        chk(f"[S4] {term} FAERS 全库", int(r["FAERS_reports_whole_corpus"]), fa)
+        chk(f"[S4] {term} FAERS 邻接短语", int(r["FAERS_reports_adjacent_token_phrase"]), adj)
+        chk(f"[S4] {term} Canada 反应行", int(r["Canada_reaction_rows_whole_corpus"]), ca)
+        chk(f"[S4] {term} 可作 PT 检索", r["Retrievable_as_preferred_term"].strip().lower(), ok)
+        # 自洽性：可检索 ⇔ 两个库至少一个计数 > 0
+        chk(f"[S4] {term} 可检索性与计数自洽",
+            (r["Retrievable_as_preferred_term"].strip().lower() == "yes")
+            == (int(r["FAERS_reports_whole_corpus"]) > 0
+                or int(r["Canada_reaction_rows_whole_corpus"]) > 0), True)
+    chk("[S4] 不可检索串个数 == 5",
+        sorted(t for t, v in TD_EXP.items() if v[3] == "no"),
+        ["CHRONIC PAIN", "HYPERALGESIA", "OPIOID WITHDRAWAL SYNDROME",
+         "PAIN INCREASED", "POSTOPERATIVE PAIN"])
+    chk("[S4] HYPERALGESIA 层级说明点明 LLT 与父 PT",
+        "lowest level term" in td["HYPERALGESIA"]["MedDRA_level_note"].lower()
+        and "HYPERAESTHESIA" in td["HYPERALGESIA"]["MedDRA_level_note"], True)
+
+    # Table S4 渲染后的每一个单元格必须与 CSV 一致（防止表格与产物脱钩）
+    def s4_disp(v):
+        return "\u2014" if int(v) == 0 else f"{int(v):,}".replace(",", " ")
+
+    seg = txt[txt.index("### Table S4"):txt.index("## Figure legends")]
+    s4_bad, s4_seen = [], 0
+    for line in seg.splitlines():
+        if not line.startswith("|") or re.fullmatch(r"\|[\s:|-]+\|", line.strip()):
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if cells[0].lower() == "term":
+            continue
+        r = td.get(cells[0].upper())
+        if r is None or len(cells) != 7:
+            s4_bad.append(f"未匹配行或列数不对: {cells[:1]}")
+            continue
+        s4_seen += 1
+        for j, key in enumerate(["FAERS_reports_whole_corpus",
+                                 "FAERS_reports_adjacent_token_phrase",
+                                 "Canada_reaction_rows_whole_corpus"]):
+            exp = s4_disp(r[key])
+            if cells[2 + j] != exp:
+                s4_bad.append(f"{cells[0]}/{key}: {cells[2 + j]} != {exp}")
+        if cells[5].lower() != r["Retrievable_as_preferred_term"].strip().lower():
+            s4_bad.append(f"{cells[0]}/可检索: {cells[5]}")
+    chk("[S4] 表内数据行数 == 18", s4_seen, 18)
+    chk("[S4] Table S4 逐格与词典 CSV 一致", s4_bad[:5], [])
+
+    # =====================================================================
+    # (8b) 全局不变量：可计算的 RORR 中，> 1 的必须恰好是已知的那几个
+    # 这条断言就是为了拦住「the only ratio above 1」这类全局性表述。
+    # =====================================================================
+    over = sorted((pt, k, num(v)) for pt, r in f1.items()
+                  for k, v in r.items()
+                  if k.startswith("RORR_REMI_vs_") and num(v) is not None and num(v) > 1)
+    chk("可计算 RORR > 1 的完整清单",
+        [(p, k) for p, k, _ in over],
+        [("PROCEDURAL PAIN", "RORR_REMI_vs_FENTANYL"),
+         ("PROCEDURAL PAIN", "RORR_REMI_vs_SUFENTANIL"),
+         ("PRURITUS", "RORR_REMI_vs_SUFENTANIL")])
+    # 正文只能声明「本表内」唯一 > 1，不得声明全局唯一
+    chk("[正文] 不得声明全局唯一 > 1",
+        bool(re.search(r"only value above 1 in the analysis|one head-to-head ratio above 1", txt)), False)
+    must_contain("Table 2 脚注限定在本表范围内",
+                 "Every computable head-to-head ratio in this table is below 1")
+
+    # Canada 阴性对照：仅 VOMITING 可计算，且对芬太尼 > 1 —— 不得声称加拿大复现了阴性对照
+    cvm2 = {r["PT"].strip().upper(): r for r in rows("cv/cv_pt_summary.csv")}
+    ca_ctrl = [(p, cvm2[p]["RORR_REMI_vs_FEN"], cvm2[p]["RORR_REMI_vs_MOR"])
+               for p in ["NAUSEA", "VOMITING", "PRURITUS", "CONSTIPATION"]
+               if cvm2[p]["RORR_REMI_vs_FEN"].strip() or cvm2[p]["RORR_REMI_vs_MOR"].strip()]
+    chk("Canada 阴性对照可计算条目", [p for p, _, _ in ca_ctrl], ["VOMITING"])
+    chk("Canada VOMITING RORR vs 芬", num(ca_ctrl[0][1]), 1.066, 0.001)
+    chk("Canada VOMITING RORR vs 吗", num(ca_ctrl[0][2]), 0.392, 0.001)
+    chk("[正文] 未声称加拿大复现阴性对照方向",
+        "reproduced the direction of the PAIN under-reporting and the negative controls" in txt, False)
+
+    # =====================================================================
+    # (9) A2 修正后的 PT 级真值 ↔ 正文
+    # =====================================================================
+    for pt, col, exp in [
+        ("HYPERAESTHESIA", "REMIFENTANIL_a", 10.0),
+        ("HYPERAESTHESIA", "REMIFENTANIL_ROR", 4.729),
+        ("HYPERAESTHESIA", "RORR_REMI_vs_FENTANYL", 0.696),
+        ("HYPERAESTHESIA", "RORR_REMI_vs_MORPHINE", 0.389),
+        ("HYPERAESTHESIA", "FENTANYL_a", 315.0),
+        ("HYPERAESTHESIA", "SUFENTANIL_a", 22.0),
+        ("HYPERAESTHESIA", "MORPHINE_a", 262.0),
+        ("PROCEDURAL PAIN", "REMIFENTANIL_a", 14.0),
+        ("PROCEDURAL PAIN", "REMIFENTANIL_ROR", 1.977),
+        ("PROCEDURAL PAIN", "RORR_REMI_vs_FENTANYL", 1.962),
+        ("DRUG WITHDRAWAL SYNDROME", "REMIFENTANIL_a", 7.0),
+        ("DRUG WITHDRAWAL SYNDROME", "REMIFENTANIL_ROR", 0.307),
+        ("DRUG WITHDRAWAL SYNDROME", "RORR_REMI_vs_FENTANYL", 0.046),
+        ("DRUG WITHDRAWAL SYNDROME", "RORR_REMI_vs_MORPHINE", 0.083),
+        ("HYPERPATHIA", "REMIFENTANIL_a", 0.0),
+        ("CHRONIC PAIN SYNDROME", "REMIFENTANIL_a", 0.0),
+    ]:
+        chk(f"01 文件 {pt}.{col}", num(faers_cell(pt, col)), exp, 0.001)
+    for pt, col, exp in [
+        ("HYPERAESTHESIA", "FENTANYL_reports", 18.0),
+        ("HYPERAESTHESIA", "MORPHINE_reports", 30.0),
+        ("PROCEDURAL PAIN", "FENTANYL_reports", 14.0),
+        ("PROCEDURAL PAIN", "MORPHINE_reports", 42.0),
+        ("DRUG WITHDRAWAL SYNDROME", "FENTANYL_reports", 139.0),
+        ("DRUG WITHDRAWAL SYNDROME", "MORPHINE_reports", 195.0),
+    ]:
+        chk(f"cv_pt_summary {pt}.{col}", num(cpy.get(pt, {}).get(col)), exp, 0.001)
+    for s in ["4.73", "0.696", "0.389", "1.962", "8 161", "521",
+              "2.54\u20138.80", "1.14\u20133.39", "DRUG WITHDRAWAL SYNDROME"]:
+        must_contain("A2 修正后关键串", s)
+    must_contain("Table S4 存在", "### Table S4")
+    must_contain("Table S4 被正文引用", "Table S4")
+    must_contain("Supplied tables 计数为 4", "plus 4 supplementary")
+    must_contain("MedDRA 行数口径", "4 474 923")
+    must_contain("MedDRA 版本行数口径", "4 474 767")
+
+    # =====================================================================
+    # (10) A1/C3：prespecified 已清除，改为「a priori + 带日期分析计划」
+    # =====================================================================
+    chk("[正文] 无 prespecified/pre-specified", re.findall(r"\bpre-?specified\b", txt), [])
+    must_contain("正文使用 a priori", "a priori")
+    must_contain("正文指向 ANALYSIS_PLAN.md", "ANALYSIS_PLAN.md")
+    chk("ANALYSIS_PLAN.md 存在", os.path.exists(P("ANALYSIS_PLAN.md")), True)
+    if os.path.exists(P("ANALYSIS_PLAN.md")):
+        ap = open(P("ANALYSIS_PLAN.md"), encoding="utf-8").read()
+        chk("[计划] 声明无前瞻注册",
+            bool(re.search(r"Prospective registration:\**\s*\**\s*none", ap, re.I)), True)
+        chk("[计划] 记录定稿日期", "16 September 2026" in ap or "16 September 2026" in txt, True)
+        chk("[计划] 含 a priori 措辞", "a priori" in ap, True)
+    for rel in ["README.md", "I_投稿信_cover_letter.md", "SUBMISSION_MANIFEST.md",
+                "cv/cv_process.py", "01_核心FAERS失衡分析.py"]:
+        if os.path.exists(P(rel)):
+            chk(f"[{rel}] 无 prespecified",
+                re.findall(r"\bpre-?specified\b", open(P(rel), encoding="utf-8").read()), [])
+    # READUS 清单里只允许保留 READUS-PV 自身的条目原文（2b、3 两条）
+    ck_txt_full = open(P("I_TableS2_READUS-PV_checklist.md"), encoding="utf-8").read()
+    chk("[checklist] prespecified 仅出现在被引条目原文中",
+        len(re.findall(r"\bpre-?specified\b", ck_txt_full)), 2)
+
+    # =====================================================================
+    # (11) 参考文献计数与辅助文件同步
+    # =====================================================================
+    refblock = txt[txt.index("## References"):txt.index("## Tables")]
+    ref_nums = [int(m.group(1)) for m in re.finditer(r"^\s*(\d+)\.\s", refblock, re.M)]
+    chk("参考文献条目数 == 30", len(ref_nums), 30)
+    chk("参考文献编号连续 1..30", sorted(ref_nums), list(range(1, 31)))
+    cited = {int(x) for m in re.findall(r"\[([\d,\s]+)\]", txt[:txt.index("## References")])
+             for x in m.split(",") if x.strip().isdigit()}
+    chk("正文引用编号最大 == 30", max(cited) if cited else 0, 30)
+    chk("正文无越界引用编号", sorted(x for x in cited if x > 30), [])
+    must_contain("AI 声明参考文献计数", "all 30 cited references verified by identifier")
+    for rel, needles in [
+        ("I_投稿信_cover_letter.md",
+         ["all 30 cited references verified by identifier", "30 references",
+          f"is {main_words:,}".replace(",", " "), f"Summary of {summ_words} words",
+          "four supplementary tables"]),
+        ("SUBMISSION_MANIFEST.md",
+         ["30, Vancouver style with DOIs", f"{main_words:,}".replace(",", " "),
+          "with controls defined a priori", "4 (S1–S4)"]),
+        ("README.md", ["10_term_dictionary.csv", "ANALYSIS_PLAN.md"]),
+    ]:
+        if os.path.exists(P(rel)):
+            txt_rel = open(P(rel), encoding="utf-8").read()
+            for n in needles:
+                chk(f"[{rel}] 含「{n}」", n in txt_rel, True)
+    # 标题三处必须一致
+    title = txt.splitlines()[0].lstrip("# ").strip()
+    for rel in ["README.md", "SUBMISSION_MANIFEST.md", "I_TableS2_READUS-PV_checklist.md"]:
+        chk(f"[{rel}] 标题与正文一致", title in open(P(rel), encoding="utf-8").read(), True)
+    # D1/D2 过度概括与结构性措辞已清除
+    for bad in ["structurally incapable", "reversed direction, which argues"]:
+        chk(f"[正文] 未出现「{bad}」", bad in txt, False)
 else:
     chk(f"[正文核验] 找不到 {MS}", False, True)
 

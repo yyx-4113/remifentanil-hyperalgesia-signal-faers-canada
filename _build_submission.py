@@ -4,7 +4,7 @@
 Outputs (into _upload/):
     Manuscript.docx              title page, Summary, body, Acknowledgements,
                                  References, Tables 1-4B, figure legends
-    Supporting_Information.docx  Tables S1-S3
+    Supporting_Information.docx  Tables S1-S4
     Cover_Letter.docx            cover letter
     (figures are copied separately as .tif/.pdf, see the pack manifest)
 
@@ -280,7 +280,7 @@ def build_supporting(supp_tables: list[str]) -> str:
     para(doc, "Supporting Information", bold=True, size=14, space_after=10)
     para(doc, "Yang Y. Remifentanil and hyperalgesia reporting in two national "
               "pharmacovigilance databases: a head-to-head disproportionality study "
-              "with prespecified controls.", space_after=8)
+              "with controls defined a priori.", space_after=8)
     for chunk in supp_tables:
         # Table S1 is eight columns wide (27 system organ classes x four opioids plus
         # three ratios), so the supplementary file uses a smaller table font.

@@ -12,10 +12,10 @@
 |---|---|---|---|
 | 1 | `Manuscript.docx` | **Main Document** | Title page → Summary → body → Acknowledgements → References → Tables 1–4B → figure legends, in one file, as the journal requires |
 | 2 | `Cover_Letter.docx` | **Cover Letter** | Confirms the AI disclosure and the data-availability statement |
-| 3 | `I_fig1_rorr_forest.tif` | **Figure** | Line art, 600 ppi, 180 mm wide, 542 KB |
+| 3 | `I_fig1_rorr_forest.tif` | **Figure** | Line art, 600 ppi, 180 mm wide, 652 KB |
 | 4 | `I_fig2_year_trend.tif` | **Figure** | Line art, 600 ppi, 180 mm wide, 459 KB |
-| 5 | `Supporting_Information.docx` | **Supporting Information** | Tables S1 (panel A and panel B, each 27 system organ classes × 8 columns) – S3 |
-| 6 | `READUS-PV_checklist.docx` | **Supporting Information** | The completed READUS-PV checklist, promised in §4.7 and Table S2 |
+| 5 | `Supporting_Information.docx` | **Supporting Information** | Tables S1 (panel A and panel B, each 27 system organ classes × 8 columns), S3 and S4 (term-level verification, 18 terms) |
+| 6 | `READUS-PV_checklist.docx` | **Supporting Information** | The completed READUS-PV checklist, promised in §4.6 and Table S2 |
 | — | `I_fig1_rorr_forest.pdf`, `I_fig2_year_trend.pdf` | (keep in reserve) | Vector versions; upload only if the journal asks for PDF line art |
 
 **Do not upload:** the `.png` figures (screen previews only), `I_正文_IMRaD_en.md`
@@ -30,14 +30,14 @@ which are deliberately excluded from the `.docx`.
 | Field | Value |
 |---|---|
 | Article type | Original Article |
-| Title | Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: a head-to-head disproportionality study with prespecified controls |
+| Title | Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: a head-to-head disproportionality study with controls defined a priori |
 | Running head | Remifentanil hyperalgesia reporting: two-database study |
-| Main text | 3 985 words (Introduction to Conclusion, headings included) |
-| Summary | 293 words, structured (Introduction / Methods / Results / Discussion), no abbreviations, no references |
-| References | 20, Vancouver style with DOIs |
+| Main text | 3 983 words (Introduction to Conclusion, headings included) |
+| Summary | 299 words, structured (Introduction / Methods / Results / Discussion), no abbreviations, no references |
+| References | 30, Vancouver style with DOIs |
 | Tables | 4 (Table 4 in two panels: 4A, 4B) |
 | Figures | 2 |
-| Supplementary tables | 3 (S1–S3); Table S1 is presented as two panels, each 27 system organ classes × 8 columns |
+| Supplementary tables | 4 (S1–S4); Table S1 is presented as two panels, each 27 system organ classes × 8 columns |
 | Keywords | remifentanil; opioid-induced hyperalgesia; pharmacovigilance; disproportionality analysis; spontaneous reporting |
 | Corresponding author | Dr Yongxin Yang, 960856791@qq.com |
 | ORCID | 0009-0004-9698-6552 |
@@ -72,6 +72,10 @@ they can be removed in Word with no effect on the content.
 2. **X (Twitter) handle** — the author has no X account, so this field is left blank. Nothing is required.
 3. **Editor's name** — the cover letter is now addressed to **Professor Matt Wiles**, Editor-in-Chief, taken from the journal's published editorial board (`onlinelibrary.wiley.com/page/journal//homepage/editorial-board` and the Wiley media kit), not from memory.
 4. **Table S1 is tabulated.** Panel A (Canada Vigilance, report-level, authoritative) and panel B (FAERS, event-level, exploratory) are both grid tables, generated from `cv/cv_soc_27.csv` and `03_soc_27.csv` by `_gen_table_s1.py` and verified cell by cell (54 rows × 8 columns) by `_check_consistency.py`.
+5. **Term-level verification (reviewer A2).** The clinical word HYPERALGESIA is a MedDRA *lowest level term*, not a preferred term, so a query on it returns zero by construction. Every outcome term was checked for retrievability in both corpora (`10_term_dictionary.csv`, rendered as **Table S4**), five dictionary proxies were analysed on the same footing, and the manuscript was rewritten from "no term is available" to "the term the clinic uses is not the term the dictionary stores". This changed the primary finding and is recorded as **Amendment 1** in `ANALYSIS_PLAN.md`.
+6. **"Prespecified" purged (reviewer A1/C3).** No prospective registration exists, so every occurrence in the manuscript, cover letter, README, manifest and READUS-PV checklist was replaced with "defined a priori" plus an explicit statement that the analysis was not registered; the READUS 14d item now reads "no prospective registration; analytical plan archived post hoc with date".
+7. **Over-claiming removed (reviewers D1/A3/D2/B3).** No statement now asserts that a head-to-head ratio above 1 is unique to one term, that ALLODYNIA has a direction (it is not estimable on n = 1), that spontaneous reporting is "structurally incapable" of detecting the syndrome, or that Canada reproduced the negative-control direction (only one Canadian negative-control ratio is computable, and it exceeds 1). Two global invariants in `_check_consistency.py` enforce the first and the last of these.
+8. **Reference base widened (reviewer B4).** 30 references, all verified by identifier, cited in order of first appearance; the manuscript, cover letter, manifest and AI disclosure all state the same count.
 
 **Still to do at submission time.**
 
@@ -87,10 +91,10 @@ they can be removed in Word with no effect on the content.
 
 | Check | Command | Result |
 |---|---|---|
-| Manuscript numbers traceable to source files (including all 432 Table S1 cells), plus submission constraints | `python _check_consistency.py` | **PASS 211 / FAIL 0** |
-| Word counts inside the journal's limits | `python _wordcount.py` | main **3 985**; Summary **293** |
+| Manuscript numbers traceable to source files (including all 432 Table S1 cells and all 54 Table S4 count cells), plus submission constraints and two global invariants | `python _check_consistency.py` | **PASS 385 / FAIL 0** |
+| Word counts inside the journal's limits | `python _wordcount.py` | main **3 983**; Summary **299** |
 | Table S1 in step with the result files | `python _gen_table_s1.py` | idempotent; refuses to write if a proportion does not reproduce from the counts |
-| Nothing lost or invented in the markdown → docx conversion; no Chinese text; table shapes intact; figures still 600 ppi | `python _verify_docx.py` | **PASS 45 / FAIL 0** |
+| Nothing lost or invented in the markdown → docx conversion; no Chinese text; table shapes intact (5 / 4 / 2 tables); figures still 600 ppi | `python _verify_docx.py` | **PASS 59 / FAIL 0** |
 
 The `.docx` files are build artefacts: they are regenerated from the markdown sources by
 `_build_submission.py` and are intentionally not tracked in the git repository.

@@ -20,6 +20,11 @@
 | VOMITING | negctrl | 3 | 124 | 1 | 508 | 1.066 | 0.392 |
 | PRURITUS | negctrl | 0 | 141 | 1 | 1187 |  |  |
 | CONSTIPATION | negctrl | 0 | 58 | 3 | 397 |  |  |
+| HYPERAESTHESIA | dictionary_proxy | 0 | 18 | 0 | 30 |  |  |
+| HYPERPATHIA | dictionary_proxy | 0 | 0 | 0 | 0 |  |  |
+| PROCEDURAL PAIN | dictionary_proxy | 0 | 14 | 0 | 42 |  |  |
+| CHRONIC PAIN SYNDROME | dictionary_proxy | 0 | 0 | 0 | 0 |  |  |
+| DRUG WITHDRAWAL SYNDROME | dictionary_proxy | 0 | 139 | 1 | 195 |  |  |
 
 ## 队列人口学（节选）
 

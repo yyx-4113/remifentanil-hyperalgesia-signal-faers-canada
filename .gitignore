@@ -39,3 +39,15 @@ Thumbs.db
 *.orig
 *~
 *_backup.md
+
+# 7) 稿件重建期的一次性草稿（手稿中间态副本与重建脚本）。
+#    正式手稿为 I_正文_IMRaD_en.md；表 S1 由 _gen_table_s1.py 从两个 SOC 结果文件生成，
+#    表 S4 由 10_term_dictionary.csv 渲染，两者均由 _check_consistency.py 逐格复核，
+#    故这些中间态文件不需要入库。
+_head_ms.md
+_recover_tail.md
+_rebuild_ms.py
+_probe_meddra_level.py
+_probe_meddra_level.json
+_probe_pt_enum.py
+_probe_pt_enum.json

@@ -5,24 +5,35 @@
 
 Reproduction package for the study:
 
-> **Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases:
-> a head-to-head disproportionality study with prespecified controls**
+> **Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: a head-to-head disproportionality study with controls defined a priori**
 
 The study performs a head-to-head disproportionality analysis of remifentanil against
 fentanyl, sufentanil and morphine in two independent national spontaneous reporting
 databases — the US FDA Adverse Event Reporting System (FAERS, via the openFDA
 `drug/event` API) as the primary analysis and the Health Canada Canada Vigilance
-line-listing as an independent confirmation set — and reports that no OIH-specific
-preferred term is available for analysis in either corpus.
+line-listing as an independent confirmation set.
 
-**Main results.** Five of seven prespecified opioid-induced-hyperalgesia (OIH) preferred
-terms (HYPERALGESIA, PAIN INCREASED, POSTOPERATIVE PAIN, CHRONIC PAIN, OPIOID WITHDRAWAL
-SYNDROME) return zero reports in both databases. The only analysable OIH-adjacent term
-(ALLODYNIA) shows no remifentanil signal while fentanyl and morphine show strong signals.
-Every computable head-to-head ratio of reporting odds ratios (RORR) for PAIN and for four
-negative controls is below 1, the direction is stable across serious-report restriction
-and across 2015–2024, and a prespecified specificity probe (DRUG INEFFECTIVE) reverses
-direction in the confirmation database — arguing against a global reporting artefact.
+**Main results.**
+
+1. **The clinical term is not a preferred term.** HYPERALGESIA, the word used in clinical
+   practice, is a MedDRA lowest level term: querying it returns zero reports in both
+   corpora, which a reader would otherwise read as the absence of a signal. All 18 outcome
+   terms were therefore verified as retrievable in both databases before any zero was
+   interpreted (`10_term_dictionary.csv`, Table S4). Five terms failed that test.
+2. **The corrected signal.** The preferred term that carries the concept, HYPERAESTHESIA,
+   is present in both corpora (8 161 FAERS reports; 521 Canadian reaction rows) and meets
+   the signal criterion for all four opioids, remifentanil included (reporting odds ratio
+   4.73, 95% CI 2.54–8.80). Remifentanil's is the weakest of the four and did not
+   reproduce in the smaller Canadian database.
+3. **Uniform under-reporting.** Remifentanil reported least of the four opioids for PAIN
+   (RORR 0.066 versus fentanyl, 0.046 versus morphine), and its head-to-head ratios for all
+   four negative controls were below 1 against both comparators; the direction is stable
+   across serious-report restriction and across 2015–2024. The exception is PROCEDURAL PAIN
+   versus fentanyl (1.962, 1.14–3.39).
+4. **The specificity probe behaves inconsistently between the databases** (DRUG INEFFECTIVE
+   reverses direction in Canada), which argues against a uniform global reporting artefact.
+5. ALLODYNIA is **not estimable** for remifentanil (a single report), so no direction is
+   read from it.
 
 ---
 
@@ -52,7 +63,7 @@ manuscript's number-to-source table.
 
 | File | Purpose |
 |---|---|
-| `01_核心FAERS失衡分析.py` | Core analysis: ROR, PRR, IC (BCPNN), EBGM (MGPS) and head-to-head RORR for OIH terms, the surrogate term PAIN, negative controls and the specificity probe. Writes `01_faers_results.csv`. |
+| `01_核心FAERS失衡分析.py` | Core analysis: ROR, PRR, IC (BCPNN), EBGM (MGPS) and head-to-head RORR for the OIH terms, their five dictionary proxies, the surrogate term PAIN, the negative controls and the specificity probe. Writes `01_faers_results.csv`. |
 | `02_途径分层分析.py` | Exploratory route-of-administration stratification (used to demonstrate the openFDA report-level/nested-query defect). Writes `02_route_stratified.csv`. |
 | `03_soc_aggregate_openfda.py` | openFDA system organ class panorama via top-500 preferred terms per drug, mapped with heuristic keyword rules. Writes `03_soc_27.csv`. |
 | `04_sensitivity.py` | Sensitivity analyses: restriction to serious reports (`serious:1`) and year stratification of PAIN, 2015–2024. Writes `04_sensitivity_ps_only.csv`, `04_sensitivity_year_pain.csv`. |
@@ -60,32 +71,36 @@ manuscript's number-to-source table.
 | `cv/cv_process.py` | Canada Vigilance line-listing pipeline: exact active-ingredient cohort matching, native PT/SOC aggregation, ROR/RORR, subgroups. Writes `cv/cv_soc_27.csv`, `cv/cv_pt_summary.csv`, `cv/cv_subgroups.csv`, `cv/cv_drug_totals.csv`. |
 | `soc_rules.py` | Heuristic PT→SOC keyword mapping used **only** by the exploratory openFDA SOC analysis. Not an authoritative MedDRA implementation. |
 | `_fda_auth.py` | Reads an optional openFDA API key from the `OPENFDA_API_KEY` environment variable or a local `openfda_key.txt`. The key is **not required** for any analysis in this repository. |
-| `_check_consistency.py` | Quality gate: 211 programmatic assertions that every number quoted in the manuscript equals the value in its source file, plus submission-compliance checks (declared word counts, title/running-head/keyword limits, software versions, abstract coverage of the READUS-PV abstract items, AI-disclosure key strings, placeholder scan and figure-file presence). The whole of Table S1 — both panels, 54 rows × 8 columns — is re-derived cell by cell from the two result files. Exits non-zero on any mismatch. |
+| `_check_consistency.py` | Quality gate: 385 programmatic assertions that every number quoted in the manuscript equals the value in its source file, plus submission-compliance checks (declared word counts, title/running-head/keyword limits, software versions, abstract coverage of the READUS-PV abstract items, AI-disclosure key strings, placeholder scan and figure-file presence). The whole of Table S1 — both panels, 54 rows × 8 columns — and all of Table S4 — 18 terms × 3 count columns — are re-derived cell by cell from the result files. Two global invariants are asserted: which head-to-head ratios exceed 1, and how many of the Canadian negative-control ratios are computable at all. Exits non-zero on any mismatch. |
 | `_gen_table_s1.py` | Generates Table S1 (the two system-organ-class panels, 54 rows × 8 columns) from `cv/cv_soc_27.csv` and `03_soc_27.csv` and rewrites that block of the manuscript in place, so the table is never typed by hand. Recomputes the proportions from the counts and refuses to write if they disagree with the values already in the source files. Idempotent; run it before `_check_consistency.py` after any change to either result file. |
 | `_wordcount.py` | Word count for the manuscript using the target journal's convention: main text = `## 1. Introduction` → `## Acknowledgements`, section headings included; Summary counted separately. Exits non-zero if either figure is outside the journal's range. |
 | `_build_submission.py` | Builds the submission pack into `_upload/`: `Manuscript.docx`, `Supporting_Information.docx`, `READUS-PV_checklist.docx`, `Cover_Letter.docx` and the figure files, with the journal's formatting applied (Times New Roman 12 pt, double spaced, line and page numbers, tables after the References). Requires `python-docx`. |
-| `_verify_docx.py` | Proves the markdown → docx conversion is loss-free: numeric tokens compared as set differences, no Chinese text, mandatory strings (AI disclosure, repository URL, software versions) present, expected table counts, no placeholders, figures still 600 ppi. |
+| `_verify_docx.py` | Proves the markdown → docx conversion is loss-free: numeric tokens compared as set differences, no Chinese text, mandatory strings (AI disclosure, repository URL, software versions) present, expected table counts (5 in the manuscript, 4 in the Supporting Information, 2 in the checklist), no placeholders, figures still 600 ppi. |
 
 ### Result files (manuscript traceability)
 
 | File | Contents |
 |---|---|
 | `_faers_cache.json` | Cached openFDA responses (search totals and count results), so the core analysis can be re-run offline and reproducibly. |
-| `01_faers_summary.md` | FAERS headline numbers and the independent re-check of the structurally absent OIH terms. |
+| `01_faers_summary.md` | FAERS headline numbers and the independent re-check of the terms that are not retrievable preferred terms. |
 | `01_faers_results.csv` | FAERS PT-level 2×2 cells, ROR, PRR, IC, EBGM and head-to-head RORR. |
+| `10_term_dictionary.py` | Builds `10_term_dictionary.csv`: for every outcome term, the whole-corpus exact query in both corpora, the adjacent-token phrase query as an independent second route, and the MedDRA level note. Documents why a zero from a non-preferred-term string is uninformative. |
+| `10_term_dictionary.csv` | **Term-level verification** of all 18 outcome terms (narrow group, broad group, dictionary proxies, PAIN, four negative controls and the specificity probe): whole-corpus counts in both databases, the adjacent-token phrase query, whether the string is retrievable as a preferred term, and the MedDRA level note. Rendered as Table S4. |
+| `ANALYSIS_PLAN.md` | The dated analytical plan (finalised 16 September 2026): cohorts, term groups, negative controls, specificity probe, measures and thresholds, frozen before the results were examined. `Prospective registration: none`. |
 | `02_route_stratified.csv`, `02_route_summary.md` | Exploratory route stratification and the nested-query defect demonstration. |
 | `03_soc_27.csv`, `D_27SOC_openFDA事件级.md` | Exploratory FAERS event-level SOC panorama and the preferred-term-level decomposition of the immune-class signal. |
 | `04_sensitivity_ps_only.csv`, `04_sensitivity_year_pain.csv`, `04_sensitivity_summary.md` | Sensitivity analyses. |
 | `cv/cv_soc_27.csv` | **Authoritative** Canada Vigilance report-level 27 SOC table (native MedDRA SOC codes). |
 | `cv/cv_pt_summary.csv`, `cv/cv_drug_totals.csv`, `cv/cv_subgroups.csv`, `cv/cv_summary.md` | Canada Vigilance PT-level results, cohort sizes, and age/sex/reporter/seriousness subgroups. |
 | `G_跨库验证_FAERSvsCanada.md` | Side-by-side cross-database confirmation. |
-| `I_稿件三线表.md` | Manuscript tables 1–4 and figure legends. |
+| `I_稿件三线表.md` | Superseded pointer: the tables and figure legends now live only in `I_正文_IMRaD_en.md`, for the reason given in that file (a second copy drifts and is not covered by the gate). |
 | `I_TableS2_READUS-PV_checklist.md` | **Supporting Information**: the completed READUS-PV checklist (32 items for the manuscript body, 12 for the abstract), each mapped to the manuscript section where it is addressed, with the non-applicable items stated explicitly. |
 | `I_投稿信_cover_letter.md` | Cover letter source, built into `_upload/Cover_Letter.docx`. |
 | `SUBMISSION_MANIFEST.md` | What to upload as which ScholarOne file type, the metadata the submission form asks for, the formatting already applied, and the open items. |
-| `I_正文_IMRaD_en.md` | Manuscript (English IMRaD), including Table S1 (the two system-organ-class panels; regenerated by `_gen_table_s1.py`) and its number-to-source traceability table. |
+| `I_正文_IMRaD_en.md` | Manuscript (English IMRaD), including Table S1 (the two system-organ-class panels; regenerated by `_gen_table_s1.py`), Table S4 (rendered from `10_term_dictionary.csv`) and its number-to-source traceability table. |
 | `I_fig1_rorr_forest.{tif,pdf,png}`, `I_fig2_year_trend.{tif,pdf,png}` | Figures 1 and 2 (line art, 600 ppi, 180 mm double-column width). |
 | `01_任务状态.md`, `00_项目总览与执行路线图.md`, `方案二_*.md` | Project ledger and design documents. |
+| `REVIEW_peer_review_2026-09-16.md` | The structured internal review that drove the revision: four reviewer roles (methodological/statistical, clinical anaesthesia, pharmacoepidemiology and reporting standards, academic English), with each point classified P0/P1/P2 and every point resolved in the current manuscript. Kept in the package so the revision provenance is auditable. |
 | `X_openFDA_key*.md` | Notes on openFDA API key registration and on the endpoints used. |
 
 ---
@@ -156,7 +171,7 @@ this environment; Arial is used instead.
 ```
 python _wordcount.py               # main text and Summary within the journal's limits
 python _gen_table_s1.py            # regenerate Table S1 from the two result files
-python _check_consistency.py       # must print PASS 211 / FAIL 0 and exit 0
+python _check_consistency.py       # must print PASS 385 / FAIL 0 and exit 0
 ```
 
 `_check_consistency.py` asserts that every number quoted in `I_正文_IMRaD_en.md` equals the
@@ -169,7 +184,7 @@ presence of the figure files). Re-run both after changing any data or manuscript
 
 ```
 python _build_submission.py        # -> _upload/*.docx + figure files
-python _verify_docx.py             # must print PASS 45 / FAIL 0 and exit 0
+python _verify_docx.py             # must print PASS 59 / FAIL 0 and exit 0
 ```
 
 The `.docx` files are build artefacts and are not tracked in this repository; the pack is
@@ -208,6 +223,17 @@ as which file type, the metadata the submission form asks for, and the checks th
 10. `soc_rules.py` is a heuristic mapping and is known to misclassify some terms (for
     example PT "DRUG INEFFECTIVE" is assigned to Injury/poisoning rather than to
     General disorders/Product issues).
+11. **A zero is uninformative until the string has been verified as a preferred term.**
+    Both corpora store preferred terms in the reaction field, so a term that is *not* a
+    preferred term returns zero by construction. `10_term_dictionary.csv` (Table S4)
+    records the verification for every outcome term; the five unretrievable strings are
+    reported as not retrievable, never as evidence of absence. Anyone reusing this
+    pipeline for another syndrome should run the same check first.
+12. **MedDRA release differs between the corpora.** The Canadian extract states the
+    release on every reaction row (v.27.1 on 4 474 767 of 4 474 923 rows; 156 blank);
+    openFDA exposes none and the FAERS corpus spans quarterly releases from 2004, so
+    retrievability was established empirically in both corpora rather than by a
+    dictionary lookup.
 
 ---
 
