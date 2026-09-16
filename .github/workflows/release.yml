@@ -31,6 +31,11 @@ jobs:
       - name: Run word-count check
         run: python _wordcount.py
 
+      - name: Regenerate Table S1 and confirm it is in step with the result files
+        run: |
+          python _gen_table_s1.py
+          git diff --exit-code
+
       - name: Run number-to-source consistency gate
         run: python _check_consistency.py
 
@@ -79,6 +84,7 @@ jobs:
             cv/cv_drug_totals.csv \
             cv/cv_subgroups.csv \
             cv/cv_summary.md \
+            _gen_table_s1.py \
             G_跨库验证_FAERSvsCanada.md \
             I_稿件三线表.md \
             I_正文_IMRaD_en.md \

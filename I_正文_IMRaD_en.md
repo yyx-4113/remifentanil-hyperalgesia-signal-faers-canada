@@ -337,11 +337,73 @@ OR = reporting odds ratio; RORR = ratio of reporting odds ratios. Pooled whole-c
 
 ### Table S1 (supplementary). System organ class panorama
 
-**Panel A. Canada Vigilance, native MedDRA system organ classes, report-level (authoritative).** Remifentanil showed elevated reporting odds ratios in Pregnancy, puerperium and perinatal conditions (2.995; RORR 1.733 versus fentanyl and 2.240 versus morphine), Respiratory, thoracic and mediastinal disorders (2.641; 2.463; 1.917), Immune system disorders (2.363; 1.792; 0.831), Cardiac disorders (2.288; 1.866; 1.781) and Vascular disorders (1.966; 2.288; 0.998). Reporting was reduced in Gastrointestinal disorders (0.101), Skin and subcutaneous tissue disorders (0.143), Metabolism and nutrition disorders (0.171), Musculoskeletal and connective tissue disorders (0.294) and General disorders and administration site conditions (0.361).
+Both panels give, for every MedDRA system organ class, the number of reports or events for each opioid with the proportion of that drug's own cohort in parentheses, the reporting odds ratio for remifentanil alone, and the head-to-head ratio of reporting odds ratios for remifentanil against fentanyl and against morphine. Cohorts were 111 (remifentanil), 4 881 (fentanyl), 63 (sufentanil), 7 675 (morphine) reports in Canada Vigilance, and 5 375 (remifentanil), 121 819 (fentanyl), 6 513 (sufentanil), 56 501 (morphine) reports in the FAERS analysis, out of 20 692 687 reactions in total. Proportions are rounded to one decimal place and ratios to three. Rows are ordered by the remifentanil reporting odds ratio, descending, with classes in which remifentanil recorded no report listed last; for those classes no ratio is estimable and the cell carries a dash, so a dash means "not estimable", not zero.
 
-**Panel B. FAERS, exploratory, event-level after heuristic term mapping.** Highest classes: Immune system disorders (10.951; RORR 8.613 versus fentanyl), Surgical and medical procedures (7.676), Pregnancy-related conditions (5.984) and Cardiac disorders (5.548). General disorders and administration site conditions, which contains the term PAIN, was under-reported (0.188; 0.141 versus fentanyl and 0.058 versus morphine).
+**Panel A. Canada Vigilance, native MedDRA system organ classes, report-level (authoritative).**
 
-Full class-by-class values are available in the study repository (`cv/cv_soc_27.csv` for panel A; `03_soc_27.csv` for panel B).
+| System organ class | Remifentanil | Fentanyl | Sufentanil | Morphine | ROR | RORR vs fentanyl | RORR vs morphine |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Pregnancy, puerperium and perinatal conditions | 3 (2.7) | 77 (1.6) | 0 (0.0) | 94 (1.2) | 2.995 | 1.733 | 2.240 |
+| Respiratory, thoracic and mediastinal disorders | 30 (27.0) | 638 (13.1) | 13 (20.6) | 1 243 (16.2) | 2.641 | 2.463 | 1.917 |
+| Immune system disorders | 9 (8.1) | 229 (4.7) | 11 (17.5) | 737 (9.6) | 2.363 | 1.792 | 0.831 |
+| Cardiac disorders | 13 (11.7) | 324 (6.6) | 17 (27.0) | 532 (6.9) | 2.288 | 1.866 | 1.781 |
+| Vascular disorders | 15 (13.5) | 312 (6.4) | 18 (28.6) | 1 039 (13.5) | 1.966 | 2.288 | 0.998 |
+| Nervous system disorders | 21 (18.9) | 1 057 (21.7) | 16 (25.4) | 2 008 (26.2) | 1.026 | 0.844 | 0.659 |
+| Investigations | 12 (10.8) | 691 (14.2) | 10 (15.9) | 1 265 (16.5) | 0.655 | 0.735 | 0.614 |
+| Injury, poisoning and procedural complications | 14 (12.6) | 1 540 (31.6) | 19 (30.2) | 2 163 (28.2) | 0.635 | 0.313 | 0.368 |
+| Product issues | 2 (1.8) | 278 (5.7) | 1 (1.6) | 158 (2.1) | 0.608 | 0.304 | 0.873 |
+| Neoplasms benign, malignant and unspecified (incl cysts and polyps) | 3 (2.7) | 51 (1.0) | 0 (0.0) | 244 (3.2) | 0.584 | 2.631 | 0.846 |
+| Hepatobiliary disorders | 1 (0.9) | 27 (0.6) | 0 (0.0) | 221 (2.9) | 0.445 | 1.634 | 0.307 |
+| General disorders and administration site conditions | 28 (25.2) | 1 973 (40.4) | 26 (41.3) | 3 362 (43.8) | 0.361 | 0.497 | 0.433 |
+| Musculoskeletal and connective tissue disorders | 5 (4.5) | 454 (9.3) | 4 (6.3) | 1 172 (15.3) | 0.294 | 0.460 | 0.262 |
+| Metabolism and nutrition disorders | 1 (0.9) | 124 (2.5) | 9 (14.3) | 446 (5.8) | 0.171 | 0.349 | 0.147 |
+| Skin and subcutaneous tissue disorders | 3 (2.7) | 604 (12.4) | 16 (25.4) | 2 362 (30.8) | 0.143 | 0.197 | 0.062 |
+| Gastrointestinal disorders | 3 (2.7) | 562 (11.5) | 12 (19.0) | 1 881 (24.5) | 0.101 | 0.213 | 0.086 |
+| Psychiatric disorders | 0 (0.0) | 1 787 (36.6) | 2 (3.2) | 2 684 (35.0) | — | — | — |
+| Infections and infestations | 0 (0.0) | 306 (6.3) | 1 (1.6) | 1 038 (13.5) | — | — | — |
+| Eye disorders | 0 (0.0) | 179 (3.7) | 0 (0.0) | 451 (5.9) | — | — | — |
+| Ear and labyrinth disorders | 0 (0.0) | 77 (1.6) | 0 (0.0) | 108 (1.4) | — | — | — |
+| Reproductive system and breast disorders | 0 (0.0) | 80 (1.6) | 0 (0.0) | 117 (1.5) | — | — | — |
+| Renal and urinary disorders | 0 (0.0) | 146 (3.0) | 0 (0.0) | 256 (3.3) | — | — | — |
+| Blood and lymphatic system disorders | 0 (0.0) | 73 (1.5) | 0 (0.0) | 245 (3.2) | — | — | — |
+| Endocrine disorders | 0 (0.0) | 9 (0.2) | 0 (0.0) | 37 (0.5) | — | — | — |
+| Congenital, familial and genetic disorders | 0 (0.0) | 23 (0.5) | 0 (0.0) | 49 (0.6) | — | — | — |
+| Surgical and medical procedures | 0 (0.0) | 107 (2.2) | 1 (1.6) | 154 (2.0) | — | — | — |
+| Social circumstances | 0 (0.0) | 128 (2.6) | 0 (0.0) | 240 (3.1) | — | — | — |
+
+**Panel B. FAERS, exploratory, event-level counts after heuristic preferred-term mapping.**
+
+| System organ class | Remifentanil | Fentanyl | Sufentanil | Morphine | ROR | RORR vs fentanyl | RORR vs morphine |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Immune system disorders | 1 108 (20.6) | 3 565 (2.9) | 1 828 (28.1) | 4 821 (8.5) | 10.951 | 8.613 | 2.784 |
+| Surgical and medical procedures | 164 (3.1) | 573 (0.5) | 93 (1.4) | 712 (1.3) | 7.676 | 6.659 | 2.466 |
+| Pregnancy, puerperium and perinatal conditions | 478 (8.9) | 3 986 (3.3) | 475 (7.3) | 2 043 (3.6) | 5.984 | 2.886 | 2.602 |
+| Cardiac disorders | 1 261 (23.5) | 8 334 (6.8) | 1 215 (18.7) | 5 124 (9.1) | 5.548 | 4.174 | 3.073 |
+| Hepatobiliary disorders | 200 (3.7) | 1 050 (0.9) | 456 (7.0) | 2 175 (3.8) | 2.894 | 4.445 | 0.965 |
+| Vascular disorders | 1 054 (19.6) | 9 421 (7.7) | 1 459 (22.4) | 8 771 (15.5) | 2.718 | 2.910 | 1.327 |
+| Endocrine disorders | 102 (1.9) | 852 (0.7) | 65 (1.0) | 1 185 (2.1) | 1.564 | 2.746 | 0.903 |
+| Respiratory, thoracic and mediastinal disorders | 988 (18.4) | 15 496 (12.7) | 1 266 (19.4) | 18 927 (33.5) | 1.544 | 1.545 | 0.447 |
+| Investigations | 781 (14.5) | 12 093 (9.9) | 718 (11.0) | 13 564 (24.0) | 1.463 | 1.543 | 0.538 |
+| Renal and urinary disorders | 366 (6.8) | 7 721 (6.3) | 481 (7.4) | 7 133 (12.6) | 1.323 | 1.080 | 0.506 |
+| Metabolism and nutrition disorders | 205 (3.8) | 5 311 (4.4) | 351 (5.4) | 4 056 (7.2) | 1.312 | 0.870 | 0.513 |
+| Nervous system disorders | 1 004 (18.7) | 20 923 (17.2) | 1 367 (21.0) | 19 606 (34.7) | 1.096 | 1.108 | 0.432 |
+| Blood and lymphatic system disorders | 175 (3.3) | 4 749 (3.9) | 323 (5.0) | 4 634 (8.2) | 0.949 | 0.830 | 0.377 |
+| Injury, poisoning and procedural complications | 944 (17.6) | 50 380 (41.4) | 1 145 (17.6) | 24 523 (43.4) | 0.839 | 0.302 | 0.278 |
+| Skin and subcutaneous tissue disorders | 651 (12.1) | 9 965 (8.2) | 1 281 (19.7) | 9 999 (17.7) | 0.831 | 1.547 | 0.641 |
+| Neoplasms benign, malignant and unspecified | 87 (1.6) | 1 925 (1.6) | 73 (1.1) | 1 693 (3.0) | 0.680 | 1.025 | 0.533 |
+| Psychiatric disorders | 459 (8.5) | 49 438 (40.6) | 794 (12.2) | 22 669 (40.1) | 0.556 | 0.137 | 0.139 |
+| Eye disorders | 77 (1.4) | 1 625 (1.3) | 104 (1.6) | 1 534 (2.7) | 0.406 | 1.075 | 0.521 |
+| Infections and infestations | 105 (2.0) | 4 178 (3.4) | 100 (1.5) | 6 514 (11.5) | 0.380 | 0.561 | 0.153 |
+| Musculoskeletal and connective tissue disorders | 220 (4.1) | 11 715 (9.6) | 315 (4.8) | 19 626 (34.7) | 0.341 | 0.401 | 0.080 |
+| Gastrointestinal disorders | 325 (6.0) | 23 272 (19.1) | 581 (8.9) | 26 359 (46.7) | 0.271 | 0.273 | 0.074 |
+| Product issues | 226 (4.2) | 22 014 (18.1) | 384 (5.9) | 7 201 (12.7) | 0.249 | 0.199 | 0.300 |
+| General disorders and administration site conditions | 440 (8.2) | 47 128 (38.7) | 869 (13.3) | 34 281 (60.7) | 0.188 | 0.141 | 0.058 |
+| Ear and labyrinth disorders | 0 (0.0) | 662 (0.5) | 16 (0.2) | 828 (1.5) | — | — | — |
+| Reproductive system and breast disorders | 0 (0.0) | 0 (0.0) | 0 (0.0) | 0 (0.0) | — | — | — |
+| Congenital, familial and genetic disorders | 0 (0.0) | 385 (0.3) | 8 (0.1) | 149 (0.3) | — | — | — |
+| Social circumstances | 0 (0.0) | 1 044 (0.9) | 25 (0.4) | 545 (1.0) | — | — | — |
+
+Panel B is event-level: a report naming several preferred terms that map to the same class contributes more than once, and the class assignment comes from a heuristic term mapping rather than from native MedDRA coding, so it is reported for qualitative corroboration only and panel A is the authoritative one. Preferred terms that the heuristic could not map are listed in the study repository (`03_soc_27.csv`), with the counts for the unmapped terms of each drug. Both panels are reproduced in full, cell by cell, by the study repository.
 
 ### Table S2 (supplementary). READUS-PV checklist for this analysis
 
@@ -391,13 +453,23 @@ Values are the number of reports in that category, with the percentage of that d
 | Year-stratified PAIN (FAERS) | `04_sensitivity_year_pain.csv` |
 | Exploratory FAERS system organ classes and term decomposition | `03_soc_27.csv`; `D_27SOC_openFDA事件级.md` |
 | Route-stratification defect demonstration | `02_route_stratified.csv`; `02_route_summary.md` |
+| Table S1, both panels, cell by cell (432 cells) | `_gen_table_s1.py` ← `cv/cv_soc_27.csv`; `03_soc_27.csv` |
 | Figures | `05_figures.py` → `I_fig1_rorr_forest.*`, `I_fig2_year_trend.*` |
 
 ## 10. Outstanding items before submission
 
 *(Internal working section, not part of the submitted manuscript.)*
 
-1. **Repository URL** must be confirmed live after the GitHub deposit (see `GITHUB_DEPOSIT_SOP.md`); the URL above is the fixed target. The local repository is committed and clean (70 tracked files, no source data and no credentials); only the remote push requires the author's GitHub authentication.
-2. **Tables S2 (READUS-PV checklist), done.** The completed checklist is `I_TableS2_READUS-PV_checklist.md`, to be uploaded as Supporting Information.
-3. **X (Twitter) handle** for the author, if available (the Journal requests one but does not require an account to exist).
-4. **Cover letter** to confirm the AI disclosure and the data availability statement, and to state that the work is not under consideration elsewhere.
+**Closed.**
+
+1. **Repository live.** Created and pushed public: <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada>, with tag `v1.0.0` and the result bundle attached to the release. The Data availability statement in `## Acknowledgements` points at it, and the repository contains only derived results, scripts and provenance — no raw source data and no credentials.
+2. **Table S1 is now tabulated.** Panel A (Canada Vigilance, report-level, authoritative) and panel B (FAERS, event-level, exploratory) are generated from `cv/cv_soc_27.csv` and `03_soc_27.csv` by `_gen_table_s1.py`, and re-derived cell by cell by `_check_consistency.py`.
+3. **READUS-PV checklist.** `I_TableS2_READUS-PV_checklist.md`, complete, supplied as a separate file with the submission.
+4. **Cover letter** addressed to Professor Matt Wiles, Editor-in-Chief, whose name and affiliation are taken from the journal's published editorial board; it confirms the AI disclosure, the data availability statement and the originality statements.
+
+**Still on the author.**
+
+1. **X (Twitter) handle.** The author has no X account, so this field is left blank on the submission form. Nothing is outstanding.
+2. **Reviewer suggestions.** None are proposed: inventing names, affiliations or e-mail addresses would be worse than leaving the field empty.
+3. **Author Guidelines check.** Line numbers and double spacing are applied because reviewers expect them. If the current Guidance for Authors says otherwise, they can be removed in Word without changing the content.
+4. **Confirm the Data availability URL resolves** immediately before submitting.

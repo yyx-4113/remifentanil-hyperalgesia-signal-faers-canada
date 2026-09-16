@@ -1,11 +1,11 @@
 # Cover letter
 
-The Editor-in-Chief
-*Anaesthesia*
+Professor Matt Wiles
+Editor-in-Chief, *Anaesthesia*
 
 16 September 2026
 
-Dear Editor,
+Dear Professor Wiles,
 
 **Re: Original Article submission — "Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: a head-to-head disproportionality study with prespecified controls"**
 

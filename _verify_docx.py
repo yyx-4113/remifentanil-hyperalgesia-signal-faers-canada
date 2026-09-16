@@ -59,6 +59,11 @@ def docx_table_count(path: str) -> int:
     return len(Document(path).tables)
 
 
+def docx_table_shapes(path: str) -> list[tuple[int, int]]:
+    """(rows, columns) of every table, in document order."""
+    return [(len(t.rows), len(t.columns)) for t in Document(path).tables]
+
+
 def exported_markdown() -> tuple[str, str]:
     """The markdown that is actually exported, split into (main, supplementary)."""
     text = open(MS, encoding="utf-8").read()
@@ -131,15 +136,22 @@ def main() -> int:
     chk("Supporting 指向 Table S2 文件名", "I_TableS2_READUS-PV_checklist.md" in si_text)
     chk("Checklist 含条目 14d", "14d" in ck_text)
     chk("Checklist 含条目 2d", "2d" in ck_text)
+    for needle in ["System organ class", "RORR vs fentanyl", "RORR vs morphine",
+                   "Panel A. Canada Vigilance", "Panel B. FAERS"]:
+        chk(f"Supporting 含表 S1 结构「{needle}」", needle in si_text)
     chk("CoverLetter 含仓库 URL",
         "https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada" in cl_text)
     chk("CoverLetter 含 ORCID", "0009-0004-9698-6552" in cl_text)
 
-    # 4. tables present: 5 in the manuscript (Tables 1,2,3,4A,4B); 1 in the SI
-    #    (Table S3, the only supplementary table that is tabular); 2 in the checklist
+    # 4. tables present: 5 in the manuscript (Tables 1,2,3,4A,4B); 3 in the SI
+    #    (Table S1 panel A, Table S1 panel B, Table S3); 2 in the checklist
     chk("Manuscript 表数 == 5", docx_table_count(ms), 5)
-    chk("Supporting 表数 == 1", docx_table_count(si), 1)
+    chk("Supporting 表数 == 3", docx_table_count(si), 3)
     chk("Checklist 表数 == 2", docx_table_count(ck), 2)
+
+    # 4b. the two Table S1 panels must arrive whole: 28 rows x 8 columns each
+    shapes = docx_table_shapes(si)
+    chk("Supporting 表尺寸集合", shapes, [(28, 8), (28, 8), (14, 5)])
 
     # 5. no placeholders in the submitted files
     for label, t in [("Manuscript", ms_text), ("Supporting", si_text),

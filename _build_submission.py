@@ -282,7 +282,9 @@ def build_supporting(supp_tables: list[str]) -> str:
               "pharmacovigilance databases: a head-to-head disproportionality study "
               "with prespecified controls.", space_after=8)
     for chunk in supp_tables:
-        emit_markdown(doc, "### " + chunk)
+        # Table S1 is eight columns wide (27 system organ classes x four opioids plus
+        # three ratios), so the supplementary file uses a smaller table font.
+        emit_markdown(doc, "### " + chunk, table_size=8.0)
     path = os.path.join(OUT, "Supporting_Information.docx")
     doc.save(path)
     return path

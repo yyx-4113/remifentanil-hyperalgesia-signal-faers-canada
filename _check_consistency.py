@@ -277,6 +277,72 @@ if os.path.exists(P(MS)):
         tot = num(cvm.get(drug, {}).get("N_suspect_reports"))
         chk(f"[S3] {drug} serious 分子 <= 队列", float(r["Count"]) <= tot, True)
 
+    # ---- (6b) Table S1：SOC 全景两面板必须与源文件逐格一致 ----
+    # 表 S1 的 54 行 × 8 列（27 个 SOC × 两个库）由 _gen_table_s1.py 从两个结果文件生成。
+    # 这里独立重算每一个单元格的显示字符串（计数、占比、ROR、两个头对头比值），
+    # 只要生成器与源文件脱钩、或源文件改了而表没有重新生成，就会立刻报错。
+    CA_TOT = {r["Drug"]: int(r["N_suspect_reports"]) for r in rows(P("cv", "cv_drug_totals.csv"))}
+    fd_lines = open(P("03_soc_27.csv"), encoding="utf-8-sig").read().splitlines()
+    i_drug = next(i for i, l in enumerate(fd_lines) if l.startswith("Drug,"))
+    i_soc = next(i for i, l in enumerate(fd_lines) if l.startswith("SOC,"))
+    fd_tot = {}
+    for l in fd_lines[i_drug + 1:]:
+        if not l.strip() or l.startswith("Global"):
+            break
+        _name, _total, _cov = next(csv.reader([l]))
+        fd_tot[_name.strip().upper()] = int(_total)
+    fd_head = next(csv.reader([fd_lines[i_soc]]))
+    fd_soc = {}
+    for l in fd_lines[i_soc + 1:]:
+        if not l.strip():
+            break
+        _c = next(csv.reader([l]))
+        fd_soc[_c[0]] = dict(zip(fd_head, _c))
+
+    def s1_panel(marker):
+        seg = txt[txt.index("### Table S1"):txt.index("\n### Table S2")]
+        seg = seg[seg.index(marker):].split("\n")[1:]
+        out = []
+        for line in seg:
+            if line.startswith("|"):
+                if re.fullmatch(r"\|[\s:|-]+\|", line.strip()):
+                    continue
+                out.append([c.strip() for c in line.strip().strip("|").split("|")])
+            elif out:
+                break
+        return out[0], out[1:]
+
+    def s1_n(n, cohort):
+        return f"{n:,}".replace(",", " ") + f" ({n / cohort * 100:.1f})"
+
+    def s1_r(v):
+        return "\u2014" if v == "" else f"{float(v):.3f}"
+
+    for label, marker, table, cohorts, k_fen, k_mor in [
+        ("A", "**Panel A.", soc, CA_TOT, "RORR_REMI_vs_FEN", "RORR_REMI_vs_MOR"),
+        ("B", "**Panel B.", fd_soc, fd_tot, "RORR_vs_FEN", "RORR_vs_MOR"),
+    ]:
+        head, data = s1_panel(marker)
+        bad = []
+        if len(data) != 27:
+            bad.append(f"数据行数 {len(data)}")
+        if head[1:5] != ["Remifentanil", "Fentanyl", "Sufentanil", "Morphine"]:
+            bad.append(f"药物表头 {head[1:5]}")
+        for cells in data:
+            r = table.get(cells[0])
+            if r is None or len(cells) != 8:
+                bad.append(f"未匹配 SOC 或列数不对: {cells[0]}")
+                continue
+            for k, d in enumerate(["REMIFENTANIL", "FENTANYL", "SUFENTANIL", "MORPHINE"]):
+                exp = s1_n(int(r[f"{d}_reports"]), cohorts[d])
+                if cells[1 + k] != exp:
+                    bad.append(f"{cells[0]}/{d}: {cells[1 + k]} != {exp}")
+            for k, key in enumerate(["REMI_ROR", k_fen, k_mor]):
+                exp = s1_r(r.get(key, ""))
+                if cells[5 + k] != exp:
+                    bad.append(f"{cells[0]}/{key}: {cells[5 + k]} != {exp}")
+        chk(f"[S1] Panel {label} {len(data)} 行 x 8 列逐格一致", bad[:5], [])
+
     # ---- (7) 投稿合规门禁（字数 / 题录 / 软件版本 / 摘要 READUS 要点 / AI 声明 / 占位符）----
     # 与 _wordcount.py 使用同一约定：正文 = ## 1. Introduction → ## Acknowledgements（含小标题）
     def wc(fragment):
