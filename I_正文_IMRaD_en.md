@@ -10,7 +10,7 @@
 
 **Keywords:** remifentanil; opioid-induced hyperalgesia; pharmacovigilance; disproportionality analysis; spontaneous reporting
 
-**Word count:** Summary 277 words; main text 3 988 words (Introduction to Conclusion). **Tables:** 4 (plus 3 supplementary). **Figures:** 2.
+**Word count:** Summary 293 words; main text 3 984 words (Introduction to Conclusion, section headings included). Verified with `_wordcount.py`. **Tables:** 4 (plus 3 supplementary). **Figures:** 2.
 
 > **Formatting note (not for submission).** This file is written to the *Anaesthesia* Guidance for Authors: UK spelling, structured Summary of 250–300 words without abbreviations or references, main text 3000–4000 words, Vancouver references with DOIs, ≤20-word title that states no conclusion, running head ≤60 characters, 3–5 keywords. Tables and figure legends are placed after the References in this same file; the figures themselves are supplied as separate files (`I_fig1_rorr_forest.tif/.pdf/.png`, `I_fig2_year_trend.tif/.pdf/.png`). Number-to-source traceability is in §9.
 
@@ -18,13 +18,13 @@
 
 ## Summary
 
-**Introduction.** Hyperalgesia after remifentanil infusion is widely discussed and has generated a substantial prevention literature, yet the clinical evidence remains contested and no large-scale assessment of real-world reporting has been performed. Spontaneous reporting systems are what shape clinicians' impressions of drug safety, so their contents are worth examining directly.
+**Introduction.** Hyperalgesia after remifentanil infusion is widely discussed and has generated a substantial prevention literature, yet the clinical evidence remains contested and no large-scale assessment of real-world reporting has been performed. Spontaneous reporting systems shape clinicians' impressions of drug safety, so their contents are worth examining directly.
 
-**Methods.** Cross-sectional disproportionality analysis in two independent national pharmacovigilance databases: the United States Food and Drug Administration Adverse Event Reporting System, accessed through the openFDA drug/event interface (20 692 687 reports), as the primary analysis, and the Health Canada Canada Vigilance line-listing (1 154 017 reports, to 30 November 2024) for independent confirmation. Cohorts were remifentanil, fentanyl, sufentanil and morphine. Reporting odds ratios, proportional reporting ratios, information components and empirical Bayes geometric means were computed for a prespecified set of hyperalgesia terms, and remifentanil was compared with each comparator head-to-head using the ratio of reporting odds ratios. Four non-paradoxical opioid effects served as negative controls; a non-pain term served as a specificity probe.
+**Methods.** Cross-sectional disproportionality analysis in two independent national pharmacovigilance databases: the United States Food and Drug Administration Adverse Event Reporting System, accessed through the openFDA drug/event interface (20 692 687 reports), as the primary analysis, and the Health Canada Canada Vigilance line-listing (1 154 017 reports, to 30 November 2024) for confirmation. Cohorts were remifentanil, fentanyl, sufentanil and morphine. Reporting odds ratios, proportional reporting ratios, information components and empirical Bayes geometric means were computed for a prespecified set of hyperalgesia terms; remifentanil was compared with each comparator using the ratio of reporting odds ratios, and signals required at least three reports with a lower confidence bound above one. Four non-paradoxical opioid effects served as negative controls and a non-pain term as a specificity probe.
 
-**Results.** Five prespecified hyperalgesia terms returned zero reports in both databases. The only analysable hyperalgesia-adjacent term showed no remifentanil signal, whereas fentanyl and morphine showed strong signals. For pain, remifentanil reported least of the four opioids and every computable head-to-head ratio was below one (0.066 versus fentanyl and 0.046 versus morphine in the primary database; 0.235 and 0.146 in Canada Vigilance). The same direction held for every negative control, after restriction to serious reports, and in every calendar year from 2015 to 2024.
+**Results.** Five prespecified hyperalgesia terms returned zero reports in both databases. The only analysable hyperalgesia-adjacent term showed no remifentanil signal, whereas fentanyl and morphine did. For pain, remifentanil reported least of the four opioids and every computable head-to-head ratio was below one (0.066, 95% confidence interval 0.04–0.10, versus fentanyl and 0.046 versus morphine in the primary database; 0.235 and 0.146 in Canada Vigilance). The same direction held for every negative control, after restriction to serious reports, and in every calendar year from 2015 to 2024.
 
-**Discussion.** Spontaneous reporting does not detect hyperalgesia after remifentanil, because no preferred term encodes it as a reportable event. This is a structural limitation of the data source, not evidence of safety.
+**Discussion.** Spontaneous reporting does not detect hyperalgesia after remifentanil, because no preferred term encodes it as a reportable event. Disproportionality analysis is hypothesis-generating: this is a structural limitation of the data source, not evidence of safety.
 
 ---
 
@@ -70,7 +70,7 @@ NAUSEA, VOMITING, PRURITUS and CONSTIPATION were prespecified as negative contro
 
 For each drug–event pair, counts were arranged in the conventional 2×2 table (a: reports with the drug and the event; b: reports with the drug but not the event; c: reports with the event but not the drug; d: all remaining reports). Four measures were computed: the reporting odds ratio, (a/c)/(b/d); the proportional reporting ratio, [a/(a+b)]/[c/(c+d)] [14]; the information component with BCPNN shrinkage [15, 16]; and the empirical Bayes geometric mean under the MGPS model [17]. A signal of disproportionate reporting was declared when a ≥ 3 and the lower bound of the 95% confidence interval of the reporting odds ratio exceeded 1, or when the proportional reporting ratio was ≥ 2 with χ² > 4; the comparative behaviour of these measures has been characterised previously [18].
 
-Head-to-head comparison used the ratio of reporting odds ratios: the value for remifentanil divided by that for the comparator. Both ratios share the same background reference, so the comparator-specific terms cancel; a value below 1 means that remifentanil reports the event less than the comparator does. Confidence intervals were calculated on the log scale using the sum of the reciprocal cell counts.
+Head-to-head comparison used the ratio of reporting odds ratios: the value for remifentanil divided by that for the comparator. Both ratios share the same background reference, so the comparator-specific terms cancel; a value below 1 means that remifentanil reports the event less than the comparator does. Confidence intervals were calculated on the log scale using the sum of the reciprocal cell counts. All computations used Python 3.13.14 and matplotlib 3.11.1.
 
 ### 2.5 Structural-availability probe
 
@@ -156,27 +156,27 @@ In two independent national pharmacovigilance databases, remifentanil showed no 
 
 ### 4.2 Relation to the existing evidence base
 
-The prior literature is best characterised as contested rather than supportive. One systematic review found support in 16 of the studies it identified and refutation in 6, and concluded that although remifentanil does induce some degree of hyperalgesia, the effect does not reach clinical significance warranting prevention [4]. Another found the evidence insufficient to support or refute opioid-induced hyperalgesia in humans at all [5]. A meta-analysis of postoperative hyperalgesia reported an effect with considerable heterogeneity [6]. A review of intraoperative remifentanil called acute tolerance and hyperalgesia clinically significant and in need of further research, while listing the methodological problems (exposure dose and duration, infusion mode, co-administered drugs, pain assessment method and the stimuli used to measure thresholds) that complicate interpretation [19]. A recent review summarised remifentanil-induced hyperalgesia as part of a general opioid-induced hyperalgesia syndrome, apparently arising after abrupt cessation of relatively high-rate infusions [1].
+The prior literature is best characterised as contested rather than supportive. One systematic review found support in 16 studies and refutation in 6, and concluded that although remifentanil does induce some degree of hyperalgesia, the effect does not reach clinical significance warranting prevention [4]. Another found the evidence insufficient to support or refute opioid-induced hyperalgesia in humans at all [5]. A meta-analysis of postoperative hyperalgesia reported an effect with considerable heterogeneity [6]. A review of intraoperative remifentanil called acute tolerance and hyperalgesia clinically significant and in need of further research, while noting the methodological problems (exposure, infusion mode, co-administered drugs, pain measurement) that complicate interpretation [19]. A recent review places remifentanil-induced hyperalgesia within a general opioid-induced hyperalgesia syndrome arising after abrupt cessation of high-rate infusions [1].
 
 Our findings do not contradict the experimental literature; they address a different question. Experimental models can detect a change in pain threshold, but cannot say how often that change reaches the threshold of clinical recognition and reporting. The absence of a reporting signal across two databases constrains how large the real-world burden can plausibly be, and sits uneasily with a widely recognised, clinically prominent syndrome.
 
 ### 4.3 Why remifentanil under-reports, and why that is not protection
 
-The most important caution is that remifentanil under-reported not only pain and hyperalgesia terms but also the four negative controls. An interpretation of analgesic superiority is therefore unavailable: if PAIN under-reporting meant better analgesia, the simultaneous under-reporting of pruritus and constipation would require remifentanil to be superior on side effects at the same time, for which no pharmacological account exists.
+The most important caution is that remifentanil under-reported not only pain and hyperalgesia terms but also the four negative controls. An interpretation of analgesic superiority is therefore unavailable: if PAIN under-reporting meant better analgesia, the simultaneous under-reporting of pruritus and constipation would require remifentanil to be superior on side effects as well, for which no pharmacological account exists.
 
 Cohort composition explains the pattern more parsimoniously. Remifentanil's reports are generated almost entirely in monitored perioperative care: 91.9% serious in Canada and 98.0% of FAERS reports serious in the sensitivity subset, predominantly from health professionals and rarely from consumers. For opioids in the FDA database, the reporter's professional identity is itself a strong determinant of which reactions are recorded [20]. Fentanyl's FAERS cohort is dominated by transdermal and outpatient use, morphine's by chronic pain and consumer reporting. These settings do not sample the same clinical events, and the comparator opioids are prescribed where pain reporting is enriched by indication, so their PAIN proportions rise for reasons unrelated to pharmacology. This is indication confounding of the classical kind, creating an apparent advantage for remifentanil.
 
-The specificity probe makes the argument concrete. DRUG INEFFECTIVE reversed direction between databases and, in the Canadian physician-only analysis, remifentanil over-reported it several-fold. Under a hypothesis of global under-reporting this term should have moved with the others. It did not, so remifentanil's low reporting is term-specific and setting-specific rather than a database-wide property of the drug's records.
+The specificity probe makes the argument concrete. DRUG INEFFECTIVE reversed direction between databases and, in the Canadian physician-only analysis, remifentanil over-reported it several-fold. Under a hypothesis of global under-reporting this term should have moved with the others. It did not, so remifentanil's low reporting is term-specific rather than a database-wide property of its records.
 
 ### 4.4 A structural limitation of spontaneous reporting
 
 The most durable contribution here is not the negative finding but the explanation for it. Five terms that directly encode the clinical target, namely HYPERALGESIA, PAIN INCREASED, POSTOPERATIVE PAIN, CHRONIC PAIN and OPIOID WITHDRAWAL SYNDROME, are simply not used in spontaneous reporting. HYPERALGESIA is a phenomenon-level term, not a reportable event: it describes a shift in the stimulus–response relationship that must be measured, not a discrete event a clinician observes and files. Postoperative pain after surgery is expected and therefore not reportable; chronic pain is a diagnosis, not an event.
 
-This creates a category mismatch. Opioid-induced hyperalgesia is a syndrome defined by a quantitative change in pain sensitivity, whereas spontaneous reporting captures discrete, unexpected, clinically notable events. Where a syndrome has no preferred term that reports an event, disproportionality analysis is not a low-powered instrument for it; it is the wrong instrument. The corollary generalises to any opioid, and saying so has value, because a stream of null studies on hyperalgesia is otherwise likely to be read as accumulating evidence of safety.
+This creates a category mismatch. Opioid-induced hyperalgesia is a syndrome defined by a quantitative change in pain sensitivity, whereas spontaneous reporting captures discrete, unexpected, clinically notable events. Where a syndrome has no preferred term that reports an event, disproportionality analysis is not a low-powered instrument for it; it is the wrong instrument. The corollary generalises to any opioid: a stream of null studies is otherwise likely to be read as accumulating evidence of safety.
 
 ### 4.5 Strengths
 
-The head-to-head design with prespecified negative controls is the principal strength: comparing remifentanil against three opioids used in the same clinical space, with one outcome dictionary and one pipeline, removes much of the between-study variability that makes the existing literature hard to synthesise, and the controls turn an uninterpretable null into a diagnostic result.
+The head-to-head design with prespecified negative controls is the principal strength: comparing remifentanil against three opioids used in the same clinical space, with one outcome dictionary and one pipeline, removes much of the between-study variability that makes the existing literature hard to synthesise, and the controls make an uninterpretable null diagnostic.
 
 ### 4.6 Limitations
 
@@ -184,7 +184,7 @@ The head-to-head design with prespecified negative controls is the principal str
 
 **openFDA case-level data were inaccessible.** The FDA case-level and drug-record-level files, which would permit restriction to primary suspect drugs and true time-to-onset analysis, could not be retrieved from our environment. Report-level analysis of openFDA therefore carries two limitations. First, route of administration cannot be attributed reliably to a specific drug record: `patient.drug` is an array and the openFDA search is report-level, so a query combining an active substance with a route does not require both to belong to the same record. An exploratory route stratification showed the defect: remifentanil, which has no oral or transdermal formulation, received oral-route assignment in 21.1% of its reports, with route counts summing to 184% of its report count. Route was therefore not a primary covariate. When the PAIN comparison was restricted to the intravenous stratum in both arms the head-to-head ratio was unchanged (0.077 versus fentanyl, 0.038 versus morphine), so the defect dilutes both arms symmetrically. Second, time-to-onset and Weibull analyses were not possible, drug start dates not being exposed through the aggregate interface; §3.8 is the substitute.
 
-**De-duplication and role attribution.** openFDA does not apply the FDA's case-level de-duplication, so reports the FDA would merge may be counted more than once; this inflates counts across all cohorts and does not plausibly differ by drug in a way that would generate the observed direction. FAERS cohorts were also role-agnostic, which broadens the denominator beyond suspect-drug reports and could dilute a signal. The Canadian analysis, restricted to suspect drugs, reproduced the direction, but the FAERS arm cannot exclude dilution.
+**De-duplication and role attribution.** openFDA does not apply the FDA's case-level de-duplication, so reports the FDA would merge may be counted more than once; this inflates counts across all cohorts and would not plausibly generate the observed direction. FAERS cohorts were also role-agnostic, which broadens the denominator beyond suspect-drug reports and could dilute a signal. The Canadian analysis, restricted to suspect drugs, reproduced the direction, but the FAERS arm cannot exclude dilution.
 
 **Small confirmation cohort.** The Canadian remifentanil cohort contained 111 reports and most comparisons there are uncomputable because a 2×2 cell is empty. Canada confirms direction only.
 
@@ -345,7 +345,7 @@ Full class-by-class values are available in the study repository (`cv/cv_soc_27.
 
 ### Table S2 (supplementary). READUS-PV checklist for this analysis
 
-Completed READUS-PV checklist [10, 11] mapping each recommendation to the section of this manuscript in which it is addressed. Provided as a separate file with the submission.
+Completed READUS-PV checklist [10, 11] mapping each of the 32 recommendations for the manuscript body and the 12 recommendations for the abstract to the section of this manuscript in which it is addressed, with an explicit note on the two items that are not applicable (case-by-case analysis; protocol registration). Supplied as a separate file with the submission (`I_TableS2_READUS-PV_checklist.md`).
 
 ### Table S3 (supplementary). Canada Vigilance cohorts: composition by seriousness, reporter type, age band and sex
 
@@ -395,7 +395,9 @@ Values are the number of reports in that category, with the percentage of that d
 
 ## 10. Outstanding items before submission
 
-1. **Repository URL** must be confirmed live after the GitHub deposit (see `GITHUB_DEPOSIT_SOP.md`); the URL above is the fixed target.
-2. **Tables S2 (READUS-PV checklist)** to be completed from `https://readus-statement.org/` and uploaded as Supporting Information.
+*(Internal working section — not part of the submitted manuscript.)*
+
+1. **Repository URL** must be confirmed live after the GitHub deposit (see `GITHUB_DEPOSIT_SOP.md`); the URL above is the fixed target. The local repository is committed and clean (70 tracked files, no source data and no credentials); only the remote push requires the author's GitHub authentication.
+2. **Tables S2 (READUS-PV checklist) — done.** The completed checklist is `I_TableS2_READUS-PV_checklist.md`, to be uploaded as Supporting Information.
 3. **X (Twitter) handle** for the author, if available (the Journal requests one but does not require an account to exist).
 4. **Cover letter** to confirm the AI disclosure and the data availability statement, and to state that the work is not under consideration elsewhere.

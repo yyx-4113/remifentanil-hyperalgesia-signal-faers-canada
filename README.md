@@ -1,5 +1,8 @@
 # Remifentanil and hyperalgesia reporting: FAERS + Canada Vigilance two-database disproportionality study
 
+**Repository:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada>
+**Archived release:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.0.0>
+
 Reproduction package for the study:
 
 > **No disproportionate real-world reporting of hyperalgesia with remifentanil versus other intraoperative opioids: a two-database pharmacovigilance signal study**
@@ -56,7 +59,8 @@ manuscript's number-to-source table.
 | `cv/cv_process.py` | Canada Vigilance line-listing pipeline: exact active-ingredient cohort matching, native PT/SOC aggregation, ROR/RORR, subgroups. Writes `cv/cv_soc_27.csv`, `cv/cv_pt_summary.csv`, `cv/cv_subgroups.csv`, `cv/cv_drug_totals.csv`. |
 | `soc_rules.py` | Heuristic PT→SOC keyword mapping used **only** by the exploratory openFDA SOC analysis. Not an authoritative MedDRA implementation. |
 | `_fda_auth.py` | Reads an optional openFDA API key from the `OPENFDA_API_KEY` environment variable or a local `openfda_key.txt`. The key is **not required** for any analysis in this repository. |
-| `_check_consistency.py` | Quality gate: 171 programmatic assertions that every number quoted in the manuscript equals the value in its source file. Exits non-zero on any mismatch. |
+| `_check_consistency.py` | Quality gate: 209 programmatic assertions that every number quoted in the manuscript equals the value in its source file, plus submission-compliance checks (declared word counts, title/running-head/keyword limits, software versions, abstract coverage of the READUS-PV abstract items, AI-disclosure key strings, placeholder scan and figure-file presence). Exits non-zero on any mismatch. |
+| `_wordcount.py` | Word count for the manuscript using the target journal's convention: main text = `## 1. Introduction` → `## Acknowledgements`, section headings included; Summary counted separately. Exits non-zero if either figure is outside the journal's range. |
 
 ### Result files (manuscript traceability)
 
@@ -72,6 +76,7 @@ manuscript's number-to-source table.
 | `cv/cv_pt_summary.csv`, `cv/cv_drug_totals.csv`, `cv/cv_subgroups.csv`, `cv/cv_summary.md` | Canada Vigilance PT-level results, cohort sizes, and age/sex/reporter/seriousness subgroups. |
 | `G_跨库验证_FAERSvsCanada.md` | Side-by-side cross-database confirmation. |
 | `I_稿件三线表.md` | Manuscript tables 1–4 and figure legends. |
+| `I_TableS2_READUS-PV_checklist.md` | **Supporting Information**: the completed READUS-PV checklist (32 items for the manuscript body, 12 for the abstract), each mapped to the manuscript section where it is addressed, with the non-applicable items stated explicitly. |
 | `I_正文_IMRaD_en.md` | Manuscript (English IMRaD) and its number-to-source traceability table. |
 | `I_fig1_rorr_forest.{tif,pdf,png}`, `I_fig2_year_trend.{tif,pdf,png}` | Figures 1 and 2 (line art, 600 ppi, 180 mm double-column width). |
 | `01_任务状态.md`, `00_项目总览与执行路线图.md`, `方案二_*.md` | Project ledger and design documents. |
@@ -139,11 +144,15 @@ this environment; Arial is used instead.
 ### 3.5 Quality gate
 
 ```
-python _check_consistency.py       # must print PASS 171 / FAIL 0 and exit 0
+python _wordcount.py               # main text and Summary within the journal's limits
+python _check_consistency.py       # must print PASS 209 / FAIL 0 and exit 0
 ```
 
-This asserts that every number quoted in `I_正文_IMRaD_en.md` equals the corresponding value
-in the result files. Re-run it after changing any data or manuscript text.
+`_check_consistency.py` asserts that every number quoted in `I_正文_IMRaD_en.md` equals the
+corresponding value in the result files, and additionally checks the submission-level
+constraints (word counts, title and keyword limits, software versions, abstract coverage of
+the READUS-PV abstract items, the AI-disclosure strings, absence of placeholders, and the
+presence of the figure files). Re-run both after changing any data or manuscript text.
 
 ---
 

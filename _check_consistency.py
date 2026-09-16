@@ -7,7 +7,7 @@
 
 写入即诚信：任何 FAIL 都必须先修数据或修正文，不得忽略。
 """
-import csv, json, os, sys
+import csv, json, os, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 def P(*a): return os.path.join(HERE, *a)
@@ -276,6 +276,102 @@ if os.path.exists(P(MS)):
         r = sg_get(drug, "serious", "Serious")
         tot = num(cvm.get(drug, {}).get("N_suspect_reports"))
         chk(f"[S3] {drug} serious 分子 <= 队列", float(r["Count"]) <= tot, True)
+
+    # ---- (7) 投稿合规门禁（字数 / 题录 / 软件版本 / 摘要 READUS 要点 / AI 声明 / 占位符）----
+    # 与 _wordcount.py 使用同一约定：正文 = ## 1. Introduction → ## Acknowledgements（含小标题）
+    def wc(fragment):
+        fragment = re.sub(r"[`*_>#|]", " ", fragment)
+        return sum(1 for tok in fragment.split() if re.search(r"[A-Za-z0-9]", tok))
+
+    i_intro = txt.index("## 1. Introduction")
+    i_ack = txt.index("## Acknowledgements")
+    main_words = wc(txt[i_intro:i_ack])
+    summ_text = txt[txt.index("## Summary"):i_intro]
+    summ_words = wc(summ_text)
+
+    chk("正文词数在 3000-4000", 3000 <= main_words <= 4000, True)
+    chk("摘要词数在 250-300", 250 <= summ_words <= 300, True)
+    # 声明的字数必须等于实测值（防"改稿后声明未更新"）
+    must_contain("声明正文词数", f"{main_words:,}".replace(",", " "))
+    must_contain("声明摘要词数", f"Summary {summ_words} words")
+
+    # 题录：标题 ≤20 词且不陈述结论；running head ≤60 字符；关键词 3-5 个
+    title = txt.splitlines()[0].lstrip("# ").strip()
+    chk("标题词数 <= 20", len(title.split()) <= 20, True)
+    rh = re.search(r"\*\*Running head:\*\*\s*(.+)", txt).group(1).strip()
+    chk("running head <= 60 字符", len(rh) <= 60, True)
+    kw = re.search(r"\*\*Keywords:\*\*\s*(.+)", txt).group(1)
+    chk("关键词个数 3-5", 3 <= len([k for k in kw.split(";") if k.strip()]) <= 5, True)
+
+    # 软件版本必须在 Methods 中出现（READUS-PV 14d）
+    must_contain("软件版本 Python", "Python 3.13.14")
+    must_contain("软件版本 matplotlib", "matplotlib 3.11.1")
+
+    # 摘要必须覆盖 READUS-PV Table 2 的 2d / 3 / 4b
+    for label, needle in [
+        ("摘要报阈值 (item 2d)", "lower confidence bound above one"),
+        ("摘要报精度 (item 3)", "95% confidence interval 0.04"),
+        ("摘要声明假设生成 (item 4b)", "hypothesis-generating"),
+    ]:
+        chk(f"[摘要 READUS] {label}", needle in summ_text, True)
+    # 摘要不得含引用标记或全大写缩略语
+    chk("摘要无引用标记 [n]", re.findall(r"\[\d+\]", summ_text), [])
+    chk("摘要无全大写缩略语", sorted(set(re.findall(r"\b[A-Z]{2,}\b", summ_text))), [])
+
+    # AI 使用申报关键字符串（防改稿时整段丢失）
+    for needle in [
+        "Use of generative artificial intelligence",
+        "No reported data or result was created, generated, imputed, altered or manipulated by generative AI",
+        "no AI tool was used to create, alter or manipulate the figures",
+        "no AI tool is listed as an author or contributor",
+    ]:
+        must_contain("AI 声明关键串", needle)
+
+    # 实名仓库 URL：正文、README、CITATION.cff 三处必须一致
+    REPO = "https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada"
+    chk("[正文] 实名仓库 URL", REPO in txt, True)
+    for rel in ["README.md", "CITATION.cff"]:
+        chk(f"[{rel}] 实名仓库 URL", REPO in open(P(rel), encoding="utf-8").read(), True)
+    # 禁止 "available on request"
+    chk("[正文] 未出现 available on request", "available on request" in txt.lower(), False)
+
+    # 占位符扫描：投给期刊的稿件不得残留任何占位符
+    leftovers = [m for m in ["[[", "TODO", "TBD", "XXX", "COMPLETE BEFORE SUBMISSION"]
+                 if m in txt]
+    chk("正文无占位符", leftovers, [])
+
+    # 美式拼写抽查（该刊要求 UK English）
+    us = [w for w in ["analyze", "analyzed", "color", "behavior", "modeling",
+                      "labeled", "randomized", "minimize", "utilize", "center of"]
+          if re.search(rf"\b{w}", txt, re.I)]
+    chk("未检出美式拼写", us, [])
+
+    # READUS-PV checklist 覆盖度：正文 32 条 + 摘要 12 条必须逐条出现
+    ck_file = P("I_TableS2_READUS-PV_checklist.md")
+    chk("READUS checklist 文件存在", os.path.exists(ck_file), True)
+    if os.path.exists(ck_file):
+        ck_txt = open(ck_file, encoding="utf-8").read()
+        body_ids = ["1a", "1b", "2a", "2b", "2c", "3", "4a", "4b", "5a", "5b",
+                    "6a", "6b", "6c", "6d", "7a", "7b", "7c", "7d", "7e",
+                    "8a", "8b", "9", "10", "11", "12a", "12b", "12c", "13",
+                    "14a", "14b", "14c", "14d"]
+        abs_ids = ["1a", "1b", "1c", "2a", "2b", "2c", "2d", "2e", "3", "4a", "4b", "4c"]
+        part_a = ck_txt.split("## Part B")[0]
+        part_b = "## Part B" + ck_txt.split("## Part B")[1]
+        chk("checklist 正文条目数 == 32", len(body_ids), 32)
+        chk("checklist 摘要条目数 == 12", len(abs_ids), 12)
+        miss_a = [i for i in body_ids if f"| {i} |" not in part_a]
+        miss_b = [i for i in abs_ids if f"| {i} |" not in part_b]
+        chk("checklist Part A 覆盖完整", miss_a, [])
+        chk("checklist Part B 覆盖完整", miss_b, [])
+        chk("[正文] 指向 checklist 文件名", "I_TableS2_READUS-PV_checklist.md" in txt, True)
+
+    # 图件：目标期刊要求单独文件、600 ppi、≤10 MB
+    for stem in ["I_fig1_rorr_forest", "I_fig2_year_trend"]:
+        for ext in ["tif", "pdf", "png"]:
+            fp = P(f"{stem}.{ext}")
+            chk(f"图件存在 {stem}.{ext}", os.path.exists(fp), True)
+        chk(f"图件无遗留 svg {stem}", os.path.exists(P(f"{stem}.svg")), False)
 else:
     chk(f"[正文核验] 找不到 {MS}", False, True)
 

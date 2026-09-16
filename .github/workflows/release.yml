@@ -28,6 +28,9 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
+      - name: Run word-count check
+        run: python _wordcount.py
+
       - name: Run number-to-source consistency gate
         run: python _check_consistency.py
 
@@ -74,6 +77,7 @@ jobs:
             G_跨库验证_FAERSvsCanada.md \
             I_稿件三线表.md \
             I_正文_IMRaD_en.md \
+            I_TableS2_READUS-PV_checklist.md \
             I_fig1_rorr_forest.png \
             I_fig1_rorr_forest.pdf \
             I_fig1_rorr_forest.tif \
