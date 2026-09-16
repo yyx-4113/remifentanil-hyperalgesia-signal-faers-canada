@@ -1,0 +1,28 @@
+﻿SOC,REMIFENTANIL_reports,REMIFENTANIL_pct,FENTANYL_reports,FENTANYL_pct,SUFENTANIL_reports,SUFENTANIL_pct,MORPHINE_reports,MORPHINE_pct,REMI_ROR,RORR_REMI_vs_FEN,RORR_REMI_vs_MOR
+Skin and subcutaneous tissue disorders,3,2.7,604,12.37,16,25.4,2362,30.78,0.143,0.197,0.062
+Psychiatric disorders,0,0.0,1787,36.61,2,3.17,2684,34.97,,,
+Infections and infestations,0,0.0,306,6.27,1,1.59,1038,13.52,,,
+Eye disorders,0,0.0,179,3.67,0,0.0,451,5.88,,,
+Nervous system disorders,21,18.92,1057,21.66,16,25.4,2008,26.16,1.026,0.844,0.659
+Gastrointestinal disorders,3,2.7,562,11.51,12,19.05,1881,24.51,0.101,0.213,0.086
+General disorders and administration site conditions,28,25.23,1973,40.42,26,41.27,3362,43.8,0.361,0.497,0.433
+Ear and labyrinth disorders,0,0.0,77,1.58,0,0.0,108,1.41,,,
+Vascular disorders,15,13.51,312,6.39,18,28.57,1039,13.54,1.966,2.288,0.998
+"Respiratory, thoracic and mediastinal disorders",30,27.03,638,13.07,13,20.63,1243,16.2,2.641,2.463,1.917
+Reproductive system and breast disorders,0,0.0,80,1.64,0,0.0,117,1.52,,,
+Hepatobiliary disorders,1,0.9,27,0.55,0,0.0,221,2.88,0.445,1.634,0.307
+"Injury, poisoning and procedural complications",14,12.61,1540,31.55,19,30.16,2163,28.18,0.635,0.313,0.368
+"Pregnancy, puerperium and perinatal conditions",3,2.7,77,1.58,0,0.0,94,1.22,2.995,1.733,2.24
+Metabolism and nutrition disorders,1,0.9,124,2.54,9,14.29,446,5.81,0.171,0.349,0.147
+Cardiac disorders,13,11.71,324,6.64,17,26.98,532,6.93,2.288,1.866,1.781
+Musculoskeletal and connective tissue disorders,5,4.5,454,9.3,4,6.35,1172,15.27,0.294,0.46,0.262
+Renal and urinary disorders,0,0.0,146,2.99,0,0.0,256,3.34,,,
+Blood and lymphatic system disorders,0,0.0,73,1.5,0,0.0,245,3.19,,,
+Investigations,12,10.81,691,14.16,10,15.87,1265,16.48,0.655,0.735,0.614
+Immune system disorders,9,8.11,229,4.69,11,17.46,737,9.6,2.363,1.792,0.831
+"Neoplasms benign, malignant and unspecified (incl cysts and polyps)",3,2.7,51,1.04,0,0.0,244,3.18,0.584,2.631,0.846
+Endocrine disorders,0,0.0,9,0.18,0,0.0,37,0.48,,,
+"Congenital, familial and genetic disorders",0,0.0,23,0.47,0,0.0,49,0.64,,,
+Product issues,2,1.8,278,5.7,1,1.59,158,2.06,0.608,0.304,0.873
+Surgical and medical procedures,0,0.0,107,2.19,1,1.59,154,2.01,,,
+Social circumstances,0,0.0,128,2.62,0,0.0,240,3.13,,,

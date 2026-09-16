@@ -1,0 +1,61 @@
+﻿Drug,Category,Value,Count,Pct_of_drug
+REMIFENTANIL,age,18-64,41,36.94
+REMIFENTANIL,age,<18,11,9.91
+REMIFENTANIL,age,>=65,10,9.01
+REMIFENTANIL,age,unk,49,44.14
+REMIFENTANIL,gender,,32,28.83
+REMIFENTANIL,gender,Female,39,35.14
+REMIFENTANIL,gender,Male,40,36.04
+REMIFENTANIL,reporter,,11,9.91
+REMIFENTANIL,reporter,Consumer/other non health professional,6,5.41
+REMIFENTANIL,reporter,Other health professional,72,64.86
+REMIFENTANIL,reporter,Pharmacist,3,2.7
+REMIFENTANIL,reporter,Physician,19,17.12
+REMIFENTANIL,serious,Not Serious,9,8.11
+REMIFENTANIL,serious,Serious,102,91.89
+FENTANYL,age,18-64,2325,47.63
+FENTANYL,age,<18,70,1.43
+FENTANYL,age,>=65,753,15.43
+FENTANYL,age,unk,1733,35.51
+FENTANYL,gender,,990,20.28
+FENTANYL,gender,Female,2106,43.15
+FENTANYL,gender,Male,1785,36.57
+FENTANYL,reporter,,618,12.66
+FENTANYL,reporter,Consumer/other non health professional,974,19.95
+FENTANYL,reporter,Lawyer,84,1.72
+FENTANYL,reporter,Nurse,5,0.1
+FENTANYL,reporter,Other health professional,2056,42.12
+FENTANYL,reporter,Pharmacist,555,11.37
+FENTANYL,reporter,Physician,589,12.07
+FENTANYL,serious,Not Serious,987,20.22
+FENTANYL,serious,Serious,3894,79.78
+SUFENTANIL,age,18-64,27,42.86
+SUFENTANIL,age,<18,10,15.87
+SUFENTANIL,age,>=65,22,34.92
+SUFENTANIL,age,unk,4,6.35
+SUFENTANIL,gender,,2,3.17
+SUFENTANIL,gender,Female,38,60.32
+SUFENTANIL,gender,Male,23,36.51
+SUFENTANIL,reporter,,8,12.7
+SUFENTANIL,reporter,Consumer/other non health professional,1,1.59
+SUFENTANIL,reporter,Other health professional,39,61.9
+SUFENTANIL,reporter,Pharmacist,6,9.52
+SUFENTANIL,reporter,Physician,9,14.29
+SUFENTANIL,serious,Not Serious,5,7.94
+SUFENTANIL,serious,Serious,58,92.06
+MORPHINE,age,18-64,4171,54.35
+MORPHINE,age,<18,245,3.19
+MORPHINE,age,>=65,1351,17.6
+MORPHINE,age,unk,1908,24.86
+MORPHINE,gender,,354,4.61
+MORPHINE,gender,Female,4412,57.49
+MORPHINE,gender,Male,2909,37.9
+MORPHINE,reporter,,2364,30.8
+MORPHINE,reporter,Consumer/other non health professional,1810,23.58
+MORPHINE,reporter,Lawyer,371,4.83
+MORPHINE,reporter,Nurse,2,0.03
+MORPHINE,reporter,Other health professional,2056,26.79
+MORPHINE,reporter,Pharmacist,537,7.0
+MORPHINE,reporter,Physician,535,6.97
+MORPHINE,serious,Not Serious,2382,31.04
+MORPHINE,serious,Serious,5293,68.96

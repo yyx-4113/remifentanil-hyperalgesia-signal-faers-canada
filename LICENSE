@@ -1,0 +1,36 @@
+MIT License
+
+Copyright (c) 2026 Yongxin Yang
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+-------------------------------------------------------------------------------
+
+NOTE ON SOURCE DATA
+
+The MIT License above applies to the analysis code and the derived data files
+authored for this project. It does not apply to the underlying source data:
+
+  * FAERS / openFDA data are produced by the US Food and Drug Administration and,
+    as US Government works, are in the public domain. See
+    https://open.fda.gov/license/ and https://www.fda.gov/about-fda/about-website/website-policies
+
+  * The Canada Vigilance Adverse Reaction Online Database line-listing extract is
+    published by Health Canada under the Open Government Licence - Canada. See
+    https://open.canada.ca/en/open-government-licence-canada

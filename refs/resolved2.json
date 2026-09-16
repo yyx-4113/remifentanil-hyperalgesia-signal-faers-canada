@@ -1,0 +1,232 @@
+{
+  "schema_version": "reference-management/v1",
+  "status": "ok",
+  "operation": "resolve",
+  "items": [
+    {
+      "id": "doi:10.1002/sim.2473",
+      "csl": {
+        "id": "doi:10.1002/sim.2473",
+        "type": "article-journal",
+        "title": "Extending the methods used to screen the WHO drug safety database towards analysis of complex associations and improved accuracy for rare events",
+        "DOI": "10.1002/sim.2473",
+        "author": [
+          {
+            "family": "Norén",
+            "given": "G. Niklas"
+          },
+          {
+            "family": "Bate",
+            "given": "Andrew"
+          },
+          {
+            "family": "Orre",
+            "given": "Roland"
+          },
+          {
+            "family": "Edwards",
+            "given": "I. Ralph"
+          }
+        ],
+        "container-title": "Statistics in Medicine",
+        "issued": {
+          "date-parts": [
+            [
+              2006,
+              11,
+              15
+            ]
+          ]
+        },
+        "volume": "25",
+        "issue": "21",
+        "page": "3740-3757",
+        "URL": "https://doi.org/10.1002/sim.2473"
+      },
+      "identifiers": {
+        "doi": "10.1002/sim.2473",
+        "pmid": null,
+        "arxiv": null
+      },
+      "provenance": [
+        {
+          "source": "doi",
+          "source_id": "10.1002/sim.2473"
+        }
+      ],
+      "quality": {
+        "confidence": "high",
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "doi:10.1080/00031305.1999.10474456",
+      "csl": {
+        "id": "doi:10.1080/00031305.1999.10474456",
+        "type": "article-journal",
+        "title": "Bayesian Data Mining in Large Frequency Tables, with an Application to the FDA Spontaneous Reporting System",
+        "DOI": "10.1080/00031305.1999.10474456",
+        "author": [
+          {
+            "family": "Dumouchel",
+            "given": "William"
+          }
+        ],
+        "container-title": "The American Statistician",
+        "issued": {
+          "date-parts": [
+            [
+              1999,
+              8
+            ]
+          ]
+        },
+        "volume": "53",
+        "issue": "3",
+        "page": "177-190",
+        "URL": "https://doi.org/10.1080/00031305.1999.10474456"
+      },
+      "identifiers": {
+        "doi": "10.1080/00031305.1999.10474456",
+        "pmid": null,
+        "arxiv": null
+      },
+      "provenance": [
+        {
+          "source": "doi",
+          "source_id": "10.1080/00031305.1999.10474456"
+        }
+      ],
+      "quality": {
+        "confidence": "high",
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "doi:10.1002/pds.677",
+      "csl": {
+        "id": "doi:10.1002/pds.677",
+        "type": "article-journal",
+        "title": "Use of proportional reporting ratios (PRRs) for signal generation from spontaneous adverse drug reaction reports",
+        "DOI": "10.1002/pds.677",
+        "author": [
+          {
+            "family": "Evans",
+            "given": "S. J. W."
+          },
+          {
+            "family": "Waller",
+            "given": "P. C."
+          },
+          {
+            "family": "Davis",
+            "given": "S."
+          }
+        ],
+        "container-title": "Pharmacoepidemiology and Drug Safety",
+        "issued": {
+          "date-parts": [
+            [
+              2001,
+              10
+            ]
+          ]
+        },
+        "volume": "10",
+        "issue": "6",
+        "page": "483-486",
+        "URL": "https://doi.org/10.1002/pds.677"
+      },
+      "identifiers": {
+        "doi": "10.1002/pds.677",
+        "pmid": null,
+        "arxiv": null
+      },
+      "provenance": [
+        {
+          "source": "doi",
+          "source_id": "10.1002/pds.677"
+        }
+      ],
+      "quality": {
+        "confidence": "high",
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "doi:10.1002/pds.668",
+      "csl": {
+        "id": "doi:10.1002/pds.668",
+        "type": "article-journal",
+        "title": "A comparison of measures of disproportionality for signal detection in spontaneous reporting systems for adverse drug reactions",
+        "DOI": "10.1002/pds.668",
+        "author": [
+          {
+            "family": "van Puijenbroek",
+            "given": "Eugéne P."
+          },
+          {
+            "family": "Bate",
+            "given": "Andrew"
+          },
+          {
+            "family": "Leufkens",
+            "given": "Hubert G. M."
+          },
+          {
+            "family": "Lindquist",
+            "given": "Marie"
+          },
+          {
+            "family": "Orre",
+            "given": "Roland"
+          },
+          {
+            "family": "Egberts",
+            "given": "Antoine C. G."
+          }
+        ],
+        "container-title": "Pharmacoepidemiology and Drug Safety",
+        "issued": {
+          "date-parts": [
+            [
+              2002,
+              1
+            ]
+          ]
+        },
+        "volume": "11",
+        "issue": "1",
+        "page": "3-10",
+        "URL": "https://doi.org/10.1002/pds.668"
+      },
+      "identifiers": {
+        "doi": "10.1002/pds.668",
+        "pmid": null,
+        "arxiv": null
+      },
+      "provenance": [
+        {
+          "source": "doi",
+          "source_id": "10.1002/pds.668"
+        }
+      ],
+      "quality": {
+        "confidence": "high",
+        "errors": [],
+        "warnings": []
+      }
+    }
+  ],
+  "rendered": null,
+  "diagnostics": [],
+  "stats": {
+    "received": 4,
+    "succeeded": 4,
+    "failed": 0,
+    "duplicates_skipped": 0
+  }
+}

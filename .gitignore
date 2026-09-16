@@ -1,0 +1,37 @@
+# ---------------------------------------------------------------------------
+# 复现包 .gitignore —— 保护凭证、排除原始数据与运行产物
+# ---------------------------------------------------------------------------
+
+# 1) 凭证：绝不提交任何 API key
+openfda_key.txt
+key.txt
+*.key.txt
+.env
+
+# 2) 运行缓存 / 日志 / 字节码
+__pycache__/
+*.pyc
+*.log
+.pytest_cache/
+
+# 3) 原始数据集（体积过大，且属第三方、有独立许可；由用户按 README §3.3 自行下载）
+#    Canada Vigilance 解压后约 2.4 GB，压缩包约 300 MB
+cv/extract_extrait.zip
+cv/cvponline_extract_20241130/
+cv/*.zip
+
+# 4) 本地工作目录（含会话记忆、skill 下载暂存、探测脚本）
+.workbuddy/
+_probe/
+
+# 5) 编辑器 / 系统 / 临时备份
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+~$*
+*.bak
+*.bak_*
+*.orig
+*~
+*_backup.md

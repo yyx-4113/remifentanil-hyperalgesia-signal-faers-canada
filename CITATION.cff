@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: "If you use this code or these derived data, please cite it as below."
+title: "Remifentanil and hyperalgesia reporting: FAERS + Canada Vigilance two-database disproportionality study"
+abstract: >-
+  Reproduction package for a head-to-head disproportionality analysis of remifentanil
+  against fentanyl, sufentanil and morphine in the US FDA Adverse Event Reporting System
+  (via the openFDA drug/event API) and the Health Canada Canada Vigilance line-listing.
+  Five of seven prespecified opioid-induced-hyperalgesia preferred terms return zero
+  reports in both databases, and no disproportionate reporting of hyperalgesia is
+  observed for remifentanil relative to any comparator.
+type: software
+authors:
+  - family-names: Yang
+    given-names: Yongxin
+    name-particle: ""
+    orcid: "https://orcid.org/0009-0004-9698-6552"
+    affiliation: "Department of Anesthesiology, The Second Affiliated Hospital of Fujian University of Traditional Chinese Medicine, Fuzhou, Fujian 350003, China"
+    email: "960856791@qq.com"
+contact:
+  - family-names: Yang
+    given-names: Yongxin
+    orcid: "https://orcid.org/0009-0004-9698-6552"
+    email: "960856791@qq.com"
+repository-code: "https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada"
+url: "https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada"
+license: MIT
+keywords:
+  - remifentanil
+  - opioid-induced hyperalgesia
+  - pharmacovigilance
+  - FAERS
+  - openFDA
+  - Canada Vigilance
+  - disproportionality analysis
+  - reporting odds ratio
+  - MedDRA
+version: "1.0.0"
+date-released: "2026-09-16"
+references:
+  - type: article
+    title: "No disproportionate real-world reporting of hyperalgesia with remifentanil versus other intraoperative opioids: a two-database pharmacovigilance signal study"
+    authors:
+      - family-names: Yang
+        given-names: Yongxin
+        orcid: "https://orcid.org/0009-0004-9698-6552"
+    year: 2026
+    notes: "Manuscript in preparation; citation details will be updated on acceptance."

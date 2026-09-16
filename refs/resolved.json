@@ -1,0 +1,713 @@
+{
+  "schema_version": "reference-management/v1",
+  "status": "ok",
+  "operation": "resolve",
+  "items": [
+    {
+      "id": "doi:10.1097/aco.0000000000001400",
+      "csl": {
+        "id": "doi:10.1097/aco.0000000000001400",
+        "type": "article-journal",
+        "title": "Remifentanil-induced hyperalgesia: the current state of affairs",
+        "DOI": "10.1097/aco.0000000000001400",
+        "author": [
+          {
+            "family": "Vitin",
+            "given": "Alexander A."
+          },
+          {
+            "family": "Egan",
+            "given": "Talmage D."
+          }
+        ],
+        "container-title": "Current Opinion in Anaesthesiology",
+        "issued": {
+          "date-parts": [
+            [
+              2024,
+              8
+            ]
+          ]
+        },
+        "volume": "37",
+        "issue": "4",
+        "page": "371-378",
+        "URL": "https://doi.org/10.1097/aco.0000000000001400"
+      },
+      "identifiers": {
+        "doi": "10.1097/aco.0000000000001400",
+        "pmid": null,
+        "arxiv": null
+      },
+      "provenance": [
+        {
+          "source": "doi",
+          "source_id": "10.1097/aco.0000000000001400"
+        }
+      ],
+      "quality": {
+        "confidence": "high",
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "doi:10.1517/14740338.2014.902931",
+      "csl": {
+        "id": "doi:10.1517/14740338.2014.902931",
+        "type": "article-journal",
+        "title": "An evidence based systematic review of remifentanil associated opioid-induced hyperalgesia",
+        "DOI": "10.1517/14740338.2014.902931",
+        "author": [
+          {
+            "family": "Rivosecchi",
+            "given": "Ryan M"
+          },
+          {
+            "family": "Rice",
+            "given": "Mark J"
+          },
+          {
+            "family": "Smithburger",
+            "given": "Pamela L"
+          },
+          {
+            "family": "Buckley",
+            "given": "Mitchell S"
+          },
+          {
+            "family": "Coons",
+            "given": "James C"
+          },
+          {
+            "family": "Kane-Gill",
+            "given": "Sandra L"
+          }
+        ],
+        "container-title": "Expert Opinion on Drug Safety",
+        "issued": {
+          "date-parts": [
+            [
+              2014,
+              5
+            ]
+          ]
+        },
+        "volume": "13",
+        "issue": "5",
+        "page": "587-603",
+        "URL": "https://doi.org/10.1517/14740338.2014.902931"
+      },
+      "identifiers": {
+        "doi": "10.1517/14740338.2014.902931",
+        "pmid": null,
+        "arxiv": null
+      },
+      "provenance": [
+        {
+          "source": "doi",
+          "source_id": "10.1517/14740338.2014.902931"
+        }
+      ],
+      "quality": {
+        "confidence": "high",
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "doi:10.1097/mjt.0000000000000019",
+      "csl": {
+        "id": "doi:10.1097/mjt.0000000000000019",
+        "type": "article-journal",
+        "title": "Remifentanil—Acute Opioid Tolerance and Opioid-Induced Hyperalgesia",
+        "DOI": "10.1097/mjt.0000000000000019",
+        "author": [
+          {
+            "family": "Kim",
+            "given": "Sang Hun"
+          },
+          {
+            "family": "Stoicea",
+            "given": "Nicoleta"
+          },
+          {
+            "family": "Soghomonyan",
+            "given": "Suren"
+          },
+          {
+            "family": "Bergese",
+            "given": "Sergio D."
+          }
+        ],
+        "container-title": "American Journal of Therapeutics",
+        "issued": {
+          "date-parts": [
+            [
+              2015,
+              5
+            ]
+          ]
+        },
+        "volume": "22",
+        "issue": "3",
+        "page": "e62-e74",
+        "URL": "https://doi.org/10.1097/mjt.0000000000000019"
+      },
+      "identifiers": {
+        "doi": "10.1097/mjt.0000000000000019",
+        "pmid": null,
+        "arxiv": null
+      },
+      "provenance": [
+        {
+          "source": "doi",
+          "source_id": "10.1097/mjt.0000000000000019"
+        }
+      ],
+      "quality": {
+        "confidence": "high",
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "pmid:24847273",
+      "csl": {
+        "id": "pmid:24847273",
+        "type": "article-journal",
+        "title": "Intraoperative use of remifentanil and opioid induced hyperalgesia/acute opioid tolerance: systematic review.",
+        "PMID": "24847273",
+        "container-title": "Frontiers in pharmacology",
+        "issued": {
+          "date-parts": [
+            [
+              2014
+            ]
+          ]
+        },
+        "author": [
+          {
+            "family": "Kim",
+            "given": "Sang Hun"
+          },
+          {
+            "family": "Stoicea",
+            "given": "Nicoleta"
+          },
+          {
+            "family": "Soghomonyan",
+            "given": "Suren"
+          },
+          {
+            "family": "Bergese",
+            "given": "Sergio D"
+          }
+        ],
+        "volume": "5",
+        "page": "108",
+        "DOI": "10.3389/fphar.2014.00108"
+      },
+      "identifiers": {
+        "doi": "10.3389/fphar.2014.00108",
+        "pmid": "24847273",
+        "arxiv": null
+      },
+      "provenance": [
+        {
+          "source": "pmid",
+          "source_id": "24847273"
+        }
+      ],
+      "quality": {
+        "confidence": "high",
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "doi:10.1093/bja/aeu137",
+      "csl": {
+        "id": "doi:10.1093/bja/aeu137",
+        "type": "article-journal",
+        "title": "Opioid-induced hyperalgesia in patients after surgery: a systematic review and a meta-analysis",
+        "DOI": "10.1093/bja/aeu137",
+        "author": [
+          {
+            "family": "Fletcher",
+            "given": "D."
+          },
+          {
+            "family": "Martinez",
+            "given": "V."
+          }
+        ],
+        "container-title": "British Journal of Anaesthesia",
+        "issued": {
+          "date-parts": [
+            [
+              2014,
+              6
+            ]
+          ]
+        },
+        "volume": "112",
+        "issue": "6",
+        "page": "991-1004",
+        "URL": "https://doi.org/10.1093/bja/aeu137"
+      },
+      "identifiers": {
+        "doi": "10.1093/bja/aeu137",
+        "pmid": null,
+        "arxiv": null
+      },
+      "provenance": [
+        {
+          "source": "doi",
+          "source_id": "10.1093/bja/aeu137"
+        }
+      ],
+      "quality": {
+        "confidence": "high",
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "doi:10.3389/fdsfr.2023.1323057",
+      "csl": {
+        "id": "doi:10.3389/fdsfr.2023.1323057",
+        "type": "article-journal",
+        "title": "Conducting and interpreting disproportionality analyses derived from spontaneous reporting systems",
+        "DOI": "10.3389/fdsfr.2023.1323057",
+        "author": [
+          {
+            "family": "Cutroneo",
+            "given": "Paola Maria"
+          },
+          {
+            "family": "Sartori",
+            "given": "Daniele"
+          },
+          {
+            "family": "Tuccori",
+            "given": "Marco"
+          },
+          {
+            "family": "Crisafulli",
+            "given": "Salvatore"
+          },
+          {
+            "family": "Battini",
+            "given": "Vera"
+          },
+          {
+            "family": "Carnovale",
+            "given": "Carla"
+          },
+          {
+            "family": "Rafaniello",
+            "given": "Concetta"
+          },
+          {
+            "family": "Capuano",
+            "given": "Annalisa"
+          },
+          {
+            "family": "Poluzzi",
+            "given": "Elisabetta"
+          },
+          {
+            "family": "Moretti",
+            "given": "Ugo"
+          },
+          {
+            "family": "Raschi",
+            "given": "Emanuel"
+          }
+        ],
+        "container-title": "Frontiers in Drug Safety and Regulation",
+        "issued": {
+          "date-parts": [
+            [
+              2024,
+              1,
+              26
+            ]
+          ]
+        },
+        "volume": "3",
+        "URL": "https://doi.org/10.3389/fdsfr.2023.1323057"
+      },
+      "identifiers": {
+        "doi": "10.3389/fdsfr.2023.1323057",
+        "pmid": null,
+        "arxiv": null
+      },
+      "provenance": [
+        {
+          "source": "doi",
+          "source_id": "10.3389/fdsfr.2023.1323057"
+        }
+      ],
+      "quality": {
+        "confidence": "high",
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "doi:10.1002/pds.1742",
+      "csl": {
+        "id": "doi:10.1002/pds.1742",
+        "type": "article-journal",
+        "title": "Quantitative signal detection using spontaneous ADR reporting",
+        "DOI": "10.1002/pds.1742",
+        "author": [
+          {
+            "family": "Bate",
+            "given": "A."
+          },
+          {
+            "family": "Evans",
+            "given": "S. J. W."
+          }
+        ],
+        "container-title": "Pharmacoepidemiology and Drug Safety",
+        "issued": {
+          "date-parts": [
+            [
+              2009,
+              6
+            ]
+          ]
+        },
+        "volume": "18",
+        "issue": "6",
+        "page": "427-436",
+        "URL": "https://doi.org/10.1002/pds.1742"
+      },
+      "identifiers": {
+        "doi": "10.1002/pds.1742",
+        "pmid": null,
+        "arxiv": null
+      },
+      "provenance": [
+        {
+          "source": "doi",
+          "source_id": "10.1002/pds.1742"
+        }
+      ],
+      "quality": {
+        "confidence": "high",
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "doi:10.1097/00000542-200603000-00025",
+      "csl": {
+        "id": "doi:10.1097/00000542-200603000-00025",
+        "type": "article-journal",
+        "title": "Opioid-induced Hyperalgesia",
+        "DOI": "10.1097/00000542-200603000-00025",
+        "author": [
+          {
+            "family": "Angst",
+            "given": "Martin S."
+          },
+          {
+            "family": "Clark",
+            "given": "J David"
+          }
+        ],
+        "container-title": "Anesthesiology",
+        "issued": {
+          "date-parts": [
+            [
+              2006,
+              3,
+              1
+            ]
+          ]
+        },
+        "volume": "104",
+        "issue": "3",
+        "page": "570-587",
+        "URL": "https://doi.org/10.1097/00000542-200603000-00025"
+      },
+      "identifiers": {
+        "doi": "10.1097/00000542-200603000-00025",
+        "pmid": null,
+        "arxiv": null
+      },
+      "provenance": [
+        {
+          "source": "doi",
+          "source_id": "10.1097/00000542-200603000-00025"
+        }
+      ],
+      "quality": {
+        "confidence": "high",
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "doi:10.1016/s0304-3959(03)00276-8",
+      "csl": {
+        "id": "doi:10.1016/s0304-3959(03)00276-8",
+        "type": "article-journal",
+        "title": "Short-term infusion of the μ-opioid agonist remifentanil in humans causes hyperalgesia during withdrawal",
+        "DOI": "10.1016/s0304-3959(03)00276-8",
+        "author": [
+          {
+            "family": "Angst",
+            "given": "Martin S"
+          },
+          {
+            "family": "Koppert",
+            "given": "Wolfgang"
+          },
+          {
+            "family": "Pahl",
+            "given": "Ilka"
+          },
+          {
+            "family": "Clark",
+            "given": "David J"
+          },
+          {
+            "family": "Schmelz",
+            "given": "Martin"
+          }
+        ],
+        "container-title": "Pain",
+        "issued": {
+          "date-parts": [
+            [
+              2003,
+              11
+            ]
+          ]
+        },
+        "volume": "106",
+        "issue": "1",
+        "page": "49-57",
+        "URL": "https://doi.org/10.1016/s0304-3959(03)00276-8"
+      },
+      "identifiers": {
+        "doi": "10.1016/s0304-3959(03)00276-8",
+        "pmid": null,
+        "arxiv": null
+      },
+      "provenance": [
+        {
+          "source": "doi",
+          "source_id": "10.1016/s0304-3959(03)00276-8"
+        }
+      ],
+      "quality": {
+        "confidence": "high",
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "doi:10.1002/pds.5105",
+      "csl": {
+        "id": "doi:10.1002/pds.5105",
+        "type": "article-journal",
+        "title": "Safety concerns reported by consumers, manufacturers and healthcare professionals: A detailed evaluation of opioid‐related adverse drug reactions in the <scp>FDA</scp> database over 15 years",
+        "DOI": "10.1002/pds.5105",
+        "author": [
+          {
+            "family": "Andreaggi",
+            "given": "Christian A."
+          },
+          {
+            "family": "Novak",
+            "given": "Emily A."
+          },
+          {
+            "family": "Mirabile",
+            "given": "Mitchell E."
+          },
+          {
+            "family": "Sampathkumar",
+            "given": "Shivani"
+          },
+          {
+            "family": "Gray",
+            "given": "Matthew P."
+          },
+          {
+            "family": "He",
+            "given": "Meiqi"
+          },
+          {
+            "family": "Kane‐Gill",
+            "given": "Sandra L."
+          }
+        ],
+        "container-title": "Pharmacoepidemiology and Drug Safety",
+        "issued": {
+          "date-parts": [
+            [
+              2020,
+              12
+            ]
+          ]
+        },
+        "volume": "29",
+        "issue": "12",
+        "page": "1627-1635",
+        "URL": "https://doi.org/10.1002/pds.5105"
+      },
+      "identifiers": {
+        "doi": "10.1002/pds.5105",
+        "pmid": null,
+        "arxiv": null
+      },
+      "provenance": [
+        {
+          "source": "doi",
+          "source_id": "10.1002/pds.5105"
+        }
+      ],
+      "quality": {
+        "confidence": "high",
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "doi:10.1111/anae.13602",
+      "csl": {
+        "id": "doi:10.1111/anae.13602",
+        "type": "article-journal",
+        "title": "Remifentanil tolerance and hyperalgesia: short‐term gain, long‐term pain?",
+        "DOI": "10.1111/anae.13602",
+        "author": [
+          {
+            "family": "Yu",
+            "given": "E. H. Y."
+          },
+          {
+            "family": "Tran",
+            "given": "D. H. D."
+          },
+          {
+            "family": "Lam",
+            "given": "S. W."
+          },
+          {
+            "family": "Irwin",
+            "given": "M. G."
+          }
+        ],
+        "container-title": "Anaesthesia",
+        "issued": {
+          "date-parts": [
+            [
+              2016,
+              11
+            ]
+          ]
+        },
+        "volume": "71",
+        "issue": "11",
+        "page": "1347-1362",
+        "URL": "https://doi.org/10.1111/anae.13602"
+      },
+      "identifiers": {
+        "doi": "10.1111/anae.13602",
+        "pmid": null,
+        "arxiv": null
+      },
+      "provenance": [
+        {
+          "source": "doi",
+          "source_id": "10.1111/anae.13602"
+        }
+      ],
+      "quality": {
+        "confidence": "high",
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "doi:10.1093/bja/aev547",
+      "csl": {
+        "id": "doi:10.1093/bja/aev547",
+        "type": "article-journal",
+        "title": "Gradual withdrawal of remifentanil infusion may prevent opioid-induced hyperalgesia",
+        "DOI": "10.1093/bja/aev547",
+        "author": [
+          {
+            "family": "Comelon",
+            "given": "M"
+          },
+          {
+            "family": "Raeder",
+            "given": "J"
+          },
+          {
+            "family": "Stubhaug",
+            "given": "A"
+          },
+          {
+            "family": "Nielsen",
+            "given": "C.S."
+          },
+          {
+            "family": "Draegni",
+            "given": "T"
+          },
+          {
+            "family": "Lenz",
+            "given": "H"
+          }
+        ],
+        "container-title": "British Journal of Anaesthesia",
+        "issued": {
+          "date-parts": [
+            [
+              2016,
+              4
+            ]
+          ]
+        },
+        "volume": "116",
+        "issue": "4",
+        "page": "524-530",
+        "URL": "https://doi.org/10.1093/bja/aev547"
+      },
+      "identifiers": {
+        "doi": "10.1093/bja/aev547",
+        "pmid": null,
+        "arxiv": null
+      },
+      "provenance": [
+        {
+          "source": "doi",
+          "source_id": "10.1093/bja/aev547"
+        }
+      ],
+      "quality": {
+        "confidence": "high",
+        "errors": [],
+        "warnings": []
+      }
+    }
+  ],
+  "rendered": null,
+  "diagnostics": [],
+  "stats": {
+    "received": 12,
+    "succeeded": 12,
+    "failed": 0,
+    "duplicates_skipped": 0
+  }
+}

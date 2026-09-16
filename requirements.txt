@@ -1,0 +1,5 @@
+# Python 3.13 (developed and run on 3.13.14)
+# The core analyses (01, 02, 03, 04, cv/cv_process.py, _check_consistency.py) use the
+# standard library only. matplotlib is required only for figure generation (05_figures.py).
+
+matplotlib==3.11.1

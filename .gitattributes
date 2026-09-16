@@ -1,0 +1,15 @@
+# Normalise line endings to LF in the repository, regardless of the
+# checkout platform. The analysis is run through Git Bash / MSYS on Windows
+# and through Linux runners in CI; LF everywhere avoids shell-script and
+# YAML breakage.
+* text=auto eol=lf
+
+# Explicitly binary artefacts (never diff, never convert)
+*.png  binary
+*.tif  binary
+*.tiff binary
+*.pdf  binary
+*.zip  binary
+
+# Generated/derived CSV results: keep LF, mark as data for linguist
+*.csv  text eol=lf

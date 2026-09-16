@@ -1,0 +1,91 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Reproducibility gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Run number-to-source consistency gate
+        run: python _check_consistency.py
+
+      - name: Regenerate figures from the shipped result files
+        run: python 05_figures.py
+
+      - name: Upload regenerated figures
+        uses: actions/upload-artifact@v4
+        with:
+          name: figures
+          path: |
+            I_fig1_rorr_forest.png
+            I_fig2_year_trend.png
+          if-no-files-found: error
+
+  release:
+    name: Publish release bundle
+    needs: verify
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build result bundle
+        run: |
+          zip -r results-bundle.zip \
+            01_faers_results.csv \
+            01_faers_summary.md \
+            02_route_stratified.csv \
+            02_route_summary.md \
+            03_soc_27.csv \
+            D_27SOC_openFDA事件级.md \
+            04_sensitivity_ps_only.csv \
+            04_sensitivity_year_pain.csv \
+            04_sensitivity_summary.md \
+            cv/cv_soc_27.csv \
+            cv/cv_pt_summary.csv \
+            cv/cv_drug_totals.csv \
+            cv/cv_subgroups.csv \
+            cv/cv_summary.md \
+            G_跨库验证_FAERSvsCanada.md \
+            I_稿件三线表.md \
+            I_正文_IMRaD_en.md \
+            I_fig1_rorr_forest.png \
+            I_fig1_rorr_forest.pdf \
+            I_fig1_rorr_forest.tif \
+            I_fig2_year_trend.png \
+            I_fig2_year_trend.pdf \
+            I_fig2_year_trend.tif
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" \
+            results-bundle.zip \
+            --title "${GITHUB_REF_NAME}" \
+            --generate-notes
