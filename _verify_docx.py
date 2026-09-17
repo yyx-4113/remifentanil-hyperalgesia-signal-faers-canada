@@ -135,6 +135,12 @@ def main() -> int:
         "with negative controls defined a priori",
     ]:
         chk(f"Manuscript 含「{needle[:46]}」", needle in ms_text)
+    # regression guard for the build-script drop bug: the references preamble
+    # (incl. the Anaesthesia DOI requirement) must reach the submitted file
+    chk("Manuscript 含参考文献格式导语",
+        "References are numbered in order of first citation" in ms_text)
+    chk("Manuscript 含 Anaesthesia DOI 声明",
+        "All journal articles carry a DOI" in ms_text)
     chk("Manuscript 不含 prespecified",
         re.findall(r"\bpre-?specified\b", ms_text), [])
     chk("Supporting 指向 Table S2 文件名", "I_TableS2_READUS-PV_checklist.md" in si_text)

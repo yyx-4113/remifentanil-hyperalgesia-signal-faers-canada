@@ -746,6 +746,37 @@ if os.path.exists(P(MS)):
             _bad8.append(f"{_c[0]}: 非代理术语却被标为事后 -> {_c[1]!r}")
     chk("[G-8] 表 S4 五个代理术语标注事后添加", _bad8[:5], [])
 
+    # G-9 -------------------------------------------------------------
+    # P0-1 / P2-1：年表求和必须与汇总 a 对账，且稿件必须披露窗口外/缺日期的例数。
+    # 这是上一轮 413 条门禁的盲区——它分别校验了年表行数与汇总 a，却从未让二者对账，
+    # 因此放行了"正文/表2 称 10、表4C 求和仅 9"的矛盾。
+    def _year_sum(fn, col="REMIFENTANIL_a"):
+        _rows = list(csv.DictReader(open(P(fn), encoding="utf-8-sig")))
+        return sum(int(r[col] or 0) for r in _rows)
+    def _pooled(pt, col="REMIFENTANIL_a"):
+        for _r in csv.DictReader(open(P("01_faers_results.csv"), encoding="utf-8-sig")):
+            if _r["PT"] == pt:
+                return int(_r[col])
+        return None
+    _hy_sum = _year_sum("04_sensitivity_year_hyperaesthesia.csv")
+    _hy_pool = _pooled("HYPERAESTHESIA")
+    _pn_sum = _year_sum("04_sensitivity_year_pain.csv")
+    _pn_pool = _pooled("PAIN")
+    chk("[G-9] HYPERAESTHESIA 年表和 == 9", _hy_sum, 9)
+    chk("[G-9] HYPERAESTHESIA 汇总 a == 10", _hy_pool, 10)
+    chk("[G-9] HYPERAESTHESIA 年表比汇总少 1 例(缺日期)", _hy_pool - _hy_sum, 1)
+    chk("[G-9] PAIN 年表和 == 13", _pn_sum, 13)
+    chk("[G-9] PAIN 汇总 a == 23", _pn_pool, 23)
+    chk("[G-9] PAIN 年表比汇总少 10 例(窗口外)", _pn_pool - _pn_sum, 10)
+    # 披露性：表4C脚注须说明 9 例可日期 + 1 例无可用日期；表4B脚注须说明 13/23 窗口覆盖
+    chk("[G-9] 表4C脚注披露 9 例可日期/1例缺日期",
+        "nine reports carry a usable receivedate" in txt and "no usable receivedate" in txt, True)
+    chk("[G-9] 表4B脚注披露 13/23 窗口覆盖",
+        "13 fall in 2015" in txt and "10 outside it" in txt, True)
+    # 防回归：旧的误导性短语不得再出现
+    chk("[G-9] 已删除误导性的 'eight of its ten reports fall in 2024'",
+        "eight of its ten reports fall in 2024" in txt, False)
+
     # 标题三处必须一致
     title = txt.splitlines()[0].lstrip("# ").strip()
     for rel in ["README.md", "SUBMISSION_MANIFEST.md", "I_TableS2_READUS-PV_checklist.md"]:

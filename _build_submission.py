@@ -252,10 +252,12 @@ def build_manuscript(sec: dict) -> str:
     doc.add_page_break()
 
     # ---- body, declarations, references ----------------------------------
-    KNOWN = ("References are numbered in order of first citation.",)
+    # NOTE: the paragraph "References are numbered in order of first citation…"
+    # (which also carries the Anaesthesia DOI requirement) MUST reach the
+    # submitted file, so the refs block is emitted with no `drop` filter.
     emit_markdown(doc, sec["body"])
     emit_markdown(doc, sec["decl"])
-    emit_markdown(doc, sec["refs"], drop=KNOWN)
+    emit_markdown(doc, sec["refs"])
 
     # ---- tables (main file, after the References, per the journal) --------
     para(doc, "Tables", bold=True, size=14, space_before=12, space_after=6)
