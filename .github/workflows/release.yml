@@ -78,6 +78,13 @@ jobs:
             REVIEW_peer_review_2026-09-16.md \
             REVIEW_round2_2026-09-17.md \
             RESPONSE_round2_2026-09-17.md \
+            REVIEW_round3_2026-09-17.md \
+            RESPONSE_round3_2026-09-17.md \
+            _round3_edits.py \
+            _round3_trim.py \
+            _round3_trim2.py \
+            _round3_trim3.py \
+            _round3_trim4.py \
             02_route_stratified.csv \
             02_route_summary.md \
             03_soc_27.csv \
