@@ -41,7 +41,7 @@ version: "1.2.0"
 date-released: "2026-09-17"
 references:
   - type: article
-    title: "Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: a head-to-head disproportionality study with negative controls defined a priori"
+    title: "Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: a head-to-head disproportionality study with a terminology caution"
     authors:
       - family-names: Yang
         given-names: Yongxin

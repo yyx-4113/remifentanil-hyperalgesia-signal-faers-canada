@@ -132,7 +132,14 @@ def main() -> int:
         "Table S1",
         "Table S3",
         "Table S4",
-        "with negative controls defined a priori",
+        "defined a priori",
+        "with a terminology caution",
+        "CHRONIC PAIN returned a single hit",
+        "leave-2024-out",
+        "disappears when 2024 is excluded (a = 1)",
+        "proxy preferred term",
+        "15.4, 4.3, 4.9 and 1.7",
+        "shared by all four opioids",
     ]:
         chk(f"Manuscript 含「{needle[:46]}」", needle in ms_text)
     # regression guard for the build-script drop bug: the references preamble

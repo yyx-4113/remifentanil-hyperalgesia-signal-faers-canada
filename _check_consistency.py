@@ -364,12 +364,14 @@ if os.path.exists(P(MS)):
     # 题录：标题 ≤20 词且不陈述结论；running head ≤60 字符；关键词 3-5 个
     title = txt.splitlines()[0].lstrip("# ").strip()
     chk("标题词数 <= 20", len(title.split()) <= 20, True)
-    # P1-5-4：标题的 a priori 宣称必须限定于阴性对照，否则读者会把
-    # 事后添加的代理术语（真正的主结局来源）也读成先验。
-    chk("标题限定 a priori 于阴性对照",
-        "negative controls defined a priori" in title, True)
-    chk("标题不含歧义的 controls defined a priori",
-        re.search(r"(?<!negative )controls defined a priori", title), None)
+    # Round-4 (M1)：旧标题以 "negative controls defined a priori" 收尾，容易被读成
+    # 整个分析都是先验的，而真正的主结局来源是看到零之后补入的代理 PT。新标题改为
+    # "with a terminology caution"，正面陈述本文的真实骨架（术语学警示）。门禁因此
+    # 反转：不但要含新限定语，还须确认标题里不再残留任何 "a priori" 宣称。
+    chk("标题含重定位后的限定语 'a terminology caution'",
+        "a terminology caution" in title, True)
+    chk("标题不再残留 a priori 宣称",
+        re.search(r"a priori", title, re.I), None)
     rh = re.search(r"\*\*Running head:\*\*\s*(.+)", txt).group(1).strip()
     chk("running head <= 60 字符", len(rh) <= 60, True)
     kw = re.search(r"\*\*Keywords:\*\*\s*(.+)", txt).group(1)
@@ -644,7 +646,7 @@ if os.path.exists(P(MS)):
           "five supplementary tables"]),
         ("SUBMISSION_MANIFEST.md",
          ["30, Vancouver style with DOIs", f"{main_words:,}".replace(",", " "),
-          "with negative controls defined a priori", "5 (S1–S5)"]),
+          "with a terminology caution", "5 (S1–S5)"]),
         ("README.md", ["10_term_dictionary.csv", "ANALYSIS_PLAN.md"]),
     ]:
         if os.path.exists(P(rel)):
@@ -776,6 +778,52 @@ if os.path.exists(P(MS)):
     # 防回归：旧的误导性短语不得再出现
     chk("[G-9] 已删除误导性的 'eight of its ten reports fall in 2024'",
         "eight of its ten reports fall in 2024" in txt, False)
+
+    # G-10 ------------------------------------------------------------
+    # M2：leave-2024-out 敏感性必须与稿件披露一致（防"信号由 2024 单年簇驱动"被静默改写）
+    _leave = P("04_sensitivity_leave2024_hyperaesthesia.csv")
+    chk("[G-10] leave-2024-out CSV 存在", os.path.exists(_leave), True)
+    _lr = {r["DRUG"]: r for r in csv.DictReader(open(_leave, encoding="utf-8-sig"))}
+    chk("[G-10] 瑞芬 leave-2024 a == 1", int(_lr["REMIFENTANIL"]["a_excl2024"]), 1)
+    chk("[G-10] 瑞芬 leave-2024 信号 == NO", _lr["REMIFENTANIL"]["signal_met"], "NO")
+    chk("[G-10] 对照药 leave-2024 仍达信号(YES)",
+        _lr["FENTANYL"]["signal_met"] == "YES" and _lr["SUFENTANIL"]["signal_met"] == "YES"
+        and _lr["MORPHINE"]["signal_met"] == "YES", True)
+    chk("[G-10] 正文披露 'disappears when 2024 is excluded (a = 1)'",
+        "disappears when 2024 is excluded (a = 1)" in txt, True)
+    chk("[G-10] 正文披露 'leave-2024-out'", "leave-2024-out" in txt, True)
+    chk("[G-10] 正文披露 'shared by all four opioids'", "shared by all four opioids" in txt, True)
+    chk("[G-10] §9 溯源表含 leave-2024-out CSV",
+        "Leave-2024-out HYPERAESTHESIA sensitivity (FAERS)" in txt
+        and "04_sensitivity_leave2024_hyperaesthesia.csv" in txt, True)
+    # M1：摘要本身必须披露代理是事后添加、且所报 PT 是代理（防"作为正面发现头条"复辟）
+    chk("[G-10] 摘要披露代理为事后添加",
+        "added after those zeros" in summ_text, True)
+    chk("[G-10] 摘要 Results 将所报 PT 标为 proxy",
+        "proxy preferred term" in summ_text, True)
+
+    # G-11 ------------------------------------------------------------
+    # 2024 簇比值与回复函数值必须可回溯源 CSV。本轮即在回复函里抓出一处
+    # 手写估值（对照药 ROR 凭印象填写）——故此断言做“值比对”，不固化字面。
+    _clu = P("04_sensitivity_2024cluster_hyperaesthesia.csv")
+    chk("[G-11] 2024 簇 CSV 存在", os.path.exists(_clu), True)
+    if os.path.exists(_clu):
+        _cl = {r["DRUG"]: r for r in csv.DictReader(open(_clu, encoding="utf-8-sig"))}
+        chk("[G-11] 瑞芬 2024/pooled 比值 == 15.41",
+            float(_cl["REMIFENTANIL"]["ratio_2024_to_pooled"]), 15.41, 0.005)
+        chk("[G-11] 四药 2024 簇比值均 > 1（全阿片共增）",
+            all(float(_cl[d]["ratio_2024_to_pooled"]) > 1 for d in
+                ["REMIFENTANIL", "FENTANYL", "SUFENTANIL", "MORPHINE"]), True)
+        chk("[G-11] 正文披露 2024 簇四药比值序列",
+            "15.4, 4.3, 4.9 and 1.7" in txt, True)
+    _resp = P("RESPONSE_round4_2026-09-17.md")
+    if os.path.exists(_resp):
+        _rt = open(_resp, encoding="utf-8").read()
+        for _d in ["REMIFENTANIL", "FENTANYL", "SUFENTANIL", "MORPHINE"]:
+            _r = _lr[_d]
+            _ci = ("(" + f'{float(_r["ROR_CI_low"]):.2f}' + "\u2013"
+                   + f'{float(_r["ROR_CI_high"]):.2f}' + ")")
+            chk(f"[G-11] 回复函 ROR CI 与源一致 {_d} {_ci}", _ci in _rt, True)
 
     # 标题三处必须一致
     title = txt.splitlines()[0].lstrip("# ").strip()

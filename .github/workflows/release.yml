@@ -80,6 +80,14 @@ jobs:
             RESPONSE_round2_2026-09-17.md \
             REVIEW_round3_2026-09-17.md \
             RESPONSE_round3_2026-09-17.md \
+            REVIEW_round4_2026-09-17.md \
+            REVISION_round4_2026-09-17.md \
+            RESPONSE_round4_2026-09-17.md \
+            _round4_leave2024.py \
+            _round4_edits.py \
+            _round4_trim.py \
+            _round4_trim2.py \
+            _round4_trim_abstract.py \
             _round3_edits.py \
             _round3_trim.py \
             _round3_trim2.py \
@@ -92,6 +100,8 @@ jobs:
             04_sensitivity_ps_only.csv \
             04_sensitivity_year_pain.csv \
             04_sensitivity_year_hyperaesthesia.csv \
+            04_sensitivity_leave2024_hyperaesthesia.csv \
+            04_sensitivity_2024cluster_hyperaesthesia.csv \
             04_sensitivity_estimable_years.json \
             04_sensitivity_summary.md \
             _gen_table4.py \
