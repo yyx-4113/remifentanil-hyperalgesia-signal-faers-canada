@@ -1,0 +1,41 @@
+{
+ "rows": 4474923,
+ "blank_version": 156,
+ "versions": {
+  "v.27.1": 4474767
+ },
+ "reactions_per_report": {
+  "REMIFENTANIL": {
+   "n_reports": 111,
+   "total_reaction_rows": 188,
+   "mean": 1.694,
+   "median": 1,
+   "pct_reports_with_0": 0.0,
+   "pct_reports_with_1": 69.37
+  },
+  "FENTANYL": {
+   "n_reports": 4881,
+   "total_reaction_rows": 19029,
+   "mean": 3.899,
+   "median": 2,
+   "pct_reports_with_0": 0.0,
+   "pct_reports_with_1": 39.87
+  },
+  "SUFENTANIL": {
+   "n_reports": 63,
+   "total_reaction_rows": 259,
+   "mean": 4.111,
+   "median": 3,
+   "pct_reports_with_0": 0.0,
+   "pct_reports_with_1": 31.75
+  },
+  "MORPHINE": {
+   "n_reports": 7675,
+   "total_reaction_rows": 49905,
+   "mean": 6.502,
+   "median": 3,
+   "pct_reports_with_0": 0.05,
+   "pct_reports_with_1": 27.05
+  }
+ }
+}

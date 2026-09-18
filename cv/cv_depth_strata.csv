@@ -1,0 +1,6 @@
+﻿preferred_term,terms_per_report_remifentanil,pct_single_term_remifentanil,terms_per_report_fentanyl,pct_single_term_fentanyl,terms_per_report_sufentanil,pct_single_term_sufentanil,terms_per_report_morphine,pct_single_term_morphine,MH_RORR_vs_fentanyl,MH_RORR_vs_fentanyl_CI,MH_RORR_vs_morphine,MH_RORR_vs_morphine_CI,crude_RORR_vs_fentanyl,crude_RORR_vs_morphine,term_share_ratio_vs_fentanyl,term_share_ratio_vs_morphine,share_pct_remifentanil,share_pct_fentanyl,share_pct_sufentanil,share_pct_morphine
+PAIN,1.694,69.37,3.899,39.87,4.111,31.75,6.502,27.05,0.64,0.027-14.898,0.978,0.042-22.751,0.235,0.146,0.573,0.618,1.064,1.855,3.089,1.721
+DRUG INEFFECTIVE,1.694,69.37,3.899,39.87,4.111,31.75,6.502,27.05,1.663,0.218-12.718,2.409,0.315-18.403,1.277,1.703,2.796,5.931,13.298,4.756,3.475,2.242
+VOMITING,1.694,69.37,3.899,39.87,4.111,31.75,6.502,27.05,3.765,0.237-59.828,1.066,0.086-13.240,1.066,0.392,2.449,1.568,1.596,0.652,0.386,1.018
+NAUSEA,1.694,69.37,3.899,39.87,4.111,31.75,6.502,27.05,,,,,0.0,0.0,0.0,0.0,0.0,1.366,0.772,1.651
+HYPERAESTHESIA,1.694,69.37,3.899,39.87,4.111,31.75,6.502,27.05,,,,,0.0,0.0,0.0,0.0,0.0,0.095,0.0,0.06

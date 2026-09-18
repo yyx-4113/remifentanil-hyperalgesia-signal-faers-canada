@@ -1,0 +1,22 @@
+ALLODYNIA frame: cohort=5375, PT_total=1110, N=20692687  (a varies)
+   a      ROR               Woolf         Haldane+0.5          exact cond Woolf_low/exact_low
+   0    0.000     undefined (1/0)         0.108-27.72         0.000-12.82                 nan
+   1    3.471         0.488-24.67         1.049-25.82         0.088-19.39                5.56
+   2    6.950         1.735-27.83         2.509-30.04         0.840-25.18                2.07
+   7   24.456        11.626-51.45        12.765-53.73         9.805-50.59                1.19
+  10   35.052        18.796-65.37        20.021-67.59        16.752-64.76                1.12
+  23   81.783       54.067-123.71       55.451-125.78       51.575-123.49                1.05
+
+KEY: at a=1 the Woolf lower bound 0.488 is ~5.5x the exact 0.088;
+     at a=10 the Woolf lower bound 2.542 is still 12% above the exact 2.265.
+     add-0.5 makes the a=1 lower bound CROSS 1 (1.05) -> a spurious 'signal' in direction.
+
+Does the a>=3-and-lower-bound>1 criterion change under any method for ALLODYNIA (a=1)? no (a=1<3, and only add-0.5 puts the lower bound above 1).
+
+-- a=2 realistic frame: PAIN 2015 (cohort 282, PAIN_year_total 35775, N_year 1187780) --
+a=2: b=280 c=35773 d=1151725  ROR=0.2300  Woolf 0.057-0.924  exact 0.028-0.839  Woolf_low/exact_low=2.07
+
+-- signal-criterion robustness: lower bound under each method --
+HYPERAESTHESIA       a= 10  lower bounds: Woolf 2.542  Haldane 2.709  exact 2.265   -> signal (lower>1)? True/True/True
+PROCEDURAL PAIN      a= 14  lower bounds: Woolf 1.170  Haldane 1.223  exact 1.080   -> signal (lower>1)? True/True/True
+DRUG WITHDRAWAL S.   a=  7  lower bounds: Woolf 0.146  Haldane 0.161  exact 0.123   -> signal (lower>1)? False/False/False

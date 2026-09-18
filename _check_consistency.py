@@ -365,14 +365,18 @@ if os.path.exists(P(MS)):
     title = txt.splitlines()[0].lstrip("# ").strip()
     chk("标题词数 <= 20", len(title.split()) <= 20, True)
     # Round-4 (M1)：旧标题以 "negative controls defined a priori" 收尾，容易被读成
-    # 整个分析都是先验的，而真正的主结局来源是看到零之后补入的代理 PT。新标题改为
-    # "with a terminology caution"，正面陈述本文的真实骨架（术语学警示）。门禁因此
-    # 反转：不但要含新限定语，还须确认标题里不再残留任何 "a priori" 宣称。
-    chk("标题含重定位后的限定语 'a terminology caution'",
-        "a terminology caution" in title, True)
+    # 整个分析都是先验的，而真正的主结局来源是看到零之后补入的代理 PT。
+    # Round-6 (P3-12)：标题已改为中性的描述式题名，限定语从标题移入正文。门禁因此
+    # 改为"不得在标题里下结论"——比要求某个特定短语更耐久，换题名不会让它失效。
+    _concl = ["negative", "no evidence", "not associated", "absence of",
+              "no signal", "uncommon", "rarely", "does not"]
+    chk("标题不下结论（无结论性措辞）",
+        [w for w in _concl if w in title.lower()], [])
     chk("标题不再残留 a priori 宣称",
         re.search(r"a priori", title, re.I), None)
-    rh = re.search(r"\*\*Running head:\*\*\s*(.+)", txt).group(1).strip()
+    # 题名页用 "Short title:"；两种写法都接受。此前这里硬编码 "Running head:"，
+    # 在改题名页时就已经静默失效——只是当时没人重跑到这一行。
+    rh = re.search(r"\*\*(?:Running head|Short title):\*\*\s*(.+)", txt).group(1).strip()
     chk("running head <= 60 字符", len(rh) <= 60, True)
     kw = re.search(r"\*\*Keywords:\*\*\s*(.+)", txt).group(1)
     chk("关键词个数 3-5", 3 <= len([k for k in kw.split(";") if k.strip()]) <= 5, True)
@@ -470,7 +474,8 @@ if os.path.exists(P(MS)):
         "HYPERAESTHESIA":             (8161, 9773, 523, "yes"),
         "HYPERPATHIA":                (43, 43, 0, "yes"),
         "PROCEDURAL PAIN":            (27300, 27488, 1527, "yes"),
-        "CHRONIC PAIN SYNDROME":      (1, 1, 0, "yes"),
+        # 2012 年一份报告里的自由文本（safetyreportid 9291134，无 reactionmeddraversionpt）：有计数 ≠ 可检索
+        "CHRONIC PAIN SYNDROME":      (1, 1, 0, "no"),
         "DRUG WITHDRAWAL SYNDROME":   (87541, 102179, 1667, "yes"),
     }
     tdf = rows("10_term_dictionary.csv")
@@ -488,14 +493,20 @@ if os.path.exists(P(MS)):
         chk(f"[S4] {term} Canada 反应行", int(r["Canada_reaction_rows_whole_corpus"]), ca)
         chk(f"[S4] {term} 可作 PT 检索", r["Retrievable_as_preferred_term"].strip().lower(), ok)
         # 自洽性：可检索 ⇔ 两个库至少一个计数 > 0
-        chk(f"[S4] {term} 可检索性与计数自洽",
-            (r["Retrievable_as_preferred_term"].strip().lower() == "yes")
-            == (int(r["FAERS_reports_whole_corpus"]) > 0
+        # 只保留单向蕴含：可检索 ⇒ 至少一个库有计数。反向不成立——
+        # CHRONIC PAIN SYNDROME 有 1 条计数却是 2012 年的自由文本。
+        chk(f"[S4] {term} 可检索 ⇒ 有计数",
+            (r["Retrievable_as_preferred_term"].strip().lower() == "no")
+            or (int(r["FAERS_reports_whole_corpus"]) > 0
                 or int(r["Canada_reaction_rows_whole_corpus"]) > 0), True)
-    chk("[S4] 不可检索串个数 == 5",
+    chk("[S4] 不可检索串个数 == 6",
         sorted(t for t, v in TD_EXP.items() if v[3] == "no"),
-        ["CHRONIC PAIN", "HYPERALGESIA", "OPIOID WITHDRAWAL SYNDROME",
-         "PAIN INCREASED", "POSTOPERATIVE PAIN"])
+        ["CHRONIC PAIN", "CHRONIC PAIN SYNDROME", "HYPERALGESIA",
+         "OPIOID WITHDRAWAL SYNDROME", "PAIN INCREASED", "POSTOPERATIVE PAIN"])
+    chk("[S4] CHRONIC PAIN SYNDROME 说明点明 2012 自由文本",
+        "9291134" in td["CHRONIC PAIN SYNDROME"]["MedDRA_level_note"]
+        and "reactionmeddraversionpt" in
+        td["CHRONIC PAIN SYNDROME"]["MedDRA_level_note"], True)
     chk("[S4] HYPERALGESIA 层级说明点明 LLT 与父 PT",
         "lowest level term" in td["HYPERALGESIA"]["MedDRA_level_note"].lower()
         and "HYPERAESTHESIA" in td["HYPERALGESIA"]["MedDRA_level_note"], True)
@@ -600,7 +611,13 @@ if os.path.exists(P(MS)):
     must_contain("Table S4 存在", "### Table S4")
     must_contain("Table S4 被正文引用", "Table S4")
     must_contain("Table S5 存在", "### Table S5")
-    must_contain("Supplied tables 计数为 4", "plus 5 supplementary")
+    # 主表/补充表个数改为从实际表块读出，再与题名页声明比对（不固化字面）
+    _n_main = len({m.group(1) for m in re.finditer(r"(?m)^### Table (\d+)", txt)})
+    _n_supp = len({m.group(1) for m in re.finditer(r"(?m)^### Table (S\d+)", txt)})
+    chk(f"题名页声明主表数 == 实测 {_n_main}",
+        re.search(rf"\b{_n_main}\b in the main file", txt) is not None, True)
+    chk(f"题名页声明补充表数 == 实测 {_n_supp}",
+        re.search(rf"and {_n_supp} supplementary", txt) is not None, True)
     must_contain("MedDRA 行数口径", "4 474 923")
     must_contain("MedDRA 版本行数口径", "4 474 767")
 
@@ -632,21 +649,27 @@ if os.path.exists(P(MS)):
     # =====================================================================
     refblock = txt[txt.index("## References"):txt.index("## Tables")]
     ref_nums = [int(m.group(1)) for m in re.finditer(r"^\s*(\d+)\.\s", refblock, re.M)]
-    chk("参考文献条目数 == 30", len(ref_nums), 30)
-    chk("参考文献编号连续 1..30", sorted(ref_nums), list(range(1, 31)))
+    # 30 是上一轮的实测值，不是刊物上限（30-40）。硬编码实测值会把"合法增删文献"
+    # 变成门禁失败，也会在删文献时静默放行——改为查上限 + 查编号连续。
+    chk("参考文献条目数在期刊上限 30-40", 30 <= len(ref_nums) <= 40, True)
+    chk("参考文献编号连续 1..n", sorted(ref_nums), list(range(1, len(ref_nums) + 1)))
     cited = {int(x) for m in re.findall(r"\[([\d,\s]+)\]", txt[:txt.index("## References")])
              for x in m.split(",") if x.strip().isdigit()}
-    chk("正文引用编号最大 == 30", max(cited) if cited else 0, 30)
-    chk("正文无越界引用编号", sorted(x for x in cited if x > 30), [])
-    must_contain("AI 声明参考文献计数", "all 30 cited references verified by identifier")
+    chk("正文引用编号最大 == n", max(cited) if cited else 0, len(ref_nums))
+    chk("正文无越界引用编号", sorted(x for x in cited if x > len(ref_nums)), [])
+    must_contain("AI 声明参考文献计数",
+                 f"all {len(ref_nums)} cited references verified by identifier")
     for rel, needles in [
         ("I_投稿信_cover_letter.md",
-         ["all 30 cited references verified by identifier", "30 references",
+         [f"all {len(ref_nums)} cited references verified by identifier",
+          f"{len(ref_nums)} references",
           f"is {main_words:,}".replace(",", " "), f"Summary of {summ_words} words",
-          "five supplementary tables"]),
+          "nine supplementary tables"]),
         ("SUBMISSION_MANIFEST.md",
-         ["30, Vancouver style with DOIs", f"{main_words:,}".replace(",", " "),
-          "with a terminology caution", "5 (S1–S5)"]),
+         [f"**{len(ref_nums)}**, Vancouver style with DOIs",
+          f"{main_words:,}".replace(",", " "),
+          # 题名已改为中性的描述式题名，"with a terminology caution" 不应再出现
+          "observational head-to-head disproportionality analysis", "9 (S1–S9)"]),
         ("README.md", ["10_term_dictionary.csv", "ANALYSIS_PLAN.md"]),
     ]:
         if os.path.exists(P(rel)):
@@ -670,7 +693,11 @@ if os.path.exists(P(MS)):
             if not line.startswith("| "):
                 continue
             c = [x.strip() for x in line.strip().strip("|").split("|")]
-            if c[0].lower() in ("preferred term", "term") or set(c[0]) <= set("- "):
+            if (c[0].lower() in ("preferred term", "term", "indication stratum",
+                                  "stratum", "report depth")
+                    # 首列为空 = 合并单元格的续行（表 5 的分层只写在第一行的行首），
+                    # 不是分隔线；旧写法 set("") <= set("- ") 为真，把它们全丢了。
+                    or (c[0] and set(c[0]) <= set("- "))):
                 continue
             out.append(c)
         return out
@@ -714,11 +741,15 @@ if os.path.exists(P(MS)):
     _td = {r["Term"]: r for r in csv.DictReader(open(P("10_term_dictionary.csv"), encoding="utf-8-sig"))}
     chk("[G-6] CHRONIC PAIN 相邻 token 为 1",
         num(_td["CHRONIC PAIN"]["FAERS_reports_adjacent_token_phrase"]), 1.0, 0.001)
-    chk("[G-6] 正文已承认该例外", "CHRONIC PAIN returned a single hit" in txt, True)
+    chk("[G-6] 正文已承认该例外",
+        re.search(r"CHRONIC PAIN[^.]{0,80}one hit", txt) is not None, True)
 
     # G-7 -------------------------------------------------------------
+    # Round-6：表 S5 之后新增了表 S6-S9 与附录 S1，终点锚点必须随之前移，
+    # 否则行数统计会把新增表的行也算进来（原锚点 "## Figure legends"）。
+    _S5_END = "### Table S6"
     _bad5 = []
-    for _c in _md_rows("### Table S5", "## Figure legends"):
+    for _c in _md_rows("### Table S5", _S5_END):
         _r = _src.get(_c[0])
         if _r is None or len(_c) != 6:
             _bad5.append(f"{_c[0]}: 行不匹配")
@@ -733,7 +764,7 @@ if os.path.exists(P(MS)):
         if _c[5] != _exp_a:
             _bad5.append(f"{_c[0]}: 对照 a {_c[5]!r} != {_exp_a!r}")
     chk("[G-7] 表 S5 逐格与 01_faers_results.csv 一致", _bad5[:5], [])
-    chk("[G-7] 表 S5 行数 == 18", len(_md_rows("### Table S5", "## Figure legends")), 18)
+    chk("[G-7] 表 S5 行数 == 18", len(_md_rows("### Table S5", _S5_END)), 18)
 
     # G-8 -------------------------------------------------------------
     # P1-5-3：五个代理术语是零值之后才加入的（Amendment 1），Table S4 的 Group
@@ -789,18 +820,77 @@ if os.path.exists(P(MS)):
     chk("[G-10] 对照药 leave-2024 仍达信号(YES)",
         _lr["FENTANYL"]["signal_met"] == "YES" and _lr["SUFENTANIL"]["signal_met"] == "YES"
         and _lr["MORPHINE"]["signal_met"] == "YES", True)
-    chk("[G-10] 正文披露 'disappears when 2024 is excluded (a = 1)'",
-        "disappears when 2024 is excluded (a = 1)" in txt, True)
-    chk("[G-10] 正文披露 'leave-2024-out'", "leave-2024-out" in txt, True)
-    chk("[G-10] 正文披露 'shared by all four opioids'", "shared by all four opioids" in txt, True)
-    chk("[G-10] §9 溯源表含 leave-2024-out CSV",
-        "Leave-2024-out HYPERAESTHESIA sensitivity (FAERS)" in txt
-        and "04_sensitivity_leave2024_hyperaesthesia.csv" in txt, True)
+    # 旧断言固化了 "a = 1"，而 a = 1 属于 2015-2023 窗口、不是 leave-2024-out；
+    # 真·全库剔 2024 是 a = 2。改为从 19_*.csv 读两套口径的值，逐值与正文比对。
+    _l19 = P("19_leave2024_hyperaesthesia.csv")
+    chk("[G-10] 两种 leave-2024 口径 CSV 存在", os.path.exists(_l19), True)
+    if os.path.exists(_l19):
+        _rows19 = list(csv.DictReader(open(_l19, encoding="utf-8-sig")))
+        chk("[G-10] 19_*.csv 同时收录两种口径", len(_rows19), 2)
+        _bad10 = []
+
+        def _appears(raw, where):
+            """值是否以某种合法排版形式出现在指定窗口内（千分位数字 / 英文数词 / 两位小数）。
+
+            稿件对小整数写英文单词（"two reports"、"one report"），对大数写千分位
+            数字（"19 373 581"），对率写两位小数（"1.01"）。三种形式都要认，否则
+            断言会因为排版而非因为数值错误而失败。
+            """
+            try:
+                fv = float(raw)
+            except (TypeError, ValueError):
+                return True
+            _NUMW = {0: "no", 1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
+                     6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten"}
+            cands = []
+            if fv == int(fv):
+                n = int(fv)
+                cands += [f"{n:,}".replace(",", " "),
+                          f"{n:,}".replace(",", chr(0x2009)), str(n), _NUMW.get(n, "")]
+            else:
+                cands.append(f"{fv:.2f}")
+            for c in cands:
+                if c and re.search(rf"(?<![\d.]){re.escape(c)}(?![\d])", where):
+                    return True
+            return False
+
+        for _r in _rows19:
+            _w10 = txt[txt.index("Two restrictions of this table"):][:1400]
+            for _k in ("a", "cohort_n", "corpus_N", "ROR", "ROR_CI_low",
+                       "ROR_CI_high", "RORR_vs_fentanyl"):
+                _v = _r[_k]
+                try:
+                    float(_v)
+                except (TypeError, ValueError):
+                    continue          # 该口径下不可估（"see row 2 ..."），正文也不应写
+                if not _appears(_v, _w10):
+                    _bad10.append(f"{_r['definition'][:24]}/{_k}={_v}")
+        chk("[G-10] 两种口径的 a/队列/N/ROR/CI 均在正文中出现", _bad10[:6], [])
+    # 措辞：正文必须明确"两种口径不是一回事"，且旧的错误标签已被点名
+    chk("[G-10] 正文区分两种口径",
+        re.search(r"Two restrictions of this table", txt) is not None, True)
+    chk("[G-10] 正文点名旧的误标",
+        re.search(r"mislabelled as leave[- ]2024[- ]out", txt, re.I) is not None, True)
+    chk("[G-10] 正文使用 leave-2024-out 一词",
+        re.search(r"leave[- ]2024[- ]out", txt, re.I) is not None, True)
+    # 2024 升高"四药共享"的说法已被否证（吗啡 0/21 不在簇内），不得复辟
+    chk("[G-10] 已清除 'shared by all four opioids'",
+        "shared by all four opioids" in txt, False)
+    chk("[G-10] 正文改为三队列表述", "in three of the four cohorts" in txt, True)
+    chk("[G-10] 正文说明吗啡不在簇内",
+        re.search(r"morphine[^.]{0,240}\bnot\b", txt, re.I) is not None, True)
+    # Round-6 P0-1：稿件内的 §9 溯源表已删除（它的表头写着"not for submission"），
+    # 内容迁至 SUBMISSION_MANIFEST.md 附录 A，故核验对象随之改变。
+    _man = open(P("SUBMISSION_MANIFEST.md"), encoding="utf-8").read()
+    chk("[G-10] 清单附录 A 含 leave-2024-out CSV",
+        "Leave-2024-out HYPERAESTHESIA sensitivity (FAERS)" in _man
+        and "04_sensitivity_leave2024_hyperaesthesia.csv" in _man, True)
     # M1：摘要本身必须披露代理是事后添加、且所报 PT 是代理（防"作为正面发现头条"复辟）
+    # 不固化动词：只要"after those zeros"这个时序限定还在，措辞怎么改都算披露
     chk("[G-10] 摘要披露代理为事后添加",
-        "added after those zeros" in summ_text, True)
+        re.search(r"after those zeros", summ_text) is not None, True)
     chk("[G-10] 摘要 Results 将所报 PT 标为 proxy",
-        "proxy preferred term" in summ_text, True)
+        re.search(r"proxy (?:preferred )?term", summ_text) is not None, True)
 
     # G-11 ------------------------------------------------------------
     # 2024 簇比值与回复函数值必须可回溯源 CSV。本轮即在回复函里抓出一处
@@ -814,8 +904,34 @@ if os.path.exists(P(MS)):
         chk("[G-11] 四药 2024 簇比值均 > 1（全阿片共增）",
             all(float(_cl[d]["ratio_2024_to_pooled"]) > 1 for d in
                 ["REMIFENTANIL", "FENTANYL", "SUFENTANIL", "MORPHINE"]), True)
-        chk("[G-11] 正文披露 2024 簇四药比值序列",
-            "15.4, 4.3, 4.9 and 1.7" in txt, True)
+        # 旧的"四药比值序列"连同"四药共享升高"的结论一起被否证：
+        # 吗啡 2024 年的 21 例中 0 例在瑞芬簇内。改为绑定 20_*.csv 的成员数。
+        _clu20 = P("20_2024cluster_membership.csv")
+        chk("[G-11] 2024 簇成员核验 CSV 存在", os.path.exists(_clu20), True)
+        if os.path.exists(_clu20):
+            _c20 = {r["query"]: int(r["reports"]) for r in
+                    csv.DictReader(open(_clu20, encoding="utf-8-sig"))}
+            _W = {0: "no", 1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
+                  6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten",
+                  11: "eleven", 12: "twelve", 13: "thirteen", 14: "fourteen",
+                  15: "fifteen", 16: "sixteen", 17: "seventeen", 18: "eighteen",
+                  19: "nineteen", 20: "twenty", 21: "twenty-one"}
+            _win = txt[txt.index("That series also explains"):]
+            _win = _win[:700]
+            # 舒芬：簇内 7 / 2024 共 7；芬太尼：簇内 5 / 2024 共 17
+            _bad11 = []
+            for _drug, _k_both, _k_all in (
+                    ("sufentanil", "sufentanil_with_term_2024_also_remifentanil",
+                     "sufentanil_with_term_2024"),
+                    ("fentanyl", "fentanyl_with_term_2024_also_remifentanil",
+                     "fentanyl_with_term_2024")):
+                for _k in (_k_both, _k_all):
+                    _word = _W[_c20[_k]]
+                    if not re.search(rf"\b{re.escape(_word)}\b[^.]{{0,120}}{_drug}", _win):
+                        _bad11.append(f"{_k}={_c20[_k]} ({_word}) 未在 §3.3 出现")
+            chk("[G-11] §3.3 披露簇成员数与源 CSV 一致", _bad11, [])
+            chk("[G-11] 吗啡 2024 报告不在簇内（源 CSV）",
+                _c20["morphine_with_term_2024_also_remifentanil"], 0)
     _resp = P("RESPONSE_round4_2026-09-17.md")
     if os.path.exists(_resp):
         _rt = open(_resp, encoding="utf-8").read()
@@ -824,6 +940,288 @@ if os.path.exists(P(MS)):
             _ci = ("(" + f'{float(_r["ROR_CI_low"]):.2f}' + "\u2013"
                    + f'{float(_r["ROR_CI_high"]):.2f}' + ")")
             chk(f"[G-11] 回复函 ROR CI 与源一致 {_d} {_ci}", _ci in _rt, True)
+
+    # =====================================================================
+    # Round-6 新增：表 5、表 6、表 S6-S9 与附录 S1 的逐格对账，
+    # 以及"每个被引用的表都必须存在、每个存在的表都必须被引用"。
+    # 教训：上一轮的门禁只校验了已存在的表，对"正文引用了不存在的表"
+    # 完全无感——本轮发现有 7 处引用指向一个根本不存在的附录 S1。
+    # =====================================================================
+    _TS = " "   # 千分位用的普通空格，与稿件排版一致
+
+    def _nn(v):
+        return f"{int(v):,}".replace(",", _TS)
+
+    # G-12 表 5 ------------------------------------------------------------
+    _seg5 = txt[txt.index("### Table 5."):txt.index("### Table 6.")]
+    _bad12 = []
+    for _r in csv.DictReader(open(P("cv/cv_indication_strata.csv"), encoding="utf-8-sig")):
+        for _cmp in ("fentanyl", "morphine"):
+            _est = _r[f"RORR_vs_{_cmp}"]
+            if _est in ("", None):
+                continue
+            _ci = _r[f"RORR_vs_{_cmp}_CI"].replace("-", "\u2013")
+            _want = f"{float(_est):.3f} ({_ci})"
+            if _want not in _seg5:
+                _bad12.append(f"{_r['stratum']}/{_r['preferred_term']}/{_cmp}: {_want}")
+    chk("[G-12] 表 5 每个可估比值与源 CSV 逐字一致", _bad12[:5], [])
+    for _tag, _sum_ in (("0.000", "表 5 不应出现 0.000 型假零"),):
+        chk(f"[G-12] {_sum_}", _tag in _seg5, False)
+    # _md_rows 只跳过首列为 "preferred term"/"term" 的表头，表 5 的首列是
+    # "Indication stratum"，因此 15 行数据 + 1 行表头 = 16。
+    chk("[G-12] 表 5 数据行数 == 15（3 层 x 5 术语）",
+        len(_md_rows("### Table 5.", "### Table 6.")), 15)
+
+    # G-13 表 6 ------------------------------------------------------------
+    _seg6 = txt[txt.index("### Table 6."):txt.index("### Table S1")]
+    _bad13 = []
+    for _r in csv.DictReader(open(P("cv/cv_depth_strata.csv"), encoding="utf-8-sig")):
+        for _cmp in ("fentanyl", "morphine"):
+            _mh = _r[f"MH_RORR_vs_{_cmp}"]
+            if _mh not in ("", None):
+                _ci = _r[f"MH_RORR_vs_{_cmp}_CI"].replace("-", "\u2013")
+                _want = f"{float(_mh):.3f} ({_ci})"
+                if _want not in _seg6:
+                    _bad13.append(f"{_r['preferred_term']}/{_cmp}: MH {_want}")
+            _cr = _r[f"crude_RORR_vs_{_cmp}"]
+            if float(_cr or 0) > 0 and f"{float(_cr):.3f}" not in _seg6:
+                _bad13.append(f"{_r['preferred_term']}/{_cmp}: crude {_cr}")
+    chk("[G-13] 表 6 每个 MH 与 crude 比值与源 CSV 一致", _bad13[:5], [])
+    chk("[G-13] 表 6 不应出现 0.000 型假零", "0.000" in _seg6, False)
+    # 正文声称 MH 把 PAIN 相对吗啡从 0.146 抬到 0.978、相对芬太尼从 0.235 抬到 0.640
+    _dep = {r["preferred_term"]: r for r in csv.DictReader(
+        open(P("cv/cv_depth_strata.csv"), encoding="utf-8-sig"))}
+    chk("[G-13] 正文的 MH 位移数字可复算",
+        (f"{float(_dep['PAIN']['MH_RORR_vs_morphine']):.3f}" == "0.978"
+         and f"{float(_dep['PAIN']['MH_RORR_vs_fentanyl']):.3f}" == "0.640"
+         and "0.146 to 0.978" in txt and "0.235 to 0.640" in txt), True)
+
+    # G-14 表 S7 -----------------------------------------------------------
+    _seg7 = txt[txt.index("### Table S7"):txt.index("### Table S8")]
+    _rv = {(r["preferred_term"], r["restriction"]): r for r in csv.DictReader(
+        open(P("12_role_version_sensitivity.csv"), encoding="utf-8-sig"))}
+    _RESTR = ["as published (role-agnostic, latest version)",
+              "restricted to reports with >=1 primary suspect drug record",
+              "restricted to never-revised reports"]
+    _bad14 = []
+    for _pt in ("HYPERAESTHESIA", "ALLODYNIA", "PROCEDURAL PAIN",
+                "DRUG WITHDRAWAL SYNDROME", "PAIN", "DRUG INEFFECTIVE",
+                "NAUSEA", "VOMITING", "PRURITUS", "CONSTIPATION"):
+        for _cmp in ("fentanyl", "morphine"):
+            _vals = []
+            for _k in _RESTR:
+                _v = _rv[(_pt, _k)][f"RORR_vs_{_cmp}"]
+                _vals.append("not estimable" if _v in ("", None) else f"{float(_v):.3f}")
+            _want = " / ".join(_vals)
+            if _want not in _seg7:
+                _bad14.append(f"{_pt}/{_cmp}: {_want}")
+    chk("[G-14] 表 S7 面板 B 三档限制序列与源 CSV 一致", _bad14[:5], [])
+    _rv0 = _rv[("HYPERAESTHESIA", _RESTR[0])]
+    for _c in ("corpus_N", "n_remifentanil", "n_fentanyl", "n_sufentanil", "n_morphine"):
+        chk(f"[G-14] 表 S7 面板 A {_c} 与源一致",
+            _nn(_rv0[_c]) in _seg7, True)
+    _rv2 = _rv[("HYPERAESTHESIA", _RESTR[2])]
+    chk("[G-14] 表 S7 面板 A 末行与源一致",
+        all(_nn(_rv2[_c]) in _seg7 for _c in
+            ("corpus_N", "n_remifentanil", "n_fentanyl", "n_sufentanil", "n_morphine")), True)
+
+    # G-15 表 S8 -----------------------------------------------------------
+    _seg8 = txt[txt.index("### Table S8"):txt.index("### Table S9")]
+    _bad15 = []
+    for _r in csv.DictReader(open(P("11_overlap_matrix.csv"), encoding="utf-8-sig")):
+        for _d in ("remifentanil", "fentanyl", "sufentanil", "morphine"):
+            _v = _nn(_r[f"overlap_{_d}"])
+            if _v not in _seg8:
+                _bad15.append(f"{_r['drug']}/{_d}: {_v}")
+    _pub = {r["PT"]: r for r in csv.DictReader(
+        open(P("01_faers_results.csv"), encoding="utf-8-sig"))}
+    _COL = {"fentanyl": "RORR_REMI_vs_FENTANYL",
+            "sufentanil": "RORR_REMI_vs_SUFENTANIL",
+            "morphine": "RORR_REMI_vs_MORPHINE"}
+    for _r in csv.DictReader(open(P("17_overlap_adjusted_rorr.csv"), encoding="utf-8-sig")):
+        if not _r["RORR_published"]:
+            continue
+        for _cmp in ("fentanyl", "sufentanil", "morphine"):
+            _pv = _pub[_r["preferred_term"]][_COL[_cmp]]
+            _ev = _r[f"RORR_excl_{_cmp}"]
+            _l = "not estimable" if _pv in ("", None) else f"{float(_pv):.3f}"
+            _rr = "not estimable" if _ev in ("", None) else f"{float(_ev):.3f}"
+            if f"{_l} \u2192 {_rr}" not in _seg8:
+                _bad15.append(f"{_r['preferred_term']}/{_cmp}: {_l} -> {_rr}")
+    chk("[G-15] 表 S8 两个面板均与源 CSV 逐格一致", _bad15[:5], [])
+    # 重叠矩阵必须对称：这是"同一份报告进入两个队列"的算术证据
+    _om = {r["drug"]: r for r in csv.DictReader(
+        open(P("11_overlap_matrix.csv"), encoding="utf-8-sig"))}
+    _SHORT = {"REMIFENTANIL": "remifentanil", "FENTANYL": "fentanyl",
+              "SUFENTANIL": "sufentanil", "MORPHINE": "morphine"}
+    _asym = [f"{_a}/{_b}" for _a in _om for _b in _om if _a != _b
+             and _om[_a][f"overlap_{_SHORT[_b]}"] != _om[_b][f"overlap_{_SHORT[_a]}"]]
+    chk("[G-15] 重叠矩阵对称", _asym, [])
+    chk("[G-15] 对角 == 队列规模",
+        all(int(_om[_a][f"overlap_{_SHORT[_a]}"]) > 0 for _a in _om), True)
+    chk("[G-15] 瑞芬-芬太尼共报 1 575（29.3%）",
+        _nn(1575) in _seg8 and "29.3%" in txt, True)
+
+    # G-16 表 S9 -----------------------------------------------------------
+    _seg9 = txt[txt.index("### Table S9"):txt.index("### Appendix S1")]
+    _ser = list(csv.DictReader(open(P("13_report_series_hyperaesthesia.csv"),
+                                    encoding="utf-8-sig")))
+    chk("[G-16] 表 S9 源 CSV 行数 == 10", len(_ser), 10)
+    chk("[G-16] 表 S9 两个面板各列十条（共 20 行）",
+        len([l for l in _seg9.splitlines() if re.match(r"\| \d{8} \|", l)]), 20)
+    _us = [r for r in _ser if r["country"] == "US"]
+    chk("[G-16] 九条美国报告年龄性别一致（同一患者的判据）",
+        len(_us) == 9 and len({r["age"] for r in _us}) == 1
+        and len({r["sex"] for r in _us}) == 1, True)
+    chk("[G-16] 第十条为日本 2021 年报告",
+        len(_ser) - len(_us) == 1
+        and [r for r in _ser if r["country"] != "US"][0]["receivedate"] == "20210813", True)
+    chk("[G-16] 正文与表 S9 均称十份报告 = 两名患者",
+        "describe two patients" in txt and "the same patient" in _seg9, True)
+
+    # G-17 附录 S1 与其引用的文件 --------------------------------------------
+    _segA = txt[txt.index("### Appendix S1"):txt.index("## Figure legends")]
+    for _f in ("18_rorr_covariance.csv", "03_soc_27.csv", "15_sparse_intervals.csv",
+               "patient.drug.activesubstance.activesubstancename.exact",
+               "scipy.stats.nchypergeom_fisher"):
+        chk(f"[G-17] 附录 S1 含 {_f}", _f in _segA, True)
+    for _fn in ("15_sparse_intervals.csv", "18_rorr_covariance.csv",
+                "11_overlap_matrix.csv", "cv/cv_indication_strata.csv",
+                "cv/cv_depth_strata.csv"):
+        chk(f"[G-17] 附录 S1 引用的源文件存在：{_fn}", os.path.exists(P(_fn)), True)
+    _sp = list(csv.DictReader(open(P("15_sparse_intervals.csv"), encoding="utf-8-sig")))
+    _badA = [r["case"] for r in _sp if r["exact_conditional_CI"] not in _segA]
+    chk("[G-17] 附录 S1 稀疏格表逐行与源一致", _badA[:5], [])
+
+    # G-18 引用完整性：每个被引用的表必须存在，每个存在的表必须被引用 ----------
+    # 两侧都按"去掉分面字母"归一：4A/4B/4C -> 4，S1 保留（旧代码用 isdigit()
+    # 把全部 S 表静默丢掉，于是"表块未被引"永远查不出来）。
+    _present = {re.sub(r"[A-C]$", "", m.group(1) + m.group(2)) for m in
+                re.finditer(r"(?m)^### Table (S?\d+)([A-C]?)", txt)}
+    _cited = {re.sub(r"[A-C]$", "", c) for c in
+              re.findall(r"\bTables?\s(S?\d+[A-C]?)\b", txt.split("## Tables")[0])}
+    chk("[G-18] 正文引用的表都有对应表块", sorted(_cited - _present), [])
+    chk("[G-18] 所有表块都在正文被引用", sorted(_present - _cited), [])
+    _figbody = txt.split("## Figure legends")[0]
+    chk("[G-18] 图 1 与图 2 均在正文被引用",
+        "Fig. 1" in _figbody and "Fig. 2" in _figbody, True)
+    chk("[G-18] 正文引用的附录 S1 存在", txt.count("### Appendix S1"), 1)
+
+    # G-20 术语替换压力测试（Round-5 T0-6）---------------------------------
+    # 换一个 PT 结论就反转，这是本文论点最强的证据，也是对自己结论的压力测试。
+    # 值全部从 21_alternative_proxy_terms.csv 读出再与正文比对，不固化字面。
+    _alt = P("21_alternative_proxy_terms.csv")
+    chk("[G-20] 替代 PT 压力测试 CSV 存在", os.path.exists(_alt), True)
+    if os.path.exists(_alt):
+        _a20 = list(csv.DictReader(open(_alt, encoding="utf-8-sig")))
+        chk("[G-20] 正文声明替换会反转结论",
+            "substituting INADEQUATE ANALGESIA reverses it" in txt, True)
+        _bad20 = [r["DRUG"] for r in _a20
+                  if r["ROR"] not in txt or r["ROR_CI95"].replace("-", "\u2013") not in txt]
+        chk("[G-20] 每个 ROR 与区间都在正文出现", _bad20, [])
+        _rr = {r["DRUG"]: float(r["ROR"]) for r in _a20}
+        chk("[G-20] 瑞芬 ROR 高于舒芬与吗啡（方向反转）",
+            _rr["REMIFENTANIL"] > _rr["SUFENTANIL"]
+            and _rr["REMIFENTANIL"] > _rr["MORPHINE"], True)
+        chk("[G-20] 瑞芬 ROR 仍低于芬太尼（不夸大反转）",
+            _rr["REMIFENTANIL"] < _rr["FENTANYL"], True)
+    # 14_faers_pt_distribution.csv 里 INADEQUATE ANALGESIA x MORPHINE 曾记为 0
+    _pd = {r["term"]: r for r in
+           csv.DictReader(open(P("14_faers_pt_distribution.csv"), encoding="utf-8-sig"))}
+    chk("[G-20] PT 分布表单格错误已修正（吗啡 82）",
+        _pd["INADEQUATE ANALGESIA"]["MORPHINE"], "82")
+    _morph = sum(int(r["MORPHINE"]) for r in _pd.values())
+    chk("[G-20] 吗啡每报告术语数与正文一致",
+        f"{_morph:,}".replace(",", " ") in txt, True)
+    chk("[G-20] 已清除旧的吗啡合计 256 947", "256 947" in txt, False)
+
+    # G-21 Round-5 收尾四条：起病时间、量级表述、零值语义、AI 声明三要素 ------
+    _ons = P("cv/cv_reaction_onset_completeness.csv")
+    chk("[G-21] 加拿大起病时间完备度 CSV 存在", os.path.exists(_ons), True)
+    if os.path.exists(_ons):
+        _o21 = {r["row"]: r for r in csv.DictReader(open(_ons, encoding="utf-8-sig"))}
+        _w21 = txt[txt.index("A1.9 Why no time-to-onset"):][:1400]
+        _bad21 = []
+        for _k in ("reaction rows in reactions.txt",
+                   "rows with a value in field 3 (reaction onset date)",
+                   "rows for the preferred term Hyperaesthesia",
+                   "rows for the preferred term Procedural Pain"):
+            _v = _o21[_k]["n"]
+            _cands = [f"{int(_v):,}".replace(",", " "), str(_v)]
+            if not any(re.search(rf"(?<![\d.]){re.escape(c)}(?![\d])", _w21)
+                       for c in _cands):
+                _bad21.append(f"{_k}={_v}")
+        chk("[G-21] A1.9 的起病时间计数与源 CSV 一致", _bad21, [])
+    # 旧的错误绝对表述不得复辟
+    chk("[G-21] 已清除 'The FDA case-level files could not be retrieved'",
+        "The FDA case-level files could not be retrieved" in txt, False)
+    # T2-26：正文要给临床读者量级
+    chk("[G-21] §4.6 给出量级", "one report in 200 to 500" in txt, True)
+    for _r in ("one report in 538", "one in 387", "one in 296", "one in 216"):
+        chk(f"[G-21] 表 2 脚注含 {_r}", _r in txt, True)
+    # T2-22：零值必须说明"不是观测到的计数"
+    chk("[G-21] 表 2 已说明零值语义",
+        "the column is numeric and cannot hold a marker for that" in txt, True)
+    # T3-5：AI 声明的工具名、使用日期、隐私与合规
+    _ai = txt[txt.index("**Use of generative artificial intelligence.**"):][:2200]
+    for _need in ("WorkBuddy", "between 15 and 18 September 2026",
+                  "No patient-identifiable data", "standard commercial terms"):
+        chk(f"[G-21] AI 声明含「{_need[:34]}」", _need in _ai, True)
+    _cl21 = open(P("I_投稿信_cover_letter.md"), encoding="utf-8").read()
+    for _need in ("between 15 and 18 September 2026", "no patient-identifiable data"):
+        chk(f"[G-21] 投稿信 AI 声明含「{_need[:34]}」",
+            _need.lower() in _cl21.lower(), True)
+
+    # G-22 表格算术：表 S3 的百分比、表 3 的 Confirmed 列、加拿大全库计数 ------
+    _seg3 = txt[txt.index("### Table S3"):txt.index("### Table S4")]
+    _den = {"Remifentanil": 111, "Fentanyl": 4881, "Sufentanil": 63, "Morphine": 7675}
+    _bad22 = []
+    for _line in _seg3.splitlines():
+        _m = re.match(r"\| (.+?) \| (.+?) \| (.+?) \| (.+?) \| (.+?) \|", _line)
+        if not _m:
+            continue
+        for (_nm, _d), _c in zip(_den.items(), [_m.group(i) for i in (2, 3, 4, 5)]):
+            _mm = re.match(r"\s*([\d ]+) \(([\d.]+)\)", _c)
+            if not _mm:
+                continue
+            _nn = int(_mm.group(1).replace(" ", ""))
+            if abs(round(100 * _nn / _d, 1) - float(_mm.group(2))) > 0.049:
+                _bad22.append(f"{_m.group(1)}/{_nm}: {_mm.group(2)} != "
+                              f"{round(100 * _nn / _d, 1)}")
+    chk("[G-22] 表 S3 每个百分比都由计数与队列规模算出", _bad22[:6], [])
+    chk("[G-22] 表 S3 已声明百分比的舍入口径",
+        "not rounded from a previously rounded value" in _seg3, True)
+    # T2-12：不可检索与暴露侧为零必须分开标注
+    chk("[G-22] 表 3 不再混用 'yes (zero in both)'", "yes (zero in both)" in txt, False)
+    chk("[G-22] 表 3 区分不可检索", "yes (term not retrievable in either)" in txt, True)
+    chk("[G-22] 表 3 区分暴露侧为零", "yes (remifentanil zero in both)" in txt, True)
+    # 加拿大全库计数必须与产物一致
+    _wc = {r["preferred_term"]: r["reaction_rows_in_whole_canadian_corpus"] for r in
+           csv.DictReader(open(P("cv/cv_whole_corpus_pt_counts.csv"), encoding="utf-8-sig"))}
+    _bad22b = [k for k in ("DRUG TOLERANCE", "HYPERAESTHESIA", "PROCEDURAL PAIN",
+                           "DRUG WITHDRAWAL SYNDROME")
+               if f"{int(_wc[k]):,}".replace(",", " ") not in txt]
+    chk("[G-22] 表 3 脚注的加拿大全库计数与源 CSV 一致", _bad22b, [])
+    # T3-7：READUS-PV 自查表第 9 条不得再声称"每个估计都有 CI"
+    chk("[G-22] 自查表第 9 条已改为如实表述",
+        "Every estimate is given with a 95% confidence interval" in ck_txt_full, False)
+    chk("[G-22] 自查表第 9 条列出四处裸点估计",
+        "Four places necessarily report point estimates" in ck_txt_full, True)
+
+    # G-19 稿件内不得残留任何内部区段或流程痕迹 ------------------------------
+    for _bad in ("## 9. Number-to-source traceability",
+                 "## 10. Outstanding items",
+                 "not part of the submitted manuscript",
+                 "Internal working section",
+                 "updated after round",
+                 "egress block",
+                 "desk-reject"):
+        chk(f"[G-19] 稿件不含「{_bad}」", _bad in txt, False)
+    _man2 = open(P("SUBMISSION_MANIFEST.md"), encoding="utf-8").read()
+    chk("[G-19] 溯源表已迁入清单附录 A",
+        "## 6. Appendix A — number-to-source traceability" in _man2, True)
+    chk("[G-19] 旧组标签 negative control 已全稿清除（除 §2.3 的否认句）",
+        txt.count("negative control") - txt.count("not negative controls"), 0)
 
     # 标题三处必须一致
     title = txt.splitlines()[0].lstrip("# ").strip()

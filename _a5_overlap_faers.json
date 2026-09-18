@@ -1,0 +1,17 @@
+{
+ "REMI": 5375,
+ "FEN": 121819,
+ "SUF": 6513,
+ "MOR": 56501,
+ "REMI&FEN": 1575,
+ "REMI&SUF": 483,
+ "REMI&MOR": 323,
+ "FEN&SUF": 299,
+ "FEN&MOR": 6185,
+ "SUF&MOR": 596,
+ "REMI&FEN&SUF": 30,
+ "REMI&FEN&MOR": 136,
+ "REMI&SUF&MOR": 18,
+ "FEN&SUF&MOR": 55,
+ "ALL4": 4
+}

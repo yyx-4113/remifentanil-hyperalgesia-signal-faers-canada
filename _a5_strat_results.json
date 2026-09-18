@@ -1,0 +1,1474 @@
+{
+ "cohort_sizes": {
+  "REMIFENTANIL": 111,
+  "FENTANYL": 4881,
+  "SUFENTANIL": 63,
+  "MORPHINE": 7675
+ },
+ "pooled": {
+  "HYPERALGESIA": {
+   "a": {
+    "REMIFENTANIL": 0,
+    "FENTANYL": 0,
+    "SUFENTANIL": 0,
+    "MORPHINE": 0
+   },
+   "RORR_vs_FEN": null,
+   "RORR_vs_MOR": null
+  },
+  "ALLODYNIA": {
+   "a": {
+    "REMIFENTANIL": 0,
+    "FENTANYL": 3,
+    "SUFENTANIL": 0,
+    "MORPHINE": 0
+   },
+   "RORR_vs_FEN": null,
+   "RORR_vs_MOR": null
+  },
+  "PAIN": {
+   "a": {
+    "REMIFENTANIL": 2,
+    "FENTANYL": 353,
+    "SUFENTANIL": 8,
+    "MORPHINE": 859
+   },
+   "RORR_vs_FEN": 0.23536138472334123,
+   "RORR_vs_MOR": 0.14559280580149736
+  },
+  "PAIN INCREASED": {
+   "a": {
+    "REMIFENTANIL": 0,
+    "FENTANYL": 0,
+    "SUFENTANIL": 0,
+    "MORPHINE": 0
+   },
+   "RORR_vs_FEN": null,
+   "RORR_vs_MOR": null
+  },
+  "DRUG INEFFECTIVE": {
+   "a": {
+    "REMIFENTANIL": 25,
+    "FENTANYL": 905,
+    "SUFENTANIL": 9,
+    "MORPHINE": 1119
+   },
+   "RORR_vs_FEN": 1.2771424900424002,
+   "RORR_vs_MOR": 1.7031402622773655
+  },
+  "OPIOID WITHDRAWAL SYNDROME": {
+   "a": {
+    "REMIFENTANIL": 0,
+    "FENTANYL": 0,
+    "SUFENTANIL": 0,
+    "MORPHINE": 0
+   },
+   "RORR_vs_FEN": null,
+   "RORR_vs_MOR": null
+  },
+  "DRUG TOLERANCE": {
+   "a": {
+    "REMIFENTANIL": 0,
+    "FENTANYL": 25,
+    "SUFENTANIL": 0,
+    "MORPHINE": 30
+   },
+   "RORR_vs_FEN": null,
+   "RORR_vs_MOR": null
+  },
+  "POSTOPERATIVE PAIN": {
+   "a": {
+    "REMIFENTANIL": 0,
+    "FENTANYL": 0,
+    "SUFENTANIL": 0,
+    "MORPHINE": 0
+   },
+   "RORR_vs_FEN": null,
+   "RORR_vs_MOR": null
+  },
+  "CHRONIC PAIN": {
+   "a": {
+    "REMIFENTANIL": 0,
+    "FENTANYL": 0,
+    "SUFENTANIL": 0,
+    "MORPHINE": 0
+   },
+   "RORR_vs_FEN": null,
+   "RORR_vs_MOR": null
+  },
+  "NAUSEA": {
+   "a": {
+    "REMIFENTANIL": 0,
+    "FENTANYL": 260,
+    "SUFENTANIL": 2,
+    "MORPHINE": 824
+   },
+   "RORR_vs_FEN": null,
+   "RORR_vs_MOR": null
+  },
+  "VOMITING": {
+   "a": {
+    "REMIFENTANIL": 3,
+    "FENTANYL": 124,
+    "SUFENTANIL": 1,
+    "MORPHINE": 508
+   },
+   "RORR_vs_FEN": 1.0656362007168458,
+   "RORR_vs_MOR": 0.3918963254593176
+  },
+  "PRURITUS": {
+   "a": {
+    "REMIFENTANIL": 0,
+    "FENTANYL": 141,
+    "SUFENTANIL": 1,
+    "MORPHINE": 1187
+   },
+   "RORR_vs_FEN": null,
+   "RORR_vs_MOR": null
+  },
+  "CONSTIPATION": {
+   "a": {
+    "REMIFENTANIL": 0,
+    "FENTANYL": 58,
+    "SUFENTANIL": 3,
+    "MORPHINE": 397
+   },
+   "RORR_vs_FEN": null,
+   "RORR_vs_MOR": null
+  },
+  "HYPERAESTHESIA": {
+   "a": {
+    "REMIFENTANIL": 0,
+    "FENTANYL": 18,
+    "SUFENTANIL": 0,
+    "MORPHINE": 30
+   },
+   "RORR_vs_FEN": null,
+   "RORR_vs_MOR": null
+  },
+  "HYPERPATHIA": {
+   "a": {
+    "REMIFENTANIL": 0,
+    "FENTANYL": 0,
+    "SUFENTANIL": 0,
+    "MORPHINE": 0
+   },
+   "RORR_vs_FEN": null,
+   "RORR_vs_MOR": null
+  },
+  "PROCEDURAL PAIN": {
+   "a": {
+    "REMIFENTANIL": 0,
+    "FENTANYL": 14,
+    "SUFENTANIL": 0,
+    "MORPHINE": 42
+   },
+   "RORR_vs_FEN": null,
+   "RORR_vs_MOR": null
+  },
+  "CHRONIC PAIN SYNDROME": {
+   "a": {
+    "REMIFENTANIL": 0,
+    "FENTANYL": 0,
+    "SUFENTANIL": 0,
+    "MORPHINE": 0
+   },
+   "RORR_vs_FEN": null,
+   "RORR_vs_MOR": null
+  },
+  "DRUG WITHDRAWAL SYNDROME": {
+   "a": {
+    "REMIFENTANIL": 0,
+    "FENTANYL": 139,
+    "SUFENTANIL": 1,
+    "MORPHINE": 195
+   },
+   "RORR_vs_FEN": null,
+   "RORR_vs_MOR": null
+  }
+ },
+ "strata": {
+  "age": {
+   "18-64": {
+    "n": {
+     "REMIFENTANIL": 41,
+     "FENTANYL": 2325,
+     "SUFENTANIL": 27,
+     "MORPHINE": 4171
+    },
+    "PAIN": {
+     "a": {
+      "REMIFENTANIL": 1,
+      "FENTANYL": 143,
+      "SUFENTANIL": 4,
+      "MORPHINE": 403
+     },
+     "vs_FEN": 0.3814685314685315,
+     "vs_FEN_CI": [
+      0.052,
+      2.795
+     ],
+     "vs_MOR": 0.2337468982630273,
+     "vs_MOR_CI": [
+      0.032,
+      1.705
+     ]
+    },
+    "DRUG INEFFECTIVE": {
+     "a": {
+      "REMIFENTANIL": 16,
+      "FENTANYL": 415,
+      "SUFENTANIL": 4,
+      "MORPHINE": 616
+     },
+     "vs_FEN": 2.9455421686746988,
+     "vs_FEN_CI": [
+      1.559,
+      5.566
+     ],
+     "vs_MOR": 3.6935064935064936,
+     "vs_MOR_CI": [
+      1.961,
+      6.958
+     ]
+    },
+    "VOMITING": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 75,
+      "SUFENTANIL": 0,
+      "MORPHINE": 332
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "NAUSEA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 116,
+      "SUFENTANIL": 1,
+      "MORPHINE": 545
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "HYPERAESTHESIA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 8,
+      "SUFENTANIL": 0,
+      "MORPHINE": 23
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    }
+   },
+   "<18": {
+    "n": {
+     "REMIFENTANIL": 11,
+     "FENTANYL": 70,
+     "SUFENTANIL": 10,
+     "MORPHINE": 245
+    },
+    "PAIN": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 0,
+      "SUFENTANIL": 0,
+      "MORPHINE": 3
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "DRUG INEFFECTIVE": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 5,
+      "SUFENTANIL": 0,
+      "MORPHINE": 10
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "VOMITING": {
+     "a": {
+      "REMIFENTANIL": 1,
+      "FENTANYL": 2,
+      "SUFENTANIL": 0,
+      "MORPHINE": 17
+     },
+     "vs_FEN": 3.4,
+     "vs_FEN_CI": [
+      0.282,
+      41.033
+     ],
+     "vs_MOR": 1.3411764705882352,
+     "vs_MOR_CI": [
+      0.162,
+      11.106
+     ]
+    },
+    "NAUSEA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 1,
+      "SUFENTANIL": 0,
+      "MORPHINE": 10
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "HYPERAESTHESIA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 0,
+      "SUFENTANIL": 0,
+      "MORPHINE": 0
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    }
+   },
+   ">=65": {
+    "n": {
+     "REMIFENTANIL": 10,
+     "FENTANYL": 753,
+     "SUFENTANIL": 22,
+     "MORPHINE": 1351
+    },
+    "PAIN": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 91,
+      "SUFENTANIL": 4,
+      "MORPHINE": 270
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "DRUG INEFFECTIVE": {
+     "a": {
+      "REMIFENTANIL": 4,
+      "FENTANYL": 225,
+      "SUFENTANIL": 5,
+      "MORPHINE": 188
+     },
+     "vs_FEN": 1.5644444444444445,
+     "vs_FEN_CI": [
+      0.437,
+      5.597
+     ],
+     "vs_MOR": 4.124113475177305,
+     "vs_MOR_CI": [
+      1.153,
+      14.752
+     ]
+    },
+    "VOMITING": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 18,
+      "SUFENTANIL": 0,
+      "MORPHINE": 105
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "NAUSEA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 103,
+      "SUFENTANIL": 0,
+      "MORPHINE": 194
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "HYPERAESTHESIA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 1,
+      "SUFENTANIL": 0,
+      "MORPHINE": 1
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    }
+   },
+   "unk": {
+    "n": {
+     "REMIFENTANIL": 49,
+     "FENTANYL": 1733,
+     "SUFENTANIL": 4,
+     "MORPHINE": 1908
+    },
+    "PAIN": {
+     "a": {
+      "REMIFENTANIL": 1,
+      "FENTANYL": 119,
+      "SUFENTANIL": 0,
+      "MORPHINE": 183
+     },
+     "vs_FEN": 0.28256302521008403,
+     "vs_FEN_CI": [
+      0.039,
+      2.065
+     ],
+     "vs_MOR": 0.19637978142076504,
+     "vs_MOR_CI": [
+      0.027,
+      1.431
+     ]
+    },
+    "DRUG INEFFECTIVE": {
+     "a": {
+      "REMIFENTANIL": 5,
+      "FENTANYL": 260,
+      "SUFENTANIL": 0,
+      "MORPHINE": 305
+     },
+     "vs_FEN": 0.6437937062937062,
+     "vs_FEN_CI": [
+      0.253,
+      1.639
+     ],
+     "vs_MOR": 0.5972429210134128,
+     "vs_MOR_CI": [
+      0.235,
+      1.518
+     ]
+    },
+    "VOMITING": {
+     "a": {
+      "REMIFENTANIL": 2,
+      "FENTANYL": 29,
+      "SUFENTANIL": 1,
+      "MORPHINE": 54
+     },
+     "vs_FEN": 2.500366837857667,
+     "vs_FEN_CI": [
+      0.58,
+      10.787
+     ],
+     "vs_MOR": 1.4609929078014185,
+     "vs_MOR_CI": [
+      0.346,
+      6.171
+     ]
+    },
+    "NAUSEA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 40,
+      "SUFENTANIL": 1,
+      "MORPHINE": 75
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "HYPERAESTHESIA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 9,
+      "SUFENTANIL": 0,
+      "MORPHINE": 6
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    }
+   }
+  },
+  "sex": {
+   "Female": {
+    "n": {
+     "REMIFENTANIL": 39,
+     "FENTANYL": 2106,
+     "SUFENTANIL": 38,
+     "MORPHINE": 4412
+    },
+    "PAIN": {
+     "a": {
+      "REMIFENTANIL": 1,
+      "FENTANYL": 233,
+      "SUFENTANIL": 7,
+      "MORPHINE": 614
+     },
+     "vs_FEN": 0.21154280551163315,
+     "vs_FEN_CI": [
+      0.029,
+      1.548
+     ],
+     "vs_MOR": 0.16278073032744728,
+     "vs_MOR_CI": [
+      0.022,
+      1.188
+     ]
+    },
+    "DRUG INEFFECTIVE": {
+     "a": {
+      "REMIFENTANIL": 14,
+      "FENTANYL": 551,
+      "SUFENTANIL": 9,
+      "MORPHINE": 745
+     },
+     "vs_FEN": 1.5803992740471868,
+     "vs_FEN_CI": [
+      0.816,
+      3.062
+     ],
+     "vs_MOR": 2.7564026845637586,
+     "vs_MOR_CI": [
+      1.426,
+      5.328
+     ]
+    },
+    "VOMITING": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 87,
+      "SUFENTANIL": 0,
+      "MORPHINE": 357
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "NAUSEA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 198,
+      "SUFENTANIL": 1,
+      "MORPHINE": 563
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "HYPERAESTHESIA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 14,
+      "SUFENTANIL": 0,
+      "MORPHINE": 20
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    }
+   },
+   "Male": {
+    "n": {
+     "REMIFENTANIL": 40,
+     "FENTANYL": 1785,
+     "SUFENTANIL": 23,
+     "MORPHINE": 2909
+    },
+    "PAIN": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 112,
+      "SUFENTANIL": 1,
+      "MORPHINE": 204
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "DRUG INEFFECTIVE": {
+     "a": {
+      "REMIFENTANIL": 6,
+      "FENTANYL": 319,
+      "SUFENTANIL": 0,
+      "MORPHINE": 340
+     },
+     "vs_FEN": 0.8109902268117278,
+     "vs_FEN_CI": [
+      0.338,
+      1.948
+     ],
+     "vs_MOR": 1.3333910034602077,
+     "vs_MOR_CI": [
+      0.556,
+      3.199
+     ]
+    },
+    "VOMITING": {
+     "a": {
+      "REMIFENTANIL": 1,
+      "FENTANYL": 35,
+      "SUFENTANIL": 0,
+      "MORPHINE": 142
+     },
+     "vs_FEN": 1.2820512820512822,
+     "vs_FEN_CI": [
+      0.171,
+      9.597
+     ],
+     "vs_MOR": 0.4996388587937884,
+     "vs_MOR_CI": [
+      0.068,
+      3.663
+     ]
+    },
+    "NAUSEA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 56,
+      "SUFENTANIL": 0,
+      "MORPHINE": 251
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "HYPERAESTHESIA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 3,
+      "SUFENTANIL": 0,
+      "MORPHINE": 9
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    }
+   },
+   "unk": {
+    "n": {
+     "REMIFENTANIL": 32,
+     "FENTANYL": 990,
+     "SUFENTANIL": 2,
+     "MORPHINE": 354
+    },
+    "PAIN": {
+     "a": {
+      "REMIFENTANIL": 1,
+      "FENTANYL": 8,
+      "SUFENTANIL": 0,
+      "MORPHINE": 41
+     },
+     "vs_FEN": 3.9596774193548385,
+     "vs_FEN_CI": [
+      0.48,
+      32.641
+     ],
+     "vs_MOR": 0.24626278520849726,
+     "vs_MOR_CI": [
+      0.033,
+      1.852
+     ]
+    },
+    "DRUG INEFFECTIVE": {
+     "a": {
+      "REMIFENTANIL": 5,
+      "FENTANYL": 35,
+      "SUFENTANIL": 0,
+      "MORPHINE": 34
+     },
+     "vs_FEN": 5.052910052910053,
+     "vs_FEN_CI": [
+      1.836,
+      13.903
+     ],
+     "vs_MOR": 1.7429193899782136,
+     "vs_MOR_CI": [
+      0.63,
+      4.822
+     ]
+    },
+    "VOMITING": {
+     "a": {
+      "REMIFENTANIL": 2,
+      "FENTANYL": 2,
+      "SUFENTANIL": 1,
+      "MORPHINE": 9
+     },
+     "vs_FEN": 32.93333333333333,
+     "vs_FEN_CI": [
+      4.487,
+      241.739
+     ],
+     "vs_MOR": 2.5555555555555554,
+     "vs_MOR_CI": [
+      0.528,
+      12.37
+     ]
+    },
+    "NAUSEA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 6,
+      "SUFENTANIL": 1,
+      "MORPHINE": 10
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "HYPERAESTHESIA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 1,
+      "SUFENTANIL": 0,
+      "MORPHINE": 1
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    }
+   }
+  },
+  "reporter": {
+   "Physician": {
+    "n": {
+     "REMIFENTANIL": 19,
+     "FENTANYL": 589,
+     "SUFENTANIL": 9,
+     "MORPHINE": 535
+    },
+    "PAIN": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 44,
+      "SUFENTANIL": 0,
+      "MORPHINE": 61
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "DRUG INEFFECTIVE": {
+     "a": {
+      "REMIFENTANIL": 16,
+      "FENTANYL": 135,
+      "SUFENTANIL": 0,
+      "MORPHINE": 120
+     },
+     "vs_FEN": 17.9358024691358,
+     "vs_FEN_CI": [
+      5.149,
+      62.478
+     ],
+     "vs_MOR": 18.444444444444443,
+     "vs_MOR_CI": [
+      5.286,
+      64.362
+     ]
+    },
+    "VOMITING": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 25,
+      "SUFENTANIL": 1,
+      "MORPHINE": 41
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "NAUSEA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 47,
+      "SUFENTANIL": 1,
+      "MORPHINE": 83
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "HYPERAESTHESIA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 4,
+      "SUFENTANIL": 0,
+      "MORPHINE": 3
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    }
+   },
+   "Other health professional": {
+    "n": {
+     "REMIFENTANIL": 72,
+     "FENTANYL": 2056,
+     "SUFENTANIL": 39,
+     "MORPHINE": 2056
+    },
+    "PAIN": {
+     "a": {
+      "REMIFENTANIL": 1,
+      "FENTANYL": 94,
+      "SUFENTANIL": 5,
+      "MORPHINE": 383
+     },
+     "vs_FEN": 0.2939766257117171,
+     "vs_FEN_CI": [
+      0.04,
+      2.139
+     ],
+     "vs_MOR": 0.06152318611407347,
+     "vs_MOR_CI": [
+      0.009,
+      0.444
+     ]
+    },
+    "DRUG INEFFECTIVE": {
+     "a": {
+      "REMIFENTANIL": 5,
+      "FENTANYL": 211,
+      "SUFENTANIL": 8,
+      "MORPHINE": 398
+     },
+     "vs_FEN": 0.652542972342081,
+     "vs_FEN_CI": [
+      0.26,
+      1.637
+     ],
+     "vs_MOR": 0.3108827720693017,
+     "vs_MOR_CI": [
+      0.124,
+      0.776
+     ]
+    },
+    "VOMITING": {
+     "a": {
+      "REMIFENTANIL": 3,
+      "FENTANYL": 36,
+      "SUFENTANIL": 0,
+      "MORPHINE": 149
+     },
+     "vs_FEN": 2.4396135265700485,
+     "vs_FEN_CI": [
+      0.733,
+      8.116
+     ],
+     "vs_MOR": 0.5564633790487307,
+     "vs_MOR_CI": [
+      0.173,
+      1.789
+     ]
+    },
+    "NAUSEA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 93,
+      "SUFENTANIL": 1,
+      "MORPHINE": 277
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "HYPERAESTHESIA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 5,
+      "SUFENTANIL": 0,
+      "MORPHINE": 14
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    }
+   },
+   "Pharmacist": {
+    "n": {
+     "REMIFENTANIL": 3,
+     "FENTANYL": 555,
+     "SUFENTANIL": 6,
+     "MORPHINE": 537
+    },
+    "PAIN": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 64,
+      "SUFENTANIL": 0,
+      "MORPHINE": 12
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "DRUG INEFFECTIVE": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 238,
+      "SUFENTANIL": 0,
+      "MORPHINE": 51
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "VOMITING": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 7,
+      "SUFENTANIL": 0,
+      "MORPHINE": 19
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "NAUSEA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 22,
+      "SUFENTANIL": 0,
+      "MORPHINE": 33
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "HYPERAESTHESIA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 2,
+      "SUFENTANIL": 0,
+      "MORPHINE": 0
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    }
+   },
+   "Consumer/other non health professional": {
+    "n": {
+     "REMIFENTANIL": 6,
+     "FENTANYL": 974,
+     "SUFENTANIL": 1,
+     "MORPHINE": 1810
+    },
+    "PAIN": {
+     "a": {
+      "REMIFENTANIL": 1,
+      "FENTANYL": 106,
+      "SUFENTANIL": 0,
+      "MORPHINE": 174
+     },
+     "vs_FEN": 1.6377358490566039,
+     "vs_FEN_CI": [
+      0.19,
+      14.152
+     ],
+     "vs_MOR": 1.8804597701149426,
+     "vs_MOR_CI": [
+      0.218,
+      16.188
+     ]
+    },
+    "DRUG INEFFECTIVE": {
+     "a": {
+      "REMIFENTANIL": 2,
+      "FENTANYL": 233,
+      "SUFENTANIL": 0,
+      "MORPHINE": 308
+     },
+     "vs_FEN": 1.590128755364807,
+     "vs_FEN_CI": [
+      0.289,
+      8.737
+     ],
+     "vs_MOR": 2.438311688311688,
+     "vs_MOR_CI": [
+      0.445,
+      13.372
+     ]
+    },
+    "VOMITING": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 43,
+      "SUFENTANIL": 0,
+      "MORPHINE": 66
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "NAUSEA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 68,
+      "SUFENTANIL": 0,
+      "MORPHINE": 93
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "HYPERAESTHESIA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 3,
+      "SUFENTANIL": 0,
+      "MORPHINE": 4
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    }
+   },
+   "unk": {
+    "n": {
+     "REMIFENTANIL": 11,
+     "FENTANYL": 618,
+     "SUFENTANIL": 8,
+     "MORPHINE": 2364
+    },
+    "PAIN": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 42,
+      "SUFENTANIL": 3,
+      "MORPHINE": 228
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "DRUG INEFFECTIVE": {
+     "a": {
+      "REMIFENTANIL": 2,
+      "FENTANYL": 87,
+      "SUFENTANIL": 1,
+      "MORPHINE": 240
+     },
+     "vs_FEN": 1.3563218390804597,
+     "vs_FEN_CI": [
+      0.288,
+      6.383
+     ],
+     "vs_MOR": 1.9666666666666666,
+     "vs_MOR_CI": [
+      0.422,
+      9.155
+     ]
+    },
+    "VOMITING": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 10,
+      "SUFENTANIL": 0,
+      "MORPHINE": 226
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "NAUSEA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 28,
+      "SUFENTANIL": 0,
+      "MORPHINE": 331
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "HYPERAESTHESIA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 4,
+      "SUFENTANIL": 0,
+      "MORPHINE": 9
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    }
+   }
+  },
+  "serious": {
+   "Serious": {
+    "n": {
+     "REMIFENTANIL": 102,
+     "FENTANYL": 3894,
+     "SUFENTANIL": 58,
+     "MORPHINE": 5293
+    },
+    "PAIN": {
+     "a": {
+      "REMIFENTANIL": 1,
+      "FENTANYL": 234,
+      "SUFENTANIL": 8,
+      "MORPHINE": 786
+     },
+     "vs_FEN": 0.15486164001015487,
+     "vs_FEN_CI": [
+      0.022,
+      1.115
+     ],
+     "vs_MOR": 0.056773234575365934,
+     "vs_MOR_CI": [
+      0.008,
+      0.408
+     ]
+    },
+    "DRUG INEFFECTIVE": {
+     "a": {
+      "REMIFENTANIL": 19,
+      "FENTANYL": 404,
+      "SUFENTANIL": 9,
+      "MORPHINE": 719
+     },
+     "vs_FEN": 1.9775140164618872,
+     "vs_FEN_CI": [
+      1.189,
+      3.29
+     ],
+     "vs_MOR": 1.4562729359719826,
+     "vs_MOR_CI": [
+      0.879,
+      2.412
+     ]
+    },
+    "VOMITING": {
+     "a": {
+      "REMIFENTANIL": 3,
+      "FENTANYL": 99,
+      "SUFENTANIL": 1,
+      "MORPHINE": 391
+     },
+     "vs_FEN": 1.1616161616161615,
+     "vs_FEN_CI": [
+      0.362,
+      3.727
+     ],
+     "vs_MOR": 0.37991164845384795,
+     "vs_MOR_CI": [
+      0.12,
+      1.204
+     ]
+    },
+    "NAUSEA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 195,
+      "SUFENTANIL": 2,
+      "MORPHINE": 614
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "HYPERAESTHESIA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 15,
+      "SUFENTANIL": 0,
+      "MORPHINE": 29
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    }
+   },
+   "Not Serious": {
+    "n": {
+     "REMIFENTANIL": 9,
+     "FENTANYL": 987,
+     "SUFENTANIL": 5,
+     "MORPHINE": 2382
+    },
+    "PAIN": {
+     "a": {
+      "REMIFENTANIL": 1,
+      "FENTANYL": 119,
+      "SUFENTANIL": 0,
+      "MORPHINE": 73
+     },
+     "vs_FEN": 0.9117647058823529,
+     "vs_FEN_CI": [
+      0.113,
+      7.355
+     ],
+     "vs_MOR": 3.953767123287671,
+     "vs_MOR_CI": [
+      0.488,
+      32.027
+     ]
+    },
+    "DRUG INEFFECTIVE": {
+     "a": {
+      "REMIFENTANIL": 6,
+      "FENTANYL": 501,
+      "SUFENTANIL": 0,
+      "MORPHINE": 400
+     },
+     "vs_FEN": 1.9401197604790419,
+     "vs_FEN_CI": [
+      0.482,
+      7.801
+     ],
+     "vs_MOR": 9.91,
+     "vs_MOR_CI": [
+      2.468,
+      39.791
+     ]
+    },
+    "VOMITING": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 25,
+      "SUFENTANIL": 0,
+      "MORPHINE": 117
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "NAUSEA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 65,
+      "SUFENTANIL": 0,
+      "MORPHINE": 210
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    },
+    "HYPERAESTHESIA": {
+     "a": {
+      "REMIFENTANIL": 0,
+      "FENTANYL": 3,
+      "SUFENTANIL": 0,
+      "MORPHINE": 1
+     },
+     "vs_FEN": null,
+     "vs_FEN_CI": null,
+     "vs_MOR": null,
+     "vs_MOR_CI": null
+    }
+   }
+  }
+ },
+ "remi_PAIN_report_attributes": [
+  {
+   "age": "18-64",
+   "sex": "Female",
+   "reporter": "Consumer/other non health professional",
+   "serious": "Serious"
+  },
+  {
+   "age": "unk",
+   "sex": "unk",
+   "reporter": "Other health professional",
+   "serious": "Not Serious"
+  }
+ ],
+ "remi_DRUGINEFF_report_attributes": [
+  {
+   "age": "18-64",
+   "sex": "Female",
+   "reporter": "Physician",
+   "serious": "Serious"
+  },
+  {
+   "age": ">=65",
+   "sex": "Male",
+   "reporter": "Physician",
+   "serious": "Serious"
+  },
+  {
+   "age": ">=65",
+   "sex": "Male",
+   "reporter": "Physician",
+   "serious": "Serious"
+  },
+  {
+   "age": "18-64",
+   "sex": "Female",
+   "reporter": "Physician",
+   "serious": "Serious"
+  },
+  {
+   "age": "18-64",
+   "sex": "Male",
+   "reporter": "Physician",
+   "serious": "Serious"
+  },
+  {
+   "age": "18-64",
+   "sex": "Male",
+   "reporter": "Physician",
+   "serious": "Serious"
+  },
+  {
+   "age": "18-64",
+   "sex": "Female",
+   "reporter": "Physician",
+   "serious": "Serious"
+  },
+  {
+   "age": ">=65",
+   "sex": "Female",
+   "reporter": "Physician",
+   "serious": "Serious"
+  },
+  {
+   "age": "18-64",
+   "sex": "Female",
+   "reporter": "Physician",
+   "serious": "Serious"
+  },
+  {
+   "age": "18-64",
+   "sex": "Male",
+   "reporter": "Physician",
+   "serious": "Serious"
+  },
+  {
+   "age": ">=65",
+   "sex": "Female",
+   "reporter": "Physician",
+   "serious": "Serious"
+  },
+  {
+   "age": "18-64",
+   "sex": "Female",
+   "reporter": "Physician",
+   "serious": "Serious"
+  },
+  {
+   "age": "18-64",
+   "sex": "Female",
+   "reporter": "Physician",
+   "serious": "Serious"
+  },
+  {
+   "age": "18-64",
+   "sex": "Female",
+   "reporter": "Physician",
+   "serious": "Serious"
+  },
+  {
+   "age": "18-64",
+   "sex": "Female",
+   "reporter": "Physician",
+   "serious": "Serious"
+  },
+  {
+   "age": "18-64",
+   "sex": "Male",
+   "reporter": "Physician",
+   "serious": "Serious"
+  },
+  {
+   "age": "unk",
+   "sex": "unk",
+   "reporter": "Other health professional",
+   "serious": "Not Serious"
+  },
+  {
+   "age": "unk",
+   "sex": "unk",
+   "reporter": "Consumer/other non health professional",
+   "serious": "Not Serious"
+  },
+  {
+   "age": "unk",
+   "sex": "unk",
+   "reporter": "Consumer/other non health professional",
+   "serious": "Not Serious"
+  },
+  {
+   "age": "18-64",
+   "sex": "Female",
+   "reporter": "Other health professional",
+   "serious": "Serious"
+  },
+  {
+   "age": "18-64",
+   "sex": "Female",
+   "reporter": "unk",
+   "serious": "Serious"
+  },
+  {
+   "age": "18-64",
+   "sex": "Female",
+   "reporter": "Other health professional",
+   "serious": "Serious"
+  },
+  {
+   "age": "18-64",
+   "sex": "Female",
+   "reporter": "Other health professional",
+   "serious": "Not Serious"
+  },
+  {
+   "age": "unk",
+   "sex": "unk",
+   "reporter": "unk",
+   "serious": "Not Serious"
+  },
+  {
+   "age": "unk",
+   "sex": "unk",
+   "reporter": "Other health professional",
+   "serious": "Not Serious"
+  }
+ ]
+}

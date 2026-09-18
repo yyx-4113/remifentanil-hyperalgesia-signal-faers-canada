@@ -1,0 +1,542 @@
+L23    20692687     reports  nd Drug Administration Adverse Event Reporting System (20 692 687 reports) as primary and the Health Canada 
+L23    1154017      reports  y and the Health Canada Canada Vigilance line-listing (1 154 017 reports) for confirmation; cohorts were re
+L25    8161                   proxy preferred term carrying it was present in both (8 161; 523) and met the signal criterion
+L25    523                   preferred term carrying it was present in both (8 161; 523) and met the signal criterion for 
+L25    4.73                  criterion for all four opioids, remifentanil included (4.73, 2.54–8.80), but the signal rests 
+L25    2.54                  ion for all four opioids, remifentanil included (4.73, 2.54–8.80), but the signal rests on ten
+L25    8.80                  or all four opioids, remifentanil included (4.73, 2.54–8.80), but the signal rests on ten repo
+L25    2024                  4–8.80), but the signal rests on ten reports, eight in 2024, and disappears when 2024 is exclude
+L25    1                     ght in 2024, and disappears when 2024 is excluded (a = 1); it did not reproduce. For pain, 
+L25    0.066                 r, with every computable head-to-head ratio below one (0.066, 95% confidence interval 0.04–0.10
+L25    95           %         every computable head-to-head ratio below one (0.066, 95% confidence interval 0.04–0.10, ver
+L25    0.04                  o-head ratio below one (0.066, 95% confidence interval 0.04–0.10, versus fentanyl; 0.046 versu
+L25    0.10                  d ratio below one (0.066, 95% confidence interval 0.04–0.10, versus fentanyl; 0.046 versus mor
+L25    0.046                 6, 95% confidence interval 0.04–0.10, versus fentanyl; 0.046 versus morphine; 0.235 and 0.146 in
+L25    0.235                 val 0.04–0.10, versus fentanyl; 0.046 versus morphine; 0.235 and 0.146 in Canada). The same dire
+L25    0.146                 .10, versus fentanyl; 0.046 versus morphine; 0.235 and 0.146 in Canada). The same direction held
+L35    123                   ensitisation to noxious stimuli after opioid exposure [1, 2, 3]; for remifentanil the syndrome is
+L35    12                    scending facilitation and increased dynorphin release [1, 2], and because these targets are tr
+L35    14                    re tractable, prevention has been studied extensively [1, 4].
+L37    5                     ncreasing postoperative pain and morphine requirement [5] and small-dose ketamine attenuati
+L37    6                     equirement [5] and small-dose ketamine attenuating it [6]. A systematic review of 35 articl
+L37    35                    se ketamine attenuating it [6]. A systematic review of 35 articles found 16 studies supportin
+L37    16                    ating it [6]. A systematic review of 35 articles found 16 studies supporting remifentanil-ind
+L37    7                     he effect is real but too small to require prevention [7]; a second found insufficient evid
+L37    8                     d found insufficient evidence to support or refute it [8]; a meta-analysis reported small, 
+L37    9                     a meta-analysis reported small, heterogeneous effects [9]. The phenomenon is nonetheless re
+L37    10                    phenomenon is nonetheless reproducible experimentally [10] and increasingly invoked clinical
+L37    11                    perimentally [10] and increasingly invoked clinically [11].
+L49    12                    disproportionality analyses using spontaneous reports [12], and the study is reported in acc
+L49    1314                  rted in accordance with the READUS-PV recommendations [13, 14].
+L51    15                    ent interface (`https://api.fda.gov/drug/event.json`) [15]. The indexed corpus contained 20 
+L51    20692687     reports  v/drug/event.json`) [15]. The indexed corpus contained 20 692 687 reports at extraction (16 September 2026).
+L51    16                    xed corpus contained 20 692 687 reports at extraction (16 September 2026). openFDA provides F
+L51    2026                  ntained 20 692 687 reports at extraction (16 September 2026). openFDA provides FAERS data as r
+L51    4.5                   eceived, without the FDA's case-level de-duplication (§4.5).
+L53    16                    line-listing extract (`extract_extrait.zip`, retrieved 16 September 2026), covering reports r
+L53    2026                  extract (`extract_extrait.zip`, retrieved 16 September 2026), covering reports received up to 
+L53    30                    ed 16 September 2026), covering reports received up to 30 November 2024 and containing 1 154 
+L53    2024                  ber 2026), covering reports received up to 30 November 2024 and containing 1 154 017 reports [1
+L53    1154017      reports  reports received up to 30 November 2024 and containing 1 154 017 reports [16]. The extract carries native M
+L55    20692687     reports  ogical purity for statistical power. FAERS contributes 20 692 687 reports and 5 375 remifentanil reports, en
+L55    5375                  stical power. FAERS contributes 20 692 687 reports and 5 375 remifentanil reports, enough to est
+L55    111                    native MedDRA coding, source de-duplication — but its 111 remifentanil reports leave most pre
+L55    16                    rries all quantitative system organ class conclusions [16].
+L59    4.5                   vel file needed to attribute role being inaccessible (§4.5).
+L65    17                    ighest-frequency term such a narrative passes through [17]. PAIN's low reporting reflects re
+L67    18                    vel term mapping to the preferred term HYPERAESTHESIA [18], so a query on it returns zero by
+L67    16                    IN SYNDROME, DRUG WITHDRAWAL SYNDROME) — were added on 16 September 2026, after those zeros, 
+L67    2026                  DRUG WITHDRAWAL SYNDROME) — were added on 16 September 2026, after those zeros, and analysed on 
+L67    23                     those zeros, and analysed on the same footing (Tables 2, 3 and S4); they are reported as addit
+L69    18                    tates the release used for every reaction row (v27.1) [18]; openFDA exposes none, and the FA
+L69    2004                  ne, and the FAERS corpus spans quarterly releases from 2004, so no single release applies to it.
+L75    2                     g–event pair, counts were arranged in the conventional 2×2 table (a: drug and event; b: dru
+L75    19                    the proportional reporting ratio, [a/(a+b)]/[c/(c+d)] [19]; the information component with B
+L75    2021                   [19]; the information component with BCPNN shrinkage [20, 21]; and the empirical Bayes geometri
+L75    22                    1]; and the empirical Bayes geometric mean under MGPS [22]. A signal was declared when a ≥ 3
+L75    3                     c mean under MGPS [22]. A signal was declared when a ≥ 3 and the lower bound of the 95% conf
+L75    95           %        nal was declared when a ≥ 3 and the lower bound of the 95% confidence interval of the reporti
+L75    1                     nfidence interval of the reporting odds ratio exceeded 1, or when the proportional reporting 
+L75    4                     hen the proportional reporting ratio was ≥ 2 with χ² > 4, or when the lower bound of the info
+L75    23                    r of these measures has been characterised previously [23].
+L77    1                     so comparator-specific terms cancel, and a value below 1 means remifentanil reports the even
+L77    20692687              t although they share the background reference d; with 20 692 687 background reports the ignored cova
+L77    0.001        %        687 background reports the ignored covariance is under 0.001% of the variance, so it is conserva
+L77    3.13                  e, so it is conservative. All computations used Python 3.13.14 and matplotlib 3.11.1.
+L77    3.11                  e. All computations used Python 3.13.14 and matplotlib 3.11.1.
+L81    27                    ectly from the native `SOC_NAME_ENG` field, giving all 27 MedDRA classes without a mapping st
+L81    2.4                   es without a mapping step; ratios were computed as in §2.4.
+L83    500                   ng the openFDA count interface returns at most the top 500 terms per drug without an API key, 
+L83    27                    er drug without an API key, so they were mapped to the 27 classes with heuristic keyword rule
+L87    1                     tricted the analysis to serious reports (flag `serious:1`), with the reference set restrict
+L99    1.                    Cohort sizes are in Table 1. FAERS contained 5 375 remifentanil,
+L99    5375                  Cohort sizes are in Table 1. FAERS contained 5 375 remifentanil, 121 819 fentanyl, 6 5
+L99    121819                es are in Table 1. FAERS contained 5 375 remifentanil, 121 819 fentanyl, 6 513 sufentanil and 56 5
+L99    6513                   FAERS contained 5 375 remifentanil, 121 819 fentanyl, 6 513 sufentanil and 56 501 morphine repo
+L99    56501                 5 remifentanil, 121 819 fentanyl, 6 513 sufentanil and 56 501 morphine reports among 20 692 687; 
+L99    20692687              yl, 6 513 sufentanil and 56 501 morphine reports among 20 692 687; the Canada Vigilance cohorts (1 1
+L99    1154017      reports  eports among 20 692 687; the Canada Vigilance cohorts (1 154 017 reports) were much smaller for remifentani
+L99    111                   1 154 017 reports) were much smaller for remifentanil (111) and sufentanil (63) but substanti
+L99    63                    re much smaller for remifentanil (111) and sufentanil (63) but substantial for fentanyl (4 8
+L99    4881                  111) and sufentanil (63) but substantial for fentanyl (4 881) and morphine (7 675).
+L99    7675                  63) but substantial for fentanyl (4 881) and morphine (7 675).
+L103   20692687              eaction preferred term: the string returned zero among 20 692 687 FAERS reports and among 1 154 017 C
+L103   1154017               returned zero among 20 692 687 FAERS reports and among 1 154 017 Canadian reports, and so did an adj
+L103   607176                ries on common terms returned large counts (PAIN alone 607 176).
+L105   8161                  term HYPERAESTHESIA, well represented in both corpora (8 161 FAERS reports, 523 Canadian reactio
+L105   523                   well represented in both corpora (8 161 FAERS reports, 523 Canadian reaction rows), and every 
+L109   2                     A met the signal criterion for all four opioids (Table 2): remifentanil 10 reports (reporti
+L109   10           reports  criterion for all four opioids (Table 2): remifentanil 10 reports (reporting odds ratio 4.73, 95% co
+L109   4.73                  able 2): remifentanil 10 reports (reporting odds ratio 4.73, 95% confidence interval 2.54–8.80
+L109   95           %        ): remifentanil 10 reports (reporting odds ratio 4.73, 95% confidence interval 2.54–8.80), fe
+L109   2.54                  ts (reporting odds ratio 4.73, 95% confidence interval 2.54–8.80), fentanyl 315 (6.80, 6.07–7.
+L109   8.80                  eporting odds ratio 4.73, 95% confidence interval 2.54–8.80), fentanyl 315 (6.80, 6.07–7.61), 
+L109   315                   tio 4.73, 95% confidence interval 2.54–8.80), fentanyl 315 (6.80, 6.07–7.61), sufentanil 22 (8
+L109   6.80                  .73, 95% confidence interval 2.54–8.80), fentanyl 315 (6.80, 6.07–7.61), sufentanil 22 (8.61, 
+L109   6.07                  5% confidence interval 2.54–8.80), fentanyl 315 (6.80, 6.07–7.61), sufentanil 22 (8.61, 5.66–1
+L109   7.61                  nfidence interval 2.54–8.80), fentanyl 315 (6.80, 6.07–7.61), sufentanil 22 (8.61, 5.66–13.09)
+L109   22                    2.54–8.80), fentanyl 315 (6.80, 6.07–7.61), sufentanil 22 (8.61, 5.66–13.09) and morphine 262
+L109   8.61                  –8.80), fentanyl 315 (6.80, 6.07–7.61), sufentanil 22 (8.61, 5.66–13.09) and morphine 262 (12.
+L109   5.66                  , fentanyl 315 (6.80, 6.07–7.61), sufentanil 22 (8.61, 5.66–13.09) and morphine 262 (12.17, 10
+L109   13.09                 tanyl 315 (6.80, 6.07–7.61), sufentanil 22 (8.61, 5.66–13.09) and morphine 262 (12.17, 10.75–13
+L109   262                   7–7.61), sufentanil 22 (8.61, 5.66–13.09) and morphine 262 (12.17, 10.75–13.76). Remifentanil'
+L109   12.17                 1), sufentanil 22 (8.61, 5.66–13.09) and morphine 262 (12.17, 10.75–13.76). Remifentanil's was 
+L109   10.75                 entanil 22 (8.61, 5.66–13.09) and morphine 262 (12.17, 10.75–13.76). Remifentanil's was the wea
+L109   13.76                 l 22 (8.61, 5.66–13.09) and morphine 262 (12.17, 10.75–13.76). Remifentanil's was the weakest (
+L109   0.696                  (12.17, 10.75–13.76). Remifentanil's was the weakest (0.696, 0.37–1.31, versus fentanyl; 0.389
+L109   0.37                  , 10.75–13.76). Remifentanil's was the weakest (0.696, 0.37–1.31, versus fentanyl; 0.389, 0.21
+L109   1.31                  75–13.76). Remifentanil's was the weakest (0.696, 0.37–1.31, versus fentanyl; 0.389, 0.21–0.73
+L109   0.389                 's was the weakest (0.696, 0.37–1.31, versus fentanyl; 0.389, 0.21–0.73, versus morphine), and 
+L109   0.21                  the weakest (0.696, 0.37–1.31, versus fentanyl; 0.389, 0.21–0.73, versus morphine), and eight 
+L109   0.73                  eakest (0.696, 0.37–1.31, versus fentanyl; 0.389, 0.21–0.73, versus morphine), and eight of th
+L109   2024                  versus morphine), and eight of the ten reports fall in 2024, one dated to 2021 and one undated (
+L109   2021                  nd eight of the ten reports fall in 2024, one dated to 2021 and one undated (§3.8); excluding 2
+L109   3.8                   orts fall in 2024, one dated to 2021 and one undated (§3.8); excluding 2024 leaves one report
+L109   18                    a Vigilance remifentanil had no HYPERAESTHESIA report (18 fentanyl, 30 morphine); 111 reports
+L109   30                    emifentanil had no HYPERAESTHESIA report (18 fentanyl, 30 morphine); 111 reports have no powe
+L109   111          reports  d no HYPERAESTHESIA report (18 fentanyl, 30 morphine); 111 reports have no power for a term this rare
+L109   14                    onfirms nor refutes the FAERS signal. Remifentanil had 14 PROCEDURAL PAIN reports in FAERS (1
+L109   1.98                   Remifentanil had 14 PROCEDURAL PAIN reports in FAERS (1.98; the ratio against fentanyl is 1.9
+L109   1.96                   reports in FAERS (1.98; the ratio against fentanyl is 1.96, the only ratio above 1 among thos
+L109   1                     e ratio against fentanyl is 1.96, the only ratio above 1 among those printed here) and 7 DRU
+L109   7                     , the only ratio above 1 among those printed here) and 7 DRUG WITHDRAWAL SYNDROME reports (0
+L109   0.31                   printed here) and 7 DRUG WITHDRAWAL SYNDROME reports (0.31), with none of either in Canada. D
+L109   278                   broad-group term, drew no remifentanil report, against 278 for fentanyl (9.94) and 79 for morp
+L109   9.94                  drew no remifentanil report, against 278 for fentanyl (9.94) and 79 for morphine (5.86). HYPER
+L109   79                    mifentanil report, against 278 for fentanyl (9.94) and 79 for morphine (5.86). HYPERPATHIA an
+L109   5.86                  , against 278 for fentanyl (9.94) and 79 for morphine (5.86). HYPERPATHIA and CHRONIC PAIN SYN
+L111   1                     r remifentanil, which contributed a single report (a = 1); the only defensible fact is the 
+L111   48                     absence of a signal, not its direction. Fentanyl (a = 48) and morphine (a = 30) both showed
+L111   30                    not its direction. Fentanyl (a = 48) and morphine (a = 30) both showed strong signals, and i
+L111   3                     gilance remifentanil had no ALLODYNIA report (fentanyl 3; sufentanil 0; morphine 0).
+L111   0                     ntanil had no ALLODYNIA report (fentanyl 3; sufentanil 0; morphine 0).
+L115   2                     the lowest reporter of PAIN of all four opioids (Table 2): 23 FAERS reports (0.14, 0.09–0.2
+L115   23                    lowest reporter of PAIN of all four opioids (Table 2): 23 FAERS reports (0.14, 0.09–0.21) aga
+L115   0.14                   PAIN of all four opioids (Table 2): 23 FAERS reports (0.14, 0.09–0.21) against 7 349 for fent
+L115   0.09                  of all four opioids (Table 2): 23 FAERS reports (0.14, 0.09–0.21) against 7 349 for fentanyl, 
+L115   0.21                  l four opioids (Table 2): 23 FAERS reports (0.14, 0.09–0.21) against 7 349 for fentanyl, 98 fo
+L115   7349                   (Table 2): 23 FAERS reports (0.14, 0.09–0.21) against 7 349 for fentanyl, 98 for sufentanil and
+L115   98                     reports (0.14, 0.09–0.21) against 7 349 for fentanyl, 98 for sufentanil and 4 794 for morphi
+L115   4794                  .21) against 7 349 for fentanyl, 98 for sufentanil and 4 794 for morphine. Every computable head
+L115   1                     orphine. Every computable head-to-head ratio was below 1 — 0.066 versus fentanyl, 0.281 vers
+L115   0.066                 ine. Every computable head-to-head ratio was below 1 — 0.066 versus fentanyl, 0.281 versus sufen
+L115   0.281                 ead-to-head ratio was below 1 — 0.066 versus fentanyl, 0.281 versus sufentanil and 0.046 versus 
+L115   0.046                 1 — 0.066 versus fentanyl, 0.281 versus sufentanil and 0.046 versus morphine.
+L117   2                      negative control across all three comparators (Tables 2 and S5): eleven of the twelve compu
+L117   1                     S5): eleven of the twelve computable ratios were below 1, the exception being pruritus versus
+L117   1.310                 low 1, the exception being pruritus versus sufentanil (1.310, 0.84–2.04), whose interval includ
+L117   0.84                  the exception being pruritus versus sufentanil (1.310, 0.84–2.04), whose interval includes one
+L117   2.04                  xception being pruritus versus sufentanil (1.310, 0.84–2.04), whose interval includes one; the
+L117   3.3                   ion among the terms reported here is PROCEDURAL PAIN (§3.3).
+L119   208                    was also under-reported by remifentanil in FAERS (a = 208), but in Canada Vigilance the dire
+L119   1.277                 d: remifentanil over-reported it relative to fentanyl (1.277) and morphine (1.703), and the rev
+L119   1.703                 reported it relative to fentanyl (1.277) and morphine (1.703), and the reversal strengthened in
+L119   5.921                 he reversal strengthened in a physician-only analysis (5.921 and 10.604). A global artefact woul
+L119   10.604                l strengthened in a physician-only analysis (5.921 and 10.604). A global artefact would have pus
+L123   3                     reproduced in the independent Canadian database (Table 3): the five non-retrievable strings
+L123   0.066                 ora; the PAIN under-reporting direction was identical (0.066 and 0.046 in FAERS against 0.235 an
+L123   0.046                 AIN under-reporting direction was identical (0.066 and 0.046 in FAERS against 0.235 and 0.146 in
+L123   0.235                 ection was identical (0.066 and 0.046 in FAERS against 0.235 and 0.146 in Canada); and remifenta
+L123   0.146                  identical (0.066 and 0.046 in FAERS against 0.235 and 0.146 in Canada); and remifentanil again 
+L123   2                     . Most Canadian comparisons are uncomputable (an empty 2×2 cell), so Canada settles directi
+L127   102                   fentanil's Canadian cohort was overwhelmingly serious (102/111, 91.9% against 79.8% for fenta
+L127   11191.9      %        anil's Canadian cohort was overwhelmingly serious (102/111, 91.9% against 79.8% for fentanyl and 69.
+L127   79.8         %        ort was overwhelmingly serious (102/111, 91.9% against 79.8% for fentanyl and 69.0% for morphin
+L127   69.0         %        serious (102/111, 91.9% against 79.8% for fentanyl and 69.0% for morphine) and came predominant
+L127   72                    predominantly from non-physician health professionals (72/111, 64.9%), whereas morphine's in
+L127   11164.9      %        dominantly from non-physician health professionals (72/111, 64.9%), whereas morphine's included 23.6
+L127   23.6         %        essionals (72/111, 64.9%), whereas morphine's included 23.6% consumer and 7.0% physician report
+L127   7.0          %        64.9%), whereas morphine's included 23.6% consumer and 7.0% physician reports (Table S3): the 
+L131   2.363                 wed elevated ratios in pregnancy, respiratory, immune (2.363; 1.792 versus fentanyl), cardiac a
+L131   1.792                 vated ratios in pregnancy, respiratory, immune (2.363; 1.792 versus fentanyl), cardiac and vascu
+L131   0.101                 ar classes, and reduced reporting in gastrointestinal (0.101), skin (0.143) and general disorde
+L131   0.143                 d reduced reporting in gastrointestinal (0.101), skin (0.143) and general disorders (0.361); no
+L131   0.361                 ntestinal (0.101), skin (0.143) and general disorders (0.361); no class compatible with hyperal
+L135   11882968              Restricting FAERS to serious reports (11 882 968) left the pain findings unchanged 
+L135   4                     s (11 882 968) left the pain findings unchanged (Table 4A): remifentanil contributed 5 270 
+L135   5270                  indings unchanged (Table 4A): remifentanil contributed 5 270 of 5 375 reports (98.0%), the PAIN 
+L135   5375         reports  nchanged (Table 4A): remifentanil contributed 5 270 of 5 375 reports (98.0%), the PAIN ratio was 0.072 
+L135   98.0         %         4A): remifentanil contributed 5 270 of 5 375 reports (98.0%), the PAIN ratio was 0.072 versus 
+L135   0.072                 ted 5 270 of 5 375 reports (98.0%), the PAIN ratio was 0.072 versus fentanyl (0.05–0.11) and 0.0
+L135   0.05                  rts (98.0%), the PAIN ratio was 0.072 versus fentanyl (0.05–0.11) and 0.044 versus morphine, a
+L135   0.11                  98.0%), the PAIN ratio was 0.072 versus fentanyl (0.05–0.11) and 0.044 versus morphine, and al
+L135   0.044                 e PAIN ratio was 0.072 versus fentanyl (0.05–0.11) and 0.044 versus morphine, and all negative c
+L135   1.                    ersus morphine, and all negative controls stayed below 1. The corrected hyperalgesia finding 
+L135   4.309                 emifentanil HYPERAESTHESIA reports are serious, giving 4.309 against the serious-report backgrou
+L135   0.014                 e 4B) showed no reversal in the eight estimable years (0.014–0.168 versus fentanyl; 0.019–0.097
+L135   0.168                 showed no reversal in the eight estimable years (0.014–0.168 versus fentanyl; 0.019–0.097 versus
+L135   0.019                 he eight estimable years (0.014–0.168 versus fentanyl; 0.019–0.097 versus morphine).
+L135   0.097                 ht estimable years (0.014–0.168 versus fentanyl; 0.019–0.097 versus morphine).
+L137   4                      corrected signal is not stable in the same way (Table 4C): remifentanil contributed no rep
+L137   2024                  o report in eight of the ten years; eight are dated to 2024 and one has no usable receivedate (
+L137   2.495                 both ratios exceed one with intervals that exclude it (2.495, 1.06–5.90; 3.495, 1.52–8.05). A l
+L137   1.06                  tios exceed one with intervals that exclude it (2.495, 1.06–5.90; 3.495, 1.52–8.05). A leave-2
+L137   5.90                  exceed one with intervals that exclude it (2.495, 1.06–5.90; 3.495, 1.52–8.05). A leave-2024-o
+L137   3.495                  one with intervals that exclude it (2.495, 1.06–5.90; 3.495, 1.52–8.05). A leave-2024-out sens
+L137   1.52                  th intervals that exclude it (2.495, 1.06–5.90; 3.495, 1.52–8.05). A leave-2024-out sensitivit
+L137   8.05                  tervals that exclude it (2.495, 1.06–5.90; 3.495, 1.52–8.05). A leave-2024-out sensitivity lea
+L137   1                     t sensitivity leaves a single remifentanil report (a = 1) and no signal (reporting odds rat
+L137   0.70                  nil report (a = 1) and no signal (reporting odds ratio 0.70, 0.10–4.98; ratio versus fentanyl 
+L137   0.10                  port (a = 1) and no signal (reporting odds ratio 0.70, 0.10–4.98; ratio versus fentanyl 0.11, 
+L137   4.98                  (a = 1) and no signal (reporting odds ratio 0.70, 0.10–4.98; ratio versus fentanyl 0.11, 0.02–
+L137   0.11                  ting odds ratio 0.70, 0.10–4.98; ratio versus fentanyl 0.11, 0.02–0.76; versus morphine 0.06, 
+L137   0.02                  dds ratio 0.70, 0.10–4.98; ratio versus fentanyl 0.11, 0.02–0.76; versus morphine 0.06, 0.01–0
+L137   0.76                  atio 0.70, 0.10–4.98; ratio versus fentanyl 0.11, 0.02–0.76; versus morphine 0.06, 0.01–0.41),
+L137   0.06                  ratio versus fentanyl 0.11, 0.02–0.76; versus morphine 0.06, 0.01–0.41), so the pooled estimat
+L137   0.01                  versus fentanyl 0.11, 0.02–0.76; versus morphine 0.06, 0.01–0.41), so the pooled estimate is a
+L137   0.41                  s fentanyl 0.11, 0.02–0.76; versus morphine 0.06, 0.01–0.41), so the pooled estimate is a sing
+L137   15.4                   all four opioids (year-to-pooled reporting odds ratio 15.4, 4.3, 4.9 and 1.7 for remifentanil
+L137   4.3                   our opioids (year-to-pooled reporting odds ratio 15.4, 4.3, 4.9 and 1.7 for remifentanil, fen
+L137   4.9                   pioids (year-to-pooled reporting odds ratio 15.4, 4.3, 4.9 and 1.7 for remifentanil, fentanyl,
+L137   1.7                   year-to-pooled reporting odds ratio 15.4, 4.3, 4.9 and 1.7 for remifentanil, fentanyl, sufenta
+L141   10.951                eck. Remifentanil showed a strong immune-class signal (10.951; 8.613 versus fentanyl), driven by
+L141   8.613                 ifentanil showed a strong immune-class signal (10.951; 8.613 versus fentanyl), driven by anaphyl
+L141   532          events    8.613 versus fentanyl), driven by anaphylactic shock (532 events) and reaction (367), also seen in 
+L141   367                   riven by anaphylactic shock (532 events) and reaction (367), also seen in Canada (2.363), sup
+L141   2.363                  (532 events) and reaction (367), also seen in Canada (2.363), supporting — not proving — that 
+L149   4.73                  cept, meets the signal criterion for all four opioids (4.73, 2.54–8.80), but the signal rests 
+L149   2.54                  meets the signal criterion for all four opioids (4.73, 2.54–8.80), but the signal rests on ten
+L149   8.80                   the signal criterion for all four opioids (4.73, 2.54–8.80), but the signal rests on ten repo
+L149   2024                  the signal rests on ten reports of which eight fall in 2024 and disappears when that year is ex
+L149   1                     in 2024 and disappears when that year is excluded (a = 1, §3.8). Remifentanil's signal is the
+L149   3.8                   024 and disappears when that year is excluded (a = 1, §3.8). Remifentanil's signal is the sma
+L153   17893                 he clinical magnitude and importance remain uncertain [1, 7, 8, 9, 3].
+L155   24                     change but not its clinical recognition or reporting [24]; reporting data show a concept wa
+L161   91.9         %        ome almost entirely from monitored perioperative care (91.9% serious in Canada; 98.0% in the se
+L161   98.0         %        monitored perioperative care (91.9% serious in Canada; 98.0% in the sensitivity subset), and am
+L161   25                    tity strongly determines which reactions are recorded [25]. Fentanyl's cohort is dominated b
+L167   2627                  prevention literature that difference is not academic [26, 27]; any analysis of a syndrome whose
+L167   2.3                    name is not its coded name needs the verification in §2.3 and Table S4. Opioid-induced hypera
+L171   111                   esia finding rests on ten remifentanil reports and the 111-report Canadian cohort has no powe
+L171   24                    ive sensory testing remain the appropriate instrument [24].
+L173   21.1         %        sdermal formulation, received oral-route assignment in 21.1% of its reports. Restricting the PA
+L173   0.077                 n to the intravenous stratum left the ratio unchanged (0.077 versus fentanyl, 0.038 versus morph
+L173   0.038                 ratum left the ratio unchanged (0.077 versus fentanyl, 0.038 versus morphine), so the defect dil
+L175   2829                  hort, which would not generate the observed direction [28, 29]. FAERS cohorts were also role-agn
+L177   2004                  act states v27.1 throughout; FAERS spans releases from 2004), so a term could shift between re
+L177   2.3                    so a term could shift between releases, which is why §2.3 reads what the corpora contain.
+L179   4.3                   ot be isolated; indication cannot be adjusted for, so §4.3 is an interpretation consistent wit
+L181   85           %         is weaker than across regulatory regions, where about 85% of signals overlap at the preferre
+L181   30                    ut 85% of signals overlap at the preferred-term level [30] (the EVDAS-referenced median PT-l
+L185   78                     prevention should rest on the prospective literature [7, 8].
+L187   1314                  list is provided as Supporting Information (Table S2) [13, 14].
+L193   2024                   the four, rests on ten reports of which eight fall in 2024, disappears when that year is exclud
+L193   1                     ll in 2024, disappears when that year is excluded (a = 1), and was not reproduced in the sm
+L193   4.1                    contrast, is large, stable and reproduced in Canada (§4.1); the four negative controls are s
+L209   4113                  lable at the study repository: `https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-f
+L209   16                     data (`https://api.fda.gov/drug/event.json`, accessed 16 September 2026); Health Canada, Can
+L209   2026                  ://api.fda.gov/drug/event.json`, accessed 16 September 2026); Health Canada, Canada Vigilance 
+L209   9                     ence – Canada (`https://open.canada.ca/data/en/dataset/9cbaef00-b52c-4a70-9fed-d9aa8263ab74
+L209   4                     (`https://open.canada.ca/data/en/dataset/9cbaef00-b52c-4a70-9fed-d9aa8263ab74`, accessed 16
+L211   30                     a real bibliographic record being discarded, with all 30 cited references verified by identi
+L219   1.                    1. Vitin AA, Egan TD. Remifentanil-ind
+L219   2024                  the current state of affairs. *Curr Opin Anaesthesiol* 2024; **37**: 371–8. https://doi.org/10
+L219   37                    ent state of affairs. *Curr Opin Anaesthesiol* 2024; **37**: 371–8. https://doi.org/10.1097/
+L219   371                   ate of affairs. *Curr Opin Anaesthesiol* 2024; **37**: 371–8. https://doi.org/10.1097/ACO.000
+L219   8.                    of affairs. *Curr Opin Anaesthesiol* 2024; **37**: 371–8. https://doi.org/10.1097/ACO.0000000
+L219   10.1097               pin Anaesthesiol* 2024; **37**: 371–8. https://doi.org/10.1097/ACO.0000000000001400
+L220   2.                    2. Angst MS, Clark JD. Opioid-induced 
+L220   2006                  sia: a qualitative systematic review. *Anesthesiology* 2006; **104**: 570–87. https://doi.org/
+L220   104                   ualitative systematic review. *Anesthesiology* 2006; **104**: 570–87. https://doi.org/10.1097
+L220   570                   ive systematic review. *Anesthesiology* 2006; **104**: 570–87. https://doi.org/10.1097/000005
+L220   87.                   systematic review. *Anesthesiology* 2006; **104**: 570–87. https://doi.org/10.1097/00000542-20
+L220   10.1097               Anesthesiology* 2006; **104**: 570–87. https://doi.org/10.1097/00000542-200603000-00025
+L220   00000542              iology* 2006; **104**: 570–87. https://doi.org/10.1097/00000542-200603000-00025
+L220   200603000             006; **104**: 570–87. https://doi.org/10.1097/00000542-200603000-00025
+L220   00025                 **: 570–87. https://doi.org/10.1097/00000542-200603000-00025
+L221   3.                    3. Lee M, Silverman S, Hansen H, Patel
+L221   2011                  eview of opioid-induced hyperalgesia. *Pain Physician* 2011; **14**: 145–61. https://doi.org/1
+L221   14                     opioid-induced hyperalgesia. *Pain Physician* 2011; **14**: 145–61. https://doi.org/10.3607
+L221   145                   d-induced hyperalgesia. *Pain Physician* 2011; **14**: 145–61. https://doi.org/10.36076/ppj.2
+L221   61.                   duced hyperalgesia. *Pain Physician* 2011; **14**: 145–61. https://doi.org/10.36076/ppj.2011/1
+L221   10.36076              *Pain Physician* 2011; **14**: 145–61. https://doi.org/10.36076/ppj.2011/14/145
+L222   4.                    4. Comelon M, Raeder J, Stubhaug A, Ni
+L222   2016                  ay prevent opioid-induced hyperalgesia. *Br J Anaesth* 2016; **116**: 524–30. https://doi.org/
+L222   116                   nt opioid-induced hyperalgesia. *Br J Anaesth* 2016; **116**: 524–30. https://doi.org/10.1093
+L222   524                   id-induced hyperalgesia. *Br J Anaesth* 2016; **116**: 524–30. https://doi.org/10.1093/bja/ae
+L222   30.                   nduced hyperalgesia. *Br J Anaesth* 2016; **116**: 524–30. https://doi.org/10.1093/bja/aev547
+L222   10.1093                *Br J Anaesth* 2016; **116**: 524–30. https://doi.org/10.1093/bja/aev547
+L223   5.                    5. Guignard B, Bossard AE, Coste C, et
+L223   2000                  rative pain and morphine requirement. *Anesthesiology* 2000; **93**: 409–17. https://doi.org/1
+L223   93                    ain and morphine requirement. *Anesthesiology* 2000; **93**: 409–17. https://doi.org/10.1097
+L223   409                   d morphine requirement. *Anesthesiology* 2000; **93**: 409–17. https://doi.org/10.1097/000005
+L223   17.                   rphine requirement. *Anesthesiology* 2000; **93**: 409–17. https://doi.org/10.1097/00000542-20
+L223   10.1097               *Anesthesiology* 2000; **93**: 409–17. https://doi.org/10.1097/00000542-200008000-00019
+L223   00000542              siology* 2000; **93**: 409–17. https://doi.org/10.1097/00000542-200008000-00019
+L223   200008000             2000; **93**: 409–17. https://doi.org/10.1097/00000542-200008000-00019
+L223   00019                 **: 409–17. https://doi.org/10.1097/00000542-200008000-00019
+L224   6.                    6. Joly V, Richebe P, Guignard B, et a
+L224   2005                   prevention with small-dose ketamine. *Anesthesiology* 2005; **103**: 147–55. https://doi.org/
+L224   103                   ion with small-dose ketamine. *Anesthesiology* 2005; **103**: 147–55. https://doi.org/10.1097
+L224   147                   h small-dose ketamine. *Anesthesiology* 2005; **103**: 147–55. https://doi.org/10.1097/000005
+L224   55.                   all-dose ketamine. *Anesthesiology* 2005; **103**: 147–55. https://doi.org/10.1097/00000542-20
+L224   10.1097               Anesthesiology* 2005; **103**: 147–55. https://doi.org/10.1097/00000542-200507000-00022
+L224   00000542              iology* 2005; **103**: 147–55. https://doi.org/10.1097/00000542-200507000-00022
+L224   200507000             005; **103**: 147–55. https://doi.org/10.1097/00000542-200507000-00022
+L224   00022                 **: 147–55. https://doi.org/10.1097/00000542-200507000-00022
+L225   7.                    7. Rivosecchi RM, Rice MJ, Smithburger
+L225   2014                  ed opioid-induced hyperalgesia. *Expert Opin Drug Saf* 2014; **13**: 587–603. https://doi.org/
+L225   13                    d-induced hyperalgesia. *Expert Opin Drug Saf* 2014; **13**: 587–603. https://doi.org/10.151
+L225   587                   ced hyperalgesia. *Expert Opin Drug Saf* 2014; **13**: 587–603. https://doi.org/10.1517/14740
+L225   603.                  hyperalgesia. *Expert Opin Drug Saf* 2014; **13**: 587–603. https://doi.org/10.1517/14740338.20
+L225   10.1517                Opin Drug Saf* 2014; **13**: 587–603. https://doi.org/10.1517/14740338.2014.902931
+L225   14740338.2014          ug Saf* 2014; **13**: 587–603. https://doi.org/10.1517/14740338.2014.902931
+L226   8.                    8. Kim SH, Stoicea N, Soghomonyan S, B
+L226   2015                  induced hyperalgesia: a systematic review. *Am J Ther* 2015; **22**: e62–74. https://doi.org/1
+L226   22                    hyperalgesia: a systematic review. *Am J Ther* 2015; **22**: e62–74. https://doi.org/10.1097
+L226   74.                   ia: a systematic review. *Am J Ther* 2015; **22**: e62–74. https://doi.org/10.1097/MJT.0000000
+L226   10.1097               iew. *Am J Ther* 2015; **22**: e62–74. https://doi.org/10.1097/MJT.0000000000000019
+L227   9.                    9. Fletcher D, Martinez V. Opioid-indu
+L227   2014                   systematic review and a meta-analysis. *Br J Anaesth* 2014; **112**: 991–1004. https://doi.or
+L227   112                   tic review and a meta-analysis. *Br J Anaesth* 2014; **112**: 991–1004. https://doi.org/10.10
+L227   991                   iew and a meta-analysis. *Br J Anaesth* 2014; **112**: 991–1004. https://doi.org/10.1093/bja/
+L227   1004.                 and a meta-analysis. *Br J Anaesth* 2014; **112**: 991–1004. https://doi.org/10.1093/bja/aeu137
+L227   10.1093               Br J Anaesth* 2014; **112**: 991–1004. https://doi.org/10.1093/bja/aeu137
+L228   10.                   10. Angst MS, Koppert W, Pahl I, Clark 
+L228   2003                  n humans causes hyperalgesia during withdrawal. *Pain* 2003; **106**: 49–57. https://doi.org/1
+L228   106                    causes hyperalgesia during withdrawal. *Pain* 2003; **106**: 49–57. https://doi.org/10.1016/
+L228   49                     hyperalgesia during withdrawal. *Pain* 2003; **106**: 49–57. https://doi.org/10.1016/S0304-
+L228   57.                   peralgesia during withdrawal. *Pain* 2003; **106**: 49–57. https://doi.org/10.1016/S0304-3959(
+L228   10.1016               thdrawal. *Pain* 2003; **106**: 49–57. https://doi.org/10.1016/S0304-3959(03)00276-8
+L228   3959                  n* 2003; **106**: 49–57. https://doi.org/10.1016/S0304-3959(03)00276-8
+L228   03                    03; **106**: 49–57. https://doi.org/10.1016/S0304-3959(03)00276-8
+L228   00276                  **106**: 49–57. https://doi.org/10.1016/S0304-3959(03)00276-8
+L228   8                     **: 49–57. https://doi.org/10.1016/S0304-3959(03)00276-8
+L229   11.                   11. Yu EHY, Tran DHD, Lam SW, Irwin MG.
+L229   2016                  lgesia: short-term gain, long-term pain? *Anaesthesia* 2016; **71**: 1347–62. https://doi.org/
+L229   71                    short-term gain, long-term pain? *Anaesthesia* 2016; **71**: 1347–62. https://doi.org/10.111
+L229   1347                  term gain, long-term pain? *Anaesthesia* 2016; **71**: 1347–62. https://doi.org/10.1111/anae.1
+L229   62.                   gain, long-term pain? *Anaesthesia* 2016; **71**: 1347–62. https://doi.org/10.1111/anae.13602
+L229   10.1111               ? *Anaesthesia* 2016; **71**: 1347–62. https://doi.org/10.1111/anae.13602
+L230   12.                   12. Cutroneo PM, Sartori D, Tuccori M e
+L230   2024                   spontaneous reporting systems. *Front Drug Saf Regul* 2024; **3**: 1323057. https://doi.org/1
+L230   3                     eous reporting systems. *Front Drug Saf Regul* 2024; **3**: 1323057. https://doi.org/10.338
+L230   1323057.              reporting systems. *Front Drug Saf Regul* 2024; **3**: 1323057. https://doi.org/10.3389/fdsfr.2023.
+L230   10.3389                Drug Saf Regul* 2024; **3**: 1323057. https://doi.org/10.3389/fdsfr.2023.1323057
+L231   13.                   13. Fusaroli M, Salvo F, Begaud B et al
+L231   2024                  nce (READUS-PV): development and statement. *Drug Saf* 2024; **47**: 575–84. https://doi.org/1
+L231   47                    DUS-PV): development and statement. *Drug Saf* 2024; **47**: 575–84. https://doi.org/10.1007
+L231   575                   ): development and statement. *Drug Saf* 2024; **47**: 575–84. https://doi.org/10.1007/s40264
+L231   84.                   evelopment and statement. *Drug Saf* 2024; **47**: 575–84. https://doi.org/10.1007/s40264-024-
+L231   10.1007               ment. *Drug Saf* 2024; **47**: 575–84. https://doi.org/10.1007/s40264-024-01421-9
+L231   024                   * 2024; **47**: 575–84. https://doi.org/10.1007/s40264-024-01421-9
+L231   01421                 24; **47**: 575–84. https://doi.org/10.1007/s40264-024-01421-9
+L231   9                     47**: 575–84. https://doi.org/10.1007/s40264-024-01421-9
+L232   14.                   14. Fusaroli M, Salvo F, Begaud B et al
+L232   2024                  e (READUS-PV): explanation and elaboration. *Drug Saf* 2024; **47**: 585–99. https://doi.org/1
+L232   47                    S-PV): explanation and elaboration. *Drug Saf* 2024; **47**: 585–99. https://doi.org/10.1007
+L232   585                    explanation and elaboration. *Drug Saf* 2024; **47**: 585–99. https://doi.org/10.1007/s40264
+L232   99.                   lanation and elaboration. *Drug Saf* 2024; **47**: 585–99. https://doi.org/10.1007/s40264-024-
+L232   10.1007               tion. *Drug Saf* 2024; **47**: 585–99. https://doi.org/10.1007/s40264-024-01423-7
+L232   024                   * 2024; **47**: 585–99. https://doi.org/10.1007/s40264-024-01423-7
+L232   01423                 24; **47**: 585–99. https://doi.org/10.1007/s40264-024-01423-7
+L232   7                     47**: 585–99. https://doi.org/10.1007/s40264-024-01423-7
+L233   15.                   15. US Food and Drug Administration. op
+L233   16                    able at: https://api.fda.gov/drug/event.json (accessed 16/09/2026).
+L233   09                    e at: https://api.fda.gov/drug/event.json (accessed 16/09/2026).
+L233   2026                  t: https://api.fda.gov/drug/event.json (accessed 16/09/2026).
+L234   16.                   16. Health Canada. Canada Vigilance Adv
+L234   12                     line-listing extract (extract_extrait.zip). Published 12 February 2009; updated 28 May 2025.
+L234   2009                  g extract (extract_extrait.zip). Published 12 February 2009; updated 28 May 2025. Available at
+L234   28                    ract_extrait.zip). Published 12 February 2009; updated 28 May 2025. Available at: https://ope
+L234   2025.                 trait.zip). Published 12 February 2009; updated 28 May 2025. Available at: https://open.canada.c
+L234   9                     . Available at: https://open.canada.ca/data/en/dataset/9cbaef00-b52c-4a70-9fed-d9aa8263ab74
+L234   4                     : https://open.canada.ca/data/en/dataset/9cbaef00-b52c-4a70-9fed-d9aa8263ab74 (accessed 16/
+L234   16                    dataset/9cbaef00-b52c-4a70-9fed-d9aa8263ab74 (accessed 16/09/2026).
+L234   09                    aset/9cbaef00-b52c-4a70-9fed-d9aa8263ab74 (accessed 16/09/2026).
+L234   2026                  t/9cbaef00-b52c-4a70-9fed-d9aa8263ab74 (accessed 16/09/2026).
+L235   17.                   17. Brown EG. Methods and pitfalls in s
+L235   2003                  tionary for Regulatory Activities (MedDRA). *Drug Saf* 2003; **26**: 145–58. https://doi.org/1
+L235   26                    for Regulatory Activities (MedDRA). *Drug Saf* 2003; **26**: 145–58. https://doi.org/10.2165
+L235   145                   gulatory Activities (MedDRA). *Drug Saf* 2003; **26**: 145–58. https://doi.org/10.2165/000020
+L235   58.                   tory Activities (MedDRA). *Drug Saf* 2003; **26**: 145–58. https://doi.org/10.2165/00002018-20
+L235   10.2165               DRA). *Drug Saf* 2003; **26**: 145–58. https://doi.org/10.2165/00002018-200326030-00002
+L235   00002018              rug Saf* 2003; **26**: 145–58. https://doi.org/10.2165/00002018-200326030-00002
+L235   200326030             2003; **26**: 145–58. https://doi.org/10.2165/00002018-200326030-00002
+L235   00002                 **: 145–58. https://doi.org/10.2165/00002018-200326030-00002
+L236   18.                   18. MedDRA Maintenance and Support Serv
+L236   27.1                  Dictionary for Regulatory Activities (MedDRA), version 27.1. McLean, VA: MSSO; 2024. Available
+L236   2024.                 y Activities (MedDRA), version 27.1. McLean, VA: MSSO; 2024. Available at: https://www.meddra.or
+L236   16                    ; 2024. Available at: https://www.meddra.org (accessed 16/09/2026).
+L236   09                    024. Available at: https://www.meddra.org (accessed 16/09/2026).
+L236   2026                  . Available at: https://www.meddra.org (accessed 16/09/2026).
+L237   19.                   19. Evans SJW, Waller PC, Davis S. Use 
+L237   2001                  se drug reaction reports. *Pharmacoepidemiol Drug Saf* 2001; **10**: 483–6. https://doi.org/10
+L237   10                    reaction reports. *Pharmacoepidemiol Drug Saf* 2001; **10**: 483–6. https://doi.org/10.1002/
+L237   483                   on reports. *Pharmacoepidemiol Drug Saf* 2001; **10**: 483–6. https://doi.org/10.1002/pds.677
+L237   6.                    eports. *Pharmacoepidemiol Drug Saf* 2001; **10**: 483–6. https://doi.org/10.1002/pds.677
+L237   10.1002               idemiol Drug Saf* 2001; **10**: 483–6. https://doi.org/10.1002/pds.677
+L238   20.                   20. Bate A, Evans SJW. Quantitative sig
+L238   2009                  pontaneous ADR reporting. *Pharmacoepidemiol Drug Saf* 2009; **18**: 427–36. https://doi.org/1
+L238   18                    us ADR reporting. *Pharmacoepidemiol Drug Saf* 2009; **18**: 427–36. https://doi.org/10.1002
+L238   427                    reporting. *Pharmacoepidemiol Drug Saf* 2009; **18**: 427–36. https://doi.org/10.1002/pds.17
+L238   36.                   orting. *Pharmacoepidemiol Drug Saf* 2009; **18**: 427–36. https://doi.org/10.1002/pds.1742
+L238   10.1002               demiol Drug Saf* 2009; **18**: 427–36. https://doi.org/10.1002/pds.1742
+L239   21.                   21. Norén GN, Bate A, Orre R, Edwards I
+L239   2006                  ions and improved accuracy for rare events. *Stat Med* 2006; **25**: 3740–57. https://doi.org/
+L239   25                     improved accuracy for rare events. *Stat Med* 2006; **25**: 3740–57. https://doi.org/10.100
+L239   3740                  ved accuracy for rare events. *Stat Med* 2006; **25**: 3740–57. https://doi.org/10.1002/sim.24
+L239   57.                   ccuracy for rare events. *Stat Med* 2006; **25**: 3740–57. https://doi.org/10.1002/sim.2473
+L239   10.1002               nts. *Stat Med* 2006; **25**: 3740–57. https://doi.org/10.1002/sim.2473
+L240   22.                   22. DuMouchel W. Bayesian data mining i
+L240   1999                  ion to the FDA spontaneous reporting system. *Am Stat* 1999; **53**: 177–90. https://doi.org/1
+L240   53                    he FDA spontaneous reporting system. *Am Stat* 1999; **53**: 177–90. https://doi.org/10.1080
+L240   177                    spontaneous reporting system. *Am Stat* 1999; **53**: 177–90. https://doi.org/10.1080/000313
+L240   90.                   ntaneous reporting system. *Am Stat* 1999; **53**: 177–90. https://doi.org/10.1080/00031305.19
+L240   10.1080               ystem. *Am Stat* 1999; **53**: 177–90. https://doi.org/10.1080/00031305.1999.10474456
+L240   00031305.1999          Am Stat* 1999; **53**: 177–90. https://doi.org/10.1080/00031305.1999.10474456
+L241   23.                   23. van Puijenbroek EP, Bate A, Leufken
+L241   2002                  r adverse drug reactions. *Pharmacoepidemiol Drug Saf* 2002; **11**: 3–10. https://doi.org/10.
+L241   11                    e drug reactions. *Pharmacoepidemiol Drug Saf* 2002; **11**: 3–10. https://doi.org/10.1002/p
+L241   3                      reactions. *Pharmacoepidemiol Drug Saf* 2002; **11**: 3–10. https://doi.org/10.1002/pds.66
+L241   10.                   eactions. *Pharmacoepidemiol Drug Saf* 2002; **11**: 3–10. https://doi.org/10.1002/pds.668
+L241   10.1002               pidemiol Drug Saf* 2002; **11**: 3–10. https://doi.org/10.1002/pds.668
+L242   24.                   24. Katz NP, Paillard FC, Edwards RR. R
+L242   2015                  yperalgesia in chronic pain patients. *Anesthesiology* 2015; **122**: 677–85. https://doi.org/
+L242   122                   sia in chronic pain patients. *Anesthesiology* 2015; **122**: 677–85. https://doi.org/10.1097
+L242   677                   chronic pain patients. *Anesthesiology* 2015; **122**: 677–85. https://doi.org/10.1097/ALN.00
+L242   85.                   nic pain patients. *Anesthesiology* 2015; **122**: 677–85. https://doi.org/10.1097/ALN.0000000
+L242   10.1097               Anesthesiology* 2015; **122**: 677–85. https://doi.org/10.1097/ALN.0000000000000530
+L243   25.                   25. Andreaggi CA, Novak EA, Mirabile ME
+L243   15                    elated adverse drug reactions in the FDA database over 15 years. *Pharmacoepidemiol Drug Saf*
+L243   2020                  A database over 15 years. *Pharmacoepidemiol Drug Saf* 2020; **29**: 1627–35. https://doi.org/
+L243   29                    se over 15 years. *Pharmacoepidemiol Drug Saf* 2020; **29**: 1627–35. https://doi.org/10.100
+L243   1627                  r 15 years. *Pharmacoepidemiol Drug Saf* 2020; **29**: 1627–35. https://doi.org/10.1002/pds.51
+L243   35.                   years. *Pharmacoepidemiol Drug Saf* 2020; **29**: 1627–35. https://doi.org/10.1002/pds.5105
+L243   10.1002               emiol Drug Saf* 2020; **29**: 1627–35. https://doi.org/10.1002/pds.5105
+L244   26.                   26. Hazell L, Shakir SAW. Under-reporti
+L244   2006                  dverse drug reactions: a systematic review. *Drug Saf* 2006; **29**: 385–96. https://doi.org/1
+L244   29                    rug reactions: a systematic review. *Drug Saf* 2006; **29**: 385–96. https://doi.org/10.2165
+L244   385                   actions: a systematic review. *Drug Saf* 2006; **29**: 385–96. https://doi.org/10.2165/000020
+L244   96.                   ons: a systematic review. *Drug Saf* 2006; **29**: 385–96. https://doi.org/10.2165/00002018-20
+L244   10.2165               view. *Drug Saf* 2006; **29**: 385–96. https://doi.org/10.2165/00002018-200629050-00003
+L244   00002018              rug Saf* 2006; **29**: 385–96. https://doi.org/10.2165/00002018-200629050-00003
+L244   200629050             2006; **29**: 385–96. https://doi.org/10.2165/00002018-200629050-00003
+L244   00003                 **: 385–96. https://doi.org/10.2165/00002018-200629050-00003
+L245   27.                   27. Alatawi YM, Hansen RA. Empirical es
+L245   2017                  Event Reporting System (FAERS). *Expert Opin Drug Saf* 2017; **16**: 761–7. https://doi.org/10
+L245   16                    porting System (FAERS). *Expert Opin Drug Saf* 2017; **16**: 761–7. https://doi.org/10.1080/
+L245   761                   g System (FAERS). *Expert Opin Drug Saf* 2017; **16**: 761–7. https://doi.org/10.1080/1474033
+L245   7.                    stem (FAERS). *Expert Opin Drug Saf* 2017; **16**: 761–7. https://doi.org/10.1080/14740338.20
+L245   10.1080               rt Opin Drug Saf* 2017; **16**: 761–7. https://doi.org/10.1080/14740338.2017.1323867
+L245   14740338.2017          Drug Saf* 2017; **16**: 761–7. https://doi.org/10.1080/14740338.2017.1323867
+L246   28.                   28. Han W, Morris R, Bu K, Zhu T, Cheng
+L246   2024                  ing System (FAERS) database. *Can J Physiol Pharmacol* 2024; **103**: 56–69. https://doi.org/1
+L246   103                   em (FAERS) database. *Can J Physiol Pharmacol* 2024; **103**: 56–69. https://doi.org/10.1139/
+L246   56                    RS) database. *Can J Physiol Pharmacol* 2024; **103**: 56–69. https://doi.org/10.1139/cjpp-2
+L246   69.                    database. *Can J Physiol Pharmacol* 2024; **103**: 56–69. https://doi.org/10.1139/cjpp-2024-0
+L246   10.1139               ysiol Pharmacol* 2024; **103**: 56–69. https://doi.org/10.1139/cjpp-2024-0078
+L246   0078                  024; **103**: 56–69. https://doi.org/10.1139/cjpp-2024-0078
+L247   29.                   29. Janiczak S, Tanveer S, Tom K, Zhang
+L247   2025                  inistration Adverse Event Reporting System. *Drug Saf* 2025; **48**: 1119–26. https://doi.org/
+L247   48                    ion Adverse Event Reporting System. *Drug Saf* 2025; **48**: 1119–26. https://doi.org/10.100
+L247   1119                  verse Event Reporting System. *Drug Saf* 2025; **48**: 1119–26. https://doi.org/10.1007/s40264
+L247   26.                    Event Reporting System. *Drug Saf* 2025; **48**: 1119–26. https://doi.org/10.1007/s40264-025-
+L247   10.1007               tem. *Drug Saf* 2025; **48**: 1119–26. https://doi.org/10.1007/s40264-025-01560-7
+L247   025                    2025; **48**: 1119–26. https://doi.org/10.1007/s40264-025-01560-7
+L247   01560                 5; **48**: 1119–26. https://doi.org/10.1007/s40264-025-01560-7
+L247   7                     8**: 1119–26. https://doi.org/10.1007/s40264-025-01560-7
+L248   30.                   30. Vogel U, van Stekelenborg J, Dreyfu
+L248   2020                   in signals from EVDAS, FAERS and VigiBase. *Drug Saf* 2020; **43**: 351–62. https://doi.org/1
+L248   43                    als from EVDAS, FAERS and VigiBase. *Drug Saf* 2020; **43**: 351–62. https://doi.org/10.1007
+L248   351                   om EVDAS, FAERS and VigiBase. *Drug Saf* 2020; **43**: 351–62. https://doi.org/10.1007/s40264
+L248   62.                   VDAS, FAERS and VigiBase. *Drug Saf* 2020; **43**: 351–62. https://doi.org/10.1007/s40264-019-
+L248   10.1007               Base. *Drug Saf* 2020; **43**: 351–62. https://doi.org/10.1007/s40264-019-00899-y
+L248   019                   * 2020; **43**: 351–62. https://doi.org/10.1007/s40264-019-00899-y
+L248   00899                 20; **43**: 351–62. https://doi.org/10.1007/s40264-019-00899-y
+L286   3                      confidence interval. *Meets the signal criterion: a ≥ 3 and the lower bound of the 95% CI o
+L286   95           %        the signal criterion: a ≥ 3 and the lower bound of the 95% CI of the OR > 1. Rows marked "dic
+L286   1.                    n: a ≥ 3 and the lower bound of the 95% CI of the OR > 1. Rows marked "dictionary proxy" are 
+L286   1                      †ALLODYNIA head-to-head ratios are not estimable (n = 1): they rest on a single remifentan
+L286   1.962                 ble is below 1 except PROCEDURAL PAIN versus fentanyl (1.962, 1.14–3.39). The numerators behind
+L286   1.14                  below 1 except PROCEDURAL PAIN versus fentanyl (1.962, 1.14–3.39). The numerators behind every
+L286   3.39                   1 except PROCEDURAL PAIN versus fentanyl (1.962, 1.14–3.39). The numerators behind every odds
+L286   72                    to this table; with a Bonferroni correction across all 72 drug–term comparisons the lower bou
+L286   1.61                  emifentanil HYPERAESTHESIA interval remains above one (1.61).
+L307   111          reports  porting odds ratios. The Canadian remifentanil cohort (111 reports) is small, so most preferred-term 
+L307   5375                   confirms direction, while magnitude comes from FAERS (5 375 remifentanil reports). The zero for
+L332   11882968     reports  = confidence interval. Serious-report subset contained 11 882 968 reports. Remifentanil contributed 5 270 of
+L332   5270                  contained 11 882 968 reports. Remifentanil contributed 5 270 of its 5 375 reports (98.0%) to thi
+L332   5375         reports  882 968 reports. Remifentanil contributed 5 270 of its 5 375 reports (98.0%) to this subset. The signal
+L332   98.0         %        . Remifentanil contributed 5 270 of its 5 375 reports (98.0%) to this subset. The signal criter
+L349   0.066                 = confidence interval. Pooled whole-corpus values were 0.066 versus fentanyl and 0.046 versus mo
+L349   0.046                 led whole-corpus values were 0.066 versus fentanyl and 0.046 versus morphine. An estimate was po
+L349   8                     and 0.046 versus morphine. An estimate was possible in 8 of the ten years: in 2018 and 2019 
+L349   2018                  ne. An estimate was possible in 8 of the ten years: in 2018 and 2019 remifentanil had no PAIN r
+L349   2019                  timate was possible in 8 of the ten years: in 2018 and 2019 remifentanil had no PAIN report, so
+L349   23                    ad no PAIN report, so no estimate was possible. Of the 23 pooled PAIN reports, 13 fall in 201
+L349   13                     estimate was possible. Of the 23 pooled PAIN reports, 13 fall in 2015–2024 and 10 outside it
+L349   2015                  as possible. Of the 23 pooled PAIN reports, 13 fall in 2015–2024 and 10 outside it or have no 
+L349   2024                  ssible. Of the 23 pooled PAIN reports, 13 fall in 2015–2024 and 10 outside it or have no date, 
+L349   10                    f the 23 pooled PAIN reports, 13 fall in 2015–2024 and 10 outside it or have no date, so this
+L349   13.                   nd 10 outside it or have no date, so this table covers 13.
+L366   4.729                 = confidence interval. Pooled whole-corpus values were 4.729 for remifentanil, 0.696 versus fent
+L366   0.696                 ooled whole-corpus values were 4.729 for remifentanil, 0.696 versus fentanyl and 0.389 versus mo
+L366   0.389                 were 4.729 for remifentanil, 0.696 versus fentanyl and 0.389 versus morphine. An estimate was po
+L366   2                     .389 versus morphine. An estimate was possible in only 2 of the ten years, because remifenta
+L366   2015                  ht of them; nine reports carry a usable receivedate in 2015–2024 (eight in 2024; the tenth omi
+L366   2024                   them; nine reports carry a usable receivedate in 2015–2024 (eight in 2024; the tenth omitted),
+L370   111                   il against fentanyl and against morphine. Cohorts were 111 (remifentanil), 4 881 (fentanyl), 6
+L370   4881                  and against morphine. Cohorts were 111 (remifentanil), 4 881 (fentanyl), 63 (sufentanil), 7 675 
+L370   63                    ne. Cohorts were 111 (remifentanil), 4 881 (fentanyl), 63 (sufentanil), 7 675 (morphine) repo
+L370   7675                  111 (remifentanil), 4 881 (fentanyl), 63 (sufentanil), 7 675 (morphine) reports in Canada Vigila
+L370   5375                  il), 7 675 (morphine) reports in Canada Vigilance, and 5 375 (remifentanil), 121 819 (fentanyl),
+L370   121819                reports in Canada Vigilance, and 5 375 (remifentanil), 121 819 (fentanyl), 6 513 (sufentanil), 56 
+L370   6513                  gilance, and 5 375 (remifentanil), 121 819 (fentanyl), 6 513 (sufentanil), 56 501 (morphine) rep
+L370   56501                 remifentanil), 121 819 (fentanyl), 6 513 (sufentanil), 56 501 (morphine) reports in the FAERS ana
+L370   20692687              6 501 (morphine) reports in the FAERS analysis, out of 20 692 687 reactions in total. Proportions are
+L436   03                    tic could not map are listed in the study repository (`03_soc_27.csv`), with the counts for 
+L440   1011                  Completed READUS-PV checklist [10, 11] mapping each of the 32 recommenda
+L440   32                    leted READUS-PV checklist [10, 11] mapping each of the 32 recommendations for the manuscript 
+L440   12                    the 32 recommendations for the manuscript body and the 12 recommendations for the abstract to
+L444   100                   ug's cohort in parentheses. Percentages may not sum to 100 because of rounding and because the
+L464   16                    e rows labelled *dictionary proxy (added a posteriori, 16 Sep 2026)* are dictionary proxies i
+L464   2026                  labelled *dictionary proxy (added a posteriori, 16 Sep 2026)* are dictionary proxies introduce
+L464   1                      2026)* are dictionary proxies introduced by Amendment 1 of the archived analytical plan, da
+L464   2                     ite for interpreting the cohort-level ratios in Tables 2 and 3. The adjacent-token phrase qu
+L464   3.                    r interpreting the cohort-level ratios in Tables 2 and 3. The adjacent-token phrase query is 
+L487   4474923               e MedDRA release applied to every reaction row: of its 4 474 923 reaction rows, 4 474 767 state a re
+L487   4474767               to every reaction row: of its 4 474 923 reaction rows, 4 474 767 state a release, every one of them 
+L487   156                   474 767 state a release, every one of them v.27.1, and 156 leave the field blank. The openFDA 
+L487   2004                  se, and the FAERS corpus spans quarterly releases from 2004 onwards, so no single release appli
+L493   23                    cluding the comparisons against sufentanil that Tables 2, 3 and Figure 1 do not print. Values a
+L493   1                     arisons against sufentanil that Tables 2, 3 and Figure 1 do not print. Values are ratios of 
+L493   95           %        os for remifentanil against the named comparator, with 95% confidence intervals; a dash means
+L493   2                     imable because a cell is empty. Computed from the same 2×2 tables as Table 2. The last colu
+L493   2.                    l is empty. Computed from the same 2×2 tables as Table 2. The last column gives the numerator
+L516   1.310                 elow one; the exception is PRURITUS versus sufentanil (1.310, 0.84–2.04), whose interval includ
+L516   0.84                  e; the exception is PRURITUS versus sufentanil (1.310, 0.84–2.04), whose interval includes one
+L516   2.04                  e exception is PRURITUS versus sufentanil (1.310, 0.84–2.04), whose interval includes one.
+L522   1.                    **Figure 1.** Head-to-head disproportionality 
+L522   95           %        ing odds ratios for each preferred term analysed, with 95% confidence intervals; the x axis i
+L522   1                     logarithmic. The dashed vertical line marks a ratio of 1 (no difference between drugs). Valu
+L522   3.3                   a single report, so no direction can be read from it (§3.3). Values for all three comparators
+L524   2.                    **Figure 2.** Temporal stability of remifentan
+L524   2015                  orting odds ratios for PAIN in each calendar year from 2015 to 2024 (remifentanil versus fentan
+L524   2024                  dds ratios for PAIN in each calendar year from 2015 to 2024 (remifentanil versus fentanyl, fill
+L524   95           %        , filled circles; versus morphine, open squares), with 95% confidence intervals; the y axis i
+L524   0.066                 ntal dotted lines show the pooled whole-corpus values (0.066 versus fentanyl, upper; 0.046 versu
+L524   0.046                 led whole-corpus values (0.066 versus fentanyl, upper; 0.046 versus morphine, lower). The dashed
+L524   1.                    sus morphine, lower). The dashed line marks a ratio of 1. Remifentanil had no PAIN reports in
+L524   2018                  arks a ratio of 1. Remifentanil had no PAIN reports in 2018 or 2019, so no estimate is shown fo
+L524   2019                  atio of 1. Remifentanil had no PAIN reports in 2018 or 2019, so no estimate is shown for those y

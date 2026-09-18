@@ -1,0 +1,9 @@
+﻿row,n,with_onset_date
+reaction rows in reactions.txt,4474922,
+rows with a value in field 3 (reaction onset date),185764,
+rows with a value in field 4,158335,
+rows with a value in field 5,158335,
+rows for the preferred term Hyperaesthesia,523,13
+rows for the preferred term Hyperalgesia,0,0
+rows for the preferred term Pain,49260,1196
+rows for the preferred term Procedural Pain,1527,57

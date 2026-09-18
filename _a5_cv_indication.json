@@ -1,0 +1,267 @@
+{
+ "n_rows": 3318607,
+ "colhit": {
+  "REMIFENTANIL": {
+   "col1": 533,
+   "col0": 78
+  },
+  "FENTANYL": {
+   "col1": 21697,
+   "col0": 2317,
+   "col2": 441
+  },
+  "MORPHINE": {
+   "col1": 118751,
+   "col2": 31029,
+   "col0": 2976
+  }
+ },
+ "top_indications": {
+  "REMIFENTANIL": [
+   [
+    "Induction of anaesthesia",
+    111
+   ],
+   [
+    "Anaesthesia",
+    94
+   ],
+   [
+    "Product used for unknown indication",
+    83
+   ],
+   [
+    "General anaesthesia",
+    54
+   ],
+   [
+    "Maintenance of anaesthesia",
+    41
+   ],
+   [
+    "Anaesthetic premedication",
+    37
+   ],
+   [
+    "Sedative therapy",
+    24
+   ],
+   [
+    "Sedation",
+    9
+   ],
+   [
+    "Hypertension",
+    6
+   ],
+   [
+    "Surgery",
+    6
+   ],
+   [
+    "Pain",
+    6
+   ],
+   [
+    "Prophylaxis",
+    6
+   ],
+   [
+    "Preoperative care",
+    6
+   ],
+   [
+    "Epiglottitis",
+    5
+   ],
+   [
+    "Antibiotic therapy",
+    4
+   ],
+   [
+    "Anaesthesia procedure",
+    4
+   ],
+   [
+    "Premedication",
+    4
+   ],
+   [
+    "Major depression",
+    3
+   ],
+   [
+    "Induction and maintenance of anaesthesia",
+    3
+   ],
+   [
+    "Dilated cardiomyopathy",
+    2
+   ]
+  ],
+  "FENTANYL": [
+   [
+    "Product used for unknown indication",
+    12098
+   ],
+   [
+    "Pain",
+    1265
+   ],
+   [
+    "Complex regional pain syndrome",
+    741
+   ],
+   [
+    "Rheumatoid arthritis",
+    534
+   ],
+   [
+    "Neuralgia",
+    393
+   ],
+   [
+    "Drug abuse",
+    378
+   ],
+   [
+    "Ankylosing spondylitis",
+    313
+   ],
+   [
+    "Induction of anaesthesia",
+    259
+   ],
+   [
+    "Anxiety",
+    242
+   ],
+   [
+    "Depression",
+    212
+   ],
+   [
+    "Back pain",
+    186
+   ],
+   [
+    "Drug use disorder",
+    185
+   ],
+   [
+    "Chronic spontaneous urticaria",
+    181
+   ],
+   [
+    "Anaesthesia",
+    172
+   ],
+   [
+    "Analgesic therapy",
+    150
+   ],
+   [
+    "Crohn's disease",
+    150
+   ],
+   [
+    "Asthma",
+    146
+   ],
+   [
+    "General anaesthesia",
+    145
+   ],
+   [
+    "Guillain-Barre syndrome",
+    143
+   ],
+   [
+    "Sedation",
+    122
+   ]
+  ],
+  "MORPHINE": [
+   [
+    "Product used for unknown indication",
+    48061
+   ],
+   [
+    "Rheumatoid arthritis",
+    8466
+   ],
+   [
+    "Hypertension",
+    5841
+   ],
+   [
+    "Coronary artery disease",
+    5811
+   ],
+   [
+    "Angina pectoris",
+    5396
+   ],
+   [
+    "Chest pain",
+    4710
+   ],
+   [
+    "Pain",
+    4601
+   ],
+   [
+    "Fibromyalgia",
+    2531
+   ],
+   [
+    "Migraine",
+    2510
+   ],
+   [
+    "Constipation",
+    1893
+   ],
+   [
+    "Insomnia",
+    1765
+   ],
+   [
+    "Cerebrovascular accident",
+    1628
+   ],
+   [
+    "Asthma",
+    1457
+   ],
+   [
+    "Seizure prophylaxis",
+    1341
+   ],
+   [
+    "Seizure",
+    1301
+   ],
+   [
+    "Chronic spontaneous urticaria",
+    1288
+   ],
+   [
+    "Chronic obstructive pulmonary disease",
+    1160
+   ],
+   [
+    "Radioactive iodine therapy",
+    1038
+   ],
+   [
+    "Arthritis",
+    984
+   ],
+   [
+    "Duodenal ulcer",
+    902
+   ]
+  ]
+ }
+}

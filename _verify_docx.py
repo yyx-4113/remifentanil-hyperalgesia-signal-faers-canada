@@ -82,12 +82,13 @@ def exported_markdown() -> tuple[str, str]:
                       cut("## 1. Introduction", "## Acknowledgements"),
                       cut("## Acknowledgements", "## References"),
                       cut("## References", "## Tables"),
-                      cut("## Figure legends", "## 9. Number-to-source")])
+                      cut("## Figure legends", None)])
     tables = cut("## Tables", "## Figure legends")
     chunks = re.split(r"(?m)^### ", tables)[1:]
     main_tbl, supp_tbl = [], []
     for c in chunks:
-        (supp_tbl if c.split("\n", 1)[0].strip().startswith("Table S") else main_tbl).append(c)
+        (supp_tbl if c.split("\n", 1)[0].strip().startswith(("Table S", "Appendix S"))
+         else main_tbl).append(c)
     main += "\n" + "\n".join("### " + c for c in main_tbl)
     supp = "\n".join("### " + c for c in supp_tbl)
     return main, supp
@@ -127,19 +128,21 @@ def main() -> int:
         "no AI tool was used to create, alter or manipulate the figures",
         "https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada",
         "READUS-PV",
-        "Python 3.13.14",
-        "matplotlib 3.11.1",
         "Table S1",
         "Table S3",
         "Table S4",
+        "Table S6",
+        "Table S9",
+        "Appendix S1",
         "defined a priori",
-        "with a terminology caution",
-        "CHRONIC PAIN returned a single hit",
-        "leave-2024-out",
-        "disappears when 2024 is excluded (a = 1)",
-        "proxy preferred term",
-        "15.4, 4.3, 4.9 and 1.7",
-        "shared by all four opioids",
+        # 题名已改为中性描述式，限定语不再出现在题名里
+        "observational head-to-head disproportionality analysis",
+        "an adjacent-token search on CHRONIC PAIN returned one hit",
+        # leave-2024-out 的两种口径都必须到稿（旧版只写了被误标的那一套）
+        "Two restrictions of this table",
+        "Removing the 2024 reports from the whole corpus",
+        "leaves one report in 3 798",
+        "proxy term",
     ]:
         chk(f"Manuscript 含「{needle[:46]}」", needle in ms_text)
     # regression guard for the build-script drop bug: the references preamble
@@ -148,6 +151,14 @@ def main() -> int:
         "References are numbered in order of first citation" in ms_text)
     chk("Manuscript 含 Anaesthesia DOI 声明",
         "All journal articles carry a DOI" in ms_text)
+    # 软件版本已随 Appendix S1 移入 Supporting Information
+    for needle in ["Python 3.13.14", "matplotlib 3.11.1", "Appendix S1",
+                   "15_sparse_intervals.csv"]:
+        chk(f"Supporting 含「{needle[:46]}」", needle in si_text)
+    # 已被否证的表述不得复辟
+    for bad in ["shared by all four opioids", "15.4, 4.3, 4.9 and 1.7",
+                "disappears when 2024 is excluded (a = 1)"]:
+        chk(f"Manuscript 不含已否证表述「{bad[:40]}」", bad in ms_text, False)
     chk("Manuscript 不含 prespecified",
         re.findall(r"\bpre-?specified\b", ms_text), [])
     chk("Supporting 指向 Table S2 文件名", "I_TableS2_READUS-PV_checklist.md" in si_text)
@@ -165,19 +176,23 @@ def main() -> int:
     chk("CoverLetter 含 ORCID", "0009-0004-9698-6552" in cl_text)
     chk("CoverLetter 抬头为主编", "Professor Matt Wiles" in cl_text)
     chk("CoverLetter 无 prespecified", re.findall(r"\bpre-?specified\b", cl_text), [])
-    chk("CoverLetter 含 30 篇文献计数",
-        "all 30 cited references verified by identifier" in cl_text)
+    chk("CoverLetter 含文献计数",
+        re.search(r"all \d+ cited references verified by identifier", cl_text) is not None)
 
     # 4. tables present: 6 in the manuscript (Tables 1,2,3,4A,4B,4C); 5 in the SI
     #    (Table S1 panel A, Table S1 panel B, Table S3, Table S4, Table S5); 2 in the checklist
-    chk("Manuscript 表数 == 6", docx_table_count(ms), 6)
-    chk("Supporting 表数 == 5", docx_table_count(si), 5)
+    # 主表 8 张：Tables 1, 2, 3, 4A, 4B, 4C, 5, 6（Table 4 三个分面各是一张）
+    chk("Manuscript 表数 == 8", docx_table_count(ms), 8)
+    # 补充表 9 张 + 附录 S1 内的表格
+    chk("Supporting 表数 == 14", docx_table_count(si), 14)
     chk("Checklist 表数 == 2", docx_table_count(ck), 2)
 
     # 4b. the two Table S1 panels must arrive whole: 28 rows x 8 columns each;
-    #     Table S3 is 14 x 5, Table S4 is 19 x 7, Table S5 is 19 x 6 (header + 18 terms)
+    #     Table S3 is 14 x 5, Table S4 is 19 x 7, Table S5 is 19 x 6 (header + 18 terms).
+    #     只锁前五张：S6-S9 与附录内的表会随补充材料增删，锁死尺寸会阻碍正常修订。
     shapes = docx_table_shapes(si)
-    chk("Supporting 表尺寸集合", shapes, [(28, 8), (28, 8), (14, 5), (19, 7), (19, 6)])
+    chk("Supporting 表尺寸前缀（S1A/S1B/S3/S4/S5）",
+        shapes[:5], [(28, 8), (28, 8), (14, 5), (19, 7), (19, 6)])
 
     # 5. no placeholders in the submitted files
     for label, t in [("Manuscript", ms_text), ("Supporting", si_text),

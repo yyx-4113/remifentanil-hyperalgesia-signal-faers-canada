@@ -1,0 +1,110 @@
+{
+ "REMIFENTANIL": {
+  "n1": 3563,
+  "n": 5375
+ },
+ "FENTANYL": {
+  "n1": 88109,
+  "n": 121819
+ },
+ "SUFENTANIL": {
+  "n1": 4588,
+  "n": 6513
+ },
+ "MORPHINE": {
+  "n1": 34140,
+  "n": 56501
+ },
+ "terms": {
+  "PAIN": {
+   "tot1": 312276,
+   "arms": {
+    "REMIFENTANIL": 11,
+    "FENTANYL": 4547,
+    "SUFENTANIL": 56,
+    "MORPHINE": 2188
+   }
+  },
+  "PROCEDURAL PAIN": {
+   "tot1": 13808,
+   "arms": {
+    "REMIFENTANIL": 9,
+    "FENTANYL": 63,
+    "SUFENTANIL": 6,
+    "MORPHINE": 50
+   }
+  },
+  "DRUG INEFFECTIVE": {
+   "tot1": 821693,
+   "arms": {
+    "REMIFENTANIL": 128,
+    "FENTANYL": 5220,
+    "SUFENTANIL": 204,
+    "MORPHINE": 2291
+   }
+  },
+  "NAUSEA": {
+   "tot1": 411533,
+   "arms": {
+    "REMIFENTANIL": 26,
+    "FENTANYL": 2549,
+    "SUFENTANIL": 58,
+    "MORPHINE": 1978
+   }
+  },
+  "VOMITING": {
+   "tot1": 234819,
+   "arms": {
+    "REMIFENTANIL": 34,
+    "FENTANYL": 1792,
+    "SUFENTANIL": 47,
+    "MORPHINE": 1555
+   }
+  },
+  "PRURITUS": {
+   "tot1": 213312,
+   "arms": {
+    "REMIFENTANIL": 29,
+    "FENTANYL": 647,
+    "SUFENTANIL": 23,
+    "MORPHINE": 646
+   }
+  },
+  "CONSTIPATION": {
+   "tot1": 106210,
+   "arms": {
+    "REMIFENTANIL": 2,
+    "FENTANYL": 957,
+    "SUFENTANIL": 37,
+    "MORPHINE": 783
+   }
+  },
+  "DRUG WITHDRAWAL SYNDROME": {
+   "tot1": 57014,
+   "arms": {
+    "REMIFENTANIL": 3,
+    "FENTANYL": 2561,
+    "SUFENTANIL": 25,
+    "MORPHINE": 598
+   }
+  },
+  "ALLODYNIA": {
+   "tot1": 715,
+   "arms": {
+    "REMIFENTANIL": 0,
+    "FENTANYL": 19,
+    "SUFENTANIL": 0,
+    "MORPHINE": 13
+   }
+  },
+  "HYPERAESTHESIA": {
+   "tot1": 4059,
+   "arms": {
+    "REMIFENTANIL": 8,
+    "FENTANYL": 194,
+    "SUFENTANIL": 16,
+    "MORPHINE": 135
+   }
+  }
+ }
+}

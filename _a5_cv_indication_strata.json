@@ -1,0 +1,573 @@
+{
+ "n_with_indication": {
+  "REMIFENTANIL": 98,
+  "FENTANYL": 3878,
+  "SUFENTANIL": 49,
+  "MORPHINE": 5028
+ },
+ "strata": {
+  "ALL": {
+   "n": {
+    "REMIFENTANIL": 111,
+    "FENTANYL": 4881,
+    "SUFENTANIL": 63,
+    "MORPHINE": 7675
+   },
+   "PAIN": {
+    "a": {
+     "REMIFENTANIL": 2,
+     "FENTANYL": 353,
+     "SUFENTANIL": 8,
+     "MORPHINE": 859
+    },
+    "vs_FEN": 0.23536138472334123,
+    "vs_FEN_CI": [
+     0.058,
+     0.957
+    ],
+    "vs_MOR": 0.14559280580149736,
+    "vs_MOR_CI": [
+     0.036,
+     0.591
+    ]
+   },
+   "DRUG INEFFECTIVE": {
+    "a": {
+     "REMIFENTANIL": 25,
+     "FENTANYL": 905,
+     "SUFENTANIL": 9,
+     "MORPHINE": 1119
+    },
+    "vs_FEN": 1.2771424900424002,
+    "vs_FEN_CI": [
+     0.813,
+     2.005
+    ],
+    "vs_MOR": 1.7031402622773655,
+    "vs_MOR_CI": [
+     1.086,
+     2.671
+    ]
+   },
+   "VOMITING": {
+    "a": {
+     "REMIFENTANIL": 3,
+     "FENTANYL": 124,
+     "SUFENTANIL": 1,
+     "MORPHINE": 508
+    },
+    "vs_FEN": 1.0656362007168458,
+    "vs_FEN_CI": [
+     0.334,
+     3.403
+    ],
+    "vs_MOR": 0.3918963254593176,
+    "vs_MOR_CI": [
+     0.124,
+     1.239
+    ]
+   },
+   "NAUSEA": {
+    "a": {
+     "REMIFENTANIL": 0,
+     "FENTANYL": 260,
+     "SUFENTANIL": 2,
+     "MORPHINE": 824
+    },
+    "vs_FEN": null,
+    "vs_FEN_CI": null,
+    "vs_MOR": null,
+    "vs_MOR_CI": null
+   },
+   "HYPERAESTHESIA": {
+    "a": {
+     "REMIFENTANIL": 0,
+     "FENTANYL": 18,
+     "SUFENTANIL": 0,
+     "MORPHINE": 30
+    },
+    "vs_FEN": null,
+    "vs_FEN_CI": null,
+    "vs_MOR": null,
+    "vs_MOR_CI": null
+   }
+  },
+  "ANAESTHESIA_ANY": {
+   "n": {
+    "REMIFENTANIL": 84,
+    "FENTANYL": 239,
+    "SUFENTANIL": 22,
+    "MORPHINE": 43
+   },
+   "PAIN": {
+    "a": {
+     "REMIFENTANIL": 1,
+     "FENTANYL": 7,
+     "SUFENTANIL": 3,
+     "MORPHINE": 3
+    },
+    "vs_FEN": 0.3993115318416523,
+    "vs_FEN_CI": [
+     0.048,
+     3.295
+    ],
+    "vs_MOR": 0.1606425702811245,
+    "vs_MOR_CI": [
+     0.016,
+     1.593
+    ]
+   },
+   "DRUG INEFFECTIVE": {
+    "a": {
+     "REMIFENTANIL": 20,
+     "FENTANYL": 28,
+     "SUFENTANIL": 5,
+     "MORPHINE": 5
+    },
+    "vs_FEN": 2.3549107142857144,
+    "vs_FEN_CI": [
+     1.244,
+     4.459
+    ],
+    "vs_MOR": 2.375,
+    "vs_MOR_CI": [
+     0.824,
+     6.848
+    ]
+   },
+   "VOMITING": {
+    "a": {
+     "REMIFENTANIL": 3,
+     "FENTANYL": 0,
+     "SUFENTANIL": 0,
+     "MORPHINE": 2
+    },
+    "vs_FEN": null,
+    "vs_FEN_CI": null,
+    "vs_MOR": 0.7592592592592593,
+    "vs_MOR_CI": [
+     0.122,
+     4.725
+    ]
+   },
+   "NAUSEA": {
+    "a": {
+     "REMIFENTANIL": 0,
+     "FENTANYL": 3,
+     "SUFENTANIL": 0,
+     "MORPHINE": 3
+    },
+    "vs_FEN": null,
+    "vs_FEN_CI": null,
+    "vs_MOR": null,
+    "vs_MOR_CI": null
+   },
+   "HYPERAESTHESIA": {
+    "a": {
+     "REMIFENTANIL": 0,
+     "FENTANYL": 5,
+     "SUFENTANIL": 0,
+     "MORPHINE": 5
+    },
+    "vs_FEN": null,
+    "vs_FEN_CI": null,
+    "vs_MOR": null,
+    "vs_MOR_CI": null
+   }
+  },
+  "PAIN_INDICATION": {
+   "n": {
+    "REMIFENTANIL": 4,
+    "FENTANYL": 631,
+    "SUFENTANIL": 2,
+    "MORPHINE": 824
+   },
+   "PAIN": {
+    "a": {
+     "REMIFENTANIL": 1,
+     "FENTANYL": 99,
+     "SUFENTANIL": 2,
+     "MORPHINE": 157
+    },
+    "vs_FEN": 1.7912457912457913,
+    "vs_FEN_CI": [
+     0.184,
+     17.397
+    ],
+    "vs_MOR": 1.4161358811040339,
+    "vs_MOR_CI": [
+     0.146,
+     13.706
+    ]
+   },
+   "DRUG INEFFECTIVE": {
+    "a": {
+     "REMIFENTANIL": 3,
+     "FENTANYL": 241,
+     "SUFENTANIL": 0,
+     "MORPHINE": 252
+    },
+    "vs_FEN": 4.854771784232365,
+    "vs_FEN_CI": [
+     0.502,
+     46.94
+    ],
+    "vs_MOR": 6.809523809523809,
+    "vs_MOR_CI": [
+     0.705,
+     65.784
+    ]
+   },
+   "VOMITING": {
+    "a": {
+     "REMIFENTANIL": 0,
+     "FENTANYL": 19,
+     "SUFENTANIL": 0,
+     "MORPHINE": 62
+    },
+    "vs_FEN": null,
+    "vs_FEN_CI": null,
+    "vs_MOR": null,
+    "vs_MOR_CI": null
+   },
+   "NAUSEA": {
+    "a": {
+     "REMIFENTANIL": 0,
+     "FENTANYL": 41,
+     "SUFENTANIL": 0,
+     "MORPHINE": 62
+    },
+    "vs_FEN": null,
+    "vs_FEN_CI": null,
+    "vs_MOR": null,
+    "vs_MOR_CI": null
+   },
+   "HYPERAESTHESIA": {
+    "a": {
+     "REMIFENTANIL": 0,
+     "FENTANYL": 4,
+     "SUFENTANIL": 0,
+     "MORPHINE": 14
+    },
+    "vs_FEN": null,
+    "vs_FEN_CI": null,
+    "vs_MOR": null,
+    "vs_MOR_CI": null
+   }
+  }
+ },
+ "top_indications": {
+  "REMIFENTANIL": [
+   [
+    "INDUCTION OF ANAESTHESIA",
+    20
+   ],
+   [
+    "SEDATIVE THERAPY",
+    20
+   ],
+   [
+    "ANAESTHESIA",
+    19
+   ],
+   [
+    "PRODUCT USED FOR UNKNOWN INDICATION",
+    16
+   ],
+   [
+    "ANAESTHETIC PREMEDICATION",
+    12
+   ],
+   [
+    "GENERAL ANAESTHESIA",
+    11
+   ],
+   [
+    "MAINTENANCE OF ANAESTHESIA",
+    5
+   ],
+   [
+    "PAIN",
+    3
+   ],
+   [
+    "SEDATION",
+    2
+   ],
+   [
+    "ANALGESIC THERAPY",
+    1
+   ],
+   [
+    "RHINOPLASTY",
+    1
+   ],
+   [
+    "PAIN MANAGEMENT",
+    1
+   ],
+   [
+    "SURGERY",
+    1
+   ]
+  ],
+  "FENTANYL": [
+   [
+    "PRODUCT USED FOR UNKNOWN INDICATION",
+    2435
+   ],
+   [
+    "PAIN",
+    556
+   ],
+   [
+    "DRUG ABUSE",
+    109
+   ],
+   [
+    "ANALGESIC THERAPY",
+    83
+   ],
+   [
+    "BACK PAIN",
+    78
+   ],
+   [
+    "PAIN MANAGEMENT",
+    63
+   ],
+   [
+    "SEDATION",
+    53
+   ],
+   [
+    "SEDATIVE THERAPY",
+    45
+   ],
+   [
+    "INDUCTION OF ANAESTHESIA",
+    43
+   ],
+   [
+    "ANAESTHESIA",
+    43
+   ],
+   [
+    "SPINAL ANAESTHESIA",
+    30
+   ],
+   [
+    "GENERAL ANAESTHESIA",
+    26
+   ],
+   [
+    "NEURALGIA",
+    25
+   ],
+   [
+    "CANCER PAIN",
+    21
+   ],
+   [
+    "PROCEDURAL PAIN",
+    20
+   ],
+   [
+    "COMPLEX REGIONAL PAIN SYNDROME",
+    19
+   ],
+   [
+    "FIBROMYALGIA",
+    17
+   ],
+   [
+    "DRUG DEPENDENCE",
+    17
+   ],
+   [
+    "ARTHRALGIA",
+    16
+   ],
+   [
+    "BREAKTHROUGH PAIN",
+    14
+   ],
+   [
+    "SURGERY",
+    14
+   ],
+   [
+    "DRUG USE DISORDER",
+    14
+   ],
+   [
+    "FOETAL EXPOSURE DURING PREGNANCY",
+    14
+   ],
+   [
+    "ARTHRITIS",
+    13
+   ],
+   [
+    "NECK PAIN",
+    12
+   ]
+  ],
+  "SUFENTANIL": [
+   [
+    "PRODUCT USED FOR UNKNOWN INDICATION",
+    22
+   ],
+   [
+    "ANAESTHESIA",
+    10
+   ],
+   [
+    "GENERAL ANAESTHESIA",
+    7
+   ],
+   [
+    "ANAESTHESIA PROCEDURE",
+    4
+   ],
+   [
+    "MUSCULOSKELETAL PAIN",
+    4
+   ],
+   [
+    "PELVIC PAIN",
+    2
+   ],
+   [
+    "PREMEDICATION",
+    2
+   ],
+   [
+    "PAIN IN EXTREMITY",
+    2
+   ],
+   [
+    "ANALGESIC THERAPY",
+    2
+   ],
+   [
+    "SEDATION",
+    1
+   ],
+   [
+    "MAINTENANCE OF ANAESTHESIA",
+    1
+   ],
+   [
+    "INDUCTION OF ANAESTHESIA",
+    1
+   ],
+   [
+    "SEDATIVE THERAPY",
+    1
+   ]
+  ],
+  "MORPHINE": [
+   [
+    "PRODUCT USED FOR UNKNOWN INDICATION",
+    3353
+   ],
+   [
+    "PAIN",
+    729
+   ],
+   [
+    "BACK PAIN",
+    103
+   ],
+   [
+    "MIGRAINE",
+    98
+   ],
+   [
+    "FIBROMYALGIA",
+    79
+   ],
+   [
+    "PAIN MANAGEMENT",
+    70
+   ],
+   [
+    "DRUG ABUSE",
+    55
+   ],
+   [
+    "RHEUMATOID ARTHRITIS",
+    49
+   ],
+   [
+    "ABDOMINAL PAIN",
+    42
+   ],
+   [
+    "CHEST PAIN",
+    38
+   ],
+   [
+    "ARTHRALGIA",
+    33
+   ],
+   [
+    "ANALGESIC THERAPY",
+    32
+   ],
+   [
+    "PROCEDURAL PAIN",
+    27
+   ],
+   [
+    "SPINAL ANAESTHESIA",
+    25
+   ],
+   [
+    "CANCER PAIN",
+    23
+   ],
+   [
+    "DRUG USE DISORDER",
+    22
+   ],
+   [
+    "NEURALGIA",
+    20
+   ],
+   [
+    "PAIN IN EXTREMITY",
+    20
+   ],
+   [
+    "ARTHRITIS",
+    20
+   ],
+   [
+    "DRUG DEPENDENCE",
+    18
+   ],
+   [
+    "COMPLEX REGIONAL PAIN SYNDROME",
+    16
+   ],
+   [
+    "INTERVERTEBRAL DISC PROTRUSION",
+    15
+   ],
+   [
+    "BREAKTHROUGH PAIN",
+    15
+   ],
+   [
+    "DYSPNOEA",
+    14
+   ],
+   [
+    "HEADACHE",
+    14
+   ]
+  ]
+ }
+}

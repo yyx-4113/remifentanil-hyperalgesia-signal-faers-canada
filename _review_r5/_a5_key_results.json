@@ -1,0 +1,134 @@
+{
+ "tot": {
+  "physician": {
+   "REMIFENTANIL": 2296,
+   "FENTANYL": 28823,
+   "SUFENTANIL": 3105,
+   "MORPHINE": 14916
+  },
+  "other_hp": {
+   "REMIFENTANIL": 2416,
+   "FENTANYL": 23460,
+   "SUFENTANIL": 2291,
+   "MORPHINE": 18113
+  },
+  "age_18_64": {
+   "REMIFENTANIL": 2454,
+   "FENTANYL": 40177,
+   "SUFENTANIL": 3552,
+   "MORPHINE": 25208
+  },
+  "all": {
+   "REMIFENTANIL": 5375,
+   "FENTANYL": 121819,
+   "SUFENTANIL": 6513,
+   "MORPHINE": 56501
+  }
+ },
+ "A": {
+  "physician": {
+   "REMIFENTANIL": {
+    "PAIN": 9,
+    "DRUG INEFFECTIVE": 55,
+    "HYPERAESTHESIA": 0,
+    "NAUSEA": 24
+   },
+   "FENTANYL": {
+    "PAIN": 762,
+    "DRUG INEFFECTIVE": 964,
+    "HYPERAESTHESIA": 140,
+    "NAUSEA": 1172
+   },
+   "SUFENTANIL": {
+    "PAIN": 23,
+    "DRUG INEFFECTIVE": 74,
+    "HYPERAESTHESIA": 5,
+    "NAUSEA": 48
+   },
+   "MORPHINE": {
+    "PAIN": 837,
+    "DRUG INEFFECTIVE": 852,
+    "HYPERAESTHESIA": 112,
+    "NAUSEA": 1089
+   }
+  },
+  "other_hp": {
+   "REMIFENTANIL": {
+    "PAIN": 4,
+    "DRUG INEFFECTIVE": 120,
+    "HYPERAESTHESIA": 8,
+    "NAUSEA": 14
+   },
+   "FENTANYL": {
+    "PAIN": 995,
+    "DRUG INEFFECTIVE": 1764,
+    "HYPERAESTHESIA": 104,
+    "NAUSEA": 1348
+   },
+   "SUFENTANIL": {
+    "PAIN": 35,
+    "DRUG INEFFECTIVE": 177,
+    "HYPERAESTHESIA": 15,
+    "NAUSEA": 28
+   },
+   "MORPHINE": {
+    "PAIN": 1496,
+    "DRUG INEFFECTIVE": 1931,
+    "HYPERAESTHESIA": 110,
+    "NAUSEA": 1579
+   }
+  },
+  "age_18_64": {
+   "REMIFENTANIL": {
+    "PAIN": 12,
+    "DRUG INEFFECTIVE": 108,
+    "HYPERAESTHESIA": 1,
+    "NAUSEA": 31
+   },
+   "FENTANYL": {
+    "PAIN": 1918,
+    "DRUG INEFFECTIVE": 2825,
+    "HYPERAESTHESIA": 202,
+    "NAUSEA": 2083
+   },
+   "SUFENTANIL": {
+    "PAIN": 53,
+    "DRUG INEFFECTIVE": 153,
+    "HYPERAESTHESIA": 8,
+    "NAUSEA": 57
+   },
+   "MORPHINE": {
+    "PAIN": 2142,
+    "DRUG INEFFECTIVE": 2062,
+    "HYPERAESTHESIA": 186,
+    "NAUSEA": 2340
+   }
+  },
+  "all": {
+   "REMIFENTANIL": {
+    "PAIN": 23,
+    "DRUG INEFFECTIVE": 208,
+    "HYPERAESTHESIA": 10,
+    "NAUSEA": 51
+   },
+   "FENTANYL": {
+    "PAIN": 7349,
+    "DRUG INEFFECTIVE": 8062,
+    "HYPERAESTHESIA": 315,
+    "NAUSEA": 4928
+   },
+   "SUFENTANIL": {
+    "PAIN": 98,
+    "DRUG INEFFECTIVE": 318,
+    "HYPERAESTHESIA": 22,
+    "NAUSEA": 109
+   },
+   "MORPHINE": {
+    "PAIN": 4794,
+    "DRUG INEFFECTIVE": 4450,
+    "HYPERAESTHESIA": 262,
+    "NAUSEA": 4527
+   }
+  }
+ }
+}

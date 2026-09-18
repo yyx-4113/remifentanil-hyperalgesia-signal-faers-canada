@@ -1,0 +1,120 @@
+================================================================================
+PART 1  small-a intervals: Woolf vs exact
+================================================================================
+term                         a      ROR           Woolf 95%CI  width/ROR   hi/ROR
+ALLODYNIA                    1    3.471          0.488-24.668       6.97     7.11
+HYPERAESTHESIA              10    4.729           2.542-8.797       1.32     1.86
+DRUG WITHDRAWAL SYNDROME     7    0.307           0.146-0.644       1.62     2.10
+PROCEDURAL PAIN             14    1.977           1.170-3.341       1.10     1.69
+CONSTIPATION                11    0.197           0.109-0.355       1.25     1.81
+PAIN                        23    0.142           0.094-0.214       0.84     1.51
+VOMITING                    64    0.527           0.412-0.674       0.50     1.28
+NAUSEA                      51    0.245           0.186-0.323       0.56     1.32
+
+-- ALLODYNIA remifentanil, 2x2 and four interval methods --
+a=1 b=5374 c=1109 d=20686203 N=20692687   evidence.of.2x2 check: (a*d)/(b*c)=3.4710
+Woolf z=1.96       ROR=3.4710  CI 0.488-24.668  se=1.000544
+Woolf z=1.95996    ROR=3.4710  CI 0.488-24.667
+Haldane add-0.5    ROR=5.2036  CI 1.049-25.816
+exact conditional  ROR=3.4710  CI 0.088-19.387
+mid-P conditional  ROR=3.4710  CI 17.153-0.173
+manuscript (Table 2 / s3.3): ROR=3.47  CI 0.49-24.67
+
+-- a=0 case (ALLODYNIA sufentanil) --
+  Woolf undefined (1/0); exact conditional estimate 0 CI ConfidenceInterval(low=0, high=10.575790931457062)
+
+-- Woolf vs exact across a --
+a=   1 ALLODYNIA                  Woolf    0.488-    24.668 (hi/lo     50.5)   exact    0.088-     19.387
+a=  14 PROCEDURAL PAIN            Woolf    1.170-     3.341 (hi/lo      2.9)   exact    1.080-      3.321
+a=   7 DRUG WITHDRAWAL SYNDROME   Woolf    0.146-     0.644 (hi/lo      4.4)   exact    0.123-      0.633
+a=  10 HYPERAESTHESIA             Woolf    2.542-     8.797 (hi/lo      3.5)   exact    2.265-      8.708
+a=  23 PAIN                       Woolf    0.094-     0.214 (hi/lo      2.3)   exact    0.090-      0.213
+a= 208 DRUG INEFFECTIVE           Woolf    0.523-     0.690 (hi/lo      1.3)   exact    0.521-      0.690
+
+================================================================================
+PART 2  RORR shared-reference covariance
+================================================================================
+term                          d_remi     d_fen     V_used     ignored    % of V
+HYPERAESTHESIA              20679161  20563022   0.103619    9.70e-08  0.00009%
+ALLODYNIA                   20686203  20569806   1.022871    9.70e-08  0.00001%
+PAIN                        20080159  19971041   0.043813    9.99e-08  0.00023%
+DRUG INEFFECTIVE            19388242  19279652   0.005136    1.03e-07  0.00201%
+DRUG WITHDRAWAL SYNDROME    20599778  20486601   0.143381    9.74e-08  0.00007%
+PROCEDURAL PAIN             20660026  20543730   0.077870    9.71e-08  0.00012%
+NAUSEA                      19908817  19797250   0.020010    1.01e-07  0.00050%
+VOMITING                    20224713  20111688   0.016113    9.92e-08  0.00062%
+PRURITUS                    20314412  20199044   0.025487    9.87e-08  0.00039%
+CONSTIPATION                20473787  20359343   0.091611    9.80e-08  0.00011%
+
+if the shared reference is taken literally as whole corpus N: 2/N = 9.665e-08
+
+-- does d cancel in the POINT estimate of RORR? --
+HYPERAESTHESIA             d_r/d_f=1.005648  implemented=0.6960  shared-d=0.6921  diff=+0.565%
+ALLODYNIA                  d_r/d_f=1.005659  implemented=0.4546  shared-d=0.4521  diff=+0.566%
+PAIN                       d_r/d_f=1.005464  implemented=0.0665  shared-d=0.0661  diff=+0.546%
+DRUG INEFFECTIVE           d_r/d_f=1.005632  implemented=0.5678  shared-d=0.5646  diff=+0.563%
+
+================================================================================
+PART 3  Bonferroni footnote (1.61)
+================================================================================
+HYPERAESTHESIA remi ROR=4.7288 log=1.553675 se=0.316716 uncorrected CI 2.54-8.80
+  k=  72 two-sided alpha/k=0.00069444 z=3.39176 -> lower bound=1.6152
+  k=  54 two-sided alpha/k=0.00092593 z=3.31212 -> lower bound=1.6564
+  k= 216 two-sided alpha/k=0.00023148 z=3.68192 -> lower bound=1.4734
+  k= 440 two-sided alpha/k=0.00011364 z=3.85946 -> lower bound=1.3928
+  z yielding exactly 1.61 -> z=3.40191; implied two-sided k = 74.72
+
+================================================================================
+PART 4  leave-2024-out: what was actually computed
+================================================================================
+sum(N_year 2015-2024)= 13720546  sum(H_year)= 4995  sum(remi cohort)= 4246
+remifentanil reports OUTSIDE 2015-2024 = 1129
+as implemented (2015-2023 window): N=12401440 H=4658 cohort=3798 a=1 -> ROR=0.701 (0.099-4.978)   [CSV 0.701 (0.099-4.978)]
+TRUE whole-corpus leave-2024-out (a=10-8=2, full 5375 cohort): ROR=0.943 (0.236-3.774)
+whole corpus with a=1 only                                 : ROR=0.472 (0.066-3.349)
+pooled ROR 4.729 inside the as-implemented leave-out CI? True
+exact conditional CI of the as-implemented leave-out: 0.018-3.909
+RORR vs fentanyl = 0.1064 (0.0149-0.7585)   [CSV 0.106 (0.015-0.758)]
+
+================================================================================
+PART 5  ratio_2024_to_pooled
+================================================================================
+drug            ROR2024  RORpool   ratio  se(log)        delta 95% CI
+REMIFENTANIL      72.86     4.73   15.41   0.4802          6.01-39.49
+FENTANYL          29.20     6.79    4.30   0.2563           2.60-7.10
+SUFENTANIL        42.17     8.61    4.90   0.4395          2.07-11.59
+MORPHINE          20.84    12.17    1.71   0.2345           1.08-2.71
+numerator 2x2 is 2024 (d~1.32M); denominator 2x2 is pooled (d~20.7M, CONTAINS 2024)
+
+corpus-wide HYPERAESTHESIA rate per 100k reports, by year:
+  2015:  54.387
+  2016:  47.889
+  2017:  46.893
+  2018:  40.123
+  2019:  30.540
+  2020:  32.781
+  2021:  30.904
+  2022:  31.897
+  2023:  29.154
+  2024:  25.548
+
+================================================================================
+PART 6  Canadian cohort power
+================================================================================
+Canada N=1154017 remi=111 HYPERAESTHESIA rows=523 p0=4.532432e-04
+  true ROR=  1.00 E[a]= 0.0503  P(a>=3)=0.000020
+  true ROR=  2.00 E[a]= 0.1006  P(a>=3)=0.000157
+  true ROR=  4.73 E[a]= 0.2376  P(a>=3)=0.001872
+  true ROR= 10.00 E[a]= 0.5011  P(a>=3)=0.014468
+  true ROR= 20.00 E[a]= 0.9976  P(a>=3)=0.079862
+  true ROR= 50.00 E[a]= 2.4608  P(a>=3)=0.446105
+  true ROR=100.00 E[a]= 4.8149  P(a>=3)=0.858872
+E[a] for 80% power on 'a>=3' = 4.279  -> minimum detectable ROR = 88.4
+simple Poisson check at ROR 4.73: E[a]=0.2380
+
+================================================================================
+PART 7  multiplicity
+================================================================================
+P(>=11 of 12 negative-control ratios below 1 | p=0.5) = 0.00317
+family sizes: Table2 OR 18x4=72; TableS5 RORR 18x3=54; Table4A 18x4=72;
+  year tables 10x4x2=80; SOC Canada 27x3=81; SOC FAERS 27x3=81 -> total >= 440

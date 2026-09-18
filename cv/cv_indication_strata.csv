@@ -1,0 +1,16 @@
+﻿stratum,stratum_key,preferred_term,n_remifentanil,a_remifentanil,n_fentanyl,a_fentanyl,n_sufentanil,a_sufentanil,n_morphine,a_morphine,RORR_vs_fentanyl,RORR_vs_fentanyl_CI,RORR_vs_morphine,RORR_vs_morphine_CI
+All reports,ALL,PAIN,111,2,4881,353,63,8,7675,859,0.235,0.058-0.957,0.146,0.036-0.591
+All reports,ALL,DRUG INEFFECTIVE,111,25,4881,905,63,9,7675,1119,1.277,0.813-2.005,1.703,1.086-2.671
+All reports,ALL,VOMITING,111,3,4881,124,63,1,7675,508,1.066,0.334-3.403,0.392,0.124-1.239
+All reports,ALL,NAUSEA,111,0,4881,260,63,2,7675,824,,,,
+All reports,ALL,HYPERAESTHESIA,111,0,4881,18,63,0,7675,30,,,,
+Perioperative anaesthesia indication,ANAESTHESIA_ANY,PAIN,84,1,239,7,22,3,43,3,0.399,0.048-3.295,0.161,0.016-1.593
+Perioperative anaesthesia indication,ANAESTHESIA_ANY,DRUG INEFFECTIVE,84,20,239,28,22,5,43,5,2.355,1.244-4.459,2.375,0.824-6.848
+Perioperative anaesthesia indication,ANAESTHESIA_ANY,VOMITING,84,3,239,0,22,0,43,2,,,0.759,0.122-4.725
+Perioperative anaesthesia indication,ANAESTHESIA_ANY,NAUSEA,84,0,239,3,22,0,43,3,,,,
+Perioperative anaesthesia indication,ANAESTHESIA_ANY,HYPERAESTHESIA,84,0,239,5,22,0,43,5,,,,
+Pain indication,PAIN_INDICATION,PAIN,4,1,631,99,2,2,824,157,1.791,0.184-17.397,1.416,0.146-13.706
+Pain indication,PAIN_INDICATION,DRUG INEFFECTIVE,4,3,631,241,2,0,824,252,4.855,0.502-46.940,6.81,0.705-65.784
+Pain indication,PAIN_INDICATION,VOMITING,4,0,631,19,2,0,824,62,,,,
+Pain indication,PAIN_INDICATION,NAUSEA,4,0,631,41,2,0,824,62,,,,
+Pain indication,PAIN_INDICATION,HYPERAESTHESIA,4,0,631,4,2,0,824,14,,,,

@@ -1,0 +1,5 @@
+﻿drug,cohort_n,overlap_remifentanil,overlap_fentanyl,overlap_sufentanil,overlap_morphine
+REMIFENTANIL,5375,5375,1575,483,323
+FENTANYL,121819,1575,121819,299,6185
+SUFENTANIL,6513,483,299,6513,596
+MORPHINE,56501,323,6185,596,56501

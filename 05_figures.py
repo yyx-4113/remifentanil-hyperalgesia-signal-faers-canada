@@ -48,12 +48,12 @@ C_MOR = "#b5121b"   # 深红
 C_REF = "#333333"
 
 OUT = [
+    # The journal accepts .pdf, .jpg, .tiff or .pptx only, and requires line art at
+    # 600 ppi in a separate file, so no .png is written (round-5 revision, T3-13).
     ("I_fig1_rorr_forest", "tif"),
     ("I_fig1_rorr_forest", "pdf"),
-    ("I_fig1_rorr_forest", "png"),
     ("I_fig2_year_trend", "tif"),
     ("I_fig2_year_trend", "pdf"),
-    ("I_fig2_year_trend", "png"),
 ]
 
 
@@ -156,51 +156,71 @@ ax.set_yticks([])
 ax.set_xscale("log")
 ax.set_xlim(0.012, 7.0)
 ax.set_ylim(-1.0, ROW * len(data) - 0.4)
+# SHOWN is ordered most-important-first (HYPERAESTHESIA at i = 0). matplotlib puts
+# y = 0 at the *bottom*, so without this inversion the figure reads bottom-up and
+# contradicts both the panel ordering and the legend. Inverting makes i = 0 the
+# top row, which is what the comment above SHOWN has always claimed.
+ax.invert_yaxis()
 ax.set_xticks([0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5])
 ax.set_xticklabels(["0.02", "0.05", "0.1", "0.2", "0.5", "1", "2", "5"])
 ax.set_xlabel("Head-to-head RORR (95% CI), log scale")
 clean_axes(ax, keep=("bottom",))
 
-# 图例（无边框）
-handles = []
-for idx, col, mk, hollow, _off, lab in SERIES:
-    handles.append(ax.errorbar([], [], fmt=mk, mfc="none" if hollow else col,
-                               mec=col, color=col, ms=4.0, mew=0.9 if hollow else 0.0,
-                               label=lab))
-ax.legend(handles=handles, loc="upper left", frameon=False,
-          handletextpad=0.5, borderaxespad=0.4)
+# 图例已删除（第五轮评审 P0-8：本刊明确要求图内无 legend box；
+# 符号说明全部移入图注，见 I_正文_IMRaD_en.md 的 Figure 1 legend）。
 save_all(fig, "I_fig1_rorr_forest")
 plt.close(fig)
 
 # =========================================================================
 # Fig 2: PAIN 头对头 RORR 年份趋势（FAERS 2015–2024）
 # =========================================================================
-years = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]
-fen = [(0.093, 0.02, 0.37), (0.039, 0.01, 0.28), (0.051, 0.01, 0.36), None, None,
-       (0.044, 0.01, 0.18), (0.014, 0.00, 0.10), (0.016, 0.00, 0.11),
-       (0.112, 0.03, 0.45), (0.168, 0.05, 0.53)]
-mor = [(0.097, 0.02, 0.39), (0.038, 0.01, 0.27), (0.032, 0.00, 0.23), None, None,
-       (0.037, 0.01, 0.15), (0.019, 0.00, 0.14), (0.022, 0.00, 0.16),
-       (0.052, 0.01, 0.21), (0.066, 0.02, 0.21)]
-overall_fen, overall_mor = 0.066, 0.046
+# 取值来源：04_sensitivity_year_pain.csv 与 01_faers_results.csv，逐格在运行期读取。
+# 第五轮评审 P4：本图此前把 RORR 与 CI 写成手写常量，与 AI 声明中
+# "every reported value is a direct read of the analysis output files" 不符；
+# 现改为运行期读取，声明与实物一致。
+def _pair(s):
+    """'0.02-0.37' -> (0.02, 0.37); '' -> None."""
+    s = (s or "").strip().replace("\u2013", "-")
+    if not s:
+        return None
+    lo, hi = s.split("-")
+    return (float(lo), float(hi))
+
+with open(os.path.join(HERE, "04_sensitivity_year_pain.csv"), encoding="utf-8-sig") as fh:
+    _yr = list(_csv.DictReader(fh))
+
+def _series(comp):
+    out = []
+    for r in _yr:
+        est = (r["RORR_REMI_vs_%s" % comp] or "").strip()
+        ci = _pair(r["RORR_CI_%s" % comp])
+        if not est or ci is None:
+            continue
+        out.append((int(r["Year"]), float(est), ci[0], ci[1]))
+    return out
+
+_ser_fen = _series("FENTANYL")
+_ser_mor = _series("MORPHINE")
+years = [int(r["Year"]) for r in _yr]
+overall_fen = float(_src["PAIN"]["RORR_REMI_vs_FENTANYL"])
+overall_mor = float(_src["PAIN"]["RORR_REMI_vs_MORPHINE"])
 
 fig, ax = plt.subplots(figsize=(W_DOUBLE_IN, 3.55))
 fig.subplots_adjust(left=0.105, right=0.975, top=0.965, bottom=0.195)
 
-xf = [years[i] for i, v in enumerate(fen) if v]
-yf = [v[0] for v in fen if v]
-lf = [[v[0] - v[1] for v in fen if v], [v[2] - v[0] for v in fen if v]]
-xm = [years[i] for i, v in enumerate(mor) if v]
-ym = [v[0] for v in mor if v]
-lm = [[v[0] - v[1] for v in mor if v], [v[2] - v[0] for v in mor if v]]
+xf = [v[0] for v in _ser_fen]
+yf = [v[1] for v in _ser_fen]
+lf = [[v[1] - v[2] for v in _ser_fen], [v[3] - v[1] for v in _ser_fen]]
+xm = [v[0] for v in _ser_mor]
+ym = [v[1] for v in _ser_mor]
+lm = [[v[1] - v[2] for v in _ser_mor], [v[3] - v[1] for v in _ser_mor]]
 
 ax.axhline(1.0, color=C_REF, ls="--", lw=0.9, zorder=1)
-h1 = ax.errorbar(xf, yf, xerr=lf, fmt="o", color=C_FEN, ecolor=C_FEN,
-                 elinewidth=0.9, capsize=2.5, capthick=0.9, ms=4.2,
-                 label="Remifentanil vs fentanyl", zorder=3)
-h2 = ax.errorbar(xm, ym, xerr=lm, fmt="s", mfc="none", mec=C_MOR, color=C_MOR,
-                 ecolor=C_MOR, elinewidth=0.9, capsize=2.5, capthick=0.9,
-                 ms=4.2, mew=0.9, label="Remifentanil vs morphine", zorder=3)
+ax.errorbar(xf, yf, xerr=lf, fmt="o", color=C_FEN, ecolor=C_FEN,
+            elinewidth=0.9, capsize=2.5, capthick=0.9, ms=4.2, zorder=3)
+ax.errorbar(xm, ym, xerr=lm, fmt="s", mfc="none", mec=C_MOR, color=C_MOR,
+            ecolor=C_MOR, elinewidth=0.9, capsize=2.5, capthick=0.9,
+            ms=4.2, mew=0.9, zorder=3)
 
 # 全库总体 RORR 参考线（虚线，图注中说明）
 ax.axhline(overall_fen, color=C_FEN, ls=":", lw=0.9, alpha=0.8, zorder=2)
@@ -215,15 +235,11 @@ ax.set_xlabel("Report year")
 ax.set_ylabel("RORR for PAIN (95% CI), log scale")
 clean_axes(ax, keep=("left", "bottom"))
 
-# 无边框图例（含虚线参考线的说明）
-from matplotlib.lines import Line2D
-h3 = Line2D([], [], color=C_REF, ls=":", lw=0.9, label="Pooled RORR (whole corpus)")
-ax.legend(handles=[h1, h2, h3], loc="lower left", frameon=False,
-          handletextpad=0.6, borderaxespad=0.4, ncol=1)
+# 图例已删除（第五轮评审 P0-8）：符号说明在图注中。
 save_all(fig, "I_fig2_year_trend")
 plt.close(fig)
 
 print("Figures written (Anaesthesia spec: separate files, line art @ 600 ppi, "
       "no in-figure title / border / grid / legend box):")
-print("  I_fig1_rorr_forest.tif | .pdf | .png")
-print("  I_fig2_year_trend.tif | .pdf | .png")
+print("  I_fig1_rorr_forest.tif | .pdf")
+print("  I_fig2_year_trend.tif | .pdf")

@@ -1,0 +1,92 @@
+{
+ "18-64": {
+  "REMIFENTANIL": {
+   "n": 2469,
+   "PAIN": 12,
+   "DRUG INEFFECTIVE": 114
+  },
+  "FENTANYL": {
+   "n": 40333,
+   "PAIN": 1920,
+   "DRUG INEFFECTIVE": 2845
+  },
+  "SUFENTANIL": {
+   "n": 3563,
+   "PAIN": 53,
+   "DRUG INEFFECTIVE": 153
+  },
+  "MORPHINE": {
+   "n": 25294,
+   "PAIN": 2142,
+   "DRUG INEFFECTIVE": 2071
+  }
+ },
+ ">=65": {
+  "REMIFENTANIL": {
+   "n": 1412,
+   "PAIN": 2,
+   "DRUG INEFFECTIVE": 45
+  },
+  "FENTANYL": {
+   "n": 19918,
+   "PAIN": 950,
+   "DRUG INEFFECTIVE": 1337
+  },
+  "SUFENTANIL": {
+   "n": 1590,
+   "PAIN": 29,
+   "DRUG INEFFECTIVE": 48
+  },
+  "MORPHINE": {
+   "n": 13049,
+   "PAIN": 943,
+   "DRUG INEFFECTIVE": 858
+  }
+ },
+ "sex": {
+  "Female": {
+   "REMIFENTANIL": {
+    "n": 2213,
+    "PAIN": 15,
+    "DRUG INEFFECTIVE": 86
+   },
+   "FENTANYL": {
+    "n": 46882,
+    "PAIN": 4060,
+    "DRUG INEFFECTIVE": 4503
+   },
+   "SUFENTANIL": {
+    "n": 3344,
+    "PAIN": 74,
+    "DRUG INEFFECTIVE": 221
+   },
+   "MORPHINE": {
+    "n": 28224,
+    "PAIN": 3016,
+    "DRUG INEFFECTIVE": 2552
+   }
+  },
+  "Male": {
+   "REMIFENTANIL": {
+    "n": 2329,
+    "PAIN": 6,
+    "DRUG INEFFECTIVE": 102
+   },
+   "FENTANYL": {
+    "n": 42748,
+    "PAIN": 2835,
+    "DRUG INEFFECTIVE": 2851
+   },
+   "SUFENTANIL": {
+    "n": 2675,
+    "PAIN": 20,
+    "DRUG INEFFECTIVE": 67
+   },
+   "MORPHINE": {
+    "n": 23304,
+    "PAIN": 1403,
+    "DRUG INEFFECTIVE": 1424
+   }
+  }
+ }
+}

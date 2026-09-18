@@ -1,6 +1,6 @@
 # Author Verification Statement
 
-**Manuscript title:** Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: a head-to-head disproportionality study with a terminology caution
+**Manuscript title:** Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: an observational head-to-head disproportionality analysis
 
 **Reproduction repository:** `https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada`
 

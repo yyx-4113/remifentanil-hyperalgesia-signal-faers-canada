@@ -15,5 +15,5 @@ CONSTIPATION,negative control,yes,213536,213678,13579,yes,retrievable preferred 
 HYPERAESTHESIA,dictionary proxy,yes,8161,9773,523,yes,preferred term carrying the hyperalgesia concept (MedDRA 10020568)
 HYPERPATHIA,dictionary proxy,yes,43,43,0,yes,retrievable preferred term; painful-syndrome sibling of hyperalgesia
 PROCEDURAL PAIN,dictionary proxy,yes,27300,27488,1527,yes,retrievable preferred term nearest to POSTOPERATIVE PAIN
-CHRONIC PAIN SYNDROME,dictionary proxy,yes,1,1,0,yes,retrievable preferred term nearest to CHRONIC PAIN
+CHRONIC PAIN SYNDROME,dictionary proxy,yes,1,1,0,no,"not a preferred term: the only occurrence is the free text 'chronic pain syndrome' in safetyreportid 9291134 (received 9 October 2012), which carries no reactionmeddraversionpt, whereas every coded term in that report carries v16.0"
 DRUG WITHDRAWAL SYNDROME,dictionary proxy,yes,87541,102179,1667,yes,retrievable preferred term nearest to OPIOID WITHDRAWAL SYNDROME

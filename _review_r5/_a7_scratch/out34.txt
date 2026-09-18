@@ -1,0 +1,135 @@
+====================================================================================================
+任务3：加拿大侧关键 PT 的 RORR 独立重算（稿件 Table 3 / §3.4 / §3.5）
+====================================================================================================
+PAIN                 vs FENTANYL   稿件=0.235   源CSV=0.235   我重算=0.235361  稿件-重算=3.61e-04  a_remi=2 a_FEN=353  ✓
+PAIN                 vs MORPHINE   稿件=0.146   源CSV=0.146   我重算=0.145593  稿件-重算=4.07e-04  a_remi=2 a_MOR=859  ✓
+DRUG INEFFECTIVE     vs FENTANYL   稿件=1.277   源CSV=1.277   我重算=1.277142  稿件-重算=1.42e-04  a_remi=25 a_FEN=905  ✓
+DRUG INEFFECTIVE     vs MORPHINE   稿件=1.703   源CSV=1.703   我重算=1.703140  稿件-重算=1.40e-04  a_remi=25 a_MOR=1119  ✓
+VOMITING             vs FENTANYL   稿件=1.066   源CSV=1.066   我重算=1.065636  稿件-重算=3.64e-04  a_remi=3 a_FEN=124  ✓
+VOMITING             vs MORPHINE   稿件=0.392   源CSV=0.392   我重算=0.391896  稿件-重算=1.04e-04  a_remi=3 a_MOR=508  ✓
+
+--- 加拿大 VOMITING 是否真的可算（用于 §5 结论的'无法检验'表述） ---
+VOMITING: 加拿大队列 a = REMI 3 / FEN 124 / SUF 1 / MOR 508 ; REMI_ROR=0.806 ; RORR vs FEN=1.066 ; vs MOR=0.392
+→ 4 个阴性对照（NAUSEA/VOMITING/PRURITUS/CONSTIPATION）中，加拿大侧 REMI a>0 的只有 VOMITING(3)
+
+====================================================================================================
+任务4：Table S1 Panel A 抽查 4 个 SOC 的 ROR 与 RORR
+====================================================================================================
+
+Immune system disorders
+  REMI a=9   FEN a=229  MOR a=737  | 表列 ROR=2.363 RORRfen=1.792 RORRmor=0.831
+  我重算 RORRfen=1.792448  (稿件声明 1.792)  RORRmor=0.830633  (稿件声明 0.831)
+  由 ROR 反解全球该 SOC 报告数 c≈41540；用 round(c) 回算 ROR=2.3630 (表列 2.363) → 自洽
+
+Gastrointestinal disorders
+  REMI a=3   FEN a=562  MOR a=1881 | 表列 ROR=0.101 RORRfen=0.213 RORRmor=0.086
+  我重算 RORRfen=0.213474  (稿件声明 0.213)  RORRmor=0.085563  (稿件声明 0.086)
+  由 ROR 反解全球该 SOC 报告数 c≈248925；用 round(c) 回算 ROR=0.1010 (表列 0.101) → 自洽
+
+Psychiatric disorders
+  REMI a=0   FEN a=1787 MOR a=2684 | 表列 ROR= RORRfen= RORRmor=
+  我重算 RORRfen=不可估       (稿件声明 None)  RORRmor=不可估       (稿件声明 None)
+  REMI a=0 → ROR/RORR 不可估计；表中为破折号（语义=不可估计，非 0）
+
+General disorders and administration site conditions
+  REMI a=28  FEN a=1973 MOR a=3362 | 表列 ROR=0.361 RORRfen=0.497 RORRmor=0.433
+  我重算 RORRfen=0.497218  (稿件声明 0.497)  RORRmor=0.432775  (稿件声明 0.433)
+  由 ROR 反解全球该 SOC 报告数 c≈557467；用 round(c) 回算 ROR=0.3610 (表列 0.361) → 自洽
+
+--- Panel A 全 27 行：RORR 用共享-c 口径重算 vs 表内值 ---
+  Psychiatric disorders                                                  vs FENTANYL   破折号 ✓
+  Psychiatric disorders                                                  vs MORPHINE   破折号 ✓
+  Infections and infestations                                            vs FENTANYL   破折号 ✓
+  Infections and infestations                                            vs MORPHINE   破折号 ✓
+  Eye disorders                                                          vs FENTANYL   破折号 ✓
+  Eye disorders                                                          vs MORPHINE   破折号 ✓
+  Ear and labyrinth disorders                                            vs FENTANYL   破折号 ✓
+  Ear and labyrinth disorders                                            vs MORPHINE   破折号 ✓
+  Reproductive system and breast disorders                               vs FENTANYL   破折号 ✓
+  Reproductive system and breast disorders                               vs MORPHINE   破折号 ✓
+  Renal and urinary disorders                                            vs FENTANYL   破折号 ✓
+  Renal and urinary disorders                                            vs MORPHINE   破折号 ✓
+  Blood and lymphatic system disorders                                   vs FENTANYL   破折号 ✓
+  Blood and lymphatic system disorders                                   vs MORPHINE   破折号 ✓
+  Endocrine disorders                                                    vs FENTANYL   破折号 ✓
+  Endocrine disorders                                                    vs MORPHINE   破折号 ✓
+  Congenital, familial and genetic disorders                             vs FENTANYL   破折号 ✓
+  Congenital, familial and genetic disorders                             vs MORPHINE   破折号 ✓
+  Surgical and medical procedures                                        vs FENTANYL   破折号 ✓
+  Surgical and medical procedures                                        vs MORPHINE   破折号 ✓
+  Social circumstances                                                   vs FENTANYL   破折号 ✓
+  Social circumstances                                                   vs MORPHINE   破折号 ✓
+  Panel A RORR 不自洽行数 = 0
+
+--- Panel A：括号内百分比 r = n/队列 是否正确四舍五入到 1 位 ---
+  ✗ Skin and subcutaneous tissue disorders                       FENTANYL     n=604   队列=4881 独立算=12.3745→12.4 表内=12.37
+  ✗ Skin and subcutaneous tissue disorders                       MORPHINE     n=2362  队列=7675 独立算=30.7752→30.8 表内=30.78
+  ✗ Psychiatric disorders                                        FENTANYL     n=1787  队列=4881 独立算=36.6114→36.6 表内=36.61
+  ✗ Psychiatric disorders                                        SUFENTANIL   n=2     队列=63 独立算=3.1746→3.2 表内=3.17
+  ✗ Psychiatric disorders                                        MORPHINE     n=2684  队列=7675 独立算=34.9707→35.0 表内=34.97
+  ✗ Infections and infestations                                  FENTANYL     n=306   队列=4881 独立算=6.2692→6.3 表内=6.27
+  ✗ Infections and infestations                                  SUFENTANIL   n=1     队列=63 独立算=1.5873→1.6 表内=1.59
+  ✗ Infections and infestations                                  MORPHINE     n=1038  队列=7675 独立算=13.5244→13.5 表内=13.52
+  ✗ Eye disorders                                                FENTANYL     n=179   队列=4881 独立算=3.6673→3.7 表内=3.67
+  ✗ Eye disorders                                                MORPHINE     n=451   队列=7675 独立算=5.8762→5.9 表内=5.88
+  ✗ Nervous system disorders                                     REMIFENTANIL n=21    队列=111 独立算=18.9189→18.9 表内=18.92
+  ✗ Nervous system disorders                                     FENTANYL     n=1057  队列=4881 独立算=21.6554→21.7 表内=21.66
+  ✗ Nervous system disorders                                     MORPHINE     n=2008  队列=7675 独立算=26.1629→26.2 表内=26.16
+  ✗ Gastrointestinal disorders                                   FENTANYL     n=562   队列=4881 独立算=11.5140→11.5 表内=11.51
+  ✗ Gastrointestinal disorders                                   SUFENTANIL   n=12    队列=63 独立算=19.0476→19.0 表内=19.05
+  ✗ Gastrointestinal disorders                                   MORPHINE     n=1881  队列=7675 独立算=24.5081→24.5 表内=24.51
+  ✗ General disorders and administration site conditions         REMIFENTANIL n=28    队列=111 独立算=25.2252→25.2 表内=25.23
+  ✗ General disorders and administration site conditions         FENTANYL     n=1973  队列=4881 独立算=40.4220→40.4 表内=40.42
+  ✗ General disorders and administration site conditions         SUFENTANIL   n=26    队列=63 独立算=41.2698→41.3 表内=41.27
+  ✗ Ear and labyrinth disorders                                  FENTANYL     n=77    队列=4881 独立算=1.5775→1.6 表内=1.58
+  ✗ Ear and labyrinth disorders                                  MORPHINE     n=108   队列=7675 独立算=1.4072→1.4 表内=1.41
+  ✗ Vascular disorders                                           REMIFENTANIL n=15    队列=111 独立算=13.5135→13.5 表内=13.51
+  ✗ Vascular disorders                                           FENTANYL     n=312   队列=4881 独立算=6.3921→6.4 表内=6.39
+  ✗ Vascular disorders                                           SUFENTANIL   n=18    队列=63 独立算=28.5714→28.6 表内=28.57
+  ✗ Vascular disorders                                           MORPHINE     n=1039  队列=7675 独立算=13.5375→13.5 表内=13.54
+  ✗ Respiratory, thoracic and mediastinal disorders              REMIFENTANIL n=30    队列=111 独立算=27.0270→27.0 表内=27.03
+  ✗ Respiratory, thoracic and mediastinal disorders              FENTANYL     n=638   队列=4881 独立算=13.0711→13.1 表内=13.07
+  ✗ Respiratory, thoracic and mediastinal disorders              SUFENTANIL   n=13    队列=63 独立算=20.6349→20.6 表内=20.63
+  ✗ Reproductive system and breast disorders                     FENTANYL     n=80    队列=4881 独立算=1.6390→1.6 表内=1.64
+  ✗ Reproductive system and breast disorders                     MORPHINE     n=117   队列=7675 独立算=1.5244→1.5 表内=1.52
+  ✗ Hepatobiliary disorders                                      FENTANYL     n=27    队列=4881 独立算=0.5532→0.6 表内=0.55
+  ✗ Hepatobiliary disorders                                      MORPHINE     n=221   队列=7675 独立算=2.8795→2.9 表内=2.88
+  ✗ Injury, poisoning and procedural complications               REMIFENTANIL n=14    队列=111 独立算=12.6126→12.6 表内=12.61
+  ✗ Injury, poisoning and procedural complications               FENTANYL     n=1540  队列=4881 独立算=31.5509→31.6 表内=31.55
+  ✗ Injury, poisoning and procedural complications               SUFENTANIL   n=19    队列=63 独立算=30.1587→30.2 表内=30.16
+  ✗ Injury, poisoning and procedural complications               MORPHINE     n=2163  队列=7675 独立算=28.1824→28.2 表内=28.18
+  ✗ Pregnancy, puerperium and perinatal conditions               FENTANYL     n=77    队列=4881 独立算=1.5775→1.6 表内=1.58
+  ✗ Pregnancy, puerperium and perinatal conditions               MORPHINE     n=94    队列=7675 独立算=1.2248→1.2 表内=1.22
+  ✗ Metabolism and nutrition disorders                           FENTANYL     n=124   队列=4881 独立算=2.5405→2.5 表内=2.54
+  ✗ Metabolism and nutrition disorders                           SUFENTANIL   n=9     队列=63 独立算=14.2857→14.3 表内=14.29
+  ✗ Metabolism and nutrition disorders                           MORPHINE     n=446   队列=7675 独立算=5.8111→5.8 表内=5.81
+  ✗ Cardiac disorders                                            REMIFENTANIL n=13    队列=111 独立算=11.7117→11.7 表内=11.71
+  ✗ Cardiac disorders                                            FENTANYL     n=324   队列=4881 独立算=6.6380→6.6 表内=6.64
+  ✗ Cardiac disorders                                            SUFENTANIL   n=17    队列=63 独立算=26.9841→27.0 表内=26.98
+  ✗ Cardiac disorders                                            MORPHINE     n=532   队列=7675 独立算=6.9316→6.9 表内=6.93
+  ✗ Musculoskeletal and connective tissue disorders              SUFENTANIL   n=4     队列=63 独立算=6.3492→6.3 表内=6.35
+  ✗ Musculoskeletal and connective tissue disorders              MORPHINE     n=1172  队列=7675 独立算=15.2704→15.3 表内=15.27
+  ✗ Renal and urinary disorders                                  FENTANYL     n=146   队列=4881 独立算=2.9912→3.0 表内=2.99
+  ✗ Renal and urinary disorders                                  MORPHINE     n=256   队列=7675 独立算=3.3355→3.3 表内=3.34
+  ✗ Blood and lymphatic system disorders                         MORPHINE     n=245   队列=7675 独立算=3.1922→3.2 表内=3.19
+  ✗ Investigations                                               REMIFENTANIL n=12    队列=111 独立算=10.8108→10.8 表内=10.81
+  ✗ Investigations                                               FENTANYL     n=691   队列=4881 独立算=14.1569→14.2 表内=14.16
+  ✗ Investigations                                               SUFENTANIL   n=10    队列=63 独立算=15.8730→15.9 表内=15.87
+  ✗ Investigations                                               MORPHINE     n=1265  队列=7675 独立算=16.4821→16.5 表内=16.48
+  ✗ Immune system disorders                                      REMIFENTANIL n=9     队列=111 独立算=8.1081→8.1 表内=8.11
+  ✗ Immune system disorders                                      FENTANYL     n=229   队列=4881 独立算=4.6917→4.7 表内=4.69
+  ✗ Immune system disorders                                      SUFENTANIL   n=11    队列=63 独立算=17.4603→17.5 表内=17.46
+  ✗ Neoplasms benign, malignant and unspecified (incl cysts and  FENTANYL     n=51    队列=4881 独立算=1.0449→1.0 表内=1.04
+  ✗ Neoplasms benign, malignant and unspecified (incl cysts and  MORPHINE     n=244   队列=7675 独立算=3.1792→3.2 表内=3.18
+  ✗ Endocrine disorders                                          FENTANYL     n=9     队列=4881 独立算=0.1844→0.2 表内=0.18
+  ✗ Endocrine disorders                                          MORPHINE     n=37    队列=7675 独立算=0.4821→0.5 表内=0.48
+  ✗ Congenital, familial and genetic disorders                   FENTANYL     n=23    队列=4881 独立算=0.4712→0.5 表内=0.47
+  ✗ Congenital, familial and genetic disorders                   MORPHINE     n=49    队列=7675 独立算=0.6384→0.6 表内=0.64
+  ✗ Product issues                                               SUFENTANIL   n=1     队列=63 独立算=1.5873→1.6 表内=1.59
+  ✗ Product issues                                               MORPHINE     n=158   队列=7675 独立算=2.0586→2.1 表内=2.06
+  ✗ Surgical and medical procedures                              FENTANYL     n=107   队列=4881 独立算=2.1922→2.2 表内=2.19
+  ✗ Surgical and medical procedures                              SUFENTANIL   n=1     队列=63 独立算=1.5873→1.6 表内=1.59
+  ✗ Surgical and medical procedures                              MORPHINE     n=154   队列=7675 独立算=2.0065→2.0 表内=2.01
+  ✗ Social circumstances                                         FENTANYL     n=128   队列=4881 独立算=2.6224→2.6 表内=2.62
+  ✗ Social circumstances                                         MORPHINE     n=240   队列=7675 独立算=3.1270→3.1 表内=3.13
+  百分比不自洽格数 = 70（表内为 2 位，题注称 1 位）

@@ -1,0 +1,17 @@
+[ 43.5s] 活性成分命中 REMIFENTANIL = ['remifentanil', 'remifentanil hydrochloride'] (product 数 7)
+[ 43.5s] 活性成分命中 FENTANYL = ['fentanyl', 'fentanyl citrate', 'fentanyl dihydrogencitrate', 'fentanyl hydrochloride', 'fentanyl iv'] (product 数 117)
+[ 43.5s] 活性成分命中 SUFENTANIL = ['sufentanil', 'sufentanil citrate'] (product 数 7)
+[ 43.5s] 活性成分命中 MORPHINE = ['morphine', 'morphine (sulfate de)', 'morphine chlorhydrate', 'morphine hcl', 'morphine hydrochloride', 'morphine hydrochloride hydrate', 'morphine hydrochloride trihydrate', 'morphine methylbromide', 'morphine monohydrate', 'morphine salt not specified', 'morphine sulfate', 'morphine sulfate (pentahydrate)', 'morphine sulfate abg', 'morphine sulfate pentahydrate', 'morphine sulphate'] (product 数 126)
+[617.8s] 队列报告数（独立重算）= REMIFENTANIL=111, FENTANYL=4881, SUFENTANIL=63, MORPHINE=7675
+[773.2s] reports.txt 总报告数（独立重算）= 1154017
+[773.2s] reporter 字段分药计数（独立重算）:
+[773.2s]    REMIFENTANIL n=111  {'Other health professional': 72, 'Physician': 19, '': 11, 'Consumer/other non health professional': 6, 'Pharmacist': 3}
+[773.2s]    FENTANYL     n=4881  {'Other health professional': 2056, 'Consumer/other non health professional': 974, '': 618, 'Physician': 589, 'Pharmacist': 555, 'Lawyer': 84, 'Nurse': 5}
+[773.2s]    SUFENTANIL   n=63  {'Other health professional': 39, 'Physician': 9, '': 8, 'Pharmacist': 6, 'Consumer/other non health professional': 1}
+[773.2s]    MORPHINE     n=7675  {'': 2364, 'Other health professional': 2056, 'Consumer/other non health professional': 1810, 'Pharmacist': 537, 'Physician': 535, 'Lawyer': 371, 'Nurse': 2}
+[992.6s] 抽查 SOC 的全体报告数 c（独立重算）: Immune system disorder=41538, Gastrointestinal disor=248694, Psychiatric disorders=117116, General disorders and =557400
+[993.0s]    Immune system disorders                                      {'REMIFENTANIL': 9, 'FENTANYL': 229, 'SUFENTANIL': 11, 'MORPHINE': 737}
+[993.0s]    Gastrointestinal disorders                                   {'REMIFENTANIL': 3, 'FENTANYL': 562, 'SUFENTANIL': 12, 'MORPHINE': 1881}
+[993.0s]    Psychiatric disorders                                        {'REMIFENTANIL': 0, 'FENTANYL': 1787, 'SUFENTANIL': 2, 'MORPHINE': 2684}
+[993.0s]    General disorders and administration site conditions         {'REMIFENTANIL': 28, 'FENTANYL': 1973, 'SUFENTANIL': 26, 'MORPHINE': 3362}
+[993.0s] VOMITING 全体报告数 c = 38452 ; 分药 = {'REMIFENTANIL': 3, 'FENTANYL': 124, 'SUFENTANIL': 1, 'MORPHINE': 508}

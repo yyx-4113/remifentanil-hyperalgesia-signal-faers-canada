@@ -1,0 +1,12 @@
+[  9.1s] 活性成分命中 REMIFENTANIL = ['remifentanil', 'remifentanil hydrochloride'] (product 数 7)
+[  9.1s] 活性成分命中 FENTANYL = ['fentanyl', 'fentanyl citrate', 'fentanyl dihydrogencitrate', 'fentanyl hydrochloride', 'fentanyl iv'] (product 数 117)
+[  9.1s] 活性成分命中 SUFENTANIL = ['sufentanil', 'sufentanil citrate'] (product 数 7)
+[  9.1s] 活性成分命中 MORPHINE = ['morphine', 'morphine (sulfate de)', 'morphine chlorhydrate', 'morphine hcl', 'morphine hydrochloride', 'morphine hydrochloride hydrate', 'morphine hydrochloride trihydrate', 'morphine methylbromide', 'morphine monohydrate', 'morphine salt not specified', 'morphine sulfate', 'morphine sulfate (pentahydrate)', 'morphine sulfate abg', 'morphine sulfate pentahydrate', 'morphine sulphate'] (product 数 126)
+[  9.1s] prod2t 条目数 = 257
+[208.3s]   report_drug 行 5000000
+[209.0s] report_drug 总行数 = 5066837 ; 队列（独立重算）= {'REMIFENTANIL': 111, 'FENTANYL': 4881, 'SUFENTANIL': 63, 'MORPHINE': 7675}
+[289.9s] reports.txt 总报告数 = 1154017
+[290.3s]   reporter 分布 REMIFENTANIL n=111 : {'Other health professional': 72, 'Physician': 19, '': 11, 'Consumer/other non health professional': 6, 'Pharmacist': 3}
+[290.3s]   reporter 分布 FENTANYL     n=4881 : {'Other health professional': 2056, 'Consumer/other non health professional': 974, '': 618, 'Physician': 589, 'Pharmacist': 555, 'Lawyer': 84, 'Nurse': 5}
+[290.3s]   reporter 分布 SUFENTANIL   n=63 : {'Other health professional': 39, 'Physician': 9, '': 8, 'Pharmacist': 6, 'Consumer/other non health professional': 1}
+[290.3s]   reporter 分布 MORPHINE     n=7675 : {'': 2364, 'Other health professional': 2056, 'Consumer/other non health professional': 1810, 'Pharmacist': 537, 'Physician': 535, 'Lawyer': 371, 'Nurse': 2}

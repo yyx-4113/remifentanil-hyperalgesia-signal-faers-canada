@@ -1,0 +1,3 @@
+﻿definition,window,a,cohort_n,term_total,corpus_N,ROR,ROR_CI_low,ROR_CI_high,RORR_vs_fentanyl,RORR_CI,contains_pooled_ROR
+"whole corpus, 2024 reports removed (the correct reading of leave-2024-out)",all receivedate other than 2024,2,4927,7824,19373581,1.0051,0.2513,4.0209,see row 2 for the ratio that the window permits,,0
+calendar window 2015-2023 (what 04_sensitivity_leave2024_hyperaesthesia.csv actually computed),receivedate 2015-01-01 to 2023-12-31,1,3798,4658,12401440,0.7009,0.0987,4.9778,0.106,0.015-0.758,1

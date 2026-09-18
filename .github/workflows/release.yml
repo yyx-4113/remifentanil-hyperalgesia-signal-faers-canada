@@ -104,6 +104,40 @@ jobs:
             04_sensitivity_2024cluster_hyperaesthesia.csv \
             04_sensitivity_estimable_years.json \
             04_sensitivity_summary.md \
+            11_overlap_matrix.csv \
+            12_role_version_sensitivity.csv \
+            13_report_series_hyperaesthesia.csv \
+            14_faers_pt_distribution.csv \
+            15_sparse_intervals.csv \
+            16_year_trend.csv \
+            17_overlap_adjusted_rorr.csv \
+            18_rorr_covariance.csv \
+            19_leave2024_hyperaesthesia.csv \
+            20_2024cluster_membership.csv \
+            21_alternative_proxy_terms.csv \
+            cv/cv_indication_strata.csv \
+            cv/cv_depth_strata.csv \
+            cv/cv_reaction_onset_completeness.csv \
+            cv/cv_summary.md \
+            REVIEW_round5_2026-09-17.md \
+            RESPONSE_round5_2026-09-17.md \
+            _r6_covariance.py \
+            _r6_ms_fix.py \
+            _r6_t06.py \
+            _r6_t224.py \
+            _r6_leave2024.py \
+            _r6_ms_tables.py \
+            _r6_apply.py \
+            _r6_drop_internal.py \
+            _r6_gate_patch.py \
+            _r6_gate_patch2.py \
+            _r6_sync.py \
+            _r6_declare.py \
+            _a5_cv_indication_strata.py \
+            _a5_depth_strata.py \
+            _a5_overlap_faers.py \
+            SUBMISSION_MANIFEST.md \
+            CITATION.cff \
             _gen_table4.py \
             _check_asterisks.py \
             cv/cv_soc_27.csv \

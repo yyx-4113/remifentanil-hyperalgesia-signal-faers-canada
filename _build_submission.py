@@ -3,8 +3,8 @@
 
 Outputs (into _upload/):
     Manuscript.docx              title page, Summary, body, Acknowledgements,
-                                 References, Tables 1-4B, figure legends
-    Supporting_Information.docx  Tables S1-S4
+                                 References, Tables 1-6, figure legends
+    Supporting_Information.docx  Tables S1 and S3-S9
     Cover_Letter.docx            cover letter
     (figures are copied separately as .tif/.pdf, see the pack manifest)
 
@@ -13,8 +13,10 @@ Formatting applied, per the journal's Guidance for Authors:
     - tables inside the manuscript file, after the References, numbered caption
       above each table
     - figure legends after the tables; figures themselves are separate files
-    - no Chinese text, no internal working sections (the number-to-source
-      traceability appendix and the outstanding-items list are excluded)
+    - no Chinese text, no internal working sections anywhere: as of 18 Sep 2026
+      the markdown ends at the figure legends, the number-to-source appendix
+      and the outstanding-items list having been moved to SUBMISSION_MANIFEST.md
+      under Round-5 P0-1
 
 Run:  python _build_submission.py
 Then: python _verify_docx.py     (checks nothing was lost in conversion)
@@ -138,7 +140,10 @@ def split_sections(text: str) -> dict:
         "decl": cut("## Acknowledgements", "## References"),
         "refs": cut("## References", "## Tables"),
         "tables": cut("## Tables", "## Figure legends"),
-        "legends": cut("## Figure legends", "## 9. Number-to-source"),
+        # The markdown now ends with the figure legends: the two internal
+        # sections that used to follow (traceability, outstanding items) were
+        # removed on 18 Sep 2026 under Round-5 P0-1. `end=None` means "to EOF".
+        "legends": cut("## Figure legends", None),
     }
 
 
@@ -265,7 +270,8 @@ def build_manuscript(sec: dict) -> str:
     chunks = re.split(r"(?m)^### ", sec["tables"])
     for chunk in chunks[1:]:
         title = chunk.split("\n", 1)[0].strip()
-        (supp_tables if title.startswith("Table S") else main_tables).append(chunk)
+        (supp_tables if title.startswith(("Table S", "Appendix S"))
+         else main_tables).append(chunk)
     for chunk in main_tables:
         emit_markdown(doc, "### " + chunk)
 
@@ -281,8 +287,8 @@ def build_supporting(supp_tables: list[str]) -> str:
     doc = new_document()
     para(doc, "Supporting Information", bold=True, size=14, space_after=10)
     para(doc, "Yang Y. Remifentanil and hyperalgesia reporting in two national "
-              "pharmacovigilance databases: a head-to-head disproportionality study "
-              "with negative controls defined a priori.", space_after=8)
+              "pharmacovigilance databases: an observational head-to-head "
+              "disproportionality analysis.", space_after=8)
     for chunk in supp_tables:
         # Table S1 is eight columns wide (27 system organ classes x four opioids plus
         # three ratios), so the supplementary file uses a smaller table font.
@@ -334,7 +340,8 @@ def main() -> int:
     chunks = re.split(r"(?m)^### ", sec["tables"])
     exported = "\n".join(
         [sec["front"], sec["summary"], sec["body"], sec["decl"], sec["refs"], sec["legends"]]
-        + ["### " + c for c in chunks[1:] if not c.split("\n", 1)[0].strip().startswith("Table S")]
+        + ["### " + c for c in chunks[1:]
+           if not c.split("\n", 1)[0].strip().startswith(("Table S", "Appendix S"))]
     )
     bad = re.findall(r"[\u4e00-\u9fff]+", exported)
     if bad:

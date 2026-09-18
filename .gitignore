@@ -51,3 +51,17 @@ _probe_meddra_level.py
 _probe_meddra_level.json
 _probe_pt_enum.py
 _probe_pt_enum.json
+
+# 4) 写作中间稿与临时缓存（不是交付物，不进仓库）
+_body_v*.md
+_body_new.md
+_r6_backup/
+_r6_new_chunks.txt
+_r6_*cache*.json
+_r6_counts.json
+_r6_ia.json
+_r6_ptdist.json
+_r5_editor_out*.txt
+_r5_editor_cache.json
+12b_notes.txt
+_chk_I_fig*.png

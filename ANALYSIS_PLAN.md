@@ -1,6 +1,6 @@
 # Analytical plan — Remifentanil and hyperalgesia reporting study
 
-**Status:** finalised 16 September 2026, *after* data extraction (16 September 2026) and *before* any result interpretation or manuscript writing. **Amendment 1** (same date, see below) records a term-level correction made on discovering that the clinical word for the outcome is not a preferred term; it was applied before the corrected results were interpreted.
+**Status:** finalised 16 September 2026, *after* data extraction (16 September 2026) and *before* any result interpretation or manuscript writing. **Amendment 1** (same date, see below) records a term-level correction made on discovering that the clinical word for the outcome is not a preferred term; it was applied before the corrected results were interpreted. **Amendment 2** (18 September 2026, see the end of this document) records the analyses added in response to an independent peer-review panel: adjustment for reporting depth, stratification by recorded indication, the drug-role and report-version restrictions, the cohort-overlap sensitivity, the covariance of the head-to-head ratio, and the correction of a mislabelled 2024 sensitivity.
 
 **Prospective registration:** **none.** This plan was written post hoc, once the data had been retrieved, because the analysis was conceived and executed by a single author without a pre-registered protocol. It is archived here so that the term groups, controls and probe can be inspected as a fixed record rather than as a narrative written after the fact. The absence of prospective registration is declared in the manuscript (Methods and Limitations) and in the READUS-PV checklist.
 
@@ -31,6 +31,30 @@ ROR, PRR, IC (BCPNN), EBGM. Signal: a ≥ 3 and lower 95% CI of ROR > 1, or PRR 
 
 ## Sensitivity / subgroup
 FAERS serious-report restriction; FAERS PAIN by calendar year (2015–2024); Canada Vigilance cohort composition (age, sex, reporter type, seriousness).
+
+## Interpretation of the primary outcome, restated (Amendment 2, 18 September 2026)
+
+The plan above specifies the analyses. Two things discovered during review change how the
+primary outcome must be reported, and neither was foreseeable when the plan was written.
+
+1. **The signal is a case series.** The ten remifentanil HYPERAESTHESIA reports are nine
+   separate identifiers for one 76-year-old man plus one report for a different patient.
+   Spontaneous reporting has no patient identifier, so no query removes them. The finding
+   is therefore reported as a term-level demonstration, and the Canadian extract, which
+   de-duplicates at source, recorded none of it.
+2. **The head-to-head interval was too narrow.** The ratio of reporting odds ratios divides
+   two ratios computed against the same corpus remainder, so the two are correlated. The
+   interval originally specified here (sum of reciprocal cell counts, shared background not
+   corrected) sets that covariance to zero. All 29 estimable intervals were recomputed with
+   the covariance retained (`18_rorr_covariance.csv`); no conclusion changes, and the
+   corrected intervals are the ones in Appendix S1 A1.5. The wording above is left in place
+   so that the original specification remains visible.
+
+Two analyses were added to the plan rather than substituted for anything in it: adjustment
+for the number of reaction terms per report (`cv/cv_depth_strata.csv`, Table 6) and
+stratification by the recorded indication (`cv/cv_indication_strata.csv`, Table 5). Both are
+reported as exploratory, and both reduce the PAIN deficit towards unity, which is why
+section 4.3 reads the deficit as a property of the reporting setting.
 
 ## Terminology note — a priori vs pre-specified
 The manuscript previously used the word "pre-specified". Because no prospective registration exists, the term was replaced throughout with "defined a priori in the analytical plan", which is what this document records, and the absence of registration is stated explicitly rather than implied by wording. Nothing about the analysis itself changed; only the description of its provenance did.

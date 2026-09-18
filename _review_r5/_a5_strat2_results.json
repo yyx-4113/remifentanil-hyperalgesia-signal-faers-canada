@@ -1,0 +1,426 @@
+{
+ "totals": {
+  "physician": {
+   "REMIFENTANIL": 2296,
+   "FENTANYL": 28823,
+   "SUFENTANIL": 3105,
+   "MORPHINE": 14916
+  },
+  "other_hp": {
+   "REMIFENTANIL": 2416,
+   "FENTANYL": 23460,
+   "SUFENTANIL": 2291,
+   "MORPHINE": 18113
+  },
+  "consumer": {
+   "REMIFENTANIL": 260,
+   "FENTANYL": 34570,
+   "SUFENTANIL": 342,
+   "MORPHINE": 15111
+  },
+  "age_18_64": {
+   "REMIFENTANIL": 2454,
+   "FENTANYL": 40177,
+   "SUFENTANIL": 3552,
+   "MORPHINE": 25208
+  },
+  "age_ge65": {
+   "REMIFENTANIL": 1412,
+   "FENTANYL": 19912,
+   "SUFENTANIL": 1588,
+   "MORPHINE": 13047
+  },
+  "age_lt18": {
+   "REMIFENTANIL": 299,
+   "FENTANYL": 2106,
+   "SUFENTANIL": 368,
+   "MORPHINE": 2126
+  },
+  "all": {
+   "REMIFENTANIL": 5375,
+   "FENTANYL": 121819,
+   "SUFENTANIL": 6513,
+   "MORPHINE": 56501
+  }
+ },
+ "a": {
+  "physician": {
+   "REMIFENTANIL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "FENTANYL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "SUFENTANIL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "MORPHINE": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   }
+  },
+  "other_hp": {
+   "REMIFENTANIL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "FENTANYL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "SUFENTANIL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "MORPHINE": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   }
+  },
+  "consumer": {
+   "REMIFENTANIL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "FENTANYL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "SUFENTANIL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "MORPHINE": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   }
+  },
+  "age_18_64": {
+   "REMIFENTANIL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "FENTANYL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "SUFENTANIL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "MORPHINE": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   }
+  },
+  "age_ge65": {
+   "REMIFENTANIL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "FENTANYL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "SUFENTANIL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "MORPHINE": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   }
+  },
+  "age_lt18": {
+   "REMIFENTANIL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "FENTANYL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "SUFENTANIL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "MORPHINE": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   }
+  },
+  "all": {
+   "REMIFENTANIL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "FENTANYL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "SUFENTANIL": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   },
+   "MORPHINE": {
+    "PAIN": 0,
+    "HYPERAESTHESIA": 0,
+    "DRUG INEFFECTIVE": 0,
+    "NAUSEA": 0,
+    "VOMITING": 0,
+    "PRURITUS": 0,
+    "CONSTIPATION": 0,
+    "PROCEDURAL PAIN": 0,
+    "DRUG TOLERANCE": 0,
+    "ALLODYNIA": 0,
+    "DRUG WITHDRAWAL SYNDROME": 0
+   }
+  }
+ }
+}
