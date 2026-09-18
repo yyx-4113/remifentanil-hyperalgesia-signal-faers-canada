@@ -876,7 +876,13 @@ if os.path.exists(P(MS)):
     # 2024 升高"四药共享"的说法已被否证（吗啡 0/21 不在簇内），不得复辟
     chk("[G-10] 已清除 'shared by all four opioids'",
         "shared by all four opioids" in txt, False)
-    chk("[G-10] 正文改为三队列表述", "in three of the four cohorts" in txt, True)
+    # Round-6：旧的 "in three of the four cohorts" 是对芬太尼列的过度概括（2024 年该簇
+    # 只占 5/17，71% 与该簇无关）。按铁律①改为值绑定断言：正文必须给出可核对的
+    # 8/8、7/7、5/17 分述，并对已删除的过度概括加禁止性断言，防止复辟。
+    chk("[G-10] 正文给出 2024 抬升来源的分药计数",
+        "supplies 8 of the 8 remifentanil, 7 of the 7 sufentanil and 5 of the 17 fentanyl" in txt, True)
+    chk("[G-10] 已清除过度概括 'in three of the four cohorts'",
+        "in three of the four cohorts" in txt, False)
     chk("[G-10] 正文说明吗啡不在簇内",
         re.search(r"morphine[^.]{0,240}\bnot\b", txt, re.I) is not None, True)
     # Round-6 P0-1：稿件内的 §9 溯源表已删除（它的表头写着"not for submission"），

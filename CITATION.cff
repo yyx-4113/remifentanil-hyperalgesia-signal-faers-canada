@@ -12,8 +12,8 @@ abstract: >-
   are separate identifiers for one patient and the tenth is a second patient, so the ten
   describe two patients and the finding is reported as a term-level demonstration.
   Remifentanil reports PAIN and the four comparator terms less than every comparator,
-  stably and in both databases, and that deficit is explained by perioperative reporting
-  rather than by the drug.
+  stably and in both databases, a deficit consistent with perioperative reporting though
+  not established as drug-independent.
 type: software
 authors:
   - family-names: Yang
@@ -40,7 +40,7 @@ keywords:
   - disproportionality analysis
   - reporting odds ratio
   - MedDRA
-version: "1.5.0"
+version: "1.6.0"
 date-released: "2026-09-18"
 references:
   - type: article

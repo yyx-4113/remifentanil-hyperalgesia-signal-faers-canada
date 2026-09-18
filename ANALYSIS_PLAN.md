@@ -53,8 +53,59 @@ primary outcome must be reported, and neither was foreseeable when the plan was 
 Two analyses were added to the plan rather than substituted for anything in it: adjustment
 for the number of reaction terms per report (`cv/cv_depth_strata.csv`, Table 6) and
 stratification by the recorded indication (`cv/cv_indication_strata.csv`, Table 5). Both are
-reported as exploratory, and both reduce the PAIN deficit towards unity, which is why
-section 4.3 reads the deficit as a property of the reporting setting.
+reported as exploratory; both move the PAIN deficit towards unity, but the adjusted intervals
+remain too wide to exclude a substantial deficit and the well-populated perioperative stratum
+still lies below 1, so section 4.3 reads the deficit as *consistent with* a property of the
+reporting setting rather than as established (see Amendment 3).
 
 ## Terminology note — a priori vs pre-specified
 The manuscript previously used the word "pre-specified". Because no prospective registration exists, the term was replaced throughout with "defined a priori in the analytical plan", which is what this document records, and the absence of registration is stated explicitly rather than implied by wording. Nothing about the analysis itself changed; only the description of its provenance did.
+
+## Amendment 3 — reporting strength (18 September 2026)
+
+A second independent review panel (Round 6: four reviewers across the clinical, design,
+implementation and journal layers, held under the same independence discipline as the first)
+concluded that the two headline conclusions were stated more strongly than the data support,
+and that one mechanistic sentence was pharmacologically inverted. **No number changed**; what
+changed is how the results are described. Recorded here so that the change of wording is
+traceable to a documented reason rather than to a later rewrite.
+
+1. **"Setting, not drug" softened to "attenuated, not abolished".** The claim that holding
+   indication and reporting depth constant moves the PAIN deficit to unity rested on a
+   stratum containing four remifentanil reports (RORR 1.791, 95% CI 0.184–17.397) and on a
+   Mantel–Haenszel step whose intervals span two orders of magnitude (vs morphine 0.978,
+   0.042–22.751). The perioperative stratum, the well-populated matched stratum (n = 84),
+   gives 0.399 (0.048–3.295), still below 1. The revised text says the deficit is attenuated
+   but not abolished, and section 4.3 is framed as consistent with a setting effect rather
+   than as demonstrating one.
+2. **Reporting depth is not a confounder.** It is a consequence of the reporting setting (a
+   mediator/collider), not a pre-existing confounder, so Table 6 is labelled a sensitivity
+   analysis for the opportunity to record; it is conditioned on only to bound the mechanical
+   component of the deficit, not to control confounding.
+3. **The DRUG INEFFECTIVE reversal is not evidence against a reporting artefact.** The
+   comparator cohorts are not indication-matched between the two databases, so the reversal
+   is explained by the same setting difference that drives PAIN; it shows only that the
+   pattern is not invariant across corpora.
+4. **The comparator-term deficit is not wholly a setting effect.** Remifentanil's brief
+   intra-operative exposure also yields genuinely fewer nausea, vomiting, pruritus and
+   constipation events than the chronic use dominating the comparator cohorts; the two
+   cannot be fully separated here.
+5. **One mechanistic sentence was pharmacologically inverted.** The earlier statement that
+   remifentanil's ultrashort half-life makes "true tolerance and withdrawal uncommon"
+   conflated chronic dependence with acute tolerance. Remifentanil is the prototypical
+   acute-tolerance opioid (Guignard et al., 2000, the manuscript's own reference 5); the
+   "uncommon" claim now applies only to chronic dependence and withdrawal.
+6. **The 2024 elevation is not attributed to "three of the four cohorts".** The case series
+   supplies 8/8 remifentanil and 7/7 sufentanil 2024 HYPERAESTHESIA reports but only 5/17
+   fentanyl and 0/21 morphine. The over-generalised phrasing was removed, and the
+   consistency gate now binds the per-drug counts (`20_2024cluster_membership.csv`) instead
+   of asserting the over-generalised string — the same lesson as the earlier "fixed-string
+   assertion cements an error" correction.
+7. **Headline ordering.** The Summary and section 4.1 now subordinate "met the signal
+   criterion for all four opioids" to the case-series qualifier, and the Conclusion drops
+   "more robust" for the term-dependent framing, so that no section claims a stability the
+   INADEQUATE ANALGESIA substitution contradicts.
+
+Word count moved from 3 996 to 3 995 (main text) and from 296 to 299 (Summary) as a result.
+The declared counts in the title page, the cover letter and the submission manifest were
+updated to match, and the consistency gate re-derives them from the manuscript.

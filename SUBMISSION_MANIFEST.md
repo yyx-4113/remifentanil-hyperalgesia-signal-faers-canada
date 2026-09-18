@@ -34,8 +34,8 @@
 | Article type | Original Article |
 | Title | Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: an observational head-to-head disproportionality analysis |
 | Running head | Remifentanil hyperalgesia reporting: two-database study |
-| Main text | **3 996 words** (Introduction to Conclusion, headings included) |
-| Summary | **296 words**, structured (Introduction / Methods / Results / Discussion), no abbreviations, no references |
+| Main text | **3 995 words** (Introduction to Conclusion, headings included) |
+| Summary | **299 words**, structured (Introduction / Methods / Results / Discussion), no abbreviations, no references |
 | References | **33**, Vancouver style with DOIs |
 | Tables | 6 in the main file (Table 4 in three panels: 4A, 4B, 4C) |
 | Figures | 2 |
@@ -74,7 +74,7 @@ they can be removed in Word with no effect on the content.
 
 **Closed.**
 
-1. **Remote repository created and pushed.** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada> is public, `main` is pushed and tag `v1.5.0` carries the `results-bundle.zip` release asset (v1.0.0-v1.4.0 remain available); **the v1.5.0 tag is pushed once the four gates below are green**. The Data availability statement resolves.
+1. **Remote repository created and pushed.** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada> is public, `main` is pushed and tag `v1.6.0` carries the `results-bundle.zip` release asset (v1.0.0-v1.5.0 remain available); **the v1.6.0 tag is pushed once the four gates below are green**. The Data availability statement resolves.
 2. **X (Twitter) handle** — the author has no X account, so this field is left blank. Nothing is required.
 3. **Editor's name** — the cover letter is addressed to **Professor Matt Wiles**, Editor-in-Chief, taken from the journal's published editorial board, not from memory.
 4. **Table S1 is tabulated.** Panel A (Canada Vigilance, report-level, authoritative) and panel B (FAERS, event-level, exploratory) are both grid tables, generated from `cv/cv_soc_27.csv` and `03_soc_27.csv` by `_gen_table_s1.py` and verified cell by cell by `_check_consistency.py`.
@@ -98,7 +98,7 @@ they can be removed in Word with no effect on the content.
 | Check | Command | Result |
 |---|---|---|
 | Manuscript numbers traceable to source files (including every Table S1 cell and every Table S4–S9 count cell), plus submission constraints and the global invariants | `python _check_consistency.py` | see the run log |
-| Word counts inside the journal's limits | `python _wordcount.py` | main **3 996**; Summary **296** |
+| Word counts inside the journal's limits | `python _wordcount.py` | main **3 995**; Summary **299** |
 | Table S1 in step with the result files | `python _gen_table_s1.py` | idempotent; refuses to write if a proportion does not reproduce from the counts |
 | Nothing lost or invented in the markdown → docx conversion; no Chinese text; table shapes intact; figures still 600 ppi | `python _verify_docx.py` | see the run log |
 
@@ -160,6 +160,6 @@ sparse intervals, trend), `_r6_overlap_terms.py` (overlap-conditioned counts),
 
 *(Internal. Moved out of the manuscript on 18 September 2026 under Round-5 P0-1.)*
 
-1. **Journal requirements matched** (re-fetched 18 September 2026). Manuscript in `.docx`; all main tables with captions, both figure legends and the supplementary captions placed in the main text file; figures supplied as separate `.tif`/`.pdf` and not embedded in the document (verified: `Manuscript.docx` contains zero embedded media); Times New Roman 12 pt, double spaced, continuous line and page numbers. Main text 3 996 of 4 000 words; Summary 296 of 300; 33 of 30–40 references; 6 main tables (Table 4 in three panels), 9 supplementary tables and 1 supplementary appendix. PASS.
+1. **Journal requirements matched** (re-fetched 18 September 2026). Manuscript in `.docx`; all main tables with captions, both figure legends and the supplementary captions placed in the main text file; figures supplied as separate `.tif`/`.pdf` and not embedded in the document (verified: `Manuscript.docx` contains zero embedded media); Times New Roman 12 pt, double spaced, continuous line and page numbers. Main text 3 995 of 4 000 words; Summary 299 of 300; 33 of 30–40 references; 6 main tables (Table 4 in three panels), 9 supplementary tables and 1 supplementary appendix. PASS.
 2. **Data availability URL.** Verified by API that the repository is public, MIT-licensed and carries a release asset. The `github.com` page itself cannot be opened from this working environment, so one browser click by the author immediately before submitting remains the last manual check.
 3. **What is deliberately not done.** No reviewer suggestions (see §4). No X handle (the journal permits a blank field). No raw source data in the repository, and no credentials anywhere in the pack.

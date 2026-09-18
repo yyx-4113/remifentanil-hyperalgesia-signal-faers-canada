@@ -1,8 +1,8 @@
 # Remifentanil and hyperalgesia reporting: FAERS + Canada Vigilance two-database disproportionality study
 
 **Repository:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada>
-**Current release:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.5.0>
-(earlier releases <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.0.0> through <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.4.0>)
+**Current release:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.6.0>
+(earlier releases <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.0.0> through <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.5.0>)
 
 Reproduction package for the study:
 
@@ -30,17 +30,19 @@ line-listing as an independent confirmation set.
    recorded none. The ten reports therefore describe two patients, and the term-level
    excess is reported as a demonstration of what the corpus contains rather than as a
    signal.
-3. **Systematic low reporting, explained by the setting.** Remifentanil reported least of
+3. **Systematic low reporting, consistent with the setting.** Remifentanil reported least of
    the four opioids for PAIN (RORR 0.066 versus fentanyl, 0.046 versus morphine), and its
    head-to-head ratios for the four comparator terms were below 1 against both
    comparators; eleven of the twelve computable ratios are below 1. The direction is
    stable across serious-report restriction and across the eight years in which an
-   estimate was possible, and it is reduced towards unity once the recorded indication
-   and the number of reaction terms per report are held constant (Table 5, Table 6),
-   which is why it is read as a property of perioperative reporting rather than of the
-   drug.
+   estimate was possible; it is attenuated, but not abolished, once the recorded indication
+   and the number of reaction terms per report are held constant (Table 5, Table 6), so it
+   is read as a property of perioperative reporting rather than of the drug, although the
+   data cannot establish that the drug contributes nothing.
 4. **The specificity probe behaves inconsistently between the databases** (DRUG INEFFECTIVE
-   reverses direction in Canada), which argues against a uniform global reporting artefact.
+   reverses direction in Canada), so the pattern is not invariant across the two corpora;
+   because the comparator cohorts are not indication-matched between them, the reversal is
+   not evidence against a reporting artefact.
 5. ALLODYNIA is **not estimable** for remifentanil (a single report), so no direction is
    read from it.
 
