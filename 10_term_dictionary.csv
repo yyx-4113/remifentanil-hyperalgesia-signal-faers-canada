@@ -1,5 +1,5 @@
 ﻿Term,Group,In_analysis,FAERS_reports_whole_corpus,FAERS_reports_adjacent_token_phrase,Canada_reaction_rows_whole_corpus,Retrievable_as_preferred_term,MedDRA_level_note
-HYPERALGESIA,narrow,yes,0,0,0,no,not a MedDRA preferred term; lowest level term carried by preferred term HYPERAESTHESIA (10020568)
+HYPERALGESIA,narrow,yes,0,0,0,no,"not a MedDRA preferred term; lowest level term carried by the preferred term HYPERAESTHESIA (10020568); no preferred term of that name in v27.1, verified against a public MedDRA-coded ontology and against the release census"
 ALLODYNIA,narrow,yes,1110,1110,29,yes,retrievable preferred term in both corpora
 PAIN,surrogate,yes,607176,2213093,49260,yes,retrievable preferred term in both corpora
 PAIN INCREASED,broad,yes,0,0,0,no,no report in either corpus; not confirmed as a current preferred term

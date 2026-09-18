@@ -115,6 +115,11 @@ jobs:
             19_leave2024_hyperaesthesia.csv \
             20_2024cluster_membership.csv \
             21_alternative_proxy_terms.csv \
+            _r6_term_level_check.py \
+            _r6_term_level_check.csv \
+            _r6_term_dictionary_check.py \
+            _r6_term_dictionary_check.csv \
+            22_meddra_term_verification.md \
             cv/cv_indication_strata.csv \
             cv/cv_depth_strata.csv \
             cv/cv_reaction_onset_completeness.csv \

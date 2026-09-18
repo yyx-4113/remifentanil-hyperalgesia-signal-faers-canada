@@ -20,7 +20,11 @@ line-listing as an independent confirmation set.
    practice, is a MedDRA lowest level term: querying it returns zero reports in both
    corpora, which a reader would otherwise read as the absence of a signal. All 18 outcome
    terms were therefore verified as retrievable in both databases before any zero was
-   interpreted (`10_term_dictionary.csv`, Table S4). Five terms failed that test.
+   interpreted (`10_term_dictionary.csv`, Table S4). Five terms failed that test. The
+   lowest-level-term status itself is shown, not asserted: no entry named Hyperalgesia
+   exists in the MedDRA-coded ADReCS v3.3 ontology, and the string returns zero in the
+   Canadian v.27.1 census while its concept family is in heavy use
+   (`_r6_term_dictionary_check.csv`, `_r6_term_level_check.csv`).
 2. **The signal is a case series, not a signal.** The preferred term that carries the
    concept, HYPERAESTHESIA, is present in both corpora (8 161 FAERS reports; 523 Canadian
    reaction rows) and meets the signal criterion for all four opioids, remifentanil
@@ -110,6 +114,9 @@ manuscript's number-to-source table.
 | `19_leave2024_hyperaesthesia.csv` | Both readings of the 2024 restriction, side by side with their definitions. An earlier version of this analysis mislabelled the 2015–2023 window as leave-2024-out. |
 | `20_2024cluster_membership.csv` | Re-queried membership of the 2024 reports in the case series, per cohort: sufentanil 7 of 7, fentanyl 5 of 17, morphine 0 of 21. |
 | `21_alternative_proxy_terms.csv` | The term-substitution pressure test: the comparison on INADEQUATE ANALGESIA, which reverses the ordering across three of the four opioids. |
+| `_r6_term_level_check.py` / `.csv` | Single pass over all 4 474 923 Canadian reaction rows: 0 for HYPERALGESIA and 0 for HYPERESTHESIA against 523 for HYPERAESTHESIA across 114 in-use terms of the same family. The corpus side of R6-19. |
+| `_r6_term_dictionary_check.py` / `.csv` | The MedDRA-coded ADReCS v3.3 ontology, 15 317 entries, none named Hyperalgesia; the string is a synonym of three distinct terms (10020568 included), and the file ends with hand-read public proxies (Cochrane MedDRA 10020573; MeSH D006930 vs D006941) with their URLs. The dictionary side of R6-19. The ontology xlsx is gitignored. |
+| `22_meddra_term_verification.md` | Readable summary of the R6-19 evidence chain and its disclosure. |
 | `cv/cv_indication_strata.csv` | Canada Vigilance stratified by the recorded indication. Rendered as Table 5. |
 | `cv/cv_depth_strata.csv` | Canada Vigilance stratified by the number of reaction terms per report, with Mantel–Haenszel adjustment. Rendered as Table 6. |
 | `cv/cv_reaction_onset_completeness.csv` | Completeness of the Canadian reaction-onset fields, the counted reason no time-to-onset analysis was attempted. Appendix A1.9. |
@@ -261,7 +268,17 @@ as which file type, the metadata the submission form asks for, and the checks th
     preferred term returns zero by construction. `10_term_dictionary.csv` (Table S4)
     records the verification for every outcome term; the five unretrievable strings are
     reported as not retrievable, never as evidence of absence. Anyone reusing this
-    pipeline for another syndrome should run the same check first.
+    pipeline for another syndrome should run the same check first. The dictionary-level
+    claim for HYPERALGESIA rests on two artifacts plus two hand-read public proxies,
+    because MedDRA is subscription-only and no first-party extract of its hierarchy can
+    be redistributed here: `_r6_term_dictionary_check.py` (ADReCS v3.3, 15 317
+    MedDRA-coded entries, none named Hyperalgesia; the string is a synonym of three
+    distinct terms, 10020568 included) and `_r6_term_level_check.py` (a single pass over
+    all 4 474 923 Canadian reaction rows: 0 for HYPERALGESIA and 0 for HYPERESTHESIA
+    against 523 for HYPERAESTHESIA among 114 in-use terms of the same family). The
+    proxies (Cochrane MedDRA 10020573; MeSH D006930 vs D006941) are recorded in the
+    `DECLARED_EXTERNAL_PROXIES` block of `_r6_term_dictionary_check.csv` with their
+    URLs. The ontology xlsx is third-party and gitignored, like the two corpora.
 12. **MedDRA release differs between the corpora.** The Canadian extract states the
     release on every reaction row (v.27.1 on 4 474 767 of 4 474 923 rows; 156 blank);
     openFDA exposes none and the FAERS corpus spans quarterly releases from 2004, so

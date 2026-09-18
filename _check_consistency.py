@@ -511,6 +511,70 @@ if os.path.exists(P(MS)):
         "lowest level term" in td["HYPERALGESIA"]["MedDRA_level_note"].lower()
         and "HYPERAESTHESIA" in td["HYPERALGESIA"]["MedDRA_level_note"], True)
 
+    # ---------------------------------------------------------------------
+    # (8c) R6-19：低位语前提必须由产物坐实，而不是断言（Round-6 A1 Issue 4）
+    #   MedDRA 本身订阅制，无一手层级抽取可入库，故以两条计算产物 + 一组手工
+    #   抄录的公开旁证支撑。断言一律「从产物读出再与正文比对」+ 禁止性断言。
+    # ---------------------------------------------------------------------
+    def verdict_of(path):
+        out, started = {}, False
+        with open(P(path), encoding="utf-8-sig") as f:
+            for r in csv.reader(f):
+                if not r or len(r) < 2:
+                    continue
+                if r[0] == "VERDICT":
+                    started = True
+                    continue
+                if started and r[0] != "DECLARED_EXTERNAL_PROXIES":
+                    out[r[0]] = r[1]
+        return out
+
+    lv = verdict_of("_r6_term_level_check.csv")
+    dc = verdict_of("_r6_term_dictionary_check.csv")
+    chk("[R6-19] 加拿大普查行数 == 手稿口径", int(lv["reaction_rows_scanned"]), 4474923)
+    chk("[R6-19] v.27.1 行数 == 手稿口径", int(lv["reaction_rows_tagged_v27_1"]), 4474767)
+    chk("[R6-19] 空白版本行数 == 手稿口径", int(lv["reaction_rows_with_blank_version"]), 156)
+    chk("[R6-19] v.27.1 + 空白 == 扫描行数",
+        int(lv["reaction_rows_tagged_v27_1"]) + int(lv["reaction_rows_with_blank_version"]),
+        int(lv["reaction_rows_scanned"]))
+    chk("[R6-19] HYPERALGESIA 行数", int(lv["HYPERALGESIA_rows_any_version"]), 0)
+    chk("[R6-19] HYPERESTHESIA 行数", int(lv["HYPERESTHESIA_rows_any_version"]), 0)
+    chk("[R6-19] 家族内在用首选语个数", int(lv["distinct_terms_in_family"]), 114)
+    chk("[R6-19] HYPERAESTHESIA 行数 == 词典 CSV 的 523",
+        int(lv["HYPERAESTHESIA_rows_any_version"]),
+        int(td["HYPERAESTHESIA"]["Canada_reaction_rows_whole_corpus"]))
+    chk("[R6-19] ADReCS 条目总数", int(dc["rows_in_ontology"]), 15317)
+    chk("[R6-19] ADReCS 中名为 HYPERALG* 的条目数", int(dc["entries_named_HYPERALG*"]), 0)
+    chk("[R6-19] 以该串为同义词的不同术语数",
+        int(dc["distinct_carriers_of_hyperalgesia_as_synonym"]), 3)
+    carriers = [line for line in
+                open(P("_r6_term_dictionary_check.csv"), encoding="utf-8-sig")
+                if line.startswith("DISTINCT_CARRIER")]
+    chk("[R6-19] DISTINCT_CARRIER 行数 == 计数", len(carriers),
+        int(dc["distinct_carriers_of_hyperalgesia_as_synonym"]))
+    chk("[R6-19] 10020568 在携带者名单中",
+        any("10020568" in c for c in carriers), True)
+    chk("[R6-19] Cochrane 旁证码", dc.get("cochrane_meddra_code_for_Hyperalgesia"), "10020573")
+    chk("[R6-19] MeSH 旁证两个描述符",
+        (dc.get("mesh_descriptor_for_Hyperalgesia"),
+         dc.get("mesh_descriptor_for_Hyperesthesia")), ("D006930", "D006941"))
+
+    # 正文绑定：表 S4 注必须写进两个产物与旁证的值，且以 proxy-verified 定性
+    s4_note_i = txt.index("The dictionary-level claim for HYPERALGESIA")
+    s4_note = txt[s4_note_i:txt.index("### Table S5", s4_note_i)]
+    for needle in ("15 317", "10020568", "10050100", "10053552", "4 474 923",
+                   "114 distinct terms", "_r6_term_dictionary_check.csv",
+                   "_r6_term_level_check.csv", "10020573", "D006930", "D006941",
+                   "[34]", "[35]", "proxy-verified"):
+        chk(f"[R6-19] 表 S4 注含「{needle}」", needle in s4_note, True)
+    # 禁止性断言：被新证据否证的全称量词不得复辟（铁律①）
+    chk("[R6-19] 禁止「the only term in the dictionary that carries the concept」复辟",
+        "the only term in the dictionary that carries the concept" in txt, False)
+    # §2.3 与 §3.2 的正文表述须与表 S4 同步（carried by，而非悬空的 mapping to）
+    main_body = txt[txt.index("## 1. Introduction"):txt.index("## Acknowledgements")]
+    chk("[R6-19] 正文两处以 carried by 表述层级", main_body.count("lowest level term carried by"), 2)
+    chk("[R6-19] 正文挂上新引证 [22, 34, 35]", "[22, 34, 35]" in main_body, True)
+
     # Table S4 渲染后的每一个单元格必须与 CSV 一致（防止表格与产物脱钩）
     def s4_disp(v):
         return "\u2014" if int(v) == 0 else f"{int(v):,}".replace(",", " ")

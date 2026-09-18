@@ -13,8 +13,19 @@
   2) 相邻词短语检索：patient.reaction.reactionmeddrapt:"TERM"
        - 分析字段按 token 切分；若某 PT 含相邻 token 序列即命中。
        - 返回 0 ⇒ 该串不作为 PT 出现在语料中（既不存在或从未被用）
-  3) 词典级结论（人工，写入 NOTES）：HYPERALGESIA 非 PT，而是 PT
-     HYPERAESTHESIA(MedDRA 10020568) 下的低位语(LLT)。
+  3) 词典级结论：HYPERALGESIA 非 PT，而是 PT HYPERAESTHESIA(MedDRA 10020568)
+     下的低位语(LLT)。该结论此前只以「人工」标注、无产物支撑（Round-6 A1 Issue 4
+     要求坐实而非断言），现由两条独立产物绑定：
+       (i)  _r6_term_level_check.csv —— 加拿大 v.27.1 全库家族普查：家族内在用
+            首选语 114 个，HYPERAESTHESIA 523 反应行，HYPERALGESIA 与
+            HYPERESTHESIA 均为 0 行；
+       (ii) _r6_term_dictionary_check.csv —— ADReCS v3.3（MedDRA 编码本体，15 317
+            条目）中无任何条目名为 Hyperalgesia，该串作为 10020568 的同义词出现
+            （另有 10050100 与 10053552 两个术语也以之为同义词，共 3 个不同术语）；
+            该文件末尾另附 DECLARED_EXTERNAL_PROXIES 区块，逐条记录手工抄录的公开
+            旁证及其 URL（Cochrane 给 Hyperalgesia 的 MedDRA 码 10020573、MeSH
+            D006930 与 D006941 之分），供表 S4 注按值绑定。
+     MedDRA 层次本身属订阅制资源，故上述均为旁证式核验、非一手词典抽取；披露见正文表 S4 注。
 
 输出：10_term_dictionary.csv（表 S4 的数据源）
 """
@@ -62,7 +73,7 @@ def api_total(search):
 
 # (term, group, in_analysis, note)
 TERMS = [
-    ("HYPERALGESIA",             "narrow",  "yes", "not a MedDRA preferred term; lowest level term carried by preferred term HYPERAESTHESIA (10020568)"),
+    ("HYPERALGESIA",             "narrow",  "yes", "not a MedDRA preferred term; lowest level term carried by the preferred term HYPERAESTHESIA (10020568); no preferred term of that name in v27.1, verified against a public MedDRA-coded ontology and against the release census"),
     ("ALLODYNIA",                "narrow",  "yes", "retrievable preferred term in both corpora"),
     ("PAIN",                     "surrogate", "yes", "retrievable preferred term in both corpora"),
     ("PAIN INCREASED",           "broad",   "yes", "no report in either corpus; not confirmed as a current preferred term"),
@@ -79,7 +90,7 @@ TERMS = [
     ("HYPERAESTHESIA",           "dictionary proxy", "yes", "preferred term carrying the hyperalgesia concept (MedDRA 10020568)"),
     ("HYPERPATHIA",              "dictionary proxy", "yes", "retrievable preferred term; painful-syndrome sibling of hyperalgesia"),
     ("PROCEDURAL PAIN",          "dictionary proxy", "yes", "retrievable preferred term nearest to POSTOPERATIVE PAIN"),
-    ("CHRONIC PAIN SYNDROME",    "dictionary proxy", "yes", "retrievable preferred term nearest to CHRONIC PAIN"),
+    ("CHRONIC PAIN SYNDROME",    "dictionary proxy", "yes", "not a preferred term: the only occurrence is the free text 'chronic pain syndrome' in safetyreportid 9291134 (received 9 October 2012), which carries no reactionmeddraversionpt, whereas every coded term in that report carries v16.0"),
     ("DRUG WITHDRAWAL SYNDROME", "dictionary proxy", "yes", "retrievable preferred term nearest to OPIOID WITHDRAWAL SYNDROME"),
 ]
 
@@ -111,11 +122,21 @@ print("   MedDRA 版本分布:", cv_ver)
 for t, *_ in TERMS:
     print(f"  {t:28s} canada_rows={cv_pt[t.upper()]}")
 
+# 「计数 > 0 ⇒ 可作 PT 检索」只是一条启发式，存在一个已证反例：
+#   CHRONIC PAIN SYNDROME 的 FAERS 唯一命中（safetyreportid 9291134，2012-10-09）
+#   是该报告里的自由文本，不携带 reactionmeddraversionpt，而同一报告里所有已编码
+#   术语都是 v16.0 —— 即它不是编码词典里的首选语。此前这一行只在 CSV 里手工改过、
+#   脚本未同步，导致重新生成时把正确值冲回错误值。现在把例外写进源头，
+#   使「脚本 → CSV → 表 S4」单向可复现。
+RETRIEVABLE_OVERRIDE = {
+    "CHRONIC PAIN SYNDROME": "no",
+}
+
 rows = []
 for t, grp, inan, note in TERMS:
     e, p = faers_exact[t], faers_phrase[t]
     c = cv_pt[t.upper()]
-    retrievable = "yes" if (e or c) else "no"
+    retrievable = RETRIEVABLE_OVERRIDE.get(t, "yes" if (e or c) else "no")
     rows.append({
         "Term": t,
         "Group": grp,

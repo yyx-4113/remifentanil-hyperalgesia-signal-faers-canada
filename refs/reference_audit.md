@@ -53,3 +53,31 @@
 # 结果：cited = 1..20；missing = none
 ```
 
+
+## 补录（R6-19，2026-09-18）：参考文献 21–35 的标识符核验
+
+第 2–6 轮审稿在 `reference_audit.md` 之外新增了 21–33 号文献，未回写本审计文件；本轮
+R6-19 又新增 34、35 号。为使 AI 声明「all 35 cited references verified by identifier」
+有可查证的载体，此处按同一方法（Crossref REST API 按 DOI 取出版方元数据，比对题名与
+年份）一次性补齐。原始返回存于 `refs/_r6_19_crossref_check.json`。
+
+| 编号 | 类型 | DOI / 标识 | 核验结论 |
+|---|---|---|---|
+| 21 | journal | 10.1097/ALN.0000000000000976 | Crossref 2016 *Anesthesiology*，题名一致 |
+| 22 | website | https://www.meddra.org | MSSO 订阅词典，无 DOI（同 12/13 号资源类条目） |
+| 23 | journal | 10.1002/pds.677 | Crossref 2001，题名一致 |
+| 24 | journal | 10.1002/pds.1742 | Crossref 2009，题名一致 |
+| 25 | journal | 10.1002/sim.2473 | Crossref 2006，题名一致 |
+| 26 | journal | 10.1002/pds.668 | Crossref 2002，题名一致 |
+| 27 | journal | 10.1097/ALN.0000000000000530 | Crossref 2015 *Anesthesiology*，题名一致 |
+| 28 | journal | 10.1002/pds.5105 | Crossref 2020，题名一致 |
+| 29 | journal | 10.2165/00002018-200629050-00003 | Crossref 2006，题名一致 |
+| 30 | journal | 10.1080/14740338.2017.1323867 | Crossref 2017，题名一致 |
+| 31 | journal | 10.1139/cjpp-2024-0078 | Crossref 2025，题名一致 |
+| 32 | journal | 10.1007/s40264-025-01560-7 | Crossref 2025，题名一致 |
+| 33 | journal | 10.1007/s40264-019-00899-y | Crossref 2020，题名一致 |
+| 34 | website | https://data.cochrane.org/concepts/r4hp39n833dx | 公开本体端点，实测返回 MedDRA 10020573 / MeSH D006930，无 DOI（资源类） |
+| 35 | journal | 10.1093/nar/gku1066 | Crossref 2015 *Nucleic Acids Research*，题名一致 |
+
+**结论**：35 条中 32 条经 Crossref 按 DOI 解析到唯一真实记录且题名一致；12、13、22、34
+号为数据库 / 词典 / 本体资源类条目，按期刊惯例以 URL + 访问日期引用，无 DOI 可核。

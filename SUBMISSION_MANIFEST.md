@@ -34,9 +34,9 @@
 | Article type | Original Article |
 | Title | Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: an observational head-to-head disproportionality analysis |
 | Running head | Remifentanil hyperalgesia reporting: two-database study |
-| Main text | **3 995 words** (Introduction to Conclusion, headings included) |
+| Main text | **3 994 words** (Introduction to Conclusion, headings included) |
 | Summary | **299 words**, structured (Introduction / Methods / Results / Discussion), no abbreviations, no references |
-| References | **33**, Vancouver style with DOIs |
+| References | **35**, Vancouver style with DOIs |
 | Tables | 6 in the main file (Table 4 in three panels: 4A, 4B, 4C) |
 | Figures | 2 |
 | Supplementary tables | 9 (S1–S9); S1 is presented as two panels, each 27 system organ classes × 8 columns; S5 is the complete head-to-head matrix for all three comparators; S2 is supplied as a separate checklist file |
@@ -81,7 +81,7 @@ they can be removed in Word with no effect on the content.
 5. **Term-level verification.** The clinical word HYPERALGESIA is a MedDRA *lowest level term*, not a preferred term, so a query on it returns zero by construction. Every outcome term was checked for retrievability in both corpora (`10_term_dictionary.csv`, rendered as **Table S4**), five dictionary proxies were analysed on the same footing, the term set is specified in full as a custom query in **Table S6**, and the manuscript was rewritten from "no term is available" to "the term the clinic uses is not the term the dictionary stores". Recorded as **Amendment 1** in `ANALYSIS_PLAN.md`.
 6. **"Prespecified" purged.** No prospective registration exists, so every occurrence in the manuscript, cover letter, README, manifest and READUS-PV checklist was replaced with "specified in a dated analytical plan" plus an explicit statement that the analysis was not registered.
 7. **Over-claiming removed.** No statement now asserts that a head-to-head ratio above 1 is unique to one term, that ALLODYNIA has a direction (it is not estimable on n = 1), that spontaneous reporting is "structurally incapable" of detecting the syndrome, or that Canada reproduced the comparator-term direction. The group label was changed from "negative control" to "comparator term" throughout, and section 2.3 states explicitly that these terms are not negative controls in the causal sense.
-8. **Reference base rebuilt.** 33 references, all verified by identifier, cited in order of first appearance; the manuscript, cover letter, manifest and AI disclosure all state the same count.
+8. **Reference base rebuilt.** 35 references, all verified by identifier, cited in order of first appearance; the manuscript, cover letter, manifest and AI disclosure all state the same count.
 9. **The case-series finding is disclosed, not corrected (Round-5 P0-7).** Section 3.3 now reports that nine of the ten remifentanil HYPERAESTHESIA reports are separate identifiers for one 76-year-old man, evidenced in **Table S9**; the remaining seven Round-5 P0 items are all landed.
 10. **Cohort overlap and covariance are both disclosed.** **Table S8** gives the 4×4 overlap matrix and every ratio recomputed with the shared reports removed; Appendix S1 A1.5 gives every interval recomputed with the covariance between the two component ratios retained. Neither changes a conclusion; the overlap restriction does move PROCEDURAL PAIN versus fentanyl from 1.962 to 0.981.
 
@@ -98,7 +98,7 @@ they can be removed in Word with no effect on the content.
 | Check | Command | Result |
 |---|---|---|
 | Manuscript numbers traceable to source files (including every Table S1 cell and every Table S4–S9 count cell), plus submission constraints and the global invariants | `python _check_consistency.py` | see the run log |
-| Word counts inside the journal's limits | `python _wordcount.py` | main **3 995**; Summary **299** |
+| Word counts inside the journal's limits | `python _wordcount.py` | main **3 994**; Summary **299** |
 | Table S1 in step with the result files | `python _gen_table_s1.py` | idempotent; refuses to write if a proportion does not reproduce from the counts |
 | Nothing lost or invented in the markdown → docx conversion; no Chinese text; table shapes intact; figures still 600 ppi | `python _verify_docx.py` | see the run log |
 
@@ -140,6 +140,7 @@ so that every number in the paper still resolves to a file.)*
 | Both leave-2024 restrictions, side by side (§3.6, Appendix S1 A1.8) | `19_leave2024_hyperaesthesia.csv` |
 | 2024-cluster membership, re-queried (§3.3) | `20_2024cluster_membership.csv` |
 | Term-substitution pressure test on INADEQUATE ANALGESIA (§4.4, Table S5 note) | `21_alternative_proxy_terms.csv` |
+| Lowest-level-term premise for HYPERALGESIA, shown not asserted (R6-19, Table S4 note) | `22_meddra_term_verification.md`; `_r6_term_level_check.py` → `_r6_term_level_check.csv`; `_r6_term_dictionary_check.py` → `_r6_term_dictionary_check.csv` |
 | Canada reaction-onset field completeness (Appendix S1 A1.9) | `cv/cv_reaction_onset_completeness.csv` |
 | FAERS top-500 reaction-term distribution and its per-drug sums (§3.6, Appendix S1 A1.6) | `14_faers_pt_distribution.csv`; `_r6_ptdist.json` |
 | Exploratory FAERS system organ classes and term decomposition | `03_soc_27.csv`; `D_27SOC_openFDA事件级.md` |
@@ -160,6 +161,6 @@ sparse intervals, trend), `_r6_overlap_terms.py` (overlap-conditioned counts),
 
 *(Internal. Moved out of the manuscript on 18 September 2026 under Round-5 P0-1.)*
 
-1. **Journal requirements matched** (re-fetched 18 September 2026). Manuscript in `.docx`; all main tables with captions, both figure legends and the supplementary captions placed in the main text file; figures supplied as separate `.tif`/`.pdf` and not embedded in the document (verified: `Manuscript.docx` contains zero embedded media); Times New Roman 12 pt, double spaced, continuous line and page numbers. Main text 3 995 of 4 000 words; Summary 299 of 300; 33 of 30–40 references; 6 main tables (Table 4 in three panels), 9 supplementary tables and 1 supplementary appendix. PASS.
+1. **Journal requirements matched** (re-fetched 18 September 2026). Manuscript in `.docx`; all main tables with captions, both figure legends and the supplementary captions placed in the main text file; figures supplied as separate `.tif`/`.pdf` and not embedded in the document (verified: `Manuscript.docx` contains zero embedded media); Times New Roman 12 pt, double spaced, continuous line and page numbers. Main text 3 994 of 4 000 words; Summary 299 of 300; 35 of 30–40 references; 6 main tables (Table 4 in three panels), 9 supplementary tables and 1 supplementary appendix. PASS.
 2. **Data availability URL.** Verified by API that the repository is public, MIT-licensed and carries a release asset. The `github.com` page itself cannot be opened from this working environment, so one browser click by the author immediately before submitting remains the last manual check.
 3. **What is deliberately not done.** No reviewer suggestions (see §4). No X handle (the journal permits a blank field). No raw source data in the repository, and no credentials anywhere in the pack.

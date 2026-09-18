@@ -1,0 +1,129 @@
+{
+  "21": {
+    "ref": 21,
+    "doi": "10.1097/ALN.0000000000000976",
+    "tail": "Mauermann E, Filitz J, Dolder P, Rentsch KM, Bandschapp O, Ruppen W. Does fentanyl lead to opioid-induced hyperalgesia i",
+    "crossref_title": "Does Fentanyl Lead to Opioid-induced Hyperalgesia in Healthy Volunteers?",
+    "crossref_year": 2016,
+    "container": "Anesthesiology",
+    "ok": true
+  },
+  "22": {
+    "ref": 22,
+    "doi": null,
+    "tail": "MedDRA Maintenance and Support Services Organization. Medical Dictionary for Regulatory Activities (MedDRA), version 27."
+  },
+  "23": {
+    "ref": 23,
+    "doi": "10.1002/pds.677",
+    "tail": "Evans SJW, Waller PC, Davis S. Use of proportional reporting ratios (PRRs) for signal generation from spontaneous advers",
+    "crossref_title": "Use of proportional reporting ratios (PRRs) for signal generation from spontaneous adverse drug reaction repor",
+    "crossref_year": 2001,
+    "container": "Pharmacoepidemiology and Drug Safety",
+    "ok": true
+  },
+  "24": {
+    "ref": 24,
+    "doi": "10.1002/pds.1742",
+    "tail": "Bate A, Evans SJW. Quantitative signal detection using spontaneous ADR reporting. *Pharmacoepidemiol Drug Saf* 2009; **1",
+    "crossref_title": "Quantitative signal detection using spontaneous ADR reporting",
+    "crossref_year": 2009,
+    "container": "Pharmacoepidemiology and Drug Safety",
+    "ok": true
+  },
+  "25": {
+    "ref": 25,
+    "doi": "10.1002/sim.2473",
+    "tail": "Norén GN, Bate A, Orre R, Edwards IR. Extending the methods used to screen the WHO drug safety database towards analysis",
+    "crossref_title": "Extending the methods used to screen the WHO drug safety database towards analysis of complex associations and",
+    "crossref_year": 2006,
+    "container": "Statistics in Medicine",
+    "ok": true
+  },
+  "26": {
+    "ref": 26,
+    "doi": "10.1002/pds.668",
+    "tail": "van Puijenbroek EP, Bate A, Leufkens HGM, Lindquist M, Orre R, Egberts ACG. A comparison of measures of disproportionali",
+    "crossref_title": "A comparison of measures of disproportionality for signal detection in spontaneous reporting systems for adver",
+    "crossref_year": 2002,
+    "container": "Pharmacoepidemiology and Drug Safety",
+    "ok": true
+  },
+  "27": {
+    "ref": 27,
+    "doi": "10.1097/ALN.0000000000000530",
+    "tail": "Katz NP, Paillard FC, Edwards RR. Review of the performance of quantitative sensory testing methods to detect hyperalges",
+    "crossref_title": "Review of the Performance of Quantitative Sensory Testing Methods to Detect Hyperalgesia in Chronic Pain Patie",
+    "crossref_year": 2015,
+    "container": "Anesthesiology",
+    "ok": true
+  },
+  "28": {
+    "ref": 28,
+    "doi": "10.1002/pds.5105",
+    "tail": "Andreaggi CA, Novak EA, Mirabile ME et al. Safety concerns reported by consumers, manufacturers and healthcare professio",
+    "crossref_title": "Safety concerns reported by consumers, manufacturers and healthcare professionals: A detailed evaluation of op",
+    "crossref_year": 2020,
+    "container": "Pharmacoepidemiology and Drug Safety",
+    "ok": true
+  },
+  "29": {
+    "ref": 29,
+    "doi": "10.2165/00002018-200629050-00003",
+    "tail": "Hazell L, Shakir SAW. Under-reporting of adverse drug reactions: a systematic review. *Drug Saf* 2006; **29**: 385–96. h",
+    "crossref_title": "Under-Reporting of Adverse Drug Reactions",
+    "crossref_year": 2006,
+    "container": "Drug Safety",
+    "ok": true
+  },
+  "30": {
+    "ref": 30,
+    "doi": "10.1080/14740338.2017.1323867",
+    "tail": "Alatawi YM, Hansen RA. Empirical estimation of under-reporting in the US Food and Drug Administration Adverse Event Repo",
+    "crossref_title": "Empirical estimation of under-reporting in the U.S. Food and Drug Administration Adverse Event Reporting Syste",
+    "crossref_year": 2017,
+    "container": "Expert Opinion on Drug Safety",
+    "ok": true
+  },
+  "31": {
+    "ref": 31,
+    "doi": "10.1139/cjpp-2024-0078",
+    "tail": "Han W, Morris R, Bu K, Zhu T, Cheng F. Analysis of literature-derived duplicate records in the FDA Adverse Event Reporti",
+    "crossref_title": "Analysis of literature-derived duplicate records in the FDA Adverse Event Reporting System (FAERS) database",
+    "crossref_year": 2025,
+    "container": "Canadian Journal of Physiology and Pharmacology",
+    "ok": true
+  },
+  "32": {
+    "ref": 32,
+    "doi": "10.1007/s40264-025-01560-7",
+    "tail": "Janiczak S, Tanveer S, Tom K, Zhang R, Ma Y, Wolf L, Muñoz MA. An evaluation of duplicate adverse event reports characte",
+    "crossref_title": "An Evaluation of Duplicate Adverse Event Reports Characteristics in the Food and Drug Administration Adverse E",
+    "crossref_year": 2025,
+    "container": "Drug Safety",
+    "ok": true
+  },
+  "33": {
+    "ref": 33,
+    "doi": "10.1007/s40264-019-00899-y",
+    "tail": "Vogel U, van Stekelenborg J, Dreyfus B, Garg A, Habib M, Hosain R, Wisniewski A. Investigating overlap in signals from E",
+    "crossref_title": "Investigating Overlap in Signals from EVDAS, FAERS, and VigiBase®",
+    "crossref_year": 2020,
+    "container": "Drug Safety",
+    "ok": true
+  },
+  "34": {
+    "ref": 34,
+    "doi": null,
+    "tail": "Cochrane. Linked Data: condition — Hyperalgesia (MedDRA 10020573; MeSH D006930). Available at: https://data.cochrane.org"
+  },
+  "35": {
+    "ref": 35,
+    "doi": "10.1093/nar/gku1066",
+    "tail": "Cai MC, Xu Q, Pan YJ, et al. ADReCS: an ontology database for aiding standardization and hierarchical classification of ",
+    "crossref_title": "ADReCS: an ontology database for aiding standardization and hierarchical classification of adverse drug reacti",
+    "crossref_year": 2015,
+    "container": "Nucleic Acids Research",
+    "ok": true
+  }
+}

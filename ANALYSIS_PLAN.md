@@ -1,6 +1,6 @@
 # Analytical plan — Remifentanil and hyperalgesia reporting study
 
-**Status:** finalised 16 September 2026, *after* data extraction (16 September 2026) and *before* any result interpretation or manuscript writing. **Amendment 1** (same date, see below) records a term-level correction made on discovering that the clinical word for the outcome is not a preferred term; it was applied before the corrected results were interpreted. **Amendment 2** (18 September 2026, see the end of this document) records the analyses added in response to an independent peer-review panel: adjustment for reporting depth, stratification by recorded indication, the drug-role and report-version restrictions, the cohort-overlap sensitivity, the covariance of the head-to-head ratio, and the correction of a mislabelled 2024 sensitivity.
+**Status:** finalised 16 September 2026, *after* data extraction (16 September 2026) and *before* any result interpretation or manuscript writing. **Amendment 1** (same date, see below) records a term-level correction made on discovering that the clinical word for the outcome is not a preferred term; it was applied before the corrected results were interpreted. **Amendment 2** (18 September 2026, see the end of this document) records the analyses added in response to an independent peer-review panel: adjustment for reporting depth, stratification by recorded indication, the drug-role and report-version restrictions, the cohort-overlap sensitivity, the covariance of the head-to-head ratio, and the correction of a mislabelled 2024 sensitivity. **Amendment 3** (18 September 2026) records the Round-6 wording corrections. **Amendment 4** (18 September 2026) records the demonstration of the lowest-level-term premise requested by Round-6 reviewer A1.
 
 **Prospective registration:** **none.** This plan was written post hoc, once the data had been retrieved, because the analysis was conceived and executed by a single author without a pre-registered protocol. It is archived here so that the term groups, controls and probe can be inspected as a fixed record rather than as a narrative written after the fact. The absence of prospective registration is declared in the manuscript (Methods and Limitations) and in the READUS-PV checklist.
 
@@ -109,3 +109,45 @@ traceable to a documented reason rather than to a later rewrite.
 Word count moved from 3 996 to 3 995 (main text) and from 296 to 299 (Summary) as a result.
 The declared counts in the title page, the cover letter and the submission manifest were
 updated to match, and the consistency gate re-derives them from the manuscript.
+
+## Amendment 4 — the lowest-level-term premise is now shown, not asserted (18 September 2026)
+
+Round 6 (reviewer A1, issue 4) asked that the paper's load-bearing terminology claim —
+that HYPERALGESIA is a MedDRA *lowest level term* carried by the preferred term
+HYPERAESTHESIA (10020568), and is not a preferred term of its own — be demonstrated
+rather than stated. MedDRA is a subscription dictionary, so no first-party extract of
+its hierarchy can be archived with the repository. The premise is therefore supported by
+two computed artifacts and two hand-read public proxies, all four now archived or bound
+into the manuscript's Table S4 note, and the claim is stated as proxy-verified.
+
+1. **`_r6_term_level_check.py` → `_r6_term_level_check.csv`.** A single pass over all
+   4 474 923 Canadian reaction rows. It reproduces the release split already quoted in
+   the manuscript exactly (4 474 767 tagged v.27.1, 156 blank, both counted over every
+   row including the 157 with an empty reaction term). Its verdict: 0 rows for
+   HYPERALGESIA and 0 for HYPERESTHESIA, against HYPERAESTHESIA 523, HYPOAESTHESIA
+   13 463, PARAESTHESIA 12 444, DYSAESTHESIA 154 and ALLODYNIA 29, across 114 distinct
+   in-use terms of the same concept family — so the two zeros are a property of the
+   dictionary, not of disuse.
+2. **`_r6_term_dictionary_check.py` → `_r6_term_dictionary_check.csv`.** The MedDRA-coded
+   ADReCS v3.3 ADR ontology (15 317 entries) contains no entry named Hyperalgesia; the
+   string appears only in the synonym lists of three distinct terms — HYPERAESTHESIA
+   (10020568), APPLICATION SITE HYPERAESTHESIA (10050100) and ALLODYNIA (10053552). The
+   ontology xlsx is third-party and gitignored, like the two corpora; the script
+   re-downloads it and emits the CSV.
+3. **Declared proxies, hand-read.** Cochrane's linked-data export assigns the condition
+   Hyperalgesia the MedDRA code 10020573 (adjacent to the block occupied by preferred
+   term 10020568) and the MeSH descriptor D006930, distinct from the Hyperesthesia
+   descriptor D006941. These are recorded in the `DECLARED_EXTERNAL_PROXIES` block of
+   `_r6_term_dictionary_check.csv` with their URLs, and cited in the manuscript as
+   reference 34. The ADReCS ontology itself is cited as reference 35.
+
+Two prose corrections followed from the new evidence. The Table S6 statement that
+HYPERAESTHESIA is "the only term in the dictionary that carries the concept" is false —
+three distinct terms carry it as a synonym — and has been replaced by the three-carrier
+statement. And because a report whose text says "hyperalgesia" is coded to the preferred
+term that carries it, the manuscript's Table S4 note now records that the HYPERAESTHESIA
+counts analysed already include such reports. **No reported count changed.** References
+went from 33 to 35 (within the journal's 30–40 range) and the counts in the AI
+disclosure, the cover letter and the submission manifest were updated to match; the
+consistency gate now binds the two artifacts' verdict values and forbids the withdrawn
+"only term" phrasing from returning.

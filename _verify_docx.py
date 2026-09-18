@@ -171,6 +171,15 @@ def main() -> int:
                    "CHRONIC PAIN SYNDROME", "DRUG WITHDRAWAL SYNDROME",
                    "Retrievable as a preferred term", "lowest level term"]:
         chk(f"Supporting 含表 S4 结构「{needle}」", needle in si_text)
+    # R6-19：低位语前提的证据必须真正进入 Supporting Information 的表 S4 注，
+    # 不能只留在 markdown 里（docx 才是投稿件）。
+    for needle in ["10020568", "10020573", "D006930", "D006941", "proxy-verified",
+                   "_r6_term_dictionary_check.csv", "_r6_term_level_check.csv"]:
+        chk(f"Supporting 含 R6-19 证据「{needle}」", needle in si_text)
+    # 两条新参考文献在正文 docx 的 References 里（SI 不含参考文献节）
+    for needle in ["Cai MC", "data.cochrane.org/concepts/r4hp39n833dx",
+                   "all 35 cited references verified by identifier"]:
+        chk(f"Manuscript 含 R6-19 证据「{needle}」", needle in ms_text)
     chk("CoverLetter 含仓库 URL",
         "https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada" in cl_text)
     chk("CoverLetter 含 ORCID", "0009-0004-9698-6552" in cl_text)

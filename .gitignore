@@ -19,6 +19,9 @@ __pycache__/
 cv/extract_extrait.zip
 cv/cvponline_extract_20241130/
 cv/*.zip
+#    ADReCS ADR ontology：第三方公开可下载资源，不随仓库再分发；
+#    `_r6_term_dictionary_check.py` 按脚本内 URL 自行下载后生成本仓 CSV
+cv/adrecs_ADR_ontology_v3.3.xlsx
 
 # 4) 本地工作目录（含会话记忆、skill 下载暂存、探测脚本）
 .workbuddy/
