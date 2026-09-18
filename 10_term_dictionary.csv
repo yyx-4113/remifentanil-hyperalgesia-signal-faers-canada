@@ -2,18 +2,18 @@
 HYPERALGESIA,narrow,yes,0,0,0,no,"not a MedDRA preferred term; lowest level term carried by the preferred term HYPERAESTHESIA (10020568); no preferred term of that name in v27.1, verified against a public MedDRA-coded ontology and against the release census"
 ALLODYNIA,narrow,yes,1110,1110,29,yes,retrievable preferred term in both corpora
 PAIN,surrogate,yes,607176,2213093,49260,yes,retrievable preferred term in both corpora
-PAIN INCREASED,broad,yes,0,0,0,no,no report in either corpus; not confirmed as a current preferred term
-POSTOPERATIVE PAIN,broad,yes,0,0,0,no,no report in either corpus; not confirmed as a current preferred term
-CHRONIC PAIN,broad,yes,0,1,0,no,no report in either corpus; not confirmed as a current preferred term
-OPIOID WITHDRAWAL SYNDROME,broad,yes,0,0,0,no,no report in either corpus; not confirmed as a current preferred term
+PAIN INCREASED,broad,yes,0,0,0,no,"zero in both corpora; preferred-term status not dictionary-verified, so artefact and disuse are not distinguished here"
+POSTOPERATIVE PAIN,broad,yes,0,0,0,no,"zero in both corpora; preferred-term status not dictionary-verified, so artefact and disuse are not distinguished here"
+CHRONIC PAIN,broad,yes,0,1,0,no,"zero in both corpora; preferred-term status not dictionary-verified, so artefact and disuse are not distinguished here"
+OPIOID WITHDRAWAL SYNDROME,broad,yes,0,0,0,no,"zero in both corpora; preferred-term status not dictionary-verified, so artefact and disuse are not distinguished here"
 DRUG TOLERANCE,broad,yes,5013,8416,387,yes,retrievable preferred term in both corpora
 DRUG INEFFECTIVE,probe,yes,1299278,1350940,208365,yes,retrievable preferred term in both corpora
 NAUSEA,negative control,yes,778546,779387,64611,yes,retrievable preferred term in both corpora
 VOMITING,negative control,yes,462663,467932,39131,yes,retrievable preferred term in both corpora
 PRURITUS,negative control,yes,372941,526363,46769,yes,retrievable preferred term in both corpora
 CONSTIPATION,negative control,yes,213536,213678,13579,yes,retrievable preferred term in both corpora
-HYPERAESTHESIA,dictionary proxy,yes,8161,9773,523,yes,preferred term carrying the hyperalgesia concept (MedDRA 10020568)
-HYPERPATHIA,dictionary proxy,yes,43,43,0,yes,retrievable preferred term; painful-syndrome sibling of hyperalgesia
-PROCEDURAL PAIN,dictionary proxy,yes,27300,27488,1527,yes,retrievable preferred term nearest to POSTOPERATIVE PAIN
+HYPERAESTHESIA,dictionary proxy,yes,8161,9773,523,yes,"preferred term carrying it in both corpora (MedDRA 10020568); a generic term for increased sensitivity to sensory stimulation rather than a nociception-specific term, so a loose proxy for hyperalgesia"
+HYPERPATHIA,dictionary proxy,yes,43,43,0,yes,"retrievable preferred term; painful-syndrome concept sibling explored as a sensitivity term, substituting for no planned string"
+PROCEDURAL PAIN,dictionary proxy,yes,27300,27488,1527,yes,"retrievable preferred term nearest to POSTOPERATIVE PAIN; expected nociceptive pain from the procedure, not hyperalgesia"
 CHRONIC PAIN SYNDROME,dictionary proxy,yes,1,1,0,no,"not a preferred term: the only occurrence is the free text 'chronic pain syndrome' in safetyreportid 9291134 (received 9 October 2012), which carries no reactionmeddraversionpt, whereas every coded term in that report carries v16.0"
-DRUG WITHDRAWAL SYNDROME,dictionary proxy,yes,87541,102179,1667,yes,retrievable preferred term nearest to OPIOID WITHDRAWAL SYNDROME
+DRUG WITHDRAWAL SYNDROME,dictionary proxy,yes,87541,102179,1667,yes,"retrievable preferred term nearest to OPIOID WITHDRAWAL SYNDROME; a discontinuation syndrome, not hyperalgesia"

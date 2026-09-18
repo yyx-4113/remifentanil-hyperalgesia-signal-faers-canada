@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this code or these derived data, please cite it as below."
-title: "Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: an observational head-to-head disproportionality analysis"
+title: "Term selection, not the drug: how the chosen preferred term decides remifentanil hyperalgesia reporting in two national pharmacovigilance databases"
 abstract: >-
   Reproduction package for a head-to-head disproportionality analysis of remifentanil
   against fentanyl, sufentanil and morphine in the US FDA Adverse Event Reporting System
@@ -40,11 +40,11 @@ keywords:
   - disproportionality analysis
   - reporting odds ratio
   - MedDRA
-version: "1.6.0"
-date-released: "2026-09-18"
+version: "1.7.0"
+date-released: "2026-09-19"
 references:
   - type: article
-    title: "Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: a head-to-head disproportionality study with a terminology caution"
+    title: "Term selection, not the drug: remifentanil hyperalgesia reporting in two national pharmacovigilance databases: an observational head-to-head disproportionality analysis"
     authors:
       - family-names: Yang
         given-names: Yongxin

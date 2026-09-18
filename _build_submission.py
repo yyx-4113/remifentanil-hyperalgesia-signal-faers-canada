@@ -25,6 +25,8 @@ Then: python _verify_docx.py     (checks nothing was lost in conversion)
 from __future__ import annotations
 
 import os
+
+NEW_TITLE = "Term selection, not the drug: how the chosen preferred term decides remifentanil hyperalgesia reporting in two national pharmacovigilance databases"
 import re
 import shutil
 
@@ -286,9 +288,7 @@ def build_manuscript(sec: dict) -> str:
 def build_supporting(supp_tables: list[str]) -> str:
     doc = new_document()
     para(doc, "Supporting Information", bold=True, size=14, space_after=10)
-    para(doc, "Yang Y. Remifentanil and hyperalgesia reporting in two national "
-              "pharmacovigilance databases: an observational head-to-head "
-              "disproportionality analysis.", space_after=8)
+    para(doc, "Yang Y. " + NEW_TITLE + ".", space_after=8)
     for chunk in supp_tables:
         # Table S1 is eight columns wide (27 system organ classes x four opioids plus
         # three ratios), so the supplementary file uses a smaller table font.

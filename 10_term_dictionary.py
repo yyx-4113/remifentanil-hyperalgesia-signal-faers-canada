@@ -76,10 +76,14 @@ TERMS = [
     ("HYPERALGESIA",             "narrow",  "yes", "not a MedDRA preferred term; lowest level term carried by the preferred term HYPERAESTHESIA (10020568); no preferred term of that name in v27.1, verified against a public MedDRA-coded ontology and against the release census"),
     ("ALLODYNIA",                "narrow",  "yes", "retrievable preferred term in both corpora"),
     ("PAIN",                     "surrogate", "yes", "retrievable preferred term in both corpora"),
-    ("PAIN INCREASED",           "broad",   "yes", "no report in either corpus; not confirmed as a current preferred term"),
-    ("POSTOPERATIVE PAIN",       "broad",   "yes", "no report in either corpus; not confirmed as a current preferred term"),
-    ("CHRONIC PAIN",             "broad",   "yes", "no report in either corpus; not confirmed as a current preferred term"),
-    ("OPIOID WITHDRAWAL SYNDROME", "broad", "yes", "no report in either corpus; not confirmed as a current preferred term"),
+    # Round-7 A3: a zero alone does not make a string a non-preferred term. Only
+    # HYPERALGESIA was checked against a dictionary (ADReCS v3.3 census, _r6_* files);
+    # for these four the preferred-term status is unverified, so the zero may equally be
+    # disuse. The wording is deliberately two-tier.
+    ("PAIN INCREASED",           "broad",   "yes", "zero in both corpora; preferred-term status not dictionary-verified, so artefact and disuse are not distinguished here"),
+    ("POSTOPERATIVE PAIN",       "broad",   "yes", "zero in both corpora; preferred-term status not dictionary-verified, so artefact and disuse are not distinguished here"),
+    ("CHRONIC PAIN",             "broad",   "yes", "zero in both corpora; preferred-term status not dictionary-verified, so artefact and disuse are not distinguished here"),
+    ("OPIOID WITHDRAWAL SYNDROME", "broad", "yes", "zero in both corpora; preferred-term status not dictionary-verified, so artefact and disuse are not distinguished here"),
     ("DRUG TOLERANCE",           "broad",   "yes", "retrievable preferred term in both corpora"),
     ("DRUG INEFFECTIVE",         "probe",   "yes", "retrievable preferred term in both corpora"),
     ("NAUSEA",                   "negative control", "yes", "retrievable preferred term in both corpora"),
@@ -87,11 +91,14 @@ TERMS = [
     ("PRURITUS",                 "negative control", "yes", "retrievable preferred term in both corpora"),
     ("CONSTIPATION",             "negative control", "yes", "retrievable preferred term in both corpora"),
     # 词典代理：承载同一临床概念、且确实可检索的 PT
-    ("HYPERAESTHESIA",           "dictionary proxy", "yes", "preferred term carrying the hyperalgesia concept (MedDRA 10020568)"),
-    ("HYPERPATHIA",              "dictionary proxy", "yes", "retrievable preferred term; painful-syndrome sibling of hyperalgesia"),
-    ("PROCEDURAL PAIN",          "dictionary proxy", "yes", "retrievable preferred term nearest to POSTOPERATIVE PAIN"),
+    # Round-7 A1/A3: HYPERAESTHESIA is where the free-text word hyperalgesia lands, but
+    # it denotes sensitivity to any sensory stimulus, so it is a loose proxy, not an
+    # opioid-induced-hyperalgesia term.
+    ("HYPERAESTHESIA",           "dictionary proxy", "yes", "preferred term carrying it in both corpora (MedDRA 10020568); a generic term for increased sensitivity to sensory stimulation rather than a nociception-specific term, so a loose proxy for hyperalgesia"),
+    ("HYPERPATHIA",              "dictionary proxy", "yes", "retrievable preferred term; painful-syndrome concept sibling explored as a sensitivity term, substituting for no planned string"),
+    ("PROCEDURAL PAIN",          "dictionary proxy", "yes", "retrievable preferred term nearest to POSTOPERATIVE PAIN; expected nociceptive pain from the procedure, not hyperalgesia"),
     ("CHRONIC PAIN SYNDROME",    "dictionary proxy", "yes", "not a preferred term: the only occurrence is the free text 'chronic pain syndrome' in safetyreportid 9291134 (received 9 October 2012), which carries no reactionmeddraversionpt, whereas every coded term in that report carries v16.0"),
-    ("DRUG WITHDRAWAL SYNDROME", "dictionary proxy", "yes", "retrievable preferred term nearest to OPIOID WITHDRAWAL SYNDROME"),
+    ("DRUG WITHDRAWAL SYNDROME", "dictionary proxy", "yes", "retrievable preferred term nearest to OPIOID WITHDRAWAL SYNDROME; a discontinuation syndrome, not hyperalgesia"),
 ]
 
 print("== 1) FAERS 全库精确检索 + 相邻词短语检索 ==")

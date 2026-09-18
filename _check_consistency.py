@@ -733,7 +733,8 @@ if os.path.exists(P(MS)):
          [f"**{len(ref_nums)}**, Vancouver style with DOIs",
           f"{main_words:,}".replace(",", " "),
           # 题名已改为中性的描述式题名，"with a terminology caution" 不应再出现
-          "observational head-to-head disproportionality analysis", "9 (S1–S9)"]),
+          "how the chosen preferred term decides remifentanil hyperalgesia reporting",
+          "9 (S1–S9)"]),
         ("README.md", ["10_term_dictionary.csv", "ANALYSIS_PLAN.md"]),
     ]:
         if os.path.exists(P(rel)):
@@ -1229,9 +1230,14 @@ if os.path.exists(P(MS)):
     chk("[G-21] §4.6 给出量级", "one report in 200 to 500" in txt, True)
     for _r in ("one report in 538", "one in 387", "one in 296", "one in 216"):
         chk(f"[G-21] 表 2 脚注含 {_r}", _r in txt, True)
-    # T2-22：零值必须说明"不是观测到的计数"
-    chk("[G-21] 表 2 已说明零值语义",
-        "the column is numeric and cannot hold a marker for that" in txt, True)
+    # T2-22：零值必须说明"不是观测到的计数"。Round-7 起按语义而非逐字绑定：要求
+    # ①数值列自身无法标注零值的成因 ②脚注区分"词典已核验"与"未经核验"。逐字断言会在
+    # 正确的改写上报错（R6-19 已吃过一次），这里检查含义而不是句子。
+    _fn2 = txt[txt.index("OR = reporting odds ratio"):][:3200]
+    chk("[G-21] 表 2 脚注说明零值并非观测计数",
+        all(k in _fn2 for k in ("numeric", "marker", "not dictionary-verified")), True)
+    chk("[G-21] 表 2 脚注区分词典核验与未核验的零",
+        ("dictionary-verified" in _fn2 and "disuse" in _fn2), True)
     # T3-5：AI 声明的工具名、使用日期、隐私与合规
     _ai = txt[txt.index("**Use of generative artificial intelligence.**"):][:2200]
     for _need in ("WorkBuddy", "between 15 and 18 September 2026",
@@ -1312,6 +1318,105 @@ if os.path.exists(P(MS)):
         chk(f"[正文] 未出现「{bad}」", bad in txt, False)
 else:
     chk(f"[正文核验] 找不到 {MS}", False, True)
+
+
+# =========================================================================
+# Round-7 补强：门禁查不到设计与框定，但下面这些是数据/溯源问题，可以也应当被钉死。
+# 缩进 0、位于统计输出之前 —— 缩进的块若落在 else 分支里会静默不执行。
+# =========================================================================
+if os.path.exists(P(MS)):
+    _t7 = open(P(MS), encoding="utf-8").read()
+    _fn7 = _t7[_t7.index("OR = reporting odds ratio"):][:3200]
+    _leg7 = _t7[_t7.index("**Figure 1.**"):][:1800]
+
+    # i) HYPERPATHIA 两个稀疏格必须进表，精确下界取自该表
+    _sp7 = P("15_sparse_intervals.csv")
+    chk("[G-23] HYPERPATHIA 两个稀疏格已进入稀疏区间表",
+        len([r for r in csv.DictReader(open(_sp7, encoding="utf-8-sig"))
+             if r["case"].startswith("HYPERPATHIA")]), 2)
+    _h7 = {r["case"]: r for r in csv.DictReader(open(_sp7, encoding="utf-8-sig"))}
+    for _case, _want in [("HYPERPATHIA fentanyl, whole corpus (a=2)", "0.965"),
+                         ("HYPERPATHIA sufentanil, whole corpus (a=1)", "1.871")]:
+        if _case in _h7:
+            _dg = "fentanyl" if "fentanyl" in _case else "sufentanil"
+            chk(f"[G-23] HYPERPATHIA {_dg} 精确下界取自稀疏表",
+                _h7[_case]["exact_lower"], _want)
+            chk(f"[G-23] HYPERPATHIA {_dg} 区间出现在附录 A1.4",
+                _h7[_case]["exact_conditional_CI"] in _t7, True)
+    chk("[G-23] 附录 A1.4 声明六个格",
+        "for the six cells that drive the sparse terms" in _t7, True)
+
+    # ii) top-500 分布表服从权威结果表
+    _a7 = {r["PT"]: r for r in
+           csv.DictReader(open(P("01_faers_results.csv"), encoding="utf-8-sig"))}
+    _d7 = {r["term"]: r for r in
+           csv.DictReader(open(P("14_faers_pt_distribution.csv"), encoding="utf-8-sig"))}
+    _bad7 = []
+    for _pt, _r in _a7.items():
+        if _pt not in _d7:
+            continue
+        for _dg in ("REMIFENTANIL", "FENTANYL", "SUFENTANIL", "MORPHINE"):
+            _w = _r[f"{_dg}_a"] or "0"
+            if _d7[_pt][_dg] != _w:
+                _bad7.append(f"{_pt}/{_dg}: {_d7[_pt][_dg]} != {_w}")
+    chk("[G-23] top-500 分布表服从权威结果表", _bad7, [])
+    chk("[G-23] 吗啡 DRUG TOLERANCE 分布计数 == 79",
+        _d7["DRUG TOLERANCE"]["MORPHINE"], "79")
+    _m7 = sum(int(r["MORPHINE"]) for r in _d7.values())
+    chk("[G-23] 吗啡术语合计与正文一致", f"{_m7:,}".replace(",", " ") in _t7, True)
+
+    # iii) openFDA 访问日期同口径
+    _mth7 = _t7[_t7.index("**FAERS (primary).**"):][:600]
+    _ack7 = _t7[_t7.index("**Data availability.**"):][:1200]
+    chk("[G-23] Methods 写明复核重查",
+        "re-queried for verification on 18 September 2026" in _mth7, True)
+    chk("[G-23] 致谢写同一口径",
+        "re-queried for verification on 18 September 2026" in _ack7, True)
+    chk("[G-23] 不再出现并列双访问日旧写法",
+        "accessed 16 and 18 September 2026" in _t7, False)
+
+    # iv) 禁止性：四个未核验串不得被断言为"非首选语"
+    # CHRONIC PAIN SYNDROME 是有证据的例外（2012 自由文本），不是四串之一，故排除
+    _pat7 = (r"(PAIN INCREASED|POSTOPERATIVE PAIN|CHRONIC PAIN(?! SYNDROME)|"
+             r"OPIOID WITHDRAWAL SYNDROME)"
+             r"[^.]{0,80}?(?:is|are) not (?:a )?preferred terms?")
+    chk("[G-23] 表 2 脚注未断言四串为非首选语",
+        re.search(_pat7, _fn7) is not None, False)
+    chk("[G-23] 图 1 图例未断言四串为非首选语",
+        re.search(_pat7, _leg7) is not None, False)
+    chk("[G-23] 脚注保留词典核验与未核验的二分",
+        "only HYPERALGESIA is dictionary-verified" in _fn7, True)
+
+    # v) READUS-PV 不得引用不存在的章节 / 不得声称个案文件不可得
+    _ck7 = open(P("I_TableS2_READUS-PV_checklist.md"), encoding="utf-8").read()
+    chk("[G-23] READUS-PV 不引用 §3.8/§3.9 或 pseudo-signal",
+        re.search(r"section 3\.9|sections? 3\.[89]|pseudo-signal", _ck7) is not None, False)
+    chk("[G-23] READUS-PV 7d 不再声称个案文件不可得",
+        "case-level FDA files" in _ck7, False)
+
+    # vi) 加拿大反应行数全稿统一
+    chk("[G-23] 反应行数统一为 4 474 923", "4 474 922 reaction rows" in _t7, False)
+    # A1.9 段落被硬换行打断，故按成分检查而非整串
+    chk("[G-23] 起病解析的 1 行跳过已披露",
+        ("reaches 4 474 922 rows" in _t7.replace("\n", " ")
+         and "skips one short row" in _t7.replace("\n", " ")), True)
+    chk("[G-23] 表 S1 的 20 692 687 单位为 reports 而非 reactions",
+        "20 692 687 reports in total" in _t7, True)
+
+    # Round-7 内容自身的存在性（防回退）
+    chk("[G-23] 题名已改为术语选择而非信号",
+        _t7.splitlines()[0].startswith("# Term selection, not the drug"), True)
+    chk("[G-23] HYPERAESTHESIA 已标注为泛感觉术语",
+        re.search(r"HYPERAESTHESIA[^.]{0,240}sensitivity to any sensory stimulus",
+                  _t7) is not None, True)
+    chk("[G-23] 信号判据的下限适用于三条子句",
+        "the *a* ≥ 3 floor applies to all three clauses" in _t7, True)
+    chk("[G-23] 正文说明无首选语承载该综合征",
+        "defining measurement is a change in pain sensitivity" in _t7, True)
+    chk("[G-23] 协方差段承认一处区间翻转",
+        "one interval does flip significance" in _t7, True)
+    chk("[G-23] 代理组已分角色",
+        "they are not interchangeable, playing four roles" in _t7, True)
 
 print(f"==== PASS {len(OK)} / FAIL {len(BAD)} ====")
 for b in BAD:

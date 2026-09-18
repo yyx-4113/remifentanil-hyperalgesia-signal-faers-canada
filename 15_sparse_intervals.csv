@@ -1,4 +1,6 @@
 ﻿case,a,b,c,d,ROR,woolf_CI,exact_conditional_CI,midP_CI,haldane_CI,woolf_lower,exact_lower,haldane_lower,woolf_declares_signal,exact_declares_signal
+"HYPERPATHIA fentanyl, whole corpus (a=2)",2,121817,41,20570827,8.2374,1.992-34.057,0.965-31.715,1.340-28.703,2.839-36.456,1.992,0.965,2.839,yes,no
+"HYPERPATHIA sufentanil, whole corpus (a=1)",1,6512,42,20686132,75.6337,10.408-549.631,1.871-445.213,3.699-390.233,21.998-571.330,10.408,1.871,21.998,yes,yes
 "HYPERAESTHESIA remifentanil, whole corpus (a=10)",10,5365,8151,20684061,4.7299,2.542-8.799,2.266-8.710,2.401-8.441,2.709-9.101,2.542,2.266,2.709,yes,yes
 "ALLODYNIA remifentanil, whole corpus (a=1)",1,5374,1109,20686203,3.471,0.488-24.668,0.088-19.387,0.173-17.153,1.049-25.816,0.488,0.088,1.049,no,no
 "HYPERAESTHESIA remifentanil, 2024 only (a=8)",8,440,329,1318329,72.856,35.908-147.824,30.997-146.500,33.396-140.845,38.830-153.503,35.908,30.997,38.83,yes,yes

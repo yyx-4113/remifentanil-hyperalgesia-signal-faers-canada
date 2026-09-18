@@ -1,12 +1,12 @@
 # Remifentanil and hyperalgesia reporting: FAERS + Canada Vigilance two-database disproportionality study
 
 **Repository:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada>
-**Current release:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.6.0>
+**Current release:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.7.0>
 (earlier releases <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.0.0> through <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.5.0>)
 
 Reproduction package for the study:
 
-> **Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: an observational head-to-head disproportionality analysis**
+> **Term selection, not the drug: how the chosen preferred term decides remifentanil hyperalgesia reporting in two national pharmacovigilance databases**
 
 The study performs a head-to-head disproportionality analysis of remifentanil against
 fentanyl, sufentanil and morphine in two independent national spontaneous reporting
@@ -146,6 +146,22 @@ manuscript's number-to-source table.
 ---
 
 ## 3. Reproducing the analysis
+
+### Round-7 scripts (18 September 2026)
+
+| Script | What it does |
+|---|---|
+| `_r7_hyperpathia_intervals.py` | Adds the two HYPERPATHIA sparse cells to `15_sparse_intervals.csv` (Woolf, exact conditional, mid-P, Haldane). Self-checks against the published ALLODYNIA row before writing; the exact/mid-P root mapping is easy to invert and a first attempt produced bounds above their own upper limits. |
+| `_r7_product_sync.py` | Pushes script-source corrections into derived artifacts: term notes from `10_term_dictionary.py` into `10_term_dictionary.csv`, and authoritative counts from `01_faers_results.csv` over `14_faers_pt_distribution.csv` (morphine DRUG TOLERANCE read 0 where the count is 79). |
+| `_r7_trim.py` … `_r7_trim4.py` | Word-budget passes after the Round-7 additions (4 503 → 3 995). Exact-pair replacements, each asserted to occur once; detail moved into Appendix S1 A1.10 rather than deleted. |
+| `_r7_gate_patch.py` | Retargets two gate assertions and inserts the G-23 block. |
+
+Two result files carry a caveat worth repeating here:
+`04_sensitivity_leave2024_hyperaesthesia.csv` is the **earlier, mis-specified** 2015–2023
+window, retained for transparency; the correct leave-2024-out result is
+`19_leave2024_hyperaesthesia.csv`. And `14_faers_pt_distribution.csv` comes from the
+openFDA `count` endpoint with a 500-row cap per cohort, so counts for terms outside a
+cohort's own top 500 are completed from `01_faers_results.csv` (see `_r7_product_sync.py`).
 
 ### 3.1 Requirements
 

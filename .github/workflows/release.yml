@@ -115,6 +115,15 @@ jobs:
             19_leave2024_hyperaesthesia.csv \
             20_2024cluster_membership.csv \
             21_alternative_proxy_terms.csv \
+            _r7_hyperpathia_intervals.py \
+            _r7_product_sync.py \
+            _r7_trim.py \
+            _r7_trim2.py \
+            _r7_trim3.py \
+            _r7_gate_patch.py \
+            REVIEW_round7_2026-09-18.md \
+            RESPONSE_round7_2026-09-18.md \
+            review_round7/ \
             _r6_term_level_check.py \
             _r6_term_level_check.csv \
             _r6_term_dictionary_check.py \

@@ -122,7 +122,7 @@ def metrics(a, drug_n, pt_n, N):
         ic = math.log2((a*N)/((a+b)*(a+c)))
         var_ic = (1/a + 1/(a+b) + 1/(a+c) + 1/N)/(math.log(2)**2)
         ic025 = ic - 1.96*math.sqrt(var_ic); o["IC"] = ic; o["IC025"] = ic025
-        o["signal"] = (a >= 3 and lo is not None and lo > 1) or (prr >= 2 and chi2 >= 4) or (ic025 > 0)
+        o["signal"] = a >= 3 and ((lo is not None and lo > 1) or (prr >= 2 and chi2 >= 4) or (ic025 > 0))
     else:
         o["ROR"] = o["PRR"] = o["IC"] = None; o["signal"] = False
     return o

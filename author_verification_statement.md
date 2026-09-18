@@ -1,6 +1,6 @@
 # Author Verification Statement
 
-**Manuscript title:** Remifentanil and hyperalgesia reporting in two national pharmacovigilance databases: an observational head-to-head disproportionality analysis
+**Manuscript title:** Term selection, not the drug: how the chosen preferred term decides remifentanil hyperalgesia reporting in two national pharmacovigilance databases
 
 **Reproduction repository:** `https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada`
 

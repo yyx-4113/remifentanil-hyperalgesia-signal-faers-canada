@@ -134,9 +134,16 @@ def main() -> int:
         "Table S6",
         "Table S9",
         "Appendix S1",
-        "defined a priori",
-        # 题名已改为中性描述式，限定语不再出现在题名里
-        "observational head-to-head disproportionality analysis",
+        # Round-7：不绑定整句，只绑定"先验/事后"这一区分仍在稿件中（Table 2 脚注改写过）
+        "a priori",
+        "after those zeros",
+        # 题名已改为术语选择式头条，限定语随之更换
+        "how the chosen preferred term decides remifentanil hyperalgesia reporting",
+        # Round-7 术语学内容本身必须进入 docx（图注/表注改写过，须防静默丢失）
+        "sensitivity to any sensory stimulus",
+        "dictionary-verified",
+        # A1.3 在 Supporting Information；正文 §2.4 的等价表述在 Manuscript
+        "a ≥ 3 and (the lower bound of the reporting odds ratio exceeded 1",
         "an adjacent-token search on CHRONIC PAIN returned one hit",
         # leave-2024-out 的两种口径都必须到稿（旧版只写了被误标的那一套）
         "Two restrictions of this table",
