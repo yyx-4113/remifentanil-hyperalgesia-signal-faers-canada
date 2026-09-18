@@ -1,7 +1,7 @@
 # Remifentanil and hyperalgesia reporting: FAERS + Canada Vigilance two-database disproportionality study
 
 **Repository:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada>
-**Current release:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.7.0>
+**Current release:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.7.1>
 (earlier releases <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.0.0> through <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.5.0>)
 
 Reproduction package for the study:
@@ -227,8 +227,14 @@ this environment; Arial is used instead.
 ```
 python _wordcount.py               # main text and Summary within the journal's limits
 python _gen_table_s1.py            # regenerate Table S1 from the two result files
-python _check_consistency.py       # must print PASS 440 / FAIL 0 and exit 0
+python _gen_table4.py              # regenerate Tables 4A-4C and Table S5
+python _check_consistency.py       # must print FAIL 0 and exit 0 (588 assertions at v1.7.1)
 ```
+
+The two generators rewrite their own blocks of the manuscript and must leave the file
+byte-identical when the result files have not changed; `_gen_table4.py` refuses to run if
+its target region contains a heading it does not own. The release workflow runs both and
+fails on any diff, so a result file that drifts from the manuscript cannot ship.
 
 `_check_consistency.py` asserts that every number quoted in `I_正文_IMRaD_en.md` equals the
 corresponding value in the result files, and additionally checks the submission-level
@@ -240,7 +246,7 @@ presence of the figure files). Re-run both after changing any data or manuscript
 
 ```
 python _build_submission.py        # -> _upload/*.docx + figure files
-python _verify_docx.py             # must print PASS 68 / FAIL 0 and exit 0
+python _verify_docx.py             # must print FAIL 0 and exit 0 (89 assertions at v1.7.1)
 ```
 
 The `.docx` files are build artefacts and are not tracked in this repository; the pack is

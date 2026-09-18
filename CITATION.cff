@@ -40,11 +40,11 @@ keywords:
   - disproportionality analysis
   - reporting odds ratio
   - MedDRA
-version: "1.7.0"
+version: "1.7.1"
 date-released: "2026-09-19"
 references:
   - type: article
-    title: "Term selection, not the drug: remifentanil hyperalgesia reporting in two national pharmacovigilance databases: an observational head-to-head disproportionality analysis"
+    title: "Term selection, not the drug: how the chosen preferred term decides remifentanil hyperalgesia reporting in two national pharmacovigilance databases"
     authors:
       - family-names: Yang
         given-names: Yongxin

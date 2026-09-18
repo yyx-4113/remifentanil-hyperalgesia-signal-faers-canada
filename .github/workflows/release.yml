@@ -36,6 +36,11 @@ jobs:
           python _gen_table_s1.py
           git diff --exit-code
 
+      - name: Regenerate Table 4 and confirm it is in step with the result files
+        run: |
+          python _gen_table4.py
+          git diff --exit-code
+
       - name: Run number-to-source consistency gate
         run: python _check_consistency.py
 
@@ -120,7 +125,9 @@ jobs:
             _r7_trim.py \
             _r7_trim2.py \
             _r7_trim3.py \
+            _r7_trim4.py \
             _r7_gate_patch.py \
+            _r7_derived_sync.py \
             REVIEW_round7_2026-09-18.md \
             RESPONSE_round7_2026-09-18.md \
             review_round7/ \

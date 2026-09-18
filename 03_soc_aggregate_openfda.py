@@ -179,7 +179,7 @@ with open(out, "w", newline="", encoding="utf-8-sig") as f:
     w.writerow(["## 警告：本表为事件级（PT 计数之和），同一报告含多个同 SOC 的 PT 会被重复计数；"])
     w.writerow(["##       报告级原生 SOC 以 Canada Vigilance 表（cv/cv_soc_27.csv）为准，本表仅作定性互证。"])
     w.writerow(["## 免 key 说明：count+search 在 limit=500 可免 key；limit=1000 报 API_KEY_MISSING。"])
-    w.writerow(["N_total_reactions", N])
+    w.writerow(["N_total_reports", N])
     w.writerow(["Drug", "Total_reports", "Top500_PT_mapping_coverage%"])
     for name in DRUGS:
         w.writerow([name, drug_tot[name], cov[name]])

@@ -1,6 +1,6 @@
 # Analytical plan — Remifentanil and hyperalgesia reporting study
 
-**Status:** finalised 16 September 2026, *after* data extraction (16 September 2026) and *before* any result interpretation or manuscript writing. **Amendment 1** (same date, see below) records a term-level correction made on discovering that the clinical word for the outcome is not a preferred term; it was applied before the corrected results were interpreted. **Amendment 2** (18 September 2026, see the end of this document) records the analyses added in response to an independent peer-review panel: adjustment for reporting depth, stratification by recorded indication, the drug-role and report-version restrictions, the cohort-overlap sensitivity, the covariance of the head-to-head ratio, and the correction of a mislabelled 2024 sensitivity. **Amendment 3** (18 September 2026) records the Round-6 wording corrections. **Amendment 4** (18 September 2026) records the demonstration of the lowest-level-term premise requested by Round-6 reviewer A1.
+**Status:** finalised 16 September 2026, *after* data extraction (16 September 2026) and *before* any result interpretation or manuscript writing. **Amendment 1** (same date, see below) records a term-level correction made on discovering that the clinical word for the outcome is not a preferred term; it was applied before the corrected results were interpreted. **Amendment 2** (18 September 2026, see the end of this document) records the analyses added in response to an independent peer-review panel: adjustment for reporting depth, stratification by recorded indication, the drug-role and report-version restrictions, the cohort-overlap sensitivity, the covariance of the head-to-head ratio, and the correction of a mislabelled 2024 sensitivity. **Amendment 3** (18 September 2026) records the Round-6 wording corrections. **Amendment 4** (18 September 2026) records the demonstration of the lowest-level-term premise requested by Round-6 reviewer A1. **Amendment 5** (18 September 2026) records the Round-7 revisions. **Amendment 6** (19 September 2026) records the repair of the two regeneration scripts that the release pipeline exposed; neither amendment changes a result, a number or a conclusion.
 
 **Prospective registration:** **none.** This plan was written post hoc, once the data had been retrieved, because the analysis was conceived and executed by a single author without a pre-registered protocol. It is archived here so that the term groups, controls and probe can be inspected as a fixed record rather than as a narrative written after the fact. The absence of prospective registration is declared in the manuscript (Methods and Limitations) and in the READUS-PV checklist.
 
@@ -241,3 +241,51 @@ the four unverified strings non-preferred-terms, the READUS-PV phantom section r
 and the Canadian row count. Two older assertions were retargeted rather than re-worded
 around: one was keyed to a sentence whose wording moved while its requirement held, and the
 other to a title the panel made us change.
+
+## Amendment 6 (19 September 2026) — the regeneration scripts are brought back in step, and two of them stop being destructive
+
+The tag `v1.7.0` failed continuous integration at the step that regenerates a derived
+table and confirms the repository is unchanged. The failure was real and it was worth
+having. Two independent defects were behind it.
+
+**1. A script that deletes reviewed text.** `_gen_table4.py` replaced everything between
+`### Table 4A.` and `### Table S1`, and everything between `### Table S5` and
+`## Figure legends`. Both regions were empty of foreign content when the script was
+written (Round 2). They no longer are: Table 5 now sits between 4C and S1, and Tables
+S6–S9 with all of Appendix S1 sit between S5 and the figure legends. A run therefore
+deleted 240 lines of reviewed text — Table 5 and the appendix — and would have deleted
+them again on every subsequent run, for anyone reproducing the package. The manuscript
+was restored from `HEAD` and the script now (a) replaces only the regions it emits —
+4A→Table 5 and S5→S6 — and (b) refuses to run if either region contains a heading it
+does not recognise, so content that arrives there later stops the script instead of
+being swallowed. The same guard was added to `_gen_table_s1.py`, whose region is
+currently a single table and therefore safe, but which shared the pattern.
+
+**2. A script that had fallen several rounds behind.** Because it was last run in
+Round 2 and the manuscript had since been edited by hand in Rounds 5–7, the generator no
+longer reproduced the manuscript: its Table S1 caption still read "reactions in total"
+where the corrected wording is "reports in total" (Amendment 5), it printed the four
+comparator terms under a label §2.3 explicitly disclaims, it lacked the year-table
+reconciliation added for the *a*-versus-Σ count, it lacked the leave-2024-out and
+2024-cluster paragraphs that follow Table 4C, and its Table S5 note lacked the
+INADEQUATE ANALGESIA substitution. All of that is now emitted by the script, with every
+number read from `01_faers_results.csv`, `04_sensitivity_*.csv`,
+`19_leave2024_hyperaesthesia.csv`, `20_2024cluster_membership.csv` or
+`21_alternative_proxy_terms.csv`; only four corpus constants that no shipped file carries
+(11 882 968; 5 270; 5 375; 8 465) remain in the source, and each is asserted by
+`_check_consistency.py`, so a change to one cannot pass the gate unnoticed. Running
+`python _gen_table4.py` now reproduces the manuscript byte for byte.
+
+**3. A key that misdescribed its quantity.** The corpus total 20 692 687 is the number of
+*reports* carrying at least one reaction term — the openFDA `search` total — not a count
+of reaction rows. It was written into `02_route_stratified.csv` and `03_soc_27.csv` as
+`N_total_reactions` and is now `N_total_reports`, in the two artefacts and in the two
+scripts that write them; the reader accepts the old key as well, so an older export still
+loads. This is the same error of description that Amendment 5 corrected in the Table S1
+caption, caught in the same place.
+
+**Pipeline.** The release workflow now regenerates Table 4 alongside Table S1 and fails
+if either is out of step, so this class of drift cannot ship again. No number, result,
+conclusion, word of the manuscript text or submitted deliverable changes in this
+amendment: main text remains 3 995 words and the Summary 300, and the four gates read
+588/0, 3 995 and 300 within their windows, and 89/0.

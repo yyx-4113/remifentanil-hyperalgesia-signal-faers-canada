@@ -1,5 +1,5 @@
 ﻿## C1 Route-stratified disproportionality (openFDA aggregate)
-N_total_reactions,20692687
+N_total_reports,20692687
 
 Drug,Total(drug),RouteCode,RouteName,Count,PctOfDrug,KnownRouteCoverage%
 REMI,5375,042,"IV-NOS(静脉,未特指)",3185,59.26,184.3

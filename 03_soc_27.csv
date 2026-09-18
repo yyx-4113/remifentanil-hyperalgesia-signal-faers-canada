@@ -3,7 +3,7 @@
 ## 警告：本表为事件级（PT 计数之和），同一报告含多个同 SOC 的 PT 会被重复计数；
 ##       报告级原生 SOC 以 Canada Vigilance 表（cv/cv_soc_27.csv）为准，本表仅作定性互证。
 ## 免 key 说明：count+search 在 limit=500 可免 key；limit=1000 报 API_KEY_MISSING。
-N_total_reactions,20692687
+N_total_reports,20692687
 Drug,Total_reports,Top500_PT_mapping_coverage%
 REMIFENTANIL,5375,94.3
 FENTANYL,121819,96.9

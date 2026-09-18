@@ -71,7 +71,12 @@ def read_faers() -> tuple[list[dict], dict[str, int], int]:
         rows.append(dict(zip(header, next(csv.reader([l])))))
     rows = [{k.strip(): (v or "").strip() for k, v in r.items()} for r in rows]
 
-    n_total = next(int(l.split(",")[1]) for l in lines if l.startswith("N_total_reactions,"))
+    # N counts REPORTS in the corpus (openFDA `search` total of records carrying at
+    # least one reaction term), not reaction rows. The key was written as
+    # "N_total_reactions" in earlier releases and was renamed in v1.7.1 because it
+    # misdescribed the quantity; accept both so old exports still load.
+    n_total = next(int(l.split(",")[1]) for l in lines
+                   if l.startswith(("N_total_reports,", "N_total_reactions,")))
     return rows, cohorts, n_total
 
 
@@ -158,7 +163,7 @@ def build_block(cv_rows, cv_cohorts, fd_rows, fd_cohorts, fd_total) -> str:
         "reporting odds ratios for remifentanil against fentanyl and against morphine. "
         f"Cohorts were {cohort_list(cv_cohorts)} reports in Canada Vigilance, and "
         f"{cohort_list(fd_cohorts)} reports in the FAERS analysis, out of "
-        f"{count(fd_total)} reactions in total. Proportions are rounded to one decimal place "
+        f"{count(fd_total)} reports in total. Proportions are rounded to one decimal place "
         "and ratios to three. Rows are ordered by the remifentanil reporting odds ratio, "
         "descending, with classes in which remifentanil recorded no report listed last; for "
         "those classes no ratio is estimable and the cell carries a dash, so a dash means "
@@ -202,6 +207,15 @@ def main() -> int:
     text = open(MS, encoding="utf-8").read()
     start = text.index(HEADING)
     end = text.index(NEXT, start)
+    # Guard, added in v1.7.1 after _gen_table4.py was found to be deleting a
+    # whole region of reviewed text: refuse to overwrite anything but our own
+    # single table. If a later edit parks content between the two markers this
+    # stops instead of dropping it.
+    heads = [l for l in text[start:end].splitlines() if l.startswith(("# ", "## ", "### "))]
+    if heads != [HEADING]:
+        print(f"ABORT: the Table S1 region holds {len(heads)} headings ({heads}); "
+              f"refusing to overwrite content this script does not own")
+        return 1
     new = text[:start] + block + text[end:]
 
     changed = new != text

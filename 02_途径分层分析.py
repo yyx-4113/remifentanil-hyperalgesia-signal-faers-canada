@@ -169,7 +169,7 @@ out = os.path.join(os.path.dirname(__file__), "02_route_stratified.csv")
 with open(out, "w", newline="", encoding="utf-8-sig") as f:
     w = csv.writer(f)
     w.writerow(["## C1 Route-stratified disproportionality (openFDA aggregate)"])
-    w.writerow(["N_total_reactions", N])
+    w.writerow(["N_total_reports", N])
     w.writerow([])
     w.writerow(["Drug", "Total(drug)", "RouteCode", "RouteName", "Count", "PctOfDrug", "KnownRouteCoverage%"])
     for k in DRUGS:

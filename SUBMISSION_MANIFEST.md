@@ -74,7 +74,7 @@ they can be removed in Word with no effect on the content.
 
 **Closed.**
 
-1. **Remote repository created and pushed.** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada> is public, `main` is pushed and tag `v1.7.0` carries the `results-bundle.zip` release asset (v1.0.0-v1.5.0 remain available); **the v1.7.0 tag is pushed once the four gates below are green**. The Data availability statement resolves.
+1. **Remote repository created and pushed.** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada> is public, `main` is pushed and tag `v1.7.1` carries the `results-bundle.zip` release asset (v1.0.0-v1.6.0 remain available); **the v1.7.1 tag is pushed once the four gates below are green**. The Data availability statement resolves. The `v1.7.0` tag was pushed on 18 September and its workflow failed at the regeneration step, so no `v1.7.0` release exists; the tag is retained in the history and `v1.7.1` is the release the manuscript cites. What the failure exposed and how it was repaired is recorded as Amendment 6 in `ANALYSIS_PLAN.md`.
 2. **X (Twitter) handle** — the author has no X account, so this field is left blank. Nothing is required.
 3. **Editor's name** — the cover letter is addressed to **Professor Matt Wiles**, Editor-in-Chief, taken from the journal's published editorial board, not from memory.
 4. **Table S1 is tabulated.** Panel A (Canada Vigilance, report-level, authoritative) and panel B (FAERS, event-level, exploratory) are both grid tables, generated from `cv/cv_soc_27.csv` and `03_soc_27.csv` by `_gen_table_s1.py` and verified cell by cell by `_check_consistency.py`.
@@ -174,3 +174,17 @@ and the title changed, so this is released as `v1.7.0`. See `ANALYSIS_PLAN.md`
 Amendment 5 for the item-by-item record and `RESPONSE_round7_2026-09-18.md` for the
 disposition of every point. Gates after the revision: consistency **588/0**, word count
 **3 995 / 300**, docx fidelity **89/0**.
+
+## Patch release v1.7.1 (19 September 2026) — regeneration scripts repaired
+
+The `v1.7.0` workflow failed at the step that regenerates a derived table and confirms the
+repository is unchanged, and the failure was substantive rather than cosmetic: the two
+scripts that rewrite the manuscript could delete reviewed text, and one of them had fallen
+several rounds behind the manuscript it was supposed to reproduce. Both were repaired, the
+corpus-total key was renamed from `N_total_reactions` to `N_total_reports` in the two
+artefacts and two scripts that carried it, and the pipeline now regenerates Table 4 as well
+as Table S1 and fails if either is out of step. **No number, result, conclusion or word of
+the submitted text changes.** `CITATION.cff`'s self-citation title, which still carried a
+pre-retitle wording, was aligned with the manuscript title in the same pass. See
+`ANALYSIS_PLAN.md` Amendment 6. Gates: consistency **588/0**, word count **3 995 / 300**,
+docx fidelity **89/0**, and both generators reproduce the manuscript byte for byte.
