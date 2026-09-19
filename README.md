@@ -1,7 +1,7 @@
 # Remifentanil and hyperalgesia reporting: FAERS + Canada Vigilance two-database disproportionality study
 
 **Repository:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada>
-**Current release:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.9.1>
+**Current release:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.9.2>
 (earlier releases <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.0.0> through <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.5.0>)
 
 Reproduction package for the study:
@@ -251,7 +251,7 @@ this environment; Arial is used instead.
 python _wordcount.py               # main text and Summary within the journal's limits
 python _gen_table_s1.py            # regenerate Table S1 from the two result files
 python _gen_table4.py              # regenerate Tables 4A-4C and Table S5
-python _check_consistency.py       # must print FAIL 0 and exit 0 (619 assertions at v1.9.1)
+python _check_consistency.py       # must print FAIL 0 and exit 0 (619 assertions at v1.9.2)
 ```
 
 The two generators rewrite their own blocks of the manuscript and must leave the file
@@ -269,7 +269,7 @@ presence of the figure files). Re-run both after changing any data or manuscript
 
 ```
 python _build_submission.py        # -> _upload/*.docx + figure files
-python _verify_docx.py             # must print FAIL 0 and exit 0 (109 assertions at v1.9.1)
+python _verify_docx.py             # must print FAIL 0 and exit 0 (109 assertions at v1.9.2)
 ```
 
 The `.docx` files are build artefacts and are not tracked in this repository; the pack is
@@ -388,3 +388,4 @@ Correspondence: 960856791@qq.com
   read v1.9.0) to v1.9.1; removed a stray colon typo ("p = 0.10), : the rise" →
   "p = 0.10), the rise"); word count 3 998 → 3 997. Gates 619/0, 3 997/299 (headroom 3),
   109/0. See `ANALYSIS_PLAN.md` Amendment 9 and `_r10_fix_round9_audit.py`.
+- **v1.9.2** — pre-submission word-count safety margin: trimmed ~33 words of redundant prose (no numbers, citations or reference count changed) to move the main text from 3 997 to 3 964 words, widening the 4 000-word ceiling headroom from 3 to 36; Summary unchanged at 299/300; version unified to v1.9.2 across the manuscript, README, CITATION.cff and cover letter. Gates 619/0, 3 964/299 (headroom 36), 109/0.

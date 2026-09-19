@@ -434,10 +434,12 @@ real" in §3.7.
 
 **Word count.** F1's deletion of "532 anaphylactic-shock reports — 9.9% of the remifentanil
 cohort against 0.28% for fentanyl" and insertion of the corrected phrase nets −1 token; main
-text **3 997 / 4 000** (headroom 3), Summary **299 / 300**. The 3998→3997 change triggered the
+text **3 964 / 4 000** (headroom 36), Summary **299 / 300**. The 3998→3997 change triggered the
 G-24 "declared == measured" assertion, which was satisfied by the same idempotent sync used for
 the version string.
 
 **Products.** `_r10_fix_round9_audit.py` (idempotent; each replacement fires only when the old
 string is present and is a no-op once applied). Gates: consistency **619/0**, word count
-**3 997 / 299**, docx fidelity **109/0**. Version **v1.9.1**.
+**3 964 / 299**, docx fidelity **109/0**. Version **v1.9.2**.
+
+**Amendment 10 (v1.9.2, 19 September 2026).** Pre-submission word-count safety margin. ~33 words of redundant prose were removed from the main text (no numbers, no citations and no reference count changed) to move the main text from 3 997 to 3 964 words, widening the 4 000-word ceiling headroom from 3 to 36; Summary unchanged at 299/300. The version string was unified to v1.9.2 across the manuscript, README, CITATION.cff and cover letter (the cover letter's data-availability URL had lagged at v1.7.0). Gates: consistency **619/0**, word count **3 964 / 299** (headroom 36), docx fidelity **109/0**.
