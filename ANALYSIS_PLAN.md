@@ -1,6 +1,6 @@
 # Analytical plan — Remifentanil and hyperalgesia reporting study
 
-**Status:** finalised 16 September 2026, *after* data extraction (16 September 2026) and *before* any result interpretation or manuscript writing. **Amendment 1** (same date, see below) records a term-level correction made on discovering that the clinical word for the outcome is not a preferred term; it was applied before the corrected results were interpreted. **Amendment 2** (18 September 2026, see the end of this document) records the analyses added in response to an independent peer-review panel: adjustment for reporting depth, stratification by recorded indication, the drug-role and report-version restrictions, the cohort-overlap sensitivity, the covariance of the head-to-head ratio, and the correction of a mislabelled 2024 sensitivity. **Amendment 3** (18 September 2026) records the Round-6 wording corrections. **Amendment 4** (18 September 2026) records the demonstration of the lowest-level-term premise requested by Round-6 reviewer A1. **Amendment 5** (18 September 2026) records the Round-7 revisions. **Amendment 6** (19 September 2026) records the repair of the two regeneration scripts that the release pipeline exposed; neither amendment changes a result, a number or a conclusion.
+**Status:** finalised 16 September 2026, *after* data extraction (16 September 2026) and *before* any result interpretation or manuscript writing. **Amendment 1** (same date, see below) records a term-level correction made on discovering that the clinical word for the outcome is not a preferred term; it was applied before the corrected results were interpreted. **Amendment 2** (18 September 2026, see the end of this document) records the analyses added in response to an independent peer-review panel: adjustment for reporting depth, stratification by recorded indication, the drug-role and report-version restrictions, the cohort-overlap sensitivity, the covariance of the head-to-head ratio, and the correction of a mislabelled 2024 sensitivity. **Amendment 3** (18 September 2026) records the Round-6 wording corrections. **Amendment 4** (18 September 2026) records the demonstration of the lowest-level-term premise requested by Round-6 reviewer A1. **Amendment 5** (18 September 2026) records the Round-7 revisions. **Amendment 6** (19 September 2026) records the repair of the two regeneration scripts that the release pipeline exposed. **Amendment 7** (19 September 2026) records the Round-8 application of the Round-6 P2 and P3 items, including two estimators that were added as robustness checks rather than as corrections. No amendment changes a result, a number that carries a conclusion, or a conclusion.
 
 **Prospective registration:** **none.** This plan was written post hoc, once the data had been retrieved, because the analysis was conceived and executed by a single author without a pre-registered protocol. It is archived here so that the term groups, controls and probe can be inspected as a fixed record rather than as a narrative written after the fact. The absence of prospective registration is declared in the manuscript (Methods and Limitations) and in the READUS-PV checklist.
 
@@ -288,4 +288,74 @@ caption, caught in the same place.
 if either is out of step, so this class of drift cannot ship again. No number, result,
 conclusion, word of the manuscript text or submitted deliverable changes in this
 amendment: main text remains 3 995 words and the Summary 300, and the four gates read
-588/0, 3 995 and 300 within their windows, and 89/0.
+588/0, 3 995 and 300 within their windows, and 89/0. (Those are the readings at
+`v1.7.1`; Amendment 7 below moves them to 3 998 and 299.)
+
+## Amendment 7 (19 September 2026) — the deferred Round-6 items, and what they changed
+
+**Scope.** `v1.6.0` adopted the P0 and P1 items of the Round-6 panel and left the rest by
+explicit scope decision. This amendment applies the twelve P2/P3 items. It is written after
+the fact, as Amendments 3-6 are, and it separates what was *specified* from what was *read*:
+three of the additions are analyses whose result was not known when they were specified,
+and one of them contradicted the review that asked for it.
+
+**Two new products, both offline.**
+`23_direct_headtohead.csv` recomputes every head-to-head cell as a direct two-drug odds
+ratio on a single 2x2 whose rows are the two cohorts, which is the alternative to dividing
+two marginal ratios that share a remainder. It reads `01_faers_results.csv` and
+`11_overlap_matrix.csv`; no new query. 29 of the 54 cells are estimable, no cell changes
+side of unity, and the largest movement is 3.8% (ALLODYNIA versus fentanyl, 0.455 to 0.472).
+For the terms that carry the paper's claims the movements are 0.05% (PROCEDURAL PAIN versus
+fentanyl), 1.4% (PAIN versus fentanyl), 2.9-3.3% (HYPERAESTHESIA) and at most 0.2% (DRUG
+INEFFECTIVE). The estimator is therefore reported as a robustness check the published
+ratios pass, not as a correction to them (Appendix A1.11).
+
+`24_symmetric_overlap_rorr.csv` applies the overlap restriction to **both** cohorts, so the
+two rows are disjoint report sets, and shows all three values per cell -- published,
+remifentanil arm only, both arms. It reads the openFDA query caches `_r6_cache.json` and
+`_r6_overlap_cache.json`; no new query. The reviewer who asked for this predicted that
+removing the shared reports would lower every ratio. **It does not.** PROCEDURAL PAIN
+versus fentanyl falls from 1.962 to 1.025 (and so crosses to unity), but the same term
+versus sufentanil *rises* from 2.124 to 2.427, because the shared reports are a larger share
+of the smaller arm. The manuscript follows the result rather than the prediction: Table S8
+panel B now reads as three values, its note states that the restriction is not uniformly
+downward, and Appendix A1.5 gives the reason. This is recorded here because it is the one
+place in this revision where the analysis contradicted the review, and a reader comparing
+the two should be able to see which one the paper followed.
+
+**One primary-evidence gap closed.** The mechanism sentence in section 1 previously cited
+only reviews. References 3 and 4 (Vanderah et al. 2000, *J Neurosci* 20: 7074-9; Vanderah
+et al. 2001, *J Neurosci* 21: 279-86) are the preclinical papers that founded the spinal
+dynorphin and descending-facilitation accounts. They are inserted at the position of first
+citation and the list is renumbered to 37 with the numbering asserted in both directions.
+
+**Wording, units and disclosure.**
+- PAIN is reframed as a pragmatic reporting-burden probe and explicitly not a proxy for
+  opioid-induced hyperalgesia, in section 2.3 and in the Summary.
+- The Fletcher & Martinez effect is quoted in its published units (9.4 cm on a 100 cm
+  visual analogue scale, 7.1 cm at 4 h, 3.0 cm at 24 h). The previous millimetre form was a
+  rescaled restatement, not what the source reports.
+- The rarity range in section 4.6 is corrected from "200 to 500" to "roughly one report in
+  216 to 540", the per-drug minimum and maximum.
+- The *a* >= 3 floor is stated to count reports rather than patients, in section 2.4 and in
+  Appendix A1.3.
+- The case count becomes an inference: "appear to describe at most two patients" in the
+  body, with Table S9 adding that the count is an inference from report content rather than
+  a verified count of patients.
+- The eleven-of-twelve stability count is labelled descriptive rather than a test, in
+  section 3.4, in the Table S5 note and in the generator that emits that note.
+- The incidence disclaimer moves to the Conclusion, where the reader meets the claim.
+- The READUS-PV note names item locations instead of collapsing them into "two items not
+  applicable" (body items 7d and 10; abstract item 2e; body item 14d stated, not
+  inapplicable).
+- Both figure TIFFs are flattened to opaque RGB at 600 ppi.
+
+**Gates.** The Round-8 additions are bound by a new **G-24** block in
+`_check_consistency.py`: reference numbering continuity and closure, the two new citations'
+DOIs, every new wording and its prohibition, the report-not-patient floor, the two new
+products' cell counts and sign agreement, the three-value binding of Table S8 against
+`24_symmetric_overlap_rorr.csv`, and the declared word count against the measured one.
+Two Round-6 assertions were **retargeted rather than satisfied** (G-16 and G-21): both were
+fixed-string checks invalidated by the revision, and leaving them would have frozen the
+defects they were written to detect. Gates: consistency **618/0**, word count **3 998 / 299**,
+docx fidelity **110/0**.

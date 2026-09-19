@@ -1,7 +1,7 @@
 # Remifentanil and hyperalgesia reporting: FAERS + Canada Vigilance two-database disproportionality study
 
 **Repository:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada>
-**Current release:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.7.1>
+**Current release:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.8.0>
 (earlier releases <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.0.0> through <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.5.0>)
 
 Reproduction package for the study:
@@ -117,6 +117,8 @@ manuscript's number-to-source table.
 | `_r6_term_level_check.py` / `.csv` | Single pass over all 4 474 923 Canadian reaction rows: 0 for HYPERALGESIA and 0 for HYPERESTHESIA against 523 for HYPERAESTHESIA across 114 in-use terms of the same family. The corpus side of R6-19. |
 | `_r6_term_dictionary_check.py` / `.csv` | The MedDRA-coded ADReCS v3.3 ontology, 15 317 entries, none named Hyperalgesia; the string is a synonym of three distinct terms (10020568 included), and the file ends with hand-read public proxies (Cochrane MedDRA 10020573; MeSH D006930 vs D006941) with their URLs. The dictionary side of R6-19. The ontology xlsx is gitignored. |
 | `22_meddra_term_verification.md` | Readable summary of the R6-19 evidence chain and its disclosure. |
+| `23_direct_headtohead.csv` | Every head-to-head cell recomputed as a direct two-drug odds ratio on a single 2x2 whose rows are the two cohorts, with the Woolf interval. 29 of 54 cells are estimable; none changes side of unity and the largest movement is 3.8%. Appendix A1.11. |
+| `24_symmetric_overlap_rorr.csv` | The overlap restriction applied symmetrically to both cohorts, side by side with the published ratio and with the one-arm removal. Three values per cell; Table S8 panel B. It is not uniformly downward -- the same shared reports are a larger share of the smaller arm, so PROCEDURAL PAIN versus sufentanil rises from 2.124 to 2.427. |
 | `cv/cv_indication_strata.csv` | Canada Vigilance stratified by the recorded indication. Rendered as Table 5. |
 | `cv/cv_depth_strata.csv` | Canada Vigilance stratified by the number of reaction terms per report, with Mantel–Haenszel adjustment. Rendered as Table 6. |
 | `cv/cv_reaction_onset_completeness.csv` | Completeness of the Canadian reaction-onset fields, the counted reason no time-to-onset analysis was attempted. Appendix A1.9. |
@@ -155,6 +157,27 @@ manuscript's number-to-source table.
 | `_r7_product_sync.py` | Pushes script-source corrections into derived artifacts: term notes from `10_term_dictionary.py` into `10_term_dictionary.csv`, and authoritative counts from `01_faers_results.csv` over `14_faers_pt_distribution.csv` (morphine DRUG TOLERANCE read 0 where the count is 79). |
 | `_r7_trim.py` … `_r7_trim4.py` | Word-budget passes after the Round-7 additions (4 503 → 3 995). Exact-pair replacements, each asserted to occur once; detail moved into Appendix S1 A1.10 rather than deleted. |
 | `_r7_gate_patch.py` | Retargets two gate assertions and inserts the G-23 block. |
+
+### Round-8 scripts (19 September 2026)
+
+These apply the Round-6 items that only P0 and P1 had reached at `v1.6.0`. Run in this
+order; each is an exact-pair edit record that asserts every anchor occurs once.
+
+| Script | What it does |
+|---|---|
+| `_r8_ref_insert.py` | Inserts the two primary mechanistic citations (Vanderah 2000, 2001) as references 3 and 4 -- the position of first citation -- and renumbers every bracketed citation outside the reference list, head slice *and* tail slice. Two defects fixed after their first run: the tail (Tables, figure legends, Appendix S1) had been pasted back unrenumbered, leaving three citations stale; and the section's formatting preamble was being dropped while the list was rebuilt, which the `_verify_docx.py` guard originally written for the build script caught. Both now raise instead of writing. |
+| `_r8_edits.py` | Twelve body and Summary replacements: the mechanism sentence takes primary evidence, the Fletcher & Martinez effect is quoted in its published units (9.4 cm on a 100 cm scale, not the rescaled mm form), PAIN is reframed as a reporting-burden probe rather than a syndrome proxy, the *a* >= 3 floor is stated to count reports rather than patients, the case count becomes an inference, the eleven-of-twelve count is labelled descriptive, the rarity range is corrected, and the incidence disclaimer moves to the Conclusion. |
+| `_r8_tables.py` | Rebuilds Table S8's panel B as three-value triples (published / remifentanil arm only / both arms) and rewrites its note; adds the same floor caveat to Appendix A1.3; rewrites A1.5 for the symmetric restriction and states that it is *not* uniformly downward; adds Appendix A1.11 for the direct two-drug estimator; truncates two over-long author lists to the journal's style; and asserts that the middle column still reproduces `17_overlap_adjusted_rorr.csv` cell by cell. |
+| `_r8_trim.py`, `_r8_trim2.py` | Word-budget passes (4 101 -> 3 998 main, 310 -> 299 Summary). Only duplicated apparatus is removed; no number, citation, hedge or disclosure is dropped. The first pass shortened the database name to "US Food and Drug Administration" and the gate rejected the abbreviation -- the structured Summary may not carry one -- so that edit was withdrawn. |
+| `_r8_gate_patch.py` | Retargets four Round-6-19 needles that the renumbering moved, and inserts the G-24 block into `_check_consistency.py` plus the Round-8 needles and the opaque-figure assertion into `_verify_docx.py`. |
+| `_r8_gate_retarget.py` | Retargets two Round-6 assertions that had gone stale because the manuscript changed underneath them: G-16's literal "describe two patients" (R6-15 made that claim an inference) and G-21's "200 to 500" range (R6-03 corrected it). Both are now semantic bindings. This is the fixed-string trap of Round 6, avoided rather than repeated. |
+| `_r8_sync_derived.py` | Pushes the new declarations into the cover letter, the manifest, the README, `CITATION.cff` and the manuscript's own title page and data-availability statement. Idempotent: a declaration already in its target state is accepted rather than re-applied. |
+
+`23_direct_headtohead.csv` needs no new query: it is a re-expression of the cell counts
+already shipped in `01_faers_results.csv` and `11_overlap_matrix.csv`, and the two
+Round-8 scripts are offline. `24_symmetric_overlap_rorr.csv` reads the openFDA query
+caches `_r6_cache.json` and `_r6_overlap_cache.json`, which are now tracked for exactly
+that reason; both hold aggregate counts only.
 
 Two result files carry a caveat worth repeating here:
 `04_sensitivity_leave2024_hyperaesthesia.csv` is the **earlier, mis-specified** 2015–2023
@@ -228,7 +251,7 @@ this environment; Arial is used instead.
 python _wordcount.py               # main text and Summary within the journal's limits
 python _gen_table_s1.py            # regenerate Table S1 from the two result files
 python _gen_table4.py              # regenerate Tables 4A-4C and Table S5
-python _check_consistency.py       # must print FAIL 0 and exit 0 (588 assertions at v1.7.1)
+python _check_consistency.py       # must print FAIL 0 and exit 0 (618 assertions at v1.8.0)
 ```
 
 The two generators rewrite their own blocks of the manuscript and must leave the file
@@ -246,7 +269,7 @@ presence of the figure files). Re-run both after changing any data or manuscript
 
 ```
 python _build_submission.py        # -> _upload/*.docx + figure files
-python _verify_docx.py             # must print FAIL 0 and exit 0 (89 assertions at v1.7.1)
+python _verify_docx.py             # must print FAIL 0 and exit 0 (110 assertions at v1.8.0)
 ```
 
 The `.docx` files are build artefacts and are not tracked in this repository; the pack is

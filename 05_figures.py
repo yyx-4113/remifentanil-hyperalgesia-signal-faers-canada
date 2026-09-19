@@ -65,13 +65,34 @@ def clean_axes(ax, keep=("left", "bottom")):
     ax.set_axisbelow(True)
 
 
+def flatten_alpha(path):
+    """Matplotlib's TIFF writer emits RGBA whatever the facecolour, and the
+    journal asks for opacity in line art (Round-6 A4 issue 3).  Composite onto
+    white and rewrite as RGB, keeping the 600 ppi metadata: the manuscript
+    checks that dpi, and a figure with an alpha channel can print or convert
+    with a black or transparent background."""
+    from PIL import Image
+    im = Image.open(path)
+    if im.mode == "RGB":
+        return False
+    rgba = im.convert("RGBA")
+    flat = Image.new("RGB", rgba.size, (255, 255, 255))
+    flat.paste(rgba, mask=rgba.split()[-1])
+    flat.save(path, format="TIFF", compression="tiff_lzw",
+              dpi=im.info.get("dpi", (DPI, DPI)))
+    return True
+
+
 def save_all(fig, stem):
     for name, ext in OUT:
         if name != stem:
             continue
         path = os.path.join(HERE, f"{name}.{ext}")
         if ext == "tif":
-            fig.savefig(path, dpi=DPI, pil_kwargs={"compression": "tiff_lzw"})
+            fig.savefig(path, dpi=DPI, facecolor="white",
+                        pil_kwargs={"compression": "tiff_lzw"})
+            if flatten_alpha(path):
+                print(f"  flattened alpha to opaque RGB: {os.path.basename(path)}")
         else:
             fig.savefig(path, dpi=DPI)
         print(f"  wrote {os.path.basename(path)}")

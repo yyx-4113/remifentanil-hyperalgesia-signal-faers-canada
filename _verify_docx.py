@@ -185,8 +185,25 @@ def main() -> int:
         chk(f"Supporting 含 R6-19 证据「{needle}」", needle in si_text)
     # 两条新参考文献在正文 docx 的 References 里（SI 不含参考文献节）
     for needle in ["Cai MC", "data.cochrane.org/concepts/r4hp39n833dx",
-                   "all 35 cited references verified by identifier"]:
+                   "all 37 cited references verified by identifier"]:
         chk(f"Manuscript 含 R6-19 证据「{needle}」", needle in ms_text)
+    # Round-8：新引证、新口径与新产物都要到投稿件里，而不是只留在 markdown
+    for needle in ["all 37 cited references verified by identifier",
+                   "Vanderah TW", "10.1523/JNEUROSCI.20-18-07074.2000",
+                   "roughly one report in 216 to 540",
+                   "appear to describe at most two patients",
+                   "spontaneous reporting cannot address its incidence in either direction",
+                   "That count is descriptive, not a test",
+                   "a reporting-burden probe, not a syndrome proxy",
+                   "The floor counts reports rather than patients",
+                   "9.4 cm on a 100 cm visual analogue scale",
+                   "not a proxy for opioid-induced hyperalgesia"]:
+        chk(f"Manuscript 含 Round-8 证据「{needle}」", needle in ms_text)
+    for needle in ["A1.11", "23_direct_headtohead.csv", "24_symmetric_overlap_rorr.csv",
+                   "The floor counts reports, not patients",
+                   "The symmetric restriction is the one read below",
+                   "body items 7d and 10", "abstract item 2e", "body item 14d"]:
+        chk(f"Supporting 含 Round-8 证据「{needle}」", needle in si_text)
     chk("CoverLetter 含仓库 URL",
         "https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada" in cl_text)
     chk("CoverLetter 含 ORCID", "0009-0004-9698-6552" in cl_text)
@@ -225,6 +242,8 @@ def main() -> int:
                 dpi = im.info.get("dpi", (0, 0))[0]
                 chk(f"[{f}] 600 ppi", round(float(dpi)), 600)
                 chk(f"[{f}] <= 10 MB", os.path.getsize(p) <= 10 * 1024 * 1024)
+                # Round-6 A4 #3: opaque white line art, no alpha channel
+                chk(f"[{f}] 无 alpha 通道（不透明）", im.mode, "RGB")
     except ImportError:
         print("note: Pillow unavailable, skipped the ppi check")
 

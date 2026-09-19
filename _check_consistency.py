@@ -8,6 +8,7 @@
 写入即诚信：任何 FAIL 都必须先修数据或修正文，不得忽略。
 """
 import csv, json, os, re, sys
+import importlib.util
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 def P(*a): return os.path.join(HERE, *a)
@@ -565,7 +566,7 @@ if os.path.exists(P(MS)):
     for needle in ("15 317", "10020568", "10050100", "10053552", "4 474 923",
                    "114 distinct terms", "_r6_term_dictionary_check.csv",
                    "_r6_term_level_check.csv", "10020573", "D006930", "D006941",
-                   "[34]", "[35]", "proxy-verified"):
+                   "[36]", "[37]", "proxy-verified"):
         chk(f"[R6-19] 表 S4 注含「{needle}」", needle in s4_note, True)
     # 禁止性断言：被新证据否证的全称量词不得复辟（铁律①）
     chk("[R6-19] 禁止「the only term in the dictionary that carries the concept」复辟",
@@ -573,7 +574,7 @@ if os.path.exists(P(MS)):
     # §2.3 与 §3.2 的正文表述须与表 S4 同步（carried by，而非悬空的 mapping to）
     main_body = txt[txt.index("## 1. Introduction"):txt.index("## Acknowledgements")]
     chk("[R6-19] 正文两处以 carried by 表述层级", main_body.count("lowest level term carried by"), 2)
-    chk("[R6-19] 正文挂上新引证 [22, 34, 35]", "[22, 34, 35]" in main_body, True)
+    chk("[R6-19] 正文挂上新引证 [24, 36, 37]", "[24, 36, 37]" in main_body, True)
 
     # Table S4 渲染后的每一个单元格必须与 CSV 一致（防止表格与产物脱钩）
     def s4_disp(v):
@@ -1147,8 +1148,12 @@ if os.path.exists(P(MS)):
     chk("[G-16] 第十条为日本 2021 年报告",
         len(_ser) - len(_us) == 1
         and [r for r in _ser if r["country"] != "US"][0]["receivedate"] == "20210813", True)
-    chk("[G-16] 正文与表 S9 均称十份报告 = 两名患者",
-        "describe two patients" in txt and "the same patient" in _seg9, True)
+    # R6-15：患者数是内容推断，不是经验证的计数 —— 绑定改写后的措辞与表 S9 的
+    # 推断声明，而不是绑定已被撤销的旧断言句（铁律①）。
+    chk("[G-16] 正文把患者数写成内容推断、表 S9 说明该计数系推断",
+        "appear to describe at most two patients" in txt
+        and "an inference from report content rather than a verified count of patients" in _seg9,
+        True)
 
     # G-17 附录 S1 与其引用的文件 --------------------------------------------
     _segA = txt[txt.index("### Appendix S1"):txt.index("## Figure legends")]
@@ -1227,7 +1232,9 @@ if os.path.exists(P(MS)):
     chk("[G-21] 已清除 'The FDA case-level files could not be retrieved'",
         "The FDA case-level files could not be retrieved" in txt, False)
     # T2-26：正文要给临床读者量级
-    chk("[G-21] §4.6 给出量级", "one report in 200 to 500" in txt, True)
+    # R6-03：200-500 低估了实际区间（每药最小值 216、最大值 538），已改为 216-540
+    _seg46 = txt[txt.index("4.6 Implications"):][:700]
+    chk("[G-21] §4.6 给出量级", "roughly one report in 216 to 540" in _seg46, True)
     for _r in ("one report in 538", "one in 387", "one in 296", "one in 216"):
         chk(f"[G-21] 表 2 脚注含 {_r}", _r in txt, True)
     # T2-22：零值必须说明"不是观测到的计数"。Round-7 起按语义而非逐字绑定：要求
@@ -1416,7 +1423,91 @@ if os.path.exists(P(MS)):
     chk("[G-23] 协方差段承认一处区间翻转",
         "one interval does flip significance" in _t7, True)
     chk("[G-23] 代理组已分角色",
-        "they are not interchangeable, playing four roles" in _t7, True)
+        "they are not interchangeable and play four roles" in _t7, True)
+
+    # ============ G-24：Round-8（第六轮 P2/P3 遗留项） ============
+    _refblk8 = _t7[_t7.index("## References"):_t7.index("## Tables")]
+    _refnums8 = [int(n) for n in re.findall(r"(?m)^(\d+)\. ", _refblk8)]
+    chk("[G-24] 参考文献编号 1..37 连续无缺", _refnums8, list(range(1, 38)))
+    _cited8 = {int(x) for m in re.finditer(r"\[(\d+(?:\s*,\s*\d+)*)\]", _t7)
+               for x in m.group(1).split(",")}
+    chk("[G-24] 每个引用号都有条目", sorted(_cited8 - set(_refnums8)), [])
+    chk("[G-24] 两条一手机制文献入表",
+        all(s in _refblk8 for s in ("Dynorphin promotes abnormal pain",
+                                    "Tonic descending facilitation from the rostral ventromedial medulla")),
+        True)
+    chk("[G-24] 两条新文献的 DOI 正确",
+        all(s in _refblk8 for s in ("10.1523/JNEUROSCI.20-18-07074.2000",
+                                    "10.1523/JNEUROSCI.21-01-00279.2001")), True)
+    chk("[G-24] 机制句挂上一手证据", "[1, 2, 3, 4]" in _t7, True)
+    _mb8 = _t7[_t7.index("## 1. Introduction"):_t7.index("## Acknowledgements")]
+    chk("[G-24] 正文不再把十份报告写成两位患者",
+        re.search(r"(?<!appear to )describe two patients", _mb8) is None, True)
+    chk("[G-24] 患者数已改为 at most two patients",
+        _mb8.count("appear to describe at most two patients"), 3)
+    chk("[G-24] 11/12 已标注为描述性计数",
+        "That count is descriptive, not a test" in _t7, True)
+    chk("[G-24] 信号判据注明统计报告数",
+        "The floor counts reports rather than patients" in _t7, True)
+    chk("[G-24] 附录 A1.3 同步该口径",
+        "The floor counts reports, not patients" in _t7, True)
+    chk("[G-24] 结论随行发生率免责",
+        "spontaneous reporting cannot address its incidence in either direction" in _t7, True)
+    chk("[G-24] PAIN 已声明非 OIH 代理",
+        "not a proxy for opioid-induced hyperalgesia" in _t7, True)
+    chk("[G-24] 摘要同步该框定",
+        "a reporting-burden probe, not a syndrome proxy" in _t7, True)
+    chk("[G-24] 疼痛幅度按原文单位复述",
+        "9.4 cm on a 100 cm visual analogue scale" in _t7, True)
+    chk("[G-24] 禁止旧 mm 口径复辟", "9.4 mm on a 100 mm scale" in _t7, False)
+    chk("[G-24] 稀有度范围改为 216 to 540",
+        "roughly one report in 216 to 540" in _t7, True)
+    chk("[G-24] 禁止旧 200 to 500 复辟", "one report in 200 to 500" in _t7, False)
+    chk("[G-24] READUS-PV 说明按清单实际位置",
+        all(s in _t7 for s in ("body items 7d and 10", "abstract item 2e", "body item 14d")), True)
+    chk("[G-24] 禁止 two items not applicable 复辟",
+        "note on the two items that are not applicable" in _t7, False)
+    chk("[G-24] 超长作者串已截断",
+        all(s not in _t7 for s in ("Mu\u00f1oz MA.", "Wisniewski A.")), True)
+    # R6-20 直接两药头对头：产物自证 + 正文值绑定
+    _d8 = list(csv.DictReader(open(P("23_direct_headtohead.csv"), encoding="utf-8-sig")))
+    chk("[G-24] 直接两药头对头 29 个可估计格",
+        sum(1 for r in _d8 if r["direct_OR"]), 29)
+    chk("[G-24] 直接估计与已发表估计无一格跨越 1",
+        [f"{r['preferred_term']}/{r['comparator']}" for r in _d8
+         if r["direct_OR"] and r["published_RORR"]
+         and (float(r["direct_OR"]) > 1) != (float(r["published_RORR"]) > 1)], [])
+    _h2h = {r["preferred_term"]: r for r in _d8 if r["comparator"] == "FENTANYL"}
+    _f3d = lambda v: "not estimable" if v in ("", None) else "%.3f" % round(float(v), 3)
+    for _t8 in ("PROCEDURAL PAIN", "HYPERAESTHESIA"):
+        _v8 = _f3d(_h2h[_t8]["direct_OR"])
+        chk(f"[G-24] A1.11 直接估值 {_t8} vs fentanyl == {_v8}", _v8 in _t7, True)
+    chk("[G-24] A1.11 指向产物", "23_direct_headtohead.csv" in _t7, True)
+    # R6-21 双臂对称去重叠：产物逐格绑定表 S8，且旧的不对称读法不得复辟
+    _s8 = list(csv.DictReader(open(P("24_symmetric_overlap_rorr.csv"), encoding="utf-8-sig")))
+    _segS8 = _t7[_t7.index("### Table S8"):_t7.index("### Table S9")]
+    _bad24 = []
+    for _r in _s8:
+        if not _r["RORR_both_arms_removed"]:
+            continue
+        _tri = "%s \u2192 %s \u2192 %s" % (_f3d(_r["RORR_published"]),
+                                            _f3d(_r["RORR_one_arm_removed"]),
+                                            _f3d(_r["RORR_both_arms_removed"]))
+        if _tri not in _segS8:
+            _bad24.append("%s/%s: %s" % (_r["preferred_term"], _r["comparator"], _tri))
+    chk("[G-24] 表 S8 三段值与 24_ 产物逐格一致", _bad24[:5], [])
+    chk("[G-24] 表 S8 注明对称口径为读数口径",
+        "The symmetric restriction is the one read below" in _segS8, True)
+    chk("[G-24] 禁止\u300cno ratio rises\u300d复辟", "no ratio rises" in _t7, False)
+    # 声明字数必须等于实测（此前无人查，属第二处出现盲区）
+    _spec8 = importlib.util.spec_from_file_location("_wc8", P("_wordcount.py"))
+    _wc8 = importlib.util.module_from_spec(_spec8)
+    _spec8.loader.exec_module(_wc8)
+    _m8 = _wc8.count(_wc8.slice_between(_t7, "## 1. Introduction", "## Acknowledgements"))
+    _s8w = _wc8.count(_wc8.slice_between(_t7, "## Summary", "## 1. Introduction"))
+    _decl8 = re.search(r"Summary ([\d ]+) words; main text ([\d ]+) words", _t7)
+    chk("[G-24] 声明 Summary 字数 == 实测", _decl8.group(1).replace(" ", ""), str(_s8w))
+    chk("[G-24] 声明正文字数 == 实测", _decl8.group(2).replace(" ", ""), str(_m8))
 
 print(f"==== PASS {len(OK)} / FAIL {len(BAD)} ====")
 for b in BAD:

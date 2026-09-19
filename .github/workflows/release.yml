@@ -128,6 +128,22 @@ jobs:
             _r7_trim4.py \
             _r7_gate_patch.py \
             _r7_derived_sync.py \
+            _r8_ref_insert.py \
+            _r8_edits.py \
+            _r8_tables.py \
+            _r8_trim.py \
+            _r8_trim2.py \
+            _r8_gate_patch.py \
+            _r8_gate_retarget.py \
+            _r8_sync_derived.py \
+            _r8_release_docs.py \
+            _r8_direct_h2h.py \
+            _r8_symmetric_overlap.py \
+            23_direct_headtohead.csv \
+            24_symmetric_overlap_rorr.csv \
+            _r6_cache.json \
+            _r6_overlap_cache.json \
+            RESPONSE_round6_remaining_2026-09-19.md \
             REVIEW_round7_2026-09-18.md \
             RESPONSE_round7_2026-09-18.md \
             review_round7/ \

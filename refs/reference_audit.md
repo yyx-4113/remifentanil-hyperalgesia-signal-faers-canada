@@ -57,7 +57,7 @@
 ## 补录（R6-19，2026-09-18）：参考文献 21–35 的标识符核验
 
 第 2–6 轮审稿在 `reference_audit.md` 之外新增了 21–33 号文献，未回写本审计文件；本轮
-R6-19 又新增 34、35 号。为使 AI 声明「all 35 cited references verified by identifier」
+R6-19 又新增 34、35 号（Round-8 重编号后为 36、37 号）。为使 AI 声明「all 37 cited references verified by identifier」
 有可查证的载体，此处按同一方法（Crossref REST API 按 DOI 取出版方元数据，比对题名与
 年份）一次性补齐。原始返回存于 `refs/_r6_19_crossref_check.json`。
 
@@ -81,3 +81,23 @@ R6-19 又新增 34、35 号。为使 AI 声明「all 35 cited references verifie
 
 **结论**：35 条中 32 条经 Crossref 按 DOI 解析到唯一真实记录且题名一致；12、13、22、34
 号为数据库 / 词典 / 本体资源类条目，按期刊惯例以 URL + 访问日期引用，无 DOI 可核。
+
+## Round-8（2026-09-19）：插入 3、4 号一手文献后的重编号与新条目核验
+
+R6-22 指出 §1 的机制句只引综述、无一手术前证据来源，故插入 Vanderah 等两篇
+*J Neurosci*（2000、2001）为 3、4 号（首次引用处），其后所有编号 +2：原 3–35 号
+变为 5–37 号，总数 35 → 37。上表 21–35 号是**重编号前**的编号，对应关系为
+`n(新) = n(旧) + 2`（n(旧) ≥ 3）；重编号由 `_r8_ref_insert.py` 完成，正文头段与
+尾段（## Tables 及之后）分别处理，并有「编号 1..37 连续」与「每个引用号都有条目」
+两条断言兜底。
+
+| 新编号 | 旧编号 | 类型 | 标识 | 核验结论 |
+|---|---|---|---|---|
+| 3 | —（新增） | journal | 10.1523/JNEUROSCI.20-18-07074.2000 | Crossref *J Neurosci* 2000；题名、卷页与作者表一致（Vanderah TW 等） |
+| 4 | —（新增） | journal | 10.1523/JNEUROSCI.21-01-00279.2001 | Crossref *J Neurosci* 2001；题名、卷页与作者表一致（Vanderah TW 等） |
+| 36 | 34 | website | https://data.cochrane.org/concepts/r4hp39n833dx | 公开本体端点，实测返回 MedDRA 10020573 / MeSH D006930，无 DOI（资源类） |
+| 37 | 35 | journal | 10.1093/nar/gku1066 | Crossref 2015 *Nucleic Acids Research*，题名一致（ADReCS） |
+
+**结论**：37 条中 34 条经 Crossref 按 DOI 解析到唯一真实记录且题名一致；1、2、12、13、
+22、36 号共 6 条为数据库 / 词典 / 本体资源类条目，按期刊惯例以 URL + 访问日期引用，
+无 DOI 可核。AI 声明中的计数已同步为 37。

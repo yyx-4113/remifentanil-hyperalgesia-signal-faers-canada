@@ -34,9 +34,9 @@
 | Article type | Original Article |
 | Title | Term selection, not the drug: how the chosen preferred term decides remifentanil hyperalgesia reporting in two national pharmacovigilance databases |
 | Running head | Remifentanil hyperalgesia reporting: two-database study |
-| Main text | **3 995 words** (Introduction to Conclusion, headings included) |
-| Summary | **300 words**, structured (Introduction / Methods / Results / Discussion), no abbreviations, no references |
-| References | **35**, Vancouver style with DOIs |
+| Main text | **3 998 words** (Introduction to Conclusion, headings included) |
+| Summary | **299 words**, structured (Introduction / Methods / Results / Discussion), no abbreviations, no references |
+| References | **37**, Vancouver style with DOIs |
 | Tables | 6 in the main file (Table 4 in three panels: 4A, 4B, 4C) |
 | Figures | 2 |
 | Supplementary tables | 9 (S1–S9); S1 is presented as two panels, each 27 system organ classes × 8 columns; S5 is the complete head-to-head matrix for all three comparators; S2 is supplied as a separate checklist file |
@@ -81,9 +81,9 @@ they can be removed in Word with no effect on the content.
 5. **Term-level verification.** The clinical word HYPERALGESIA is a MedDRA *lowest level term*, not a preferred term, so a query on it returns zero by construction. Every outcome term was checked for retrievability in both corpora (`10_term_dictionary.csv`, rendered as **Table S4**), five dictionary proxies were analysed on the same footing, the term set is specified in full as a custom query in **Table S6**, and the manuscript was rewritten from "no term is available" to "the term the clinic uses is not the term the dictionary stores". Recorded as **Amendment 1** in `ANALYSIS_PLAN.md`.
 6. **"Prespecified" purged.** No prospective registration exists, so every occurrence in the manuscript, cover letter, README, manifest and READUS-PV checklist was replaced with "specified in a dated analytical plan" plus an explicit statement that the analysis was not registered.
 7. **Over-claiming removed.** No statement now asserts that a head-to-head ratio above 1 is unique to one term, that ALLODYNIA has a direction (it is not estimable on n = 1), that spontaneous reporting is "structurally incapable" of detecting the syndrome, or that Canada reproduced the comparator-term direction. The group label was changed from "negative control" to "comparator term" throughout, and section 2.3 states explicitly that these terms are not negative controls in the causal sense.
-8. **Reference base rebuilt.** 35 references, all verified by identifier, cited in order of first appearance; the manuscript, cover letter, manifest and AI disclosure all state the same count.
+8. **Reference base rebuilt.** 37 references, all verified by identifier, cited in order of first appearance; the manuscript, cover letter, manifest and AI disclosure all state the same count.
 9. **The case-series finding is disclosed, not corrected (Round-5 P0-7).** Section 3.3 now reports that nine of the ten remifentanil HYPERAESTHESIA reports are separate identifiers for one 76-year-old man, evidenced in **Table S9**; the remaining seven Round-5 P0 items are all landed.
-10. **Cohort overlap and covariance are both disclosed.** **Table S8** gives the 4×4 overlap matrix and every ratio recomputed with the shared reports removed; Appendix S1 A1.5 gives every interval recomputed with the covariance between the two component ratios retained. Neither changes a conclusion; the overlap restriction does move PROCEDURAL PAIN versus fentanyl from 1.962 to 0.981.
+10. **Cohort overlap and covariance are both disclosed.** **Table S8** gives the 4×4 overlap matrix and every ratio recomputed with the shared reports removed; Appendix S1 A1.5 gives every interval recomputed with the covariance between the two component ratios retained. Neither changes a conclusion; the overlap restriction, now applied symmetrically to both cohorts, moves PROCEDURAL PAIN versus fentanyl from 1.962 to 1.025 and, because the shared reports are a larger share of the smaller arm, raises the same ratio versus sufentanil from 2.124 to 2.427 rather than lowering it.
 
 **Still to do at submission time.**
 
@@ -98,7 +98,7 @@ they can be removed in Word with no effect on the content.
 | Check | Command | Result |
 |---|---|---|
 | Manuscript numbers traceable to source files (including every Table S1 cell and every Table S4–S9 count cell), plus submission constraints and the global invariants | `python _check_consistency.py` | see the run log |
-| Word counts inside the journal's limits | `python _wordcount.py` | main **3 995**; Summary **300** |
+| Word counts inside the journal's limits | `python _wordcount.py` | main **3 998**; Summary **299** |
 | Table S1 in step with the result files | `python _gen_table_s1.py` | idempotent; refuses to write if a proportion does not reproduce from the counts |
 | Nothing lost or invented in the markdown → docx conversion; no Chinese text; table shapes intact; figures still 600 ppi | `python _verify_docx.py` | see the run log |
 
@@ -161,7 +161,7 @@ sparse intervals, trend), `_r6_overlap_terms.py` (overlap-conditioned counts),
 
 *(Internal. Moved out of the manuscript on 18 September 2026 under Round-5 P0-1.)*
 
-1. **Journal requirements matched** (re-fetched 18 September 2026). Manuscript in `.docx`; all main tables with captions, both figure legends and the supplementary captions placed in the main text file; figures supplied as separate `.tif`/`.pdf` and not embedded in the document (verified: `Manuscript.docx` contains zero embedded media); Times New Roman 12 pt, double spaced, continuous line and page numbers. Main text 3 995 of 4 000 words; Summary 299 of 300; 35 of 30–40 references; 6 main tables (Table 4 in three panels), 9 supplementary tables and 1 supplementary appendix. PASS.
+1. **Journal requirements matched** (re-fetched 18 September 2026). Manuscript in `.docx`; all main tables with captions, both figure legends and the supplementary captions placed in the main text file; figures supplied as separate `.tif`/`.pdf` and not embedded in the document (verified: `Manuscript.docx` contains zero embedded media); Times New Roman 12 pt, double spaced, continuous line and page numbers. Main text 3 998 of 4 000 words; Summary 299 of 300; 37 of 30–40 references; 6 main tables (Table 4 in three panels), 9 supplementary tables and 1 supplementary appendix. PASS.
 2. **Data availability URL.** Verified by API that the repository is public, MIT-licensed and carries a release asset. The `github.com` page itself cannot be opened from this working environment, so one browser click by the author immediately before submitting remains the last manual check.
 3. **What is deliberately not done.** No reviewer suggestions (see §4). No X handle (the journal permits a blank field). No raw source data in the repository, and no credentials anywhere in the pack.
 
@@ -188,3 +188,49 @@ the submitted text changes.** `CITATION.cff`'s self-citation title, which still 
 pre-retitle wording, was aligned with the manuscript title in the same pass. See
 `ANALYSIS_PLAN.md` Amendment 6. Gates: consistency **588/0**, word count **3 995 / 300**,
 docx fidelity **89/0**, and both generators reproduce the manuscript byte for byte.
+
+## Round-8 revision (19 September 2026) — the deferred Round-6 items applied
+
+`v1.6.0` adopted only the P0 and P1 items of the Round-6 panel; the P2 (wording, format,
+house style) and P3 (optional analyses) items were deferred by scope. This revision
+applies all twelve of them, plus the two Round-5 items whose dispositions had been left
+open. **No result, no number that carries a conclusion, and no disclosed hedge changes.**
+
+* **R6-22** — the section 1 mechanism sentence cited two reviews and no primary evidence.
+  Two preclinical papers (Vanderah 2000, 2001) are added as references 3 and 4, and every
+  citation at or above the old 3 shifts by two: 35 references become 37, renumbered
+  head and tail and asserted in both directions.
+* **R6-23** — PAIN is now framed as a pragmatic *reporting-burden* probe, explicitly not a
+  proxy for opioid-induced hyperalgesia, and the Fletcher & Martinez effect is quoted in
+  its published units (9.4 cm on a 100 cm visual analogue scale) rather than the rescaled
+  millimetre form.
+* **R6-03** — the rarity range in section 4.6 becomes "roughly one report in 216 to 540",
+  the true per-drug minimum and maximum, replacing "200 to 500".
+* **R6-05** — the READUS-PV note now names the items by their real locations: body items
+  7d and 10, abstract item 2e, and body item 14d stated rather than inapplicable.
+* **R6-06** — the two over-long author lists are truncated to six names plus *et al.*
+* **R6-09** — both figure TIFFs are opaque RGB at 600 ppi; matplotlib always writes RGBA,
+  so the channel is flattened onto white after saving, and a gate now asserts `mode == "RGB"`.
+* **R6-12** — the *a* >= 3 signal floor is stated to count reports, not patients, in both
+  section 2.4 and Appendix A1.3.
+* **R6-14** — the incidence disclaimer now travels with the Conclusion.
+* **R6-15** — "two patients" becomes "appear to describe at most two patients" in the body,
+  with Table S9 stating that the count is an inference from report content.
+* **R6-18** — the eleven-of-twelve stability count is labelled descriptive rather than a
+  test, in the body, in the Table S5 note and in the generator that owns that note.
+* **R6-20** — a direct two-drug head-to-head estimator is added as a robustness check
+  (`23_direct_headtohead.csv`, Appendix A1.11). All 29 estimable cells keep their side of
+  unity; the largest movement is 3.8%.
+* **R6-21** — the overlap restriction is applied symmetrically to both cohorts
+  (`24_symmetric_overlap_rorr.csv`). The review predicted that every ratio would fall; it
+  does not, and the manuscript says so: PROCEDURAL PAIN versus sufentanil rises from 2.124
+  to 2.427, because the shared reports are a larger share of the smaller arm.
+
+Two Round-6 assertions were **retargeted rather than satisfied**: G-16's literal "describe
+two patients" and G-21's "200 to 500". Both were fixed-string checks that the revision
+legitimately invalidated; keeping them would have frozen the very defects the panel had
+asked to remove. A new G-24 block binds the replacement wording to the source products.
+
+Gates after the revision: consistency **618/0**, word count **3 998 / 299**, docx fidelity
+**110/0**, and both table generators reproduce the manuscript byte for byte. See
+`ANALYSIS_PLAN.md` Amendment 7 and `RESPONSE_round6_remaining_2026-09-19.md`.

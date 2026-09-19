@@ -61,6 +61,11 @@ _body_new.md
 _r6_backup/
 _r6_new_chunks.txt
 _r6_*cache*.json
+#    例外：Round-8 的两个分析（对称去重叠、直接两药头对头）以这两个缓存为输入，
+#    产物 24_symmetric_overlap_rorr.csv 无法在没有它们的情况下复算。与已入库的
+#    _faers_cache.json 同类：只有聚合查询结果，无原始数据、无凭证。
+!_r6_cache.json
+!_r6_overlap_cache.json
 _r6_counts.json
 _r6_ia.json
 _r6_ptdist.json
