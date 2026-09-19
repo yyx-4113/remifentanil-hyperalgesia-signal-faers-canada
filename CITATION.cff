@@ -40,7 +40,7 @@ keywords:
   - disproportionality analysis
   - reporting odds ratio
   - MedDRA
-version: "1.9.2"
+version: "1.9.3"
 date-released: "2026-09-19"
 references:
   - type: article

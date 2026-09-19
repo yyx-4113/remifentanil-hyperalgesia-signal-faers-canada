@@ -42,6 +42,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "_upload")
 MS = os.path.join(HERE, "I_正文_IMRaD_en.md")
 COVER = os.path.join(HERE, "I_投稿信_cover_letter.md")
+COVER_DS = os.path.join(HERE, "I_投稿信_DrugSafety_cover_letter.md")
 
 BODY_FONT = "Times New Roman"
 
@@ -307,6 +308,16 @@ def build_cover_letter() -> str:
     return path
 
 
+def build_cover_letter_ds() -> str:
+    """Drug Safety (Springer/Adis) cover letter — journal-targeted variant."""
+    text = open(COVER_DS, encoding="utf-8").read()
+    doc = new_document()
+    emit_markdown(doc, text)
+    path = os.path.join(OUT, "Cover_Letter_DrugSafety.docx")
+    doc.save(path)
+    return path
+
+
 def build_readus_checklist() -> str:
     """The completed READUS-PV checklist, promised to the editor as a separate file."""
     text = open(os.path.join(HERE, "I_TableS2_READUS-PV_checklist.md"), encoding="utf-8").read()
@@ -351,10 +362,11 @@ def main() -> int:
     ms_path, supp = build_manuscript(sec)
     si_path = build_supporting(supp)
     cl_path = build_cover_letter()
+    cl_ds_path = build_cover_letter_ds()
     ck_path = build_readus_checklist()
     figs = copy_figures()
     print("built:")
-    for p in [ms_path, si_path, ck_path, cl_path, *figs]:
+    for p in [ms_path, si_path, ck_path, cl_path, cl_ds_path, *figs]:
         print(f"  {os.path.relpath(p, HERE):45s} {os.path.getsize(p)/1024:8.1f} KB")
     return 0
 
