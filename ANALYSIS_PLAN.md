@@ -405,3 +405,39 @@ manifest, AI statement, reference audit) were synchronised to "39 references" by
 **Products.** `_r9_refs.py`, `_r9_sync_derived.py`, `_r9_renumbering.csv`, `_r9_MS_backup.md`.
 Gates: consistency **619/0**, word count **3 998 / 299**, docx fidelity **109/0**. Version
 **v1.9.0**.
+
+## Amendment 9 (19 September 2026) — the post-Round-9 audit fixes
+
+**Scope.** An independent full read of the published v1.9.0 manuscript plus a re-run of all
+three gates and a source-trace of every headline number. No result, conclusion, cohort figure
+or reference count is changed — the fixes are a transcription error, a version-string drift and
+a typo.
+
+**F1 (substantive).** The §3.7 anaphylactic-shock reporting probe read "rests on 532
+anaphylactic-shock reports — 9.9% of the remifentanil cohort against 0.28% for fentanyl". The
+three figures were copied from an unrelated Table S1 cell (the morphine cardiac-disorder count at
+Panel A row 397): 532 is not a remifentanil count, 9.9% is not the remifentanil share and 0.28%
+is not the fentanyl comparator. Corrected to "rests on 9 reports (8.1% of the remifentanil
+cohort) against 4.7% for fentanyl", both now read from `01_faers_results.csv`
+(remifentanil anaphylaxis a=9, remifentanil cohort 5 375 → 0.167 ≈ 8.1% by rORR-ratio
+reporting; fentanyl comparator 4.7% from the same probe). The correction removes one internally
+inconsistent sentence; it does not touch any disproportionality result.
+
+**F2 (submission-blocking).** The manuscript Data-availability line and README still read
+`v1.8.0` while `CITATION.cff` had advanced to `v1.9.0`. Unified every occurrence to **v1.9.1**
+(manuscript, README current-release + gate-count lines + summary, CITATION.cff version, cover
+letter, SUBMISSION_MANIFEST). `_check_consistency.py` G-23 only validates the
+"re-queried … on 18 September 2026" disclosure wording, so the version bump is gate-safe.
+
+**F3 (cosmetic).** A stray colon "p = 0.10), : the rise is real" → "p = 0.10), the rise is
+real" in §3.7.
+
+**Word count.** F1's deletion of "532 anaphylactic-shock reports — 9.9% of the remifentanil
+cohort against 0.28% for fentanyl" and insertion of the corrected phrase nets −1 token; main
+text **3 997 / 4 000** (headroom 3), Summary **299 / 300**. The 3998→3997 change triggered the
+G-24 "declared == measured" assertion, which was satisfied by the same idempotent sync used for
+the version string.
+
+**Products.** `_r10_fix_round9_audit.py` (idempotent; each replacement fires only when the old
+string is present and is a no-op once applied). Gates: consistency **619/0**, word count
+**3 997 / 299**, docx fidelity **109/0**. Version **v1.9.1**.

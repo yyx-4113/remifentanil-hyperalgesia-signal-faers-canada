@@ -105,3 +105,7 @@ R6-22 指出 §1 的机制句只引综述、无一手术前证据来源，故插
 ## Round-9 (2026-09-19) — renumber to 39
 
 The two Round-7 A1 #9 must-cite references were inserted (Chu 2008 -> ref 5, Battershill & Keating 2006 -> ref 34) and the whole list renumbered in order of first citation, as the list preamble already claimed. Four pre-existing violations of that claim (7->1, 5->3, 29->17, 37->25) were corrected. The citation-order claim is now asserted by the consistency gate, not merely written. Total references: 39.
+
+## v1.9.1 (2026-09-19) — audit only, no reference change
+
+A full post-Round-9 audit corrected a §3.7 cross-line transcription error in the anaphylactic-shock probe sentence (the figures "532 / 9.9% / 0.28%" had been copied from an unrelated Table S1 cell; now "9 reports (8.1% of the remifentanil cohort) against 4.7% for fentanyl"), unified the version string to v1.9.1, and removed a stray colon typo. The reference set is unchanged at **39**; the only reference-related gate activity was the citation-order monotonicity assertion (Amendment 8) remaining green. No `_r10` step touches `refs/`.
