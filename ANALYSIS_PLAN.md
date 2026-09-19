@@ -359,3 +359,49 @@ Two Round-6 assertions were **retargeted rather than satisfied** (G-16 and G-21)
 fixed-string checks invalidated by the revision, and leaving them would have frozen the
 defects they were written to detect. Gates: consistency **618/0**, word count **3 998 / 299**,
 docx fidelity **110/0**.
+
+## Amendment 8 (19 September 2026) — Round-9: the two must-cite citations, and a citation-order defect found closing the loop
+
+**Scope.** `RESPONSE_round7_2026-09-18.md` §7 ("Not applied") left exactly one substantive
+item: A1 #9, the two must-cite clinical references (a source for OIH clinical
+recognition/diagnosis, and a source for remifentanil as an ICU sedative). In closing the
+loop a second, more serious defect surfaced: the reference list preamble states the entries
+are "numbered in order of first citation", but measuring the actual first-citation order
+showed **four violations** (7->1, 5->3, 29->17, 37->25). The Vancouver claim was false in
+fact while true in prose.
+
+**Two new references, both verified against Crossref.**
+- Chu LA, Angst MS, Clark JD. *Clin J Pain* 2008; **24**: 479-96. `10.1097/ajp.0b013e31816b2f43`
+  — attached at the §1 definition of opioid-induced hyperalgesia (replaces the previously
+  hedged OIH-recognition claim with a sourced one).
+- Battershill AJ, Keating GM. *Drugs* 2006; **66**: 365-85. `10.2165/00003495-200666030-00013`
+  — attached at the §4.3 sentence on remifentanil as an (occasionally prolonged)
+  intensive-care sedative (previously an unsourced claim).
+
+**The whole list was renumbered to first-citation order.** `_r9_refs.py` carries the two new
+entries as out-of-range placeholders (9001/9002), scans every `[...]` citation in reading
+order over the body *and* the tables/appendix/figure-legend tail, maps each distinct
+reference to its rank, and rewrites the list. The DOI multiset is asserted invariant. After
+renumbering the four pre-existing violations are gone; the list is contiguous 1..39 with a
+monotone first-citation order. The full old->new map is in `_r9_renumbering.csv`.
+
+**The gate now enforces the claim it used to only assert.** Six review rounds and 618
+assertions had passed while the "numbered in order of first citation" line was false, because
+the gate asserted the *string*, never the *order* — the project's standing lesson
+(fixed-string assertions freeze errors). Round-9 adds:
+- a **citation-order monotonicity** assertion in `_check_consistency.py` (first-appearance
+  sequence must equal 1..N), and the continuity check is now dynamic (`range(1, N+1)`) rather
+  than the hard-coded `range(1, 38)`;
+- the §1 mechanism sentence's citation cluster is bound by **value** to `_r9_renumbering.csv`
+  (no more `[1, 2, 3, 4]` literal); the R6-19 probes `[36]`/`[37]`/`[24, 36, 37]` are likewise
+  value-bound, so a future renumber cannot silently re-freeze a number.
+
+**Word count.** The two insertions add two numeric tokens; `2` words of slack were recovered by
+trimming "that same series"->"that series" (§4.1) and "still produces"->"produces" (§4.3).
+Main text **3 998 / 4 000** (headroom 2), Summary **299 / 300**. Derived files (cover letter,
+manifest, AI statement, reference audit) were synchronised to "39 references" by
+`_r9_sync_derived.py`, which reads N from `_r9_renumbering.csv` and is idempotent.
+
+**Products.** `_r9_refs.py`, `_r9_sync_derived.py`, `_r9_renumbering.csv`, `_r9_MS_backup.md`.
+Gates: consistency **619/0**, word count **3 998 / 299**, docx fidelity **109/0**. Version
+**v1.9.0**.

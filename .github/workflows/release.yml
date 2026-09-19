@@ -143,6 +143,10 @@ jobs:
             24_symmetric_overlap_rorr.csv \
             _r6_cache.json \
             _r6_overlap_cache.json \
+            _r9_refs.py \
+            _r9_sync_derived.py \
+            _r9_renumbering.csv \
+            RESPONSE_round9_2026-09-19.md \
             RESPONSE_round6_remaining_2026-09-19.md \
             REVIEW_round7_2026-09-18.md \
             RESPONSE_round7_2026-09-18.md \

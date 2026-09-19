@@ -101,3 +101,7 @@ R6-22 指出 §1 的机制句只引综述、无一手术前证据来源，故插
 **结论**：37 条中 34 条经 Crossref 按 DOI 解析到唯一真实记录且题名一致；1、2、12、13、
 22、36 号共 6 条为数据库 / 词典 / 本体资源类条目，按期刊惯例以 URL + 访问日期引用，
 无 DOI 可核。AI 声明中的计数已同步为 37。
+
+## Round-9 (2026-09-19) — renumber to 39
+
+The two Round-7 A1 #9 must-cite references were inserted (Chu 2008 -> ref 5, Battershill & Keating 2006 -> ref 34) and the whole list renumbered in order of first citation, as the list preamble already claimed. Four pre-existing violations of that claim (7->1, 5->3, 29->17, 37->25) were corrected. The citation-order claim is now asserted by the consistency gate, not merely written. Total references: 39.

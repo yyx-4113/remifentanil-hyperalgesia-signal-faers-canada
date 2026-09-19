@@ -36,7 +36,7 @@
 | Running head | Remifentanil hyperalgesia reporting: two-database study |
 | Main text | **3 998 words** (Introduction to Conclusion, headings included) |
 | Summary | **299 words**, structured (Introduction / Methods / Results / Discussion), no abbreviations, no references |
-| References | **37**, Vancouver style with DOIs |
+| References | **39**, Vancouver style with DOIs |
 | Tables | 6 in the main file (Table 4 in three panels: 4A, 4B, 4C) |
 | Figures | 2 |
 | Supplementary tables | 9 (S1–S9); S1 is presented as two panels, each 27 system organ classes × 8 columns; S5 is the complete head-to-head matrix for all three comparators; S2 is supplied as a separate checklist file |
@@ -81,7 +81,7 @@ they can be removed in Word with no effect on the content.
 5. **Term-level verification.** The clinical word HYPERALGESIA is a MedDRA *lowest level term*, not a preferred term, so a query on it returns zero by construction. Every outcome term was checked for retrievability in both corpora (`10_term_dictionary.csv`, rendered as **Table S4**), five dictionary proxies were analysed on the same footing, the term set is specified in full as a custom query in **Table S6**, and the manuscript was rewritten from "no term is available" to "the term the clinic uses is not the term the dictionary stores". Recorded as **Amendment 1** in `ANALYSIS_PLAN.md`.
 6. **"Prespecified" purged.** No prospective registration exists, so every occurrence in the manuscript, cover letter, README, manifest and READUS-PV checklist was replaced with "specified in a dated analytical plan" plus an explicit statement that the analysis was not registered.
 7. **Over-claiming removed.** No statement now asserts that a head-to-head ratio above 1 is unique to one term, that ALLODYNIA has a direction (it is not estimable on n = 1), that spontaneous reporting is "structurally incapable" of detecting the syndrome, or that Canada reproduced the comparator-term direction. The group label was changed from "negative control" to "comparator term" throughout, and section 2.3 states explicitly that these terms are not negative controls in the causal sense.
-8. **Reference base rebuilt.** 37 references, all verified by identifier, cited in order of first appearance; the manuscript, cover letter, manifest and AI disclosure all state the same count.
+8. **Reference base rebuilt.** 39 references, all verified by identifier, cited in order of first appearance; the manuscript, cover letter, manifest and AI disclosure all state the same count.
 9. **The case-series finding is disclosed, not corrected (Round-5 P0-7).** Section 3.3 now reports that nine of the ten remifentanil HYPERAESTHESIA reports are separate identifiers for one 76-year-old man, evidenced in **Table S9**; the remaining seven Round-5 P0 items are all landed.
 10. **Cohort overlap and covariance are both disclosed.** **Table S8** gives the 4×4 overlap matrix and every ratio recomputed with the shared reports removed; Appendix S1 A1.5 gives every interval recomputed with the covariance between the two component ratios retained. Neither changes a conclusion; the overlap restriction, now applied symmetrically to both cohorts, moves PROCEDURAL PAIN versus fentanyl from 1.962 to 1.025 and, because the shared reports are a larger share of the smaller arm, raises the same ratio versus sufentanil from 2.124 to 2.427 rather than lowering it.
 
@@ -231,6 +231,27 @@ two patients" and G-21's "200 to 500". Both were fixed-string checks that the re
 legitimately invalidated; keeping them would have frozen the very defects the panel had
 asked to remove. A new G-24 block binds the replacement wording to the source products.
 
-Gates after the revision: consistency **618/0**, word count **3 998 / 299**, docx fidelity
+Gates after Round-8: consistency **618/0**, word count **3 998 / 299**, docx fidelity
 **110/0**, and both table generators reproduce the manuscript byte for byte. See
 `ANALYSIS_PLAN.md` Amendment 7 and `RESPONSE_round6_remaining_2026-09-19.md`.
+
+## Round-9 (v1.9.0, 19 September 2026)
+
+* **A1 #9 (the Round-7 residual)** — two must-cite clinical references added: Chu 2008
+  (*Clin J Pain*, ref 5) at the §1 definition of opioid-induced hyperalgesia, and
+  Battershill & Keating 2006 (*Drugs*, ref 34) at the §4.3 ICU-sedation sentence. The
+  reference count rises to **39**; the manuscript, cover letter, manifest and AI
+  disclosure all state 39.
+* **Citation order corrected** — the list preamble claims first-citation order, but measuring
+  the actual order exposed four violations (7->1, 5->3, 29->17, 37->25). `_r9_refs.py`
+  renumbers the whole list to first-citation order (1..39); the DOI multiset is asserted
+  invariant. The defect had escaped six review rounds and 618 gate assertions because the
+  gate checked the *string*, not the *order*.
+* **Gate hardened** — a citation-order-monotonicity assertion is added; the continuity check
+  and the §1 mechanism-sentence citation cluster (and the R6-19 probes) are now bound by
+  *value* to `_r9_renumbering.csv` instead of by literal, so a future renumber cannot
+  re-freeze a number.
+
+Gates after Round-9: consistency **619/0**, word count **3 998 / 299** (headroom 2), docx
+fidelity **109/0**. See `ANALYSIS_PLAN.md` Amendment 8 and
+`RESPONSE_round9_2026-09-19.md`.

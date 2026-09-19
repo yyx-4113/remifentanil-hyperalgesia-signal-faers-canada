@@ -88,7 +88,7 @@ manuscript's number-to-source table.
 | `cv/cv_process.py` | Canada Vigilance line-listing pipeline: exact active-ingredient cohort matching, native PT/SOC aggregation, ROR/RORR, subgroups. Writes `cv/cv_soc_27.csv`, `cv/cv_pt_summary.csv`, `cv/cv_subgroups.csv`, `cv/cv_drug_totals.csv`. |
 | `soc_rules.py` | Heuristic PT→SOC keyword mapping used **only** by the exploratory openFDA SOC analysis. Not an authoritative MedDRA implementation. |
 | `_fda_auth.py` | Reads an optional openFDA API key from the `OPENFDA_API_KEY` environment variable or a local `openfda_key.txt`. The key is **not required** for any analysis in this repository. |
-| `_check_consistency.py` | Quality gate: 528 programmatic assertions that every number quoted in the manuscript equals the value in its source file, plus submission-compliance checks (declared word counts, title/running-head/keyword limits, software versions, abstract coverage of the READUS-PV abstract items, AI-disclosure key strings, placeholder scan and figure-file presence). The whole of Table S1 — both panels, 54 rows × 8 columns — and all of Table S4 — 18 terms × 3 count columns — are re-derived cell by cell from the result files. Two global invariants are asserted: which head-to-head ratios exceed 1, and how many of the Canadian negative-control ratios are computable at all. Exits non-zero on any mismatch. |
+| `_check_consistency.py` | Quality gate: 619 programmatic assertions that every number quoted in the manuscript equals the value in its source file, plus submission-compliance checks (declared word counts, title/running-head/keyword limits, software versions, abstract coverage of the READUS-PV abstract items, AI-disclosure key strings, placeholder scan and figure-file presence). The whole of Table S1 — both panels, 54 rows × 8 columns — and all of Table S4 — 18 terms × 3 count columns — are re-derived cell by cell from the result files. Two global invariants are asserted: which head-to-head ratios exceed 1, and how many of the Canadian negative-control ratios are computable at all. Exits non-zero on any mismatch. |
 | `_gen_table_s1.py` | Generates Table S1 (the two system-organ-class panels, 54 rows × 8 columns) from `cv/cv_soc_27.csv` and `03_soc_27.csv` and rewrites that block of the manuscript in place, so the table is never typed by hand. Recomputes the proportions from the counts and refuses to write if they disagree with the values already in the source files. Idempotent; run it before `_check_consistency.py` after any change to either result file. |
 | `_wordcount.py` | Word count for the manuscript using the target journal's convention: main text = `## 1. Introduction` → `## Acknowledgements`, section headings included; Summary counted separately. Exits non-zero if either figure is outside the journal's range. |
 | `_build_submission.py` | Builds the submission pack into `_upload/`: `Manuscript.docx`, `Supporting_Information.docx`, `READUS-PV_checklist.docx`, `Cover_Letter.docx` and the figure files, with the journal's formatting applied (Times New Roman 12 pt, double spaced, line and page numbers, tables after the References). Requires `python-docx`. |
@@ -367,3 +367,16 @@ Yongxin Yang, MD — Department of Anesthesiology, The Second Affiliated Hospita
 University of Traditional Chinese Medicine, Fuzhou, Fujian 350003, China.
 ORCID: [0009-0004-9698-6552](https://orcid.org/0009-0004-9698-6552).
 Correspondence: 960856791@qq.com
+
+## 9. Revision history
+
+- **v1.8.0** — the deferred Round-6 P2/P3 items (Amendment 7). 37 references after the
+  Round-8 renumbering; gates 618/0, 3 998/299, 110/0.
+- **v1.9.0** — Round-9: the two Round-7 must-cite clinical references (Chu 2008, ref 5;
+  Battershill & Keating 2006, ref 34); the whole list renumbered to first-citation order
+  (1..39) after a closure check found four pre-existing violations of the list's own
+  "numbered in order of first citation" claim; the gate now enforces citation-order
+  monotonicity and binds the citation numbers by *value* to `_r9_renumbering.csv` rather
+  than by literal. Derived files synchronised to 39 references. Gates 619/0, 3 998/299
+  (headroom 2), 109/0. See `ANALYSIS_PLAN.md` Amendment 8 and
+  `RESPONSE_round9_2026-09-19.md`.

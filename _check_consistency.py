@@ -563,18 +563,29 @@ if os.path.exists(P(MS)):
     # 正文绑定：表 S4 注必须写进两个产物与旁证的值，且以 proxy-verified 定性
     s4_note_i = txt.index("The dictionary-level claim for HYPERALGESIA")
     s4_note = txt[s4_note_i:txt.index("### Table S5", s4_note_i)]
+    # 旁证引用号随重编号而变：读 _r9_renumbering.csv 旧->新映射，值绑定而非硬编码
+    # （写死 [36]/[37] 会在下次重编号时把正确状态判错——铁律①）。
+    _rmap = {}
+    for _r in csv.reader(open(P("_r9_renumbering.csv"), encoding="utf-8")):
+        if len(_r) >= 2 and _r[0].isdigit() and _r[1].isdigit():
+            _rmap[int(_r[0])] = int(_r[1])
     for needle in ("15 317", "10020568", "10050100", "10053552", "4 474 923",
                    "114 distinct terms", "_r6_term_dictionary_check.csv",
                    "_r6_term_level_check.csv", "10020573", "D006930", "D006941",
-                   "[36]", "[37]", "proxy-verified"):
+                   "proxy-verified"):
         chk(f"[R6-19] 表 S4 注含「{needle}」", needle in s4_note, True)
+    chk("[R6-19] 表 S4 注含 Cochrane 旁证引用（值绑定）",
+        "[%d]" % _rmap[36] in s4_note, True)
+    chk("[R6-19] 表 S4 注含 ADReCS 旁证引用（值绑定）",
+        "[%d]" % _rmap[37] in s4_note, True)
     # 禁止性断言：被新证据否证的全称量词不得复辟（铁律①）
     chk("[R6-19] 禁止「the only term in the dictionary that carries the concept」复辟",
         "the only term in the dictionary that carries the concept" in txt, False)
     # §2.3 与 §3.2 的正文表述须与表 S4 同步（carried by，而非悬空的 mapping to）
     main_body = txt[txt.index("## 1. Introduction"):txt.index("## Acknowledgements")]
     chk("[R6-19] 正文两处以 carried by 表述层级", main_body.count("lowest level term carried by"), 2)
-    chk("[R6-19] 正文挂上新引证 [24, 36, 37]", "[24, 36, 37]" in main_body, True)
+    chk("[R6-19] 正文挂上新引证（值绑定）",
+        "[%d, %d, %d]" % (_rmap[24], _rmap[36], _rmap[37]) in main_body, True)
 
     # Table S4 渲染后的每一个单元格必须与 CSV 一致（防止表格与产物脱钩）
     def s4_disp(v):
@@ -1428,7 +1439,19 @@ if os.path.exists(P(MS)):
     # ============ G-24：Round-8（第六轮 P2/P3 遗留项） ============
     _refblk8 = _t7[_t7.index("## References"):_t7.index("## Tables")]
     _refnums8 = [int(n) for n in re.findall(r"(?m)^(\d+)\. ", _refblk8)]
-    chk("[G-24] 参考文献编号 1..37 连续无缺", _refnums8, list(range(1, 38)))
+    chk("[G-24] 参考文献编号 1..N 连续无缺", _refnums8, list(range(1, len(_refnums8) + 1)))
+    # 引用顺序单调：首次出现顺序必须 == 编号 1..N。六轮评审 + 618 条门禁此前只
+    # 断言「编号连续」，从未验证「首次出现顺序 == 编号」——正是这一盲区让稿件自述
+    # "numbered in order of first citation" 而实际有 4 处违反（7->1, 5->3, 29->17,
+    # 37->25）。重编号已修正，此断言阻止复辟。
+    _cite_order = []
+    for _m in re.finditer(r"\[(\d+(?:\s*,\s*\d+)*)\]", _t7):
+        for _x in _m.group(1).split(","):
+            _x = int(_x)
+            if _x not in _cite_order:
+                _cite_order.append(_x)
+    chk("[G-24] 引用按首次出现顺序编号（单调）",
+        _cite_order, list(range(1, len(_refnums8) + 1)))
     _cited8 = {int(x) for m in re.finditer(r"\[(\d+(?:\s*,\s*\d+)*)\]", _t7)
                for x in m.group(1).split(",")}
     chk("[G-24] 每个引用号都有条目", sorted(_cited8 - set(_refnums8)), [])
@@ -1439,7 +1462,14 @@ if os.path.exists(P(MS)):
     chk("[G-24] 两条新文献的 DOI 正确",
         all(s in _refblk8 for s in ("10.1523/JNEUROSCI.20-18-07074.2000",
                                     "10.1523/JNEUROSCI.21-01-00279.2001")), True)
-    chk("[G-24] 机制句挂上一手证据", "[1, 2, 3, 4]" in _t7, True)
+    # 机制句引用号随重编号而变，硬编码会再次固化错误。从 _r9_renumbering.csv 读出
+    # 旧号 1..4 的新号，拼出期望串再断言（§1  preclinical 簇）。
+    _rmap = {}
+    for _r in csv.reader(open(P("_r9_renumbering.csv"), encoding="utf-8")):
+        if len(_r) >= 2 and _r[0].isdigit() and _r[1].isdigit():
+            _rmap[int(_r[0])] = int(_r[1])
+    _preclin = "[%d, %d, %d, %d]" % (_rmap[1], _rmap[2], _rmap[3], _rmap[4])
+    chk("[G-24] 机制句挂一手证据（值绑定）", _preclin in _t7, True)
     _mb8 = _t7[_t7.index("## 1. Introduction"):_t7.index("## Acknowledgements")]
     chk("[G-24] 正文不再把十份报告写成两位患者",
         re.search(r"(?<!appear to )describe two patients", _mb8) is None, True)

@@ -184,12 +184,13 @@ def main() -> int:
                    "_r6_term_dictionary_check.csv", "_r6_term_level_check.csv"]:
         chk(f"Supporting 含 R6-19 证据「{needle}」", needle in si_text)
     # 两条新参考文献在正文 docx 的 References 里（SI 不含参考文献节）
-    for needle in ["Cai MC", "data.cochrane.org/concepts/r4hp39n833dx",
-                   "all 37 cited references verified by identifier"]:
+    for needle in ["Cai MC", "data.cochrane.org/concepts/r4hp39n833dx"]:
         chk(f"Manuscript 含 R6-19 证据「{needle}」", needle in ms_text)
+    # 引用计数声明随重编号变化，动态校验而非硬编码数字（R6-19 / Round-9）
+    chk("Manuscript 含引用计数声明（动态）",
+        re.search(r"all \d+ cited references verified by identifier", ms_text) is not None, True)
     # Round-8：新引证、新口径与新产物都要到投稿件里，而不是只留在 markdown
-    for needle in ["all 37 cited references verified by identifier",
-                   "Vanderah TW", "10.1523/JNEUROSCI.20-18-07074.2000",
+    for needle in ["Vanderah TW", "10.1523/JNEUROSCI.20-18-07074.2000",
                    "roughly one report in 216 to 540",
                    "appear to describe at most two patients",
                    "spontaneous reporting cannot address its incidence in either direction",
