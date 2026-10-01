@@ -11,7 +11,7 @@
 | Field | Value |
 |---|---|
 | Full name | Yongxin Yang (杨永新) |
-| Degree | MD |
+| Degree | Bachelor of Medicine (B.M.) |
 | ORCID iD | 0009-0004-9698-6552 — https://orcid.org/0009-0004-9698-6552 |
 | Position | Attending physician, Department of Anesthesiology |
 | Institution | The Second Affiliated Hospital of Fujian University of Traditional Chinese Medicine |

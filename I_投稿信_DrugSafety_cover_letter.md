@@ -30,7 +30,7 @@ Thank you for considering this work. I would be glad to provide anything further
 
 Yours sincerely,
 
-Dr Yongxin Yang, MD
+Yongxin Yang, B.M.
 Department of Anesthesiology
 The Second Affiliated Hospital of Fujian University of Traditional Chinese Medicine
 No. 282 Wusi Road, Gulou District, Fuzhou, Fujian 350003, China

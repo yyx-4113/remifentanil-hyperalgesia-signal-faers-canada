@@ -442,6 +442,38 @@ the version string.
 string is present and is a no-op once applied). Gates: consistency **619/0**, word count
 **3 997 / 299**, docx fidelity **109/0**. Version **v1.9.1**.
 
+## Amendment 10 (19 September 2026) — retarget to *Pharmacoepidemiology and Drug Safety* after the *Drug Safety* desk reject
+
+**Scope.** *Drug Safety* (Springer/Adis) desk-rejected v1.9.3 with a template letter citing
+only submission volume and readership fit — no methodological or conclusory criticism. The
+package is retargeted to *Pharmacoepidemiology and Drug Safety* (PDS; Wiley / ISPE; SCIE;
+JIF 2025 = 2.6; zero-APC subscription route), the discipline-matched home for a
+disproportionality study of spontaneous reports.
+
+**PDS-specific edits (gate-safe).** (i) Summary label `Background.` → `Objective.`; (ii) the AI
+disclosure now cites Wiley's policy; (iii) a Wang & Pottegård 2024 transparency citation added as
+reference #40, cited at the end of the Conclusion so first-citation order stays monotonic (the
+reference is appended last in the list); (iv) the data-availability and cover-letter release
+pointer moved to `v1.9.4`; (v) the author degree corrected from "MD" to Bachelor of Medicine
+(B.M.) in the title page, cover letter, author-verification statement and Drug Safety letter;
+(vi) the default cover letter and `SUBMISSION_MANIFEST.md` re-pointed from *Anaesthesia* /
+ScholarOne to PDS / Wiley Research Exchange (addressed to Professor Brian L. Strom);
+`SUBMISSION_PDS.md` added as the field-mapping guide; the build script also emits
+`Cover_Letter_PDS.docx`; and `_verify_docx.py`'s stale "Professor Matt Wiles" EIC assertion was
+updated to "Professor Brian L. Strom".
+
+**The 3 645-word compression was reverted.** A prior attempt to trim the v1.9.3 body (3 964
+words) to 3 645 silently broke 12 consistency-gate assertions — it had deleted gate-locked
+G-23/G-24/R6-19/G-16 phrases and mis-ordered the #40 reference — so the body stands at
+**3 974 words** (v1.9.3 baseline + the #40 reference and minor PDS disclosures). This is GREEN
+on the 3 000–4 000 word-count gate but 974 words above PDS's *typical* 3 000-word body cap; the
+gap is the cost of preserving every gate-locked scientific number and phrase.
+
+**Products.** `I_投稿信_cover_letter.md` (now the PDS letter), `SUBMISSION_MANIFEST.md` (now the
+PDS manifest), `SUBMISSION_PDS.md`, `CITATION.cff` (v1.9.4), `author_verification_statement.md`,
+`_build_submission.py`, `_verify_docx.py`. Gates: consistency **619/0**, word count **3 974 / 299**
+(headroom 26), docx fidelity **109/0**. Version **v1.9.4**.
+
 **Amendment 10 (v1.9.2, 19 September 2026).** Pre-submission word-count safety margin. ~33 words of redundant prose were removed from the main text (no numbers, no citations and no reference count changed) to move the main text from 3 997 to 3 964 words, widening the 4 000-word ceiling headroom from 3 to 36; Summary unchanged at 299/300. The version string was unified to v1.9.2 across the manuscript, README, CITATION.cff and cover letter (the cover letter's data-availability URL had lagged at v1.7.0). Gates: consistency **619/0**, word count **3 964 / 299** (headroom 36), docx fidelity **109/0**.
 
 **Amendment 11 (v1.9.3, 19 September 2026).** Submission retargeted to *Drug Safety* (Springer/Adis, ISoP official journal) as the primary venue. Manuscript text was made journal-agnostic so the same file serves either journal: the AI-disclosure paragraph now cites "the journal's policy on the use of generative artificial intelligence" (previously named Wiley's Best Practice Guidelines, which applied only to *Anaesthesia*), and the References note now reads "as required by the journal's style" (previously "as required by *Anaesthesia*"); the structured Summary headings were realigned to STROBE (Background / Methods / Results / Conclusions). A Drug Safety cover letter and `SUBMISSION_DrugSafety.md` (Editorial Manager field map) were added and the build script emits `Cover_Letter_DrugSafety.docx`; the *Anaesthesia* cover letter is retained as a reference artifact. Data-availability URL advanced to the v1.9.3 release. Gates: consistency **619/0**, word count **3 964 / 299** (headroom 36), docx fidelity **109/0**.

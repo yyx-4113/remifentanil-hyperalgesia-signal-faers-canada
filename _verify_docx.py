@@ -208,7 +208,7 @@ def main() -> int:
     chk("CoverLetter 含仓库 URL",
         "https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada" in cl_text)
     chk("CoverLetter 含 ORCID", "0009-0004-9698-6552" in cl_text)
-    chk("CoverLetter 抬头为主编", "Professor Matt Wiles" in cl_text)
+    chk("CoverLetter 抬头为主编", "Professor Brian L. Strom" in cl_text)
     chk("CoverLetter 无 prespecified", re.findall(r"\bpre-?specified\b", cl_text), [])
     chk("CoverLetter 含文献计数",
         re.search(r"all \d+ cited references verified by identifier", cl_text) is not None)

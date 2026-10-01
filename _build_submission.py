@@ -43,6 +43,9 @@ OUT = os.path.join(HERE, "_upload")
 MS = os.path.join(HERE, "I_正文_IMRaD_en.md")
 COVER = os.path.join(HERE, "I_投稿信_cover_letter.md")
 COVER_DS = os.path.join(HERE, "I_投稿信_DrugSafety_cover_letter.md")
+# The active submission target is now PDS, so the default cover letter (COVER) IS the
+# PDS letter; this constant lets us also emit an explicitly named PDS docx from the same source.
+COVER_PDS = os.path.join(HERE, "I_投稿信_cover_letter.md")
 
 BODY_FONT = "Times New Roman"
 
@@ -318,6 +321,21 @@ def build_cover_letter_ds() -> str:
     return path
 
 
+def build_cover_letter_pds() -> str:
+    """PDS (Wiley/ISPE) cover letter — the active submission target.
+
+    Reads the same source as the default cover letter (I_投稿信_cover_letter.md,
+    which now holds the PDS text) and writes an explicitly named docx so the file
+    list maps cleanly onto Wiley's Research Exchange upload fields.
+    """
+    text = open(COVER_PDS, encoding="utf-8").read()
+    doc = new_document()
+    emit_markdown(doc, text)
+    path = os.path.join(OUT, "Cover_Letter_PDS.docx")
+    doc.save(path)
+    return path
+
+
 def build_readus_checklist() -> str:
     """The completed READUS-PV checklist, promised to the editor as a separate file."""
     text = open(os.path.join(HERE, "I_TableS2_READUS-PV_checklist.md"), encoding="utf-8").read()
@@ -363,10 +381,11 @@ def main() -> int:
     si_path = build_supporting(supp)
     cl_path = build_cover_letter()
     cl_ds_path = build_cover_letter_ds()
+    cl_pds_path = build_cover_letter_pds()
     ck_path = build_readus_checklist()
     figs = copy_figures()
     print("built:")
-    for p in [ms_path, si_path, ck_path, cl_path, cl_ds_path, *figs]:
+    for p in [ms_path, si_path, ck_path, cl_path, cl_ds_path, cl_pds_path, *figs]:
         print(f"  {os.path.relpath(p, HERE):45s} {os.path.getsize(p)/1024:8.1f} KB")
     return 0
 
