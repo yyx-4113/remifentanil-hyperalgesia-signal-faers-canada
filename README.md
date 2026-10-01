@@ -1,7 +1,7 @@
 # Remifentanil and hyperalgesia reporting: FAERS + Canada Vigilance two-database disproportionality study
 
 **Repository:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada>
-**Current release:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.9.4>
+**Current release:** <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.9.5>
 (earlier releases <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.0.0> through <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.5.0>)
 
 Reproduction package for the study:
@@ -251,7 +251,7 @@ this environment; Arial is used instead.
 python _wordcount.py               # main text and Summary within the journal's limits
 python _gen_table_s1.py            # regenerate Table S1 from the two result files
 python _gen_table4.py              # regenerate Tables 4A-4C and Table S5
-python _check_consistency.py       # must print FAIL 0 and exit 0 (619 assertions at v1.9.4)
+python _check_consistency.py       # must print FAIL 0 and exit 0 (619 assertions at v1.9.5)
 ```
 
 The two generators rewrite their own blocks of the manuscript and must leave the file
@@ -269,7 +269,7 @@ presence of the figure files). Re-run both after changing any data or manuscript
 
 ```
 python _build_submission.py        # -> _upload/*.docx + figure files
-python _verify_docx.py             # must print FAIL 0 and exit 0 (109 assertions at v1.9.4)
+python _verify_docx.py             # must print FAIL 0 and exit 0 (109 assertions at v1.9.5)
 ```
 
 The `.docx` files are build artefacts and are not tracked in this repository; the pack is
@@ -391,3 +391,4 @@ Correspondence: 960856791@qq.com
 - **v1.9.2** — pre-submission word-count safety margin: trimmed ~33 words of redundant prose (no numbers, citations or reference count changed) to move the main text from 3 997 to 3 964 words, widening the 4 000-word ceiling headroom from 3 to 36; Summary unchanged at 299/300; version unified to v1.9.2 across the manuscript, README, CITATION.cff and cover letter. Gates 619/0, 3 964/299 (headroom 36), 109/0.
 - **v1.9.3** — retargeted the submission package to *Drug Safety* (Springer/Adis, ISoP official journal) as the primary venue, keeping the *Anaesthesia* cover letter as a reference artifact. Manuscript text made journal-agnostic: the AI-disclosure paragraph now cites "the journal's policy on the use of generative artificial intelligence" (was Wiley's Best Practice Guidelines) and the References note now reads "as required by the journal's style" (was *Anaesthesia*); the structured Summary headings were realigned to STROBE (Background / Methods / Results / Conclusions). A Drug Safety cover letter (`I_投稿信_DrugSafety_cover_letter.md`) and a submission-field guide (`SUBMISSION_DrugSafety.md`) were added, and the build script now also emits `Cover_Letter_DrugSafety.docx`. Data-availability URL advanced to the v1.9.3 release. Gates 619/0, 3 964/299 (headroom 36), 109/0.
 - **v1.9.4** — after *Drug Safety* (Springer/Adis) declined the manuscript with a template desk-reject letter that cited only submission volume and readership fit (no methodological or conclusory criticism), the package was retargeted to *Pharmacoepidemiology and Drug Safety* (PDS; Wiley / ISPE; SCIE; JIF 2025 = 2.6; zero-APC subscription route). A 3 645-word compression draft was attempted and reverted: it silently broke 12 consistency-gate assertions (deleted gate-locked G-23/G-24/R6-19/G-16 phrases and mis-ordered the #40 reference), so the body stands at **3 974 words** (v1.9.3 baseline + the Wang & Pottegård 2024 reference #40 and minor PDS disclosures) — GREEN on the 3 000–4 000 word-count gate, 974 words above PDS's typical 3 000-word body cap. PDS-specific disclosures added: Summary label `Background.` → `Objective.`; AI disclosure now cites Wiley's policy; a Wang & Pottegård 2024 transparency citation (ref 40) added at the end of the Conclusion; data-availability and cover-letter release pointer advanced to v1.9.4. The default cover letter (`I_投稿信_cover_letter.md`) and `SUBMISSION_MANIFEST.md` are now the PDS letter and manifest (addressed to Professor Brian L. Strom); the author degree is corrected from "MD" to Bachelor of Medicine (B.M.) throughout. Build script also emits `Cover_Letter_PDS.docx`. Gates 619/0, 3 974/299 (headroom 26), 109/0.
+- **v1.9.5** — de-AI language polish: em-dash punctuation and a few weak joins in `I_正文_IMRaD_en.md` were recast to reduce AI-typical phrasing; no number, citation, argument or gate-locked phrase changed. All three quality gates remain GREEN (consistency 619/0, word count 3 974/299, docx fidelity 109/0). Version pointers in `CITATION.cff`, `README.md`, the manuscript data-availability statement, the PDS cover letter and `SUBMISSION_PDS.md` advanced to v1.9.5.

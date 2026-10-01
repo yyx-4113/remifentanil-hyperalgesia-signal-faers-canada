@@ -257,6 +257,10 @@ Gates after Round-9: consistency **619/0**, word count **3 964 / 299** (headroom
 fidelity **109/0**. See `ANALYSIS_PLAN.md` Amendment 8 and
 `RESPONSE_round9_2026-09-19.md`.
 
+## v1.9.5 (19 September 2026) — de-AI language polish
+
+Cosmetic-only revision of the manuscript text. Every number, citation, argument and gate-locked phrase is unchanged; only em-dash punctuation and a few weak joins were recast to reduce AI-typical phrasing (no quantitative or structural change). All three quality gates remain GREEN: consistency **619/0**, word count **3 974 / 299** (headroom 26), docx fidelity **109/0**. The data-availability and cover-letter release pointers, `CITATION.cff`, `README.md` and `SUBMISSION_PDS.md` were advanced to `v1.9.5`.
+
 ## v1.9.4 (19 September 2026) — retargeted to *Pharmacoepidemiology and Drug Safety* after the *Drug Safety* desk reject
 
 *Drug Safety* (Springer/Adis) declined the manuscript with a template desk-reject
