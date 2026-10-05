@@ -45,12 +45,16 @@ I, Yongxin Yang, confirm the following:
 
 ## 3. Use of generative AI
 
-AI-based tools were used for (a) assistance in writing and debugging analysis code and
-(b) language editing of the manuscript text. They were **not** used to generate or
-fabricate data, to produce or alter figures, to select or interpret results, or to draft
-scientific conclusions. The author directed all AI-assisted work, verified every output
-against the underlying source data, and accepts full responsibility for the content of
-the manuscript. AI tools are not and cannot be listed as authors.
+AI-based tools were used as follows, consistent with the manuscript's Declarations section:
+
+- **Tools and versions.** Large language model assistants accessed through WorkBuddy, a desktop AI-agent environment (the build in use between 15 and 18 September 2026), routing each request to one or more commercial large language models.
+- **Dates of use.** Between 15 and 18 September 2026.
+- **How applied.** Drafting, debugging and documenting the analysis scripts (data-analysis and coding support); writing the plotting code for Figures 1 and 2; extensive language and style editing of the manuscript text; and reference retrieval with bibliographic checking. Not used to draft the scientific narrative or conclusions.
+- **Specific areas.** The disproportionality-analysis and plotting scripts, the manuscript text from the Introduction through the Discussion and the References, and the reference list.
+- **Verification of output.** Every reported value is a direct read of the archived analysis output and each number is traceable to its source file; all 40 cited references were verified by identifier; the author verified every AI-assisted output against the underlying source data before acceptance.
+- **Privacy and compliance.** No patient-identifiable data were entered into any AI service; both databases are public de-identified extracts used under standard commercial terms.
+
+The tools were **not** used to generate or fabricate data, to produce or alter figures, to select or interpret results, or to draft scientific conclusions. The author directed all AI-assisted work and accepts full responsibility for the content of the manuscript. AI tools are not and cannot be listed as authors.
 
 *(The exact wording of the AI disclosure in the submitted manuscript follows the target
 journal's policy; see the manuscript's Declarations section.)*

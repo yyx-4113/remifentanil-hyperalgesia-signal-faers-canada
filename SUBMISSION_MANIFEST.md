@@ -257,6 +257,10 @@ Gates after Round-9: consistency **619/0**, word count **3 964 / 299** (headroom
 fidelity **109/0**. See `ANALYSIS_PLAN.md` Amendment 8 and
 `RESPONSE_round9_2026-09-19.md`.
 
+## v1.9.6 (5 October 2026) — editorial revision: Key Points + Plain Language Summary
+
+PDS editorial office returned a pre-screening completion request (not a reject) requiring, before the submission can proceed, (i) at least five Key Points stating the importance of the paper, placed in the manuscript text, and (ii) a mandatory Plain Language Summary (single paragraph, no more than 200 words, after the Key Points, conveying the same information as the abstract). Both were added to the `## Summary` section of `I_正文_IMRaD_en.md` after the structured Objective/Methods/Results/Conclusions abstract: six Key Points and a 198-word Plain Language Summary. The word-count gate and the G-24 declaration check were amended so the journal-mandated Key Points / Plain Language Summary are excluded from the 299-word abstract limit (the abstract count truncates at the first `### Key points` marker); the structured abstract (299 words) and main text (3 974 words) are unchanged. All three quality gates remain GREEN: consistency **619/0**, word count **3 974 / 299** (headroom 26), docx fidelity **109/0**. Version pointers advanced to `v1.9.6`.
+
 ## v1.9.5 (19 September 2026) — de-AI language polish
 
 Cosmetic-only revision of the manuscript text. Every number, citation, argument and gate-locked phrase is unchanged; only em-dash punctuation and a few weak joins were recast to reduce AI-typical phrasing (no quantitative or structural change). All three quality gates remain GREEN: consistency **619/0**, word count **3 974 / 299** (headroom 26), docx fidelity **109/0**. The data-availability and cover-letter release pointers, `CITATION.cff`, `README.md` and `SUBMISSION_PDS.md` were advanced to `v1.9.5`.

@@ -9,6 +9,7 @@
 """
 import csv, json, os, re, sys
 import importlib.util
+import _wordcount as _wcmod
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 def P(*a): return os.path.join(HERE, *a)
@@ -354,7 +355,7 @@ if os.path.exists(P(MS)):
     i_ack = txt.index("## Acknowledgements")
     main_words = wc(txt[i_intro:i_ack])
     summ_text = txt[txt.index("## Summary"):i_intro]
-    summ_words = wc(summ_text)
+    summ_words = _wcmod.count_structured_summary(txt)
 
     chk("正文词数在 3000-4000", 3000 <= main_words <= 4000, True)
     chk("摘要词数在 250-300", 250 <= summ_words <= 300, True)
@@ -1534,7 +1535,7 @@ if os.path.exists(P(MS)):
     _wc8 = importlib.util.module_from_spec(_spec8)
     _spec8.loader.exec_module(_wc8)
     _m8 = _wc8.count(_wc8.slice_between(_t7, "## 1. Introduction", "## Acknowledgements"))
-    _s8w = _wc8.count(_wc8.slice_between(_t7, "## Summary", "## 1. Introduction"))
+    _s8w = _wcmod.count_structured_summary(_t7)
     _decl8 = re.search(r"Summary ([\d ]+) words; main text ([\d ]+) words", _t7)
     chk("[G-24] 声明 Summary 字数 == 实测", _decl8.group(1).replace(" ", ""), str(_s8w))
     chk("[G-24] 声明正文字数 == 实测", _decl8.group(2).replace(" ", ""), str(_m8))

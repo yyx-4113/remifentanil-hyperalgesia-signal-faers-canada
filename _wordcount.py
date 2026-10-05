@@ -14,7 +14,10 @@ than under-counts, so that a declared figure is never larger than the real one):
                Markdown markup (#, *, _, `, |) is stripped before counting, and
                a token is counted only if it contains a letter or digit, so
                symbols such as em-dashes and rule lines do not pad the total.
-  SUMMARY    = from "## Summary" up to "## 1. Introduction" (heading included).
+  SUMMARY    = the structured abstract only (Objective/Methods/Results/Conclusions),
+               from "## Summary" up to the first Key-points / Plain-language-summary
+               marker; the PDS-mandated Key points and Plain Language Summary that
+               sit inside the same window are excluded from the count.
 
 Excluded: title page, running head, keywords, the formatting note, the
 declarations block (Funding / competing interests / data availability / AI
@@ -47,11 +50,39 @@ def slice_between(text: str, start: str, end: str) -> str:
     return text[i:j]
 
 
+# PDS mandates a "Key points" list and a "Plain language summary" as front-matter
+# that sit INSIDE the Summary window (after the structured abstract). They are NOT
+# part of the structured abstract and must not count toward the 250-300 abstract
+# word limit, so the abstract count stops at the first such marker.
+KEYPOINTS_MARKERS = (
+    "### Key points",
+    "### Key Points",
+    "### Plain language summary",
+    "### Plain Language Summary",
+)
+
+
+def structured_summary_window(text: str) -> str:
+    """Truncate a Summary-window fragment before the Key-points / PLS markers."""
+    end = len(text)
+    for m in KEYPOINTS_MARKERS:
+        idx = text.find(m)
+        if idx != -1:
+            end = min(end, idx)
+    return text[:end]
+
+
+def count_structured_summary(text: str) -> int:
+    """Word count of the structured abstract only (excludes Key points / PLS)."""
+    window = slice_between(text, "## Summary", "## 1. Introduction")
+    return count(structured_summary_window(window))
+
+
 def main() -> int:
     text = open(MS, encoding="utf-8").read()
 
     main_words = count(slice_between(text, "## 1. Introduction", "## Acknowledgements"))
-    summary_words = count(slice_between(text, "## Summary", "## 1. Introduction"))
+    summary_words = count_structured_summary(text)
 
     ok = True
     for label, value, lo, hi in (

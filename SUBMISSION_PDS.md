@@ -4,7 +4,7 @@
 > This file maps the Wiley **Research Exchange** submission fields to the local build
 > artefacts produced by `python _build_submission.py` (output in `_upload/`).
 > Journal: *Pharmacoepidemiology and Drug Safety* (Wiley / ISPE). EIC: **Brian L. Strom**.
-> Manuscript version cited throughout: **v1.9.5**.
+> Manuscript version cited throughout: **v1.9.6**.
 
 ## Research Exchange field → local file
 
@@ -21,7 +21,7 @@
 | Supplementary Material (checklist) | `READUS-PV_checklist.docx` | Completed READUS-PV checklist promised in §4.6 / Table S2 |
 | Author disclosure / COI | PDS COI form (completed in the system) | No competing interests; no funding. State the single-author status. |
 | Funding statement | (manuscript Declarations) | "The research did not receive any specific grant…" |
-| Data availability | (manuscript Declarations) | Repository URL + `v1.9.5` release; raw FAERS / Canada Vigilance not redistributed |
+| Data availability | (manuscript Declarations) | Repository URL + `v1.9.6` release; raw FAERS / Canada Vigilance not redistributed |
 | AI-use disclosure | (manuscript *Acknowledgements* → Use of generative AI) | Restated in the cover letter and the Author Verification Statement |
 
 ## PDS-specific points to confirm at submission
@@ -38,4 +38,13 @@
 5. **COI form** — Wiley requires the journal's own COI form in addition to the manuscript
    statement; complete it in Research Exchange (no conflicts to declare here).
 6. **Repository URL** must resolve in a browser immediately before submitting:
-   <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.9.5>
+   <https://github.com/yyx-4113/remifentanil-hyperalgesia-signal-faers-canada/releases/tag/v1.9.6>
+
+7. **Key Points and Plain Language Summary (editorial requirement, 2026-10-05).** The
+   editorial office asked for (i) at least five Key Points stating the paper's importance,
+   and (ii) a mandatory Plain Language Summary (single paragraph, <=200 words, after the
+   Key Points) conveying the same information as the abstract. Both are now included in the
+   `## Summary` section of the manuscript (after the structured Objective/Methods/Results/
+   Conclusions abstract). They are journal-mandated front-matter and are deliberately
+   excluded from the 299-word abstract count (the `_wordcount.py` / G-24 logic truncates at
+   the first `### Key points` marker). PLS currently 198 words; six Key Points provided.
