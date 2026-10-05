@@ -25,6 +25,8 @@ Two results stand out. First, the word used in clinical practice for the syndrom
 
 **Format.** The manuscript is 3 974 words from Introduction to Conclusion, with a structured Summary of 299 words, 40 references, six tables (Table 4 in three panels) and two figures. Tables and figure legends are in the manuscript file after the References; the figures are supplied as separate 600 ppi line-art files in .tif and .pdf; and the nine supplementary tables and the supplementary methods appendix are in a separate Supporting Information file. The READUS-PV checklist is supplied as a further separate file.
 
+**Editorial revision.** In response to the editorial office's request for additional information before the submission could be considered further, the manuscript now includes six Key Points and a mandatory Plain Language Summary (single paragraph, 198 words) within the Summary section; both are reflected in the enclosed Manuscript file and satisfy the journal's pre-screening completeness requirement.
+
 Thank you for considering this work. I would be glad to provide anything further that would help the review.
 
 Yours sincerely,
